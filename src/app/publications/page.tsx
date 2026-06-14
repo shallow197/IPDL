@@ -75,6 +75,7 @@ export default function PublicationsPage() {
             <p className="mt-2 text-slate-400 text-xs sm:text-sm max-w-2xl">
               Les publications sont validées par des revues internationales puis référencées ici — chaque entrée renvoie vers Google Scholar et le DOI de l&apos;éditeur, sans hébergement de PDF.
             </p>
+            <div aria-hidden className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 to-green-500" />
           </div>
           <a
             href={UMMISCO_SCHOLAR_SEARCH}

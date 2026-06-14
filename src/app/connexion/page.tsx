@@ -188,6 +188,7 @@ export default function ConnexionPage() {
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -z-10 h-80 w-80 rounded-full bg-blue-600/5 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/3 -z-10 h-72 w-72 rounded-full bg-green-600/5 blur-[120px] pointer-events-none" />
 
         <Link href="/" className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 mb-8 font-semibold absolute top-10 left-10">
           <ArrowLeft className="h-4 w-4" />

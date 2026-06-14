@@ -66,6 +66,7 @@ export default function ActualitesPage() {
           </span>
           <h1 className="text-3xl font-extrabold text-white sm:text-4xl">{t("events.title")}</h1>
           <p className="mt-2 text-slate-400 text-sm">Séminaires, conférences et ateliers du laboratoire UMMISCO.</p>
+          <div aria-hidden className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 to-green-500" />
         </div>
 
         {/* Tabs */}
