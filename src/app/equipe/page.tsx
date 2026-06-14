@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Mail, ExternalLink, BookOpen, Database } from "lucide-react";
 import Footer from "@/components/Footer";
+import Avatar from "@/components/Avatar";
 import { RESEARCHERS, PUBLICATIONS, DATASETS, AXES } from "@/data/ummiscoData";
 import { useLang } from "@/context/LangContext";
 
@@ -27,7 +28,7 @@ export default function EquipePage() {
           </span>
           <h1 className="text-3xl font-extrabold text-white sm:text-4xl">{t("researchers.title")}</h1>
           <p className="mt-2 text-slate-400 text-base">
-            {filtered.length} chercheur(s) associé(s) au laboratoire UMMISCO Dakar.
+            {filtered.length} membre(s) répartis dans les 5 centres internationaux d&apos;UMMISCO (UMI 209).
           </p>
         </div>
 
@@ -56,19 +57,13 @@ export default function EquipePage() {
               <div key={r.id} className="rounded-xl border border-slate-900 bg-slate-950 p-6 flex flex-col hover:border-slate-800 transition-colors group">
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="flex-none h-14 w-14 rounded-full bg-blue-600/10 text-blue-400 text-lg font-extrabold border border-blue-900/30 overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
-                    <img
-                      src={r.photoUrl}
-                      alt={r.name}
-                      className="h-full w-full object-cover"
-                      onError={(e) => {
-                        const t = e.currentTarget;
-                        t.style.display = "none";
-                        t.nextElementSibling?.removeAttribute("hidden");
-                      }}
-                    />
-                    <span hidden>{r.avatarSeed}</span>
-                  </div>
+                  <Avatar
+                    name={r.name}
+                    src={r.photoUrl}
+                    seed={r.avatarSeed}
+                    size={56}
+                    className="group-hover:scale-105 transition-transform"
+                  />
                   <div>
                     <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">{r.name}</h3>
                     <p className="text-[13px] text-slate-500 mt-0.5 leading-snug">{r.title}</p>

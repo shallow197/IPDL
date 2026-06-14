@@ -24,6 +24,7 @@ import {
   CENTERS,
 } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
+import Avatar from "@/components/Avatar";
 import { scholarUrl } from "@/lib/scholar";
 
 interface PageProps {
@@ -64,19 +65,13 @@ export default function ResearcherProfilePage({ params }: PageProps) {
         {/* Profile Card */}
         <div className="rounded-2xl border border-slate-900 bg-slate-900/10 p-8 mb-10 flex flex-col md:flex-row gap-8 items-start">
           {/* Photo */}
-          <div className="flex-none h-20 w-20 rounded-full bg-blue-600/10 text-blue-400 border border-blue-900/30 overflow-hidden flex items-center justify-center text-3xl font-extrabold shadow-lg">
-            <img
-              src={researcher.photoUrl}
-              alt={researcher.name}
-              className="h-full w-full object-cover"
-              onError={(e) => {
-                const t = e.currentTarget;
-                t.style.display = "none";
-                t.nextElementSibling?.removeAttribute("hidden");
-              }}
-            />
-            <span hidden>{researcher.avatarSeed}</span>
-          </div>
+          <Avatar
+            name={researcher.name}
+            src={researcher.photoUrl}
+            seed={researcher.avatarSeed}
+            size={80}
+            className="shadow-lg"
+          />
 
           {/* Details */}
           <div className="flex-1 space-y-4">
