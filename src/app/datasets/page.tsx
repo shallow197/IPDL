@@ -6,6 +6,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
+import { useNotification } from "@/context/NotificationContext";
 import type { DBDataset } from "@/lib/db";
 
 const ACCESS_COLORS: Record<string, string> = {
@@ -23,6 +24,7 @@ const ACCESS_ICONS: Record<string, React.ElementType> = {
 export default function DatasetsPage() {
   const { isAuthenticated, token } = useAuth();
   const { t } = useLang();
+  const { notify } = useNotification();
 
   const [datasets, setDatasets] = useState<DBDataset[]>([]);
   const [filter, setFilter] = useState<string>("all");
@@ -52,6 +54,9 @@ export default function DatasetsPage() {
         setRequestedIds((prev) => [...prev, requestModal.id]);
         setRequestModal(null);
         setRequestReason("");
+        notify("Demande envoyée — le directeur vous répondra.", "info");
+      } else {
+        notify("Erreur lors de l'envoi de la demande.", "error");
       }
     } finally {
       setRequestSubmitting(false);
@@ -79,7 +84,7 @@ export default function DatasetsPage() {
 
       if (!res.ok) {
         const text = await res.text();
-        alert(text || "Téléchargement refusé.");
+        notify(text || "Téléchargement refusé.", "error");
         return;
       }
 
@@ -98,7 +103,7 @@ export default function DatasetsPage() {
       a.remove();
       URL.revokeObjectURL(url);
 
-      // Optimistic counter update
+      notify("Téléchargement démarré.", "success");
       setDatasets((prev) =>
         prev.map((d) => d.id === ds.id ? { ...d, downloads: d.downloads + 1 } : d)
       );

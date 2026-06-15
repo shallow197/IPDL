@@ -11,6 +11,7 @@ import {
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
+import { useNotification } from "@/context/NotificationContext";
 import type { DBPublication, DBDataset, DBUser, DBRole, DBAccessRequest, Permission } from "@/lib/db";
 import type { UserRole } from "@/context/AuthContext";
 import PublicationCard from "@/components/PublicationCard";
@@ -223,6 +224,7 @@ export default function AdminPage() {
   const router = useRouter();
   const { user, token, isAuthenticated, authLoading } = useAuth();
   const { t } = useLang();
+  const { notify } = useNotification();
 
   const [tab, setTab] = useState<Tab>("publications");
   const [publications, setPublications] = useState<DBPublication[]>([]);
@@ -302,6 +304,9 @@ export default function AdminPage() {
       if (res.ok) {
         setPublications((prev) => prev.map((p) => p.id === id ? { ...p, statut } : p));
         if (selectedPub?.id === id) setSelectedPub((p) => p ? { ...p, statut } : null);
+        notify(statut === "validee" ? "Publication validée." : "Publication rejetée.", statut === "validee" ? "success" : "warning");
+      } else {
+        notify("Erreur lors de la mise à jour.", "error");
       }
     } finally {
       setUpdating(null);
@@ -319,6 +324,9 @@ export default function AdminPage() {
       if (res.ok) {
         setUsers((prev) => prev.map((u) => u.id === userId ? { ...u, role: role as DBUser["role"] } : u));
         setSelectedUser((u) => u && u.id === userId ? { ...u, role: role as DBUser["role"] } : u);
+        notify("Rôle mis à jour.", "success");
+      } else {
+        notify("Erreur lors du changement de rôle.", "error");
       }
     } finally {
       setUpdating(null);
@@ -328,9 +336,9 @@ export default function AdminPage() {
   const toggleUserActive = async (userId: string, active: boolean) => {
     setUpdating(userId);
     try {
-      // Optimistic update (real implementation would call API)
       setUsers((prev) => prev.map((u) => u.id === userId ? { ...u, active } : u));
       setSelectedUser((u) => u && u.id === userId ? { ...u, active } : u);
+      notify(active ? "Compte réactivé." : "Compte désactivé.", active ? "success" : "warning");
     } finally {
       setUpdating(null);
     }
@@ -348,6 +356,9 @@ export default function AdminPage() {
       if (res.ok) {
         const updated = await res.json();
         setRequests((prev) => prev.map((r) => r.id === id ? updated : r));
+        notify(decision === "approuvee" ? "Accès approuvé." : "Accès refusé.", decision === "approuvee" ? "success" : "warning");
+      } else {
+        notify("Erreur lors du traitement.", "error");
       }
     } finally {
       setUpdating(null);
@@ -370,6 +381,9 @@ export default function AdminPage() {
         const role = await res.json();
         setRoles((prev) => [...prev, role]);
         setNewRoleName(""); setNewRoleDesc(""); setNewRolePerms([]);
+        notify(`Rôle "${role.name}" créé.`, "success");
+      } else {
+        notify("Erreur lors de la création du rôle.", "error");
       }
     } finally {
       setUpdating(null);
@@ -384,7 +398,12 @@ export default function AdminPage() {
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ id }),
       });
-      if (res.ok) setRoles((prev) => prev.filter((r) => r.id !== id));
+      if (res.ok) {
+        setRoles((prev) => prev.filter((r) => r.id !== id));
+        notify("Rôle supprimé.", "info");
+      } else {
+        notify("Erreur lors de la suppression.", "error");
+      }
     } finally {
       setUpdating(null);
     }

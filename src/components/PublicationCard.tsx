@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import type { DBPublication } from "@/lib/db";
 import { AXES } from "@/data/ummiscoData";
+import { useNotification } from "@/context/NotificationContext";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -61,11 +62,13 @@ export default function PublicationCard({
 }: PublicationCardProps) {
   const [citationOpen, setCitationOpen] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const { notify } = useNotification();
 
   const copy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
     setCopied(key);
     setTimeout(() => setCopied(null), 2500);
+    notify("Citation copiée !", "success");
   };
 
   const axe = AXES.find((a) => a.id === pub.axe);

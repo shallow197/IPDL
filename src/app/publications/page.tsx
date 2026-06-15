@@ -19,6 +19,7 @@ import {
   PUBLICATION,
   Publication
 } from "@/data/ummiscoData";
+import { useNotification } from "@/context/NotificationContext";
 import Footer from "@/components/Footer";
 import { scholarUrl, doiUrl, UMMISCO_SCHOLAR_SEARCH } from "@/lib/scholar";
 
@@ -29,6 +30,7 @@ export default function PublicationsPage() {
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [copiedPubId, setCopiedPubId] = useState<string | null>(null);
   const [citationModalPub, setCitationModalPub] = useState<Publication | null>(null);
+  const { notify } = useNotification();
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 12;
 
@@ -103,6 +105,7 @@ export default function PublicationsPage() {
     navigator.clipboard.writeText(text);
     setCopiedPubId(pubId);
     setTimeout(() => setCopiedPubId(null), 2000);
+    notify("Citation copiée !", "success");
   };
 
   const resetFilters = () => {

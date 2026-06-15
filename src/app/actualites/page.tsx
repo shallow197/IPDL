@@ -6,6 +6,7 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
+import { useNotification } from "@/context/NotificationContext";
 import type { DBEvent } from "@/lib/db";
 import { SEMINARS, RESEARCHERS } from "@/data/ummiscoData";
 
@@ -26,6 +27,7 @@ const TYPE_COLORS: Record<string, string> = {
 export default function ActualitesPage() {
   const { t } = useLang();
   const { isAuthenticated, user, token } = useAuth();
+  const { notify } = useNotification();
   const [events, setEvents] = useState<DBEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [registering, setRegistering] = useState<string | null>(null);
@@ -53,7 +55,12 @@ export default function ActualitesPage() {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
       });
-      if (res.ok) setRegistered((prev) => new Set([...prev, eventId]));
+      if (res.ok) {
+        setRegistered((prev) => new Set([...prev, eventId]));
+        notify("Inscription confirmée !", "success");
+      } else {
+        notify("Erreur lors de l'inscription.", "error");
+      }
     } finally {
       setRegistering(null);
     }
