@@ -47,6 +47,32 @@ const TYPE_LABELS: Record<string, string> = {
   bailleur: "Bailleur",
 };
 
+// Map des logos disponibles localement — clé = mots-clefs du nom du partenaire
+const PARTNER_LOGOS: Array<{ keywords: string[]; logo: string }> = [
+  { keywords: ["ird", "recherche pour le développement"], logo: "/logos/logo_ird.webp" },
+  { keywords: ["ucad", "cheikh anta diop"],               logo: "/logos/logo_ucad.png" },
+  { keywords: ["anr", "nationale de la recherche"],       logo: "/logos/logo_anr.png" },
+  { keywords: ["sorbonne"],                               logo: "/logos/logo_sorbonne.png" },
+  { keywords: ["cnrs"],                                   logo: "/logos/logo_cnrs.png" },
+  { keywords: ["inria"],                                  logo: "/logos/logo_inria.jpg" },
+  { keywords: ["cirad"],                                  logo: "/logos/logo_cirad.jpg" },
+  { keywords: ["irn"],                                    logo: "/logos/logo_irn.png" },
+  { keywords: ["esp", "école supérieure polytechnique"],  logo: "/logos/logo_esp.jpg" },
+  { keywords: ["vinuniversity", "vinuni"],                logo: "/logos/logo_vinuniversity.png" },
+  { keywords: ["yaoundé", "uy1"],                         logo: "/logos/logo_uy1.jpg" },
+  { keywords: ["cadi ayyad", "uca"],                      logo: "/logos/logo_uca.png" },
+  { keywords: ["alioune diop", "uadb"],                   logo: "/logos/logo_uadb.jpg" },
+  { keywords: ["ugb", "gaston berger"],                   logo: "/logos/logo_ugb.webp" },
+];
+
+function getPartnerLogo(nom: string): string | null {
+  const lower = nom.toLowerCase();
+  for (const entry of PARTNER_LOGOS) {
+    if (entry.keywords.some((k) => lower.includes(k))) return entry.logo;
+  }
+  return null;
+}
+
 export default function PartenairesPage() {
   const { t } = useLang();
   const [partners, setPartners] = useState<DBPartner[]>([]);
@@ -73,6 +99,30 @@ export default function PartenairesPage() {
           <h1 className="text-3xl font-extrabold text-white sm:text-4xl">{t("partners.title")}</h1>
           <p className="mt-2 text-slate-400 text-sm max-w-2xl">{t("partners.description")}</p>
           <div aria-hidden className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 to-green-500" />
+
+          {/* Mosaïque de logos institutionnels */}
+          <div className="mt-8 flex flex-wrap gap-3 items-center">
+            {[
+              { src: "/logos/logo_ird.webp",         alt: "IRD" },
+              { src: "/logos/logo_sorbonne.png",      alt: "Sorbonne Université" },
+              { src: "/logos/logo_ucad.png",          alt: "UCAD" },
+              { src: "/logos/logo_cnrs.png",          alt: "CNRS" },
+              { src: "/logos/logo_inria.jpg",         alt: "INRIA" },
+              { src: "/logos/logo_cirad.jpg",         alt: "CIRAD" },
+              { src: "/logos/logo_anr.png",           alt: "ANR" },
+              { src: "/logos/logo_irn.png",           alt: "IRN" },
+              { src: "/logos/logo_uca.png",           alt: "Université Cadi Ayyad" },
+              { src: "/logos/logo_uy1.jpg",           alt: "Université de Yaoundé I" },
+              { src: "/logos/logo_vinuniversity.png", alt: "VinUniversity" },
+              { src: "/logos/logo_esp.jpg",           alt: "ESP" },
+              { src: "/logos/logo_ugb.webp",          alt: "UGB" },
+              { src: "/logos/logo_uadb.jpg",          alt: "UADB" },
+            ].map(({ src, alt }) => (
+              <div key={alt} className="h-10 w-[4.5rem] bg-white rounded-lg p-1.5 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+                <img src={src} alt={alt} className="h-full w-full object-contain" title={alt} />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* ── Délivrables & Bailleurs (fenêtre dédiée) ───────────────── */}
@@ -151,8 +201,13 @@ export default function PartenairesPage() {
             {filtered.map((p) => (
               <div key={p.id} className="rounded-xl border border-slate-900 bg-slate-950 p-6 flex flex-col hover:border-slate-800 transition-colors">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="h-12 w-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center flex-none">
-                    <Globe className="h-6 w-6 text-slate-600" />
+                  <div className="h-14 w-14 rounded-xl bg-white flex items-center justify-center flex-none p-1.5 shadow">
+                    {(() => {
+                      const logo = getPartnerLogo(p.nom);
+                      return logo
+                        ? <img src={logo} alt={p.nom} className="h-full w-full object-contain" />
+                        : <Globe className="h-6 w-6 text-slate-400" />;
+                    })()}
                   </div>
                   <span className={`inline-flex items-center rounded px-2 py-0.5 text-[9px] font-bold border uppercase tracking-wider ${TYPE_COLORS[p.type]}`}>
                     {TYPE_LABELS[p.type]}

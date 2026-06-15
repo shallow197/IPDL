@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Calendar, MapPin, Users, Clock, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, Users, Clock, ChevronRight, Mic } from "lucide-react";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
 import type { DBEvent } from "@/lib/db";
+import { SEMINARS, RESEARCHERS } from "@/data/ummiscoData";
 
 const TYPE_LABELS: Record<string, string> = {
   seminaire: "Séminaire",
@@ -68,6 +70,63 @@ export default function ActualitesPage() {
           <p className="mt-2 text-slate-400 text-sm">Séminaires, conférences et ateliers du laboratoire UMMISCO.</p>
           <div aria-hidden className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 to-green-500" />
         </div>
+
+        {/* ── Séminaires UMMISCO avec photos des intervenants ── */}
+        <section className="mb-14">
+          <div className="flex items-center gap-2 mb-6">
+            <Mic className="h-4 w-4 text-blue-400" />
+            <h2 className="text-base font-extrabold text-white uppercase tracking-wide">Prochains séminaires UMMISCO</h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {SEMINARS.map((sem) => {
+              const researcher = RESEARCHERS.find((r) =>
+                r.name.toLowerCase().split(" ").some((part) =>
+                  sem.speaker.toLowerCase().includes(part) && part.length > 3
+                )
+              );
+              const semDate = new Date(sem.date);
+              const typeColor: Record<string, string> = {
+                seminaire:  "bg-blue-500/10 text-blue-400 border-blue-900/30",
+                conference: "bg-purple-500/10 text-purple-400 border-purple-900/30",
+                atelier:    "bg-green-500/10 text-green-400 border-green-900/30",
+              };
+              return (
+                <div key={sem.id} className="rounded-xl border border-slate-800 bg-slate-900/20 overflow-hidden hover:border-slate-700 transition-colors flex flex-col">
+                  {/* Bande colorée + photo intervenant */}
+                  <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 flex items-center gap-3">
+                    <div className="h-14 w-14 rounded-full overflow-hidden border-2 border-slate-700 flex-none bg-slate-800">
+                      {researcher?.photoUrl ? (
+                        <img
+                          src={researcher.photoUrl}
+                          alt={researcher.name}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="h-full w-full flex items-center justify-center text-slate-400 text-lg font-bold">
+                          {sem.speaker.slice(0, 2).toUpperCase()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold text-white truncate">{sem.speaker}</p>
+                      <p className="text-[9px] text-slate-400">{researcher?.title?.split("—")[0].trim() ?? "UMMISCO"}</p>
+                    </div>
+                  </div>
+                  <div className="p-4 flex-1 flex flex-col">
+                    <span className={`inline-flex self-start text-[9px] font-bold px-2 py-0.5 rounded border uppercase tracking-wider mb-2 ${typeColor[sem.type ?? "seminaire"]}`}>
+                      {sem.type ?? "Séminaire"}
+                    </span>
+                    <h3 className="text-xs font-bold text-white leading-snug mb-2 line-clamp-3 flex-1">{sem.title}</h3>
+                    <div className="flex items-center gap-1.5 text-[9px] text-slate-500 mt-auto pt-2 border-t border-slate-800">
+                      <Calendar className="h-2.5 w-2.5" />
+                      {semDate.toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" })}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
 
         {/* Tabs */}
         <div className="flex gap-2 mb-8">
