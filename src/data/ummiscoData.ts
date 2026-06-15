@@ -63,7 +63,9 @@ export interface Center {
   director: string;
   description: string;
   themes: string[];
-  website?: string;
+  partners?: string[];
+  /** Position géographique (pour la carte du monde). */
+  coords?: { lat: number; lon: number };
 }
 
 export interface Project {
@@ -136,7 +138,8 @@ export const CENTERS: Center[] = [
     description:
       "Siège historique avec un cluster HPC de +1700 cœurs et le FabLab cofab-in-Bondy. Expertise : couplage de modèles, jumeau numérique, simulation distribuée à grande échelle.",
     themes: ["agents", "ia", "capteurs", "participatif"],
-    website: "https://ummisco.fr/fr/centre/centre-france/",
+    partners: ["IRD", "Sorbonne Université", "iEES-Paris", "LOCEAN"],
+    coords: { lat: 48.9, lon: 2.45 },
   },
   {
     id: "asie",
@@ -148,7 +151,8 @@ export const CENTERS: Center[] = [
     description:
       "Créateur de la plateforme GAMA (2007). Recherche sur l'environnement, la gestion de l'eau, la santé publique et la pêche dans le delta du Mékong.",
     themes: ["agents", "participatif"],
-    website: "https://ummisco.fr/fr/centre/centre-asie-du-sud-est/",
+    partners: ["VinUniversity", "VIASM", "RMIT (Melbourne)", "Université de Thuy Loi (Hanoï)"],
+    coords: { lat: 21.03, lon: 105.85 },
   },
   {
     id: "afrique-ouest",
@@ -160,7 +164,8 @@ export const CENTERS: Center[] = [
     description:
       "Étude des socio-écosystèmes sahéliens, pêche artisanale, neutralité carbone (Grande Muraille Verte). Simulateur MAELIA et projet FORA.",
     themes: ["agents", "ia", "capteurs", "participatif"],
-    website: "https://ummisco.fr/fr/centre/centre-afrique-de-louest/",
+    partners: ["UCAD", "Université Gaston Berger", "Université Assane Seck (Ziguinchor)", "CIRAD", "ISRA-CDH"],
+    coords: { lat: 14.69, lon: -17.45 },
   },
   {
     id: "afrique-centrale",
@@ -172,7 +177,8 @@ export const CENTERS: Center[] = [
     description:
       "Modélisation des épidémies et maladies des cultures tropicales. Approche One Health reliant santé humaine, animale et environnementale.",
     themes: ["agents", "ia", "capteurs"],
-    website: "https://ummisco.fr/fr/centre/centre-afrique-centrale-et-de-lest/",
+    partners: ["Université de Yaoundé 1", "Université de Douala", "Université de Dschang"],
+    coords: { lat: 3.87, lon: 11.52 },
   },
   {
     id: "mediterranee",
@@ -184,7 +190,8 @@ export const CENTERS: Center[] = [
     description:
       "Modélisation mathématique multi-échelle, théorie cinétique des particules actives, théorie des essaims. Domaines : santé publique, eau, mobilité, biodiversité.",
     themes: ["agents", "ia", "capteurs"],
-    website: "https://ummisco.fr/fr/centre/centre-mediterranee/",
+    partners: ["Université Cadi Ayyad (FST)", "Laboratoire LMDP", "Université du Luxembourg", "Université de Grenade"],
+    coords: { lat: 31.63, lon: -8.0 },
   },
 ];
 

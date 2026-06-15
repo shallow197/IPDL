@@ -6,6 +6,7 @@ import Link from "next/link";
 import { X, MapPin, ArrowRight, Hand } from "lucide-react";
 import { CENTERS } from "@/data/ummiscoData";
 import { CENTRE_VISUALS } from "@/components/CentreGlobe";
+import LeafletWorldMap from "@/components/LeafletWorldMap";
 
 // Approximate geographic position of each centre (degrees).
 const CENTRE_GEO: Record<string, { lat: number; lon: number }> = {
@@ -221,7 +222,7 @@ export default function GlobeCentres() {
               <button onClick={() => setShowMap(false)} className="text-slate-500 hover:text-slate-200"><X className="h-4 w-4" /></button>
             </div>
 
-            <WorldMap onSelect={(id) => { setShowMap(false); router.push(`/centres/${id}`); }} />
+            <LeafletWorldMap onSelect={(id) => { setShowMap(false); router.push(`/centres/${id}`); }} />
 
             <div className="grid sm:grid-cols-2 gap-2 p-4 border-t border-slate-800 max-h-56 overflow-y-auto">
               {CENTERS.map((c) => {
@@ -242,59 +243,5 @@ export default function GlobeCentres() {
         </div>
       )}
     </div>
-  );
-}
-
-// Flat equirectangular "control-room" map: graticule + centre nodes linked to
-// the historic France hub. Clean, theme-coloured, no copied imagery.
-function WorldMap({ onSelect }: { onSelect: (id: string) => void }) {
-  const W = 720, H = 360;
-  const toXY = (lon: number, lat: number) => ({ x: ((lon + 180) / 360) * W, y: ((90 - lat) / 180) * H });
-  const hub = toXY(CENTRE_GEO.france.lon, CENTRE_GEO.france.lat);
-
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full block bg-[#060d1c]">
-      <defs>
-        <radialGradient id="map-glow" cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stopColor="#0e2a4a" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#060d1c" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <rect width={W} height={H} fill="url(#map-glow)" />
-
-      {/* Graticule */}
-      <g stroke="#38bdf8" strokeOpacity="0.12" strokeWidth="0.8">
-        {[-120, -60, 0, 60, 120].map((lon) => { const x = ((lon + 180) / 360) * W; return <line key={`m${lon}`} x1={x} y1={0} x2={x} y2={H} />; })}
-        {[-60, -30, 0, 30, 60].map((lat) => { const y = ((90 - lat) / 180) * H; return <line key={`p${lat}`} x1={0} y1={y} x2={W} y2={y} />; })}
-        <line x1={0} y1={H / 2} x2={W} y2={H / 2} strokeOpacity="0.25" />
-      </g>
-
-      {/* Network arcs to the France hub */}
-      <g stroke="#22d3ee" strokeOpacity="0.35" strokeWidth="1.2" fill="none">
-        {CENTERS.filter((c) => c.id !== "france").map((c) => {
-          const g = CENTRE_GEO[c.id]; if (!g) return null;
-          const p = toXY(g.lon, g.lat);
-          const mx = (hub.x + p.x) / 2, my = Math.min(hub.y, p.y) - 30;
-          return <path key={c.id} d={`M ${hub.x} ${hub.y} Q ${mx} ${my} ${p.x} ${p.y}`} />;
-        })}
-      </g>
-
-      {/* Centre nodes */}
-      {CENTERS.map((c) => {
-        const g = CENTRE_GEO[c.id]; if (!g) return null;
-        const p = toXY(g.lon, g.lat);
-        const color = CENTRE_VISUALS[c.id]?.color ?? "#60a5fa";
-        return (
-          <g key={c.id} style={{ cursor: "pointer" }} onClick={() => onSelect(c.id)}>
-            <circle cx={p.x} cy={p.y} r="11" fill={color} opacity="0.18">
-              <animate attributeName="r" values="9;15;9" dur="2.8s" repeatCount="indefinite" />
-            </circle>
-            <circle cx={p.x} cy={p.y} r="5" fill={color} stroke="#060d1c" strokeWidth="1.5" />
-            <text x={p.x} y={p.y - 14} textAnchor="middle" fontSize="11" fontWeight="700" fill="#e2e8f0">{c.country}</text>
-            <title>{c.name} — {c.city}</title>
-          </g>
-        );
-      })}
-    </svg>
   );
 }

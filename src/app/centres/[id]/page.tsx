@@ -4,7 +4,7 @@ import React, { use } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  ArrowLeft, MapPin, Building2, Globe2, ExternalLink, Users, FolderGit2, Layers,
+  ArrowLeft, MapPin, Building2, ExternalLink, Users, FolderGit2, Layers, Handshake,
 } from "lucide-react";
 import {
   CENTERS, RESEARCHERS, PROJECTS, AXES,
@@ -59,11 +59,6 @@ export default function CentrePage({ params }: PageProps) {
                 </p>
               </div>
             </div>
-            {center.website && (
-              <a href={center.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-950/40 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white hover:border-slate-600 transition-all">
-                <Globe2 className="h-3.5 w-3.5" /> Site du centre <ExternalLink className="h-3 w-3" />
-              </a>
-            )}
           </div>
 
           <p className="mt-6 text-slate-300 leading-relaxed max-w-3xl">{center.description}</p>
@@ -101,6 +96,22 @@ export default function CentrePage({ params }: PageProps) {
                   </span>
                 ) : null;
               })}
+            </div>
+          </section>
+        )}
+
+        {/* Tutelles & partenaires */}
+        {center.partners && center.partners.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2 mb-4">
+              <Handshake className="h-4 w-4 text-cyan-400" /> Tutelles &amp; partenaires
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {center.partners.map((p) => (
+                <span key={p} className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900/30 px-3.5 py-2 text-xs font-semibold text-slate-300">
+                  <Building2 className="h-3.5 w-3.5 text-slate-500 flex-none" /> {p}
+                </span>
+              ))}
             </div>
           </section>
         )}
