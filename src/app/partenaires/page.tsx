@@ -124,7 +124,7 @@ export default function PartenairesPage() {
               { src: "/logos/logo_saed.jpg",            alt: "SAED" },
               { src: "/logos/logo_inrae.png",            alt: "INRAE" },
             ].map(({ src, alt }) => (
-              <div key={alt} className="h-12 w-24 bg-white rounded-lg p-2 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+              <div key={alt} className="h-12 w-24 rounded-lg p-2 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow" style={{backgroundColor: "#ffffff"}}>
                 <img src={src} alt={alt} className="max-h-full max-w-full object-contain" title={alt} />
               </div>
             ))}
@@ -207,7 +207,7 @@ export default function PartenairesPage() {
             {filtered.map((p) => (
               <div key={p.id} className="rounded-xl border border-slate-900 bg-slate-950 p-6 flex flex-col hover:border-slate-800 transition-colors">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="h-14 w-20 rounded-xl bg-white flex items-center justify-center flex-none p-2 shadow">
+                  <div className="h-14 w-20 rounded-xl flex items-center justify-center flex-none p-2 shadow" style={{ backgroundColor: "#ffffff" }}>
                     {(() => {
                       const logo = getPartnerLogo(p.nom);
                       return logo
