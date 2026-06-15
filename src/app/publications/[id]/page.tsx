@@ -1,21 +1,21 @@
-"use client";
-
 import React, { use } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, BookOpen, Users, Calendar, FileText, ExternalLink } from "lucide-react";
 import { PUBLICATION, RESEARCHERS } from "@/data/ummiscoData";
+import { scholarUrl } from "@/lib/scholar";
 import Footer from "@/components/Footer";
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-export default function PublicationPage({ params }: PageProps) {
-  const { id } = use(params);
+export default async function PublicationPage({ params }: PageProps) {
+  const { id } = await params;
 
   // First try to find in global PUBLICATION array
   let publication = PUBLICATION.find((p) => p.id === id);
+  let fromResearcher = false;
 
   // If not found, search in researcher's individual publications
   if (!publication) {
@@ -25,21 +25,9 @@ export default function PublicationPage({ params }: PageProps) {
           (pub) => `${researcher.id}-${pub.title.substring(0, 20).replace(/\s+/g, '-')}` === id
         );
         if (foundPub) {
-          publication = {
-            id,
-            title: foundPub.title,
-            authors: [],
-            researcherIds: [researcher.id],
-            year: foundPub.year || new Date().getFullYear(),
-            axis: researcher.axes[0] || "agents",
-            abstract: "",
-            citationApa: "",
-            citationBibtex: "",
-            accessLevel: "public" as const,
-            doi: undefined,
-            journal: undefined,
-          };
-          break;
+          fromResearcher = true;
+          // Redirect to Google Scholar instead of showing empty detail page
+          redirect(scholarUrl({ title: foundPub.title }));
         }
       }
     }
