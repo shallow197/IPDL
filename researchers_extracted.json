@@ -1,0 +1,496 @@
+{
+  "researchers": [
+    {
+      "name": "Achraf CHAKRI",
+      "title": "Doctorant, modélisation hydrogéologique",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Ahmad FALL",
+      "title": "Chercheur",
+      "center": "Centre France",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning Projets : Enseignements Université : IRD Email : ahmad.fall@ird.fr",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Aicha SABIQ",
+      "title": "Doctorant",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Alassane BAH",
+      "title": "Directeur de centre",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Promotion PDI-MSC 2015 (thèse soutenu en décembre 2019",
+      "title": "Responsable de thème",
+      "center": "",
+      "themesDescription": "",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Awa DIATTARA",
+      "title": "Responsable de thème",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Approches participatives et science citoyenne / Participatory approaches and citizen science Université : Université Gaston Berger de Saint-Louis (UGB) Email : awa.diattara@ugb.edu.sn",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Chien PHAM VAN",
+      "title": "Chercheur",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection Projets : Organisation de la Summer School Université : Thuyloi University Email : Pchientvct_tv@tlu.edu.vn Bio :",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Diane TCHUANI TCHAKONTE",
+      "title": "Responsable de thème",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection Université : Université d'Ebolowa Email : diane.tchuani@gmail.com Publications :  Adaptive healing procedure for lifetime improvement in Wirele",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Diep Anh PHUNG",
+      "title": "Personnel administratif",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Doanh NGUYEN-NGOC",
+      "title": "Directeur de centre",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Edi PRIFTI",
+      "title": "Responsable de thème",
+      "center": "Centre France",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Hai Au PHAM",
+      "title": "Personnel administratif",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Hamidou A DIALLO",
+      "title": "Chercheur",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : Université Cadi Ayyad (UCAM) Email : hamidoua.diallo.1@gmail.com",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Hamza ADAMOU",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Hamza ELOUIAAZZANI",
+      "title": "Chercheur",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Hippolyte Michel TAPAMO KENFACK",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Approches participatives et science citoyenne / Participatory approaches and citizen science Projets : Organisation de séminaires et conférences",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Huy-Dung HAN",
+      "title": "Chercheur",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Ivric Valaire YATAT DJEUMEN",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : Université de Yaoundé I Email : yatat.valaire@gmail.com",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Jean-Jules TEWA",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Jean Marie DEMBELE",
+      "title": "Chercheur",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning Université : Université Gaston Berger de Saint-Louis (UGB) Email : jean-marie.dembele@ugb.edu.sn",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Camembert on French Literature",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+      "projects": [],
+      "publications": [],
+      "bio": " Participation aux projets AIME et EDGE Joseph MBANG Chercheur",
+      "email": ""
+    },
+    {
+      "name": "Jules Brice TCHATCHIENG MBOUGUA",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning Université : Centre Pasteur du Cameroun Email : tchatchueng@pasteur-yaounde.org",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Développement de GAMA",
+      "title": "Directeur de centre",
+      "center": "",
+      "themesDescription": "",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Kittima LEERUTTANAWISUT",
+      "title": "Chercheur",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science Université : Thammasat University Email : kittimalee@hotmail.com",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Enseignement au centre de préparation à l'agrégation de mathématiques",
+      "title": "Chercheur",
+      "center": "",
+      "themesDescription": "",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Mahmoud BAROUN",
+      "title": "Chercheur",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : Université Cadi Ayyad (UCAM) Email : m.baroun@uca.ac.ma",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Maissa MBAYE",
+      "title": "Chercheur",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection Projets : Participation au projet AIME Université : Université Gaston Berger de Saint-Louis (UGB) Email : maissa.mbaye@ugb.edu.sn Bio :",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Mamadou Abdoul DIOP",
+      "title": "Chercheur",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : Université Gaston Berger de Saint-Louis Email : mamadou-abdoul.diop@ugb.edu.sn Publications : Publications :",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Mamadou SY",
+      "title": "Directeur d'Unité Adjoint",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : Université Gaston Berger de Saint-Louis (UGB) Email : mamadou.sy@ugb.edu.sn Publications :  Optimal Control of Thermal Pollution Emitted by Power Plants",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Md Yushalify MISRO",
+      "title": "Chercheur",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Projets : Participation à COSMOS Workshop/WARM Conference Université : Universiti Sains Malaysia Email : yushalify@usm.my Bio : Participation à COSMOS Workshop/WARM Conference",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Mohamed KHALADI",
+      "title": "Chercheur",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : Université Cadi Ayyad (UCAM) Email : Khaladi@uca.ac.ma",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Moussa BALDE",
+      "title": "Chercheur",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Moussa LO",
+      "title": "Chercheur",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Myriam Sonia DJOUKWE TAPI",
+      "title": "Directeur de centre adjoint",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : Université de Douala Email : myriamtapi@yahoo.fr",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Nicolas MARILLEAU",
+      "title": "Directeur de centre",
+      "center": "Centre France",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Capteurs et collecte de données / Sensors and data collection, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Nohayla ALAOUI",
+      "title": "Chercheur",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Norbert TSOPZE",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning Université : Université de Yaoundé I Email : tsopze.norbert@gmail.com",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Olivier MONGA",
+      "title": "Chercheur",
+      "center": "Centre France",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Papa Ibrahima NDIAYE",
+      "title": "Directeur de centre adjoint",
+      "center": "Centre Afrique de l'Ouest",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Projets : Recherche et encadrement Université : Université Alioune Diop Email : papaibra.ndiaye@uadb.edu.sn Publications :  Un modèle mathématique de la prolifération du Typha  An Agent-Based Model for Studying the Impact of Herd Mobility on the Spread of VectorBorne Diseases: The Case of Rift Valley Fever (Ferlo Senegal)  An Agent Based Model to Study the Impact of Intra-annual Season's Variability on the Dynamics of Aedes Vexans and Culex Poicilipes Mosquito Populations in North Senegal (Ferlo)  Coupling an Agent-Based Model with a Mathematical Model of Rift Valley Fever for Studying the Impact of Animal Migrations on the Rift Valley Fever Transmission",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Pierre AUGER",
+      "title": "Chercheur",
+      "center": "Centre France",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : IRD Email : pierre.auger@ird.fr Publications :  Effects of refuges and density dependent dispersal on dispersal on interspecific competition dynamics",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Prachya Rachya RACHYA BOONPRASURT",
+      "title": "Chercheur",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+      "projects": [
+        "Collaboration avec Simulation Center Université : Thammasat University Email : pachalow.g@gmail.com Bio :"
+      ],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Quang Nghi HUYNH",
+      "title": "Chercheur",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Approches participatives et science citoyenne / Participatory approaches and citizen science Université : Can Tho University Email : hqnghi@ctu.edu.vn",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "René NDOUNDAM",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Université : Université de Yaoundé I Email : ndoundam@yahoo.com",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Samuel BOWONG TSAKOU",
+      "title": "Directeur de centre",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Thi Hai Van DINH",
+      "title": "Directeur de centre adjoint",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science Université : Vietnam National University of Agriculture Email : dinhthihaivan@vnua.edu.vn Publications :  Optimization of municipal solid waste transportation by integrating GIS analysis, equationbased, and agent-based model",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Thomas MESSI NGUELE",
+      "title": "Chercheur",
+      "center": "Centre Afrique centrale et de l'est",
+      "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": "thomas.messi@facsciences-uy1.cm"
+    },
+    {
+      "name": "Viet TRUONG XUAN",
+      "title": "Directeur d'Unité Adjoint",
+      "center": "Centre Asie du Sud-Est",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    },
+    {
+      "name": "Youssef EL FOUTAYENI",
+      "title": "Chercheur",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling Projets : Membre élu de la CSS5 (Sciences des données et des modèles) Université : Université Cadi Ayyad (UCAM)",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": "y.elfoutayeni@uca.ac.ma Bio :"
+    },
+    {
+      "name": "Zakaria BELGHALI",
+      "title": "Doctorant",
+      "center": "Centre Méditerranée",
+      "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning Projets : Particiption au projet I-Maroc Université : Université Cadi Ayyad (UCAM) Email : belzakariaghali@gmail.com Bio :",
+      "projects": [],
+      "publications": [],
+      "bio": "",
+      "email": ""
+    }
+  ]
+}

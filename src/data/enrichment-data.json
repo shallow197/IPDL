@@ -1,0 +1,849 @@
+[
+  {
+    "name": "Doctorant, modélisation hydrogéologique",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Colonne 1"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Ahmad FALL",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Enseignements"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Aïcha BALHAG",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Aicha SABIQ",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Directeur de centre",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": [
+      "Numerical treatment of a non local model for phytoplankton agregation",
+      "A bottom-up participatory modelling process for a multi-level agreement on environmental uncertainty management in West Africa,",
+      "Un modèle à base d'agents sur la transmission et la diffusion de la fièvre de la vallée du rift à Barkédji (Ferlo, Sénégal)",
+      "Vers un métamodèle pour analyser les systèmes d'élevage extensifs et leurs interactions avec les territoires. Etude originale",
+      "Récolte de bois de feu au Niger et une généralisation de la formule de Faustmann",
+      "An agent-based Implementation of the Torado Model",
+      "An agent-based model to study land allocation policies and their effect on pastoral and territorial dynamics in the Ferlo (Sénégal).",
+      "On the optimal size and number of reserves in a multi-site fishery model"
+    ]
+  },
+  {
+    "name": "Directeur de Recherche",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [
+      "Directeur du LMI ACROSS"
+    ],
+    "publications": [
+      "Adaptation strategies in the Mekong delta",
+      "Simulation of Emergency Evacuation of Pedestrians along the Road Networks in Nhatrang City",
+      "Spatial Estimator of Brown Plant Hopper Density from Light Traps Data",
+      "Un modèle à base d'agents sur la transmission et la diffusion de la fièvre de la vallée du rift à Barkédji (Ferlo, Sénégal)",
+      "Optimizing an Environmental Surveillance Network with Gaussian Process Entropy.",
+      "Using high-level 3D Graphics library in agent-based simulation platform",
+      "Online analysis and visualization of agent based models",
+      "Modeling and simulation of shrimp diseases propagation in river networks and inside pond",
+      "An implementation of framework of business intelligence for agent-based simulation",
+      "Exploring Agent Architectures for Farmer Behavior in Land-Use Change. A Case Study in Coastal Area of the Vietnamese Mekong Delta",
+      "Modeling a Surveillance Network Based on Unit Disk Graph Technique – Application for Monitoring the Invasion of Insects in Mekong Delta Region",
+      "Modelling Multi-Criteria Decision Making Ability of Agents in Agent-Based Rice Pest Risk Assessment Model",
+      "Toward an Agent-Based Multi-scale Recommendation System for Brown Plant Hopper Control",
+      "Designing Multi-criteria Decision Making Agents in Agent-Based Model for Rice Pest Risk Management",
+      "Upscaling and Assessing Information of Agriculture Indicators in Agent-Based Assessment Model from Field to Region Scale",
+      "Artificial intelligence for sustainability science",
+      "A land-use change model to study climate change adaptation strategies in the Mekong Delta",
+      "Un partenariat de recherche pour améliorer les méthodologies de la science de la durabilité",
+      "Using Parallel Computing to Improve the Scalability of Models with BDI Agents",
+      "On the Unity and Diversity of Computer Simulation",
+      "An Agent-Based Modeling Approach for Understanding Land-use Adaptation in the Mekong Delta under the Context of Climate Change"
+    ]
+  },
+  {
+    "name": "Aman BERHE",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Recherche et supervision"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Armel Jacques NZEKON NZEKO&rsquo;O",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Promotion PDI-MSC 2015 (thèse soutenu en décembre 2019"
+    ],
+    "publications": [
+      "Social Network Analysis of Developers' and Users' Mailing Lists of Some Free Open Source Software",
+      "A general graph-based framework for top-N recommendation using content, temporal and trust information",
+      "Link Stream Graph for Temporal Recommendations",
+      "Recommender system taking into account the availability forecast of product categories"
+    ]
+  },
+  {
+    "name": "Responsable de thème",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [
+      "Chercheur affilié MIT Media Lab"
+    ],
+    "publications": [
+      "Using Agent-Based Modelling to Understand Advantageous Behaviours Against COVID-19 Transmission in the Built Environment",
+      "Building, composing and experimenting complex spatial models with the GAMA platform",
+      "Participatory Modeling and Simulation with the GAMA Platform",
+      "Toward an Agent-Based and Equation-Based Coupling Framework",
+      "Introduction to Netlogo",
+      "Reproducing and exploring past events using agent-based geo-historical models",
+      "Using high-level 3D Graphics library in agent-based simulation platform",
+      "Online analysis and visualization of agent based models",
+      "A model-view/controller approach to support visualization and online data analysis of Agent-based simulations"
+    ]
+  },
+  {
+    "name": "Arthur BRUGIERE",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Responsable de thème",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Berge TSANOU",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Coordination de l'antenne UMMISCO Afrique centrale - Université de Dschang"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Chainarong KESAMOON",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Chien PHAM VAN",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [
+      "Organisation de la Summer School"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Christophe CAMBIER",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [
+      "Encadrement de stages et de doctorants"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Christophe DENIS",
+    "themesDescription": "Intelligence artificielle et apprentissage profond / Approches participatives et science citoyenne",
+    "projects": [
+      "Ingénieur-chercheur IA EDF R&D / expert évaluation éthique Commission européenne / chercheur associé institut d’histoire / membre Think Tank Espérances et Algorithmes"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Responsable de thème",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": [
+      "Adaptive healing procedure for lifetime improvement in Wirele"
+    ]
+  },
+  {
+    "name": "Diaraf SECK",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Personnel administratif",
+    "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Directeur de centre",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [
+      "Participation aux activités LMI Across/Cosmos Lab/VNCEM"
+    ],
+    "publications": [
+      "Effects of fast density dependent dispersal on pre-emptive competition dynamics",
+      "A stage structured population model with mature individuals using hawk and dove tactics",
+      "Effects of migration of three competing species on their distributions in multizone environment",
+      "Modeling Microbial Decomposition in Real 3D Soil Structures Using Partial Differential Equations",
+      "Can Fishing Pressure Invert the Outcome of Interspecific Competition? The Case of the Thiof and of the Octopus Along the Senegalese Coast",
+      "Effects of Behavioural Strategy on the Exploitative Competition Dynamics",
+      "A multi-scale model for spreading of infectious disease in an office building",
+      "Spatial heterogeneity, fast migration and coexistence of intraguild predation dynamics",
+      "Drug Repositioning by Integrating Known Disease-Gene and Drug-Target Associations in a Semi-supervised Learning Model",
+      "Optimization of municipal solid waste transportation by integrating GIS analysis, equation-based, and agent-based model",
+      "An agent-based model for mixed traffic in Vietnam based on virtual local lanes"
+    ]
+  },
+  {
+    "name": "Dramane Sam Idris KANTE",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Duy Dung LE",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Responsable de thème",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": [
+      "Enhancing plant morphological trait identification in herbarium collections through deep learning–based segmentation",
+      "Identification of Non-Plant Elements in Herbarium Images Using YOLO",
+      "Enhancing YOLOv7 for Plant Organs Detection Using Attention-Gate Mechanism",
+      "Towards a Deep Learning-Powered Herbarium Image Analysis Platform",
+      "Herbarium Image Segmentation Dataset with Plant Masks for Enhanced Morphological Trait Analysis",
+      "Extracting Masks from Herbarium Specimen Images Based on Object Detection and Image Segmentation Techniques",
+      "Functional alterations and predictive capacity of gut microbiome in type 2 diabetes",
+      "Microbiome and metabolome features of the cardiometabolic disease spectrum",
+      "Echocardiography and renin-aldosterone interplay as predictors of death in COVID-19",
+      "Combinatorial, additive and dose-dependent drug–microbiome associations",
+      "Deep learning analysis of electrocardiogram for risk prediction of drug-induced arrhythmias and diagnosis of long QT syndrome",
+      "Altered subcutaneous adipose tissue parameters after switching ART-controlled HIV+ patients to raltegravir/maraviroc",
+      "Intestinal alteration of a-gustducin and sweet taste signaling pathway in metabolic diseases is partly rescued after weight loss and diabetes remission",
+      "Imidazole propionate is increased in diabetes and associated with dietary patterns and altered microbial ecology",
+      "Statin therapy is associated with lower prevalence of gut microbiota dysbiosis",
+      "Gut Microbiota Profile of Obese Diabetic Women Submitted to Roux-en-Y Gastric Bypass and Its Association with Food Intake and Postoperative Diabetes Remission",
+      "Interpretable and accurate prediction models for metagenomics data"
+    ]
+  },
+  {
+    "name": "Elhadi AIT DADS",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Professeur émérite - FSSM Marrakech"
+    ],
+    "publications": [
+      "Existence results for Riemann–Liouville fractional evolution inclusions in Banach spaces",
+      "Exponential Dichotomy and (μ, ν)-Pseudo almost automorphic soluntions for some ordinary differential equations",
+      "Study of existence, uniqueness and egularity of the solution of double delay nonlinear integral equation",
+      "The impact of water level fluctuations on a delayed prey–predator model",
+      "On the integro‐differential equations with reflection"
+    ]
+  },
+  {
+    "name": "Ingénieur de Recherche",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Gabriel Guilsou KOLAYE",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Personnel administratif",
+    "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Hamidou A DIALLO",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Hamidou DATHE",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Direction du laboratoire Géométrie et Applications et responsabilité de la formation"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Hamza ADAMOU",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Hamza ELOUIAAZZANI",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Hippolyte Michel TAPAMO KENFACK",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [
+      "Organisation de séminaires et conférences"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Huy-Dung HAN",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Ivric Valaire YATAT DJEUMEN",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Maître de Conférence",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Participation à des réunions et à des projets historiques d'UMMISCO"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Directeur d'Unité Adjoint",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Jean-Jules TEWA",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": [
+      "Modelling and analysis of a within-host model of hepatitis B and D co-infections",
+      "Control Model of Banana Black Sigatoka Disease with Seasonality",
+      "Optimal Strategy in a Two Resources Two Consumers Grazing Model",
+      "Multi-seasonal modelling of the African maize stalk borer with assessment of crop residue management",
+      "Dynamics of human schistosomiasis model with hybrid miracidium and cercariae",
+      "Mathematical modelling of Banana Black Sigatoka Disease with delay and Seasonality",
+      "Optimal intervention strategies of staged progression HIV infections through an age-structured model with probabilities of ART drop out",
+      "Optimal and sustainable management of a soilborne banana pest",
+      "Modelling and control of a banana soilborne pest in a multi-seasonal framework",
+      "Optimal intervention strategies of a SI-HIV models with differential infectivity and time delays",
+      "Hopf bifurcation analysis in a delayed Leslie–Gower predator–prey model incorporating additional food for predators, refuge and threshold harvesting of preys",
+      "Hopf Bifurcation in a Delayed Herd Harvesting Model and Herbivory Optimization Hypothesis",
+      "Hopf bifurcation in a grazing system with two delays",
+      "Theoretical assessment of the impact of environmental contamination on the dynamical transmission of polio",
+      "Analysis of an Age-structured SIL model",
+      "A Generic Modelling of Fire Impact in a Tree-Grass Savanna Model",
+      "Mathematical Analysis of a Size Structured Tree-Grass Competition Model for Savanna Ecosystems"
+    ]
+  },
+  {
+    "name": "Jean Marie DEMBELE",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Personnel administratif",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Participation au projet SIMPLE"
+    ],
+    "publications": [
+      "Un partenariat de recherche pour améliorer les méthodologies de la science de la durabilité"
+    ]
+  },
+  {
+    "name": "Directeur d'Unité Adjoint",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Participation aux projets AIME et EDGE"
+    ],
+    "publications": [
+      "Towards Distributed Learning in Internet of Things. Air Quality Monitoring Use Case",
+      "Air Quality Monitoring Using Deterministic and Statistical Methods",
+      "A Dataset to Support Sexist Content Detection in Arabic Text",
+      "Towards Distributed Learning in Internet of Things. Air Quality Monitoring Use Case",
+      "Author Gender Identification from Arabic Youtube Comments",
+      "A Transformer-Based Nlp Pipeline for Enhanced Extraction of Botanical Information using Camembert on French Literature"
+    ]
+  },
+  {
+    "name": "Joseph MBANG",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Jules Brice TCHATCHIENG MBOUGUA",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Justin MOSKOLAI NGOSSAHA",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Kevin CHAPUIS",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [
+      "Développement de GAMA"
+    ],
+    "publications": [
+      "Dealing with mixed and non-normative traffic. An agent-based simulation with the GAMA platform",
+      "Exploring multi-modal evacuation strategies for a landlocked population using large-scale agent-based simulations",
+      "Using the COMOKIT model to study the impact of the morpho-functional organization of cities on the spread of COVID-19"
+    ]
+  },
+  {
+    "name": "Directeur de centre",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": [
+      "Pseudo almost periodic solutions for some parabolic evolution equations with Stepanov-like pseudo almost periodic forcing terms",
+      "Almost automorphic solutions for nonautonomous parabolic evolution equations",
+      "Compact almost automorphic solutions for semiline"
+    ]
+  },
+  {
+    "name": "Kittima LEERUTTANAWISUT",
+    "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Lahcen LHACHIMI",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Enseignement au centre de préparation à l'agrégation de mathématiques"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Lahcen MANIAR",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Mahmoud BAROUN",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Mai Chi NGUYEN",
+    "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Maissa MBAYE",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [
+      "Participation au projet AIME"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Mamadou Abdoul DIOP",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": [
+      "Neutral stochastic delay partial functional integro-differential equations driven by a fractional Brownian motion",
+      "An ontology design pattern of the multidisciplinary and complex field of climate change",
+      "Mild solution of neutral stochastic partial functional integrodifferential equations with non-Lipschitz coefficients",
+      "Kuratowski measure of noncompactness and integro-differential equations in Banach spaces",
+      "Optimal Controls for Stochastic Functional Integro-differential Equation",
+      "Mathematical Analysis of Fasciola Epidemic Model with Treatment and Quarantine",
+      "Optimal control for semilinear integrodifferential evolution equations in Banach spaces",
+      "Well-posedness and approximate controllability for some integrodifferential evolution systems with multi-valued nonlocal conditions"
+    ]
+  },
+  {
+    "name": "Directeur d'Unité Adjoint",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": [
+      "Optimal Control of Thermal Pollution Emitted by Power Plants"
+    ]
+  },
+  {
+    "name": "Maurice TCHUENTE",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Encadrement de doctorant"
+    ],
+    "publications": [
+      "Extracting ontological knowledge from Java source code using Hidden Markov Models"
+    ]
+  },
+  {
+    "name": "Md Yushalify MISRO",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Participation à COSMOS Workshop/WARM Conference"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Mohamed HALLOUMI",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Mohamed KHALADI",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Mohd Hafiz Bin MOHD",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Participation à COSMOS Worshop"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Moussa BALDE",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": [
+      "A Scalable Engineering Combination Therapies for Evolutionary Dynamic of Macrophages",
+      "A Location Problem of Obstacles in Population Dynamics",
+      "Visualization and machine learning for forecasting of COVID-19 in Senegal",
+      "Theoretical assessment of the impact of environmental contamination on the dynamical transmission of polio",
+      "Coupling the shallow water equation with a long term dynamics of sand dunes"
+    ]
+  },
+  {
+    "name": "Moussa LO",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Titulaire de la Chaire UNESCO \"Sciences et technologies emergentes pour le developpement\""
+    ],
+    "publications": []
+  },
+  {
+    "name": "Directeur de centre adjoint",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Nhat Quang DINH",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Nicolas FLORSCH",
+    "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Directeur de centre",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Capteurs et collecte de données / Sensors and data collection, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [
+      "Enseignement en Master et à l'Ecole doctorale"
+    ],
+    "publications": [
+      "Analysis of temporal consistency management protocols for resource-constrained multi-agent systems",
+      "Analyser la réception sociale du recul stratégique face au risque de submersion marine en Camargue et en Normandie à travers une expérience simulée",
+      "Using GPU for Multi-agent Multi-scale Simulations",
+      "Toward a Spatially-Centered Approach to Integrate Heterogeneous and Multi-scales Urban Component Models",
+      "Exploring Complex Models in NetLogo",
+      "NetLogo, an Open Simulation Environment",
+      "Method supporting collaboration in complex system participatory simulation",
+      "Évaluation du modèle APSF pour représenter la structure des sols et sa dynamique",
+      "Using GPU for multi-agent soil simulation"
+    ]
+  },
+  {
+    "name": "Nicolas TURENNE",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Responsable de thème; Directeur de centre adjoint",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Nohayla ALAOUI",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Norbert TSOPZE",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Olga KENGNI NGANGMO",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Olivier MONGA",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Ousmane THIARE",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Directeur de centre adjoint",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Recherche et encadrement"
+    ],
+    "publications": [
+      "Un modèle mathématique de la prolifération du Typha",
+      "An Agent Based Model to Study the Impact of Intra-annual Season’s Variability on the Dynamics of Aedes Vexans and Culex Poicilipes Mosquito Populations in North Senegal (Ferlo)",
+      "Coupling an Agent-Based Model with a Mathematical Model of Rift Valley Fever for Studying the Impact of Animal Migrations on the Rift Valley Fever Transmission",
+      "Assessing Maintenance of Arboviruses in Nature via Aedes Mosquitoes by Positive semigroup",
+      "An Extension of Two Species Lotka-Volterra Competition Model",
+      "An Agent Based Model for Studying the Impact of Rainfall on Rift Valley Fever Transmission at Ferlo (Senegal)",
+      "Impact of the Utilization of the Biodigester in the Populations of Bambey and Perspectives for Mass Adoption and Valorization"
+    ]
+  },
+  {
+    "name": "Directeur de centre adjoint",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Participation à des rojets de recherche et à la conférence CRI"
+    ],
+    "publications": [
+      "Algorithmes de sortie du Piège de la Zone Ennuyeuse en apprentissage par renforcement"
+    ]
+  },
+  {
+    "name": "Pierre AUGER",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": [
+      "Effects of refuges and density dependent dispersal on dispersal on interspecific competition dynamics"
+    ]
+  },
+  {
+    "name": "Pierre sylvain ILOGA BIYIK",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Prachya Rachya RACHYA BOONPRASURT",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [
+      "Collaboration avec Simulation Center"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Quang Nghi HUYNH",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Raphaël DUBOZ",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "René NDOUNDAM",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Said BOULITE",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [],
+    "publications": [
+      "Existence and stability in the α-norm for nonlinear neutral partial differential equations with finite delay",
+      "Well-posedness and stability of nonautonomous past systems with unbounded operators in the delay term",
+      "Feedback theory to the well-posedness of evolution equations",
+      "A population dynamics model with nonautonomous past",
+      "Partial differential equations with nonautonomous past in Favard spaces",
+      "Approximate positive controllability of positive boundary control systems",
+      "Sufficient and necessary conditions for the solvability of the state feedback regulation problem",
+      "Impulse controllability for the heat equation with inverse square potential and dynamic boundary conditions",
+      "Null Controllability for Stochastic Parabolic Equations with Dynamic Boundary Conditions",
+      "Multi-objective control for stochastic parabolic equations with dynamic boundary conditions",
+      "Well-posedness and asynchronous exponential growth of an age-weighted structured fish population model with diffusion in L^1"
+    ]
+  },
+  {
+    "name": "Directeur de centre",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents",
+    "projects": [
+      "Enseignement à l'Université de Douala"
+    ],
+    "publications": [
+      "A strategy for adaptive synchronization of an electrical chaotic circuit based on nonlinear control",
+      "Adaptive time-delay synchronization of chaotic systems with uncertainties using a nonlinear feedback coupling",
+      "Modeling and analysis of the transmission dynamics of tuberculosis without and with seasonality",
+      "Assessing the impact of the environmental contamination on the transmission of Ebola virus disease (EVD)",
+      "A patchy model for the transmission dynamics of tuberculosis in sub-Saharan Africa",
+      "A metapopulation model for the population dynamics of anopheles mosquito",
+      "Mathematical analysis of the dynamical transmission of Neisseria meningitidis serogroup A",
+      "Modelling and analysis of hepatitis B and HIV co infections",
+      "Local Bifurcations and Optimal Theory in a Delayed Predator–Prey Model with Threshold Prey Harvesting",
+      "Analysis of an Age-structured SIL model",
+      "Optimal Synchronization of a Memristive Chaotic Circuit",
+      "Modeling and analysis of hiv and hepatitis c co-infections",
+      "Practical time-delay synchronization of a periodically modulated self-excited oscillators with uncertainties",
+      "Parameter estimation based synchronization for an epidemic model with application to tuberculosis in Cameroon",
+      "Modelling tuberculosis and hepatitis B co-infections",
+      "Optimal control of the transmission dynamics of tuberculosis",
+      "Mathematical analysis of two-patch model for the dynamical transmission of tuberculosis",
+      "Effects of Catastrophic Anemia in an Intra-Host Model of Malaria",
+      "A Generic Modelling of Fire Impact in a Tree-Grass Savanna Model",
+      "Modeling and parameter estimation of tuberculosis with application to Cameroon",
+      "Two-Patch Transmission of Tuberculosis"
+    ]
+  },
+  {
+    "name": "Directeur de centre adjoint",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": [
+      "Optimization of municipal solid waste transportation by integrating GIS analysis, equation-based, and agent-based model"
+    ]
+  },
+  {
+    "name": "Thi Hoai Phuong TRAN",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Thi Phuong Linh HUYNH",
+    "themesDescription": "Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Responsable de thème",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Thomas MESSI NGUELE",
+    "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Responsable de thème",
+    "themesDescription": "Capteurs et collecte de données / Sensors and data collection",
+    "projects": [],
+    "publications": [
+      "New tools for the spatial management of living marine resources",
+      "Use of local knowledge in marine protected area management",
+      "Effect of Small Versus Large Clusters of Fish School on the Yield of a Purse-Seine Small Pelagic Fishery Including a Marine Protected Area",
+      "Can overexploited fisheries recover by self-organization? Reallocation of fishing effort as an emergent form of governance",
+      "El Niño as a predictor of round sardinella distribution along the northwest African coast",
+      "Detection and Classification of Underwater Acoustic Events",
+      "Complex small pelagic fish population patterns arising from individual behavioural responses to their environment [résumé de poster]",
+      "Towards improved climate prediction for West Africa [résumé]",
+      "Successful artificial reefs depend on getting the context right due to complex socio-bio-economic interactions"
+    ]
+  },
+  {
+    "name": "Responsable de thème",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Approches participatives et science citoyenne / Participatory approaches and citizen science",
+    "projects": [],
+    "publications": [
+      "Effects of refuges and density dependent dispersal on interspecific competition dynamics",
+      "Effect of Small Versus Large Clusters of Fish School on the Yield of a Purse-Seine Small Pelagic Fishery Including a Marine Protected Area",
+      "A Land-Use Change Model to Support Land-Use Planning in the Mekong Delta (MEKOLUC)",
+      "Linking local retention, self-recruitment, and persistence in marine metapopulations",
+      "Modelling the dynamics of migrations for large herbivore populations in the Amboseli National Park, Kenya",
+      "Assessing Public Transport Strategies in Marrakesh using ABMS",
+      "Assessing Public Transport Strategies in Marrakesh using ABMS",
+      "Using Agent-Based Modelling to Understand Advantageous Behaviours Against COVID-19 Transmission in the Built Environment",
+      "Application of aggregation of variables methods to a class of two-time reaction-diffusion-chemotaxis models of spatially structured populations with constant diffusion",
+      "Can overexploited fisheries recover by self-organization? Reallocation of fishing effort as an emergent form of governance",
+      "Time Headway analysis on urban roads of the city of Marrakesh",
+      "Uncertainty in empirical estimates of marine larval"
+    ]
+  },
+  {
+    "name": "Tuong Vinh HO",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [],
+    "publications": []
+  },
+  {
+    "name": "Directeur d'Unité Adjoint",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
+    "projects": [
+      "Participation au projets SIMPLE et STAR FARM"
+    ],
+    "publications": [
+      "Optimizing an Environmental Surveillance Network with Gaussian Process Entropy.",
+      "Modeling a Surveillance Network Based on Unit Disk Graph Technique – Application for Monitoring the Invasion of Insects in Mekong Delta Region",
+      "Estimating the Density of Brown Plant Hoppers from a Light-Traps Network Based on Unit Disk Graph"
+    ]
+  },
+  {
+    "name": "Youcef SKLAB",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Enseignement"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Youssef EL FOUTAYENI",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    "projects": [
+      "Membre élu de la CSS5 (Sciences des données et des modèles)"
+    ],
+    "publications": []
+  },
+  {
+    "name": "Zakaria BELGHALI",
+    "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    "projects": [
+      "Particiption au projet I-Maroc"
+    ],
+    "publications": []
+  }
+]
