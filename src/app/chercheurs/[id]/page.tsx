@@ -41,10 +41,23 @@ export default function ResearcherProfilePage({ params }: PageProps) {
     notFound();
   }
 
-  // Filter their publications
-  const researcherPubs = PUBLICATIONS.filter((p) =>
-    p.researcherIds.includes(researcher.id)
-  );
+  // Use researcher's publications if available, otherwise filter from global PUBLICATIONS
+  const researcherPubs = researcher.publications ?
+    researcher.publications.map(pub => ({
+      id: `${researcher.id}-${pub.title.substring(0, 20).replace(/\s+/g, '-')}`,
+      title: pub.title,
+      authors: [],
+      researcherIds: [researcher.id],
+      year: pub.year || new Date().getFullYear(),
+      axis: researcher.axes[0] || "agents",
+      abstract: "",
+      citationApa: "",
+      citationBibtex: "",
+      accessLevel: "public" as const,
+    })) :
+    PUBLICATIONS.filter((p) =>
+      p.researcherIds.includes(researcher.id)
+    );
 
   // Filter their datasets
   const researcherDatasets = DATASETS.filter((d) => d.creatorId === researcher.id);
