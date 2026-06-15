@@ -625,10 +625,14 @@ export const RESEARCHERS: Researcher[] = [
   {
     id: "jean-daniel-zucker", name: "Jean-Daniel ZUCKER",
     title: "Directeur d'Unité Adjoint — Centre France", role: "directeur_unite", center: "france",
-    axes: ["ia", "capteurs"],
+    axes: ["agents", "ia"],
     bio: "Pionnier de l'apprentissage profond appliqué à la santé (microbiome, métabolome). Coordinateur de DeepIntegrOmics et DeepECG4U.",
-    email: "jean-daniel.zucker@ird.fr", orcid: "0000-0003-0021-7438",
-    avatarSeed: "JZ", photoUrl: "/photos/jean-daniel-zucker.png", publicationsCount: 89,
+    email: "Jean-Daniel.zucker@ird.fr", orcid: "0000-0003-0021-7438",
+    avatarSeed: "JZ", photoUrl: "/photos/jean-daniel-zucker.png", publicationsCount: 1,
+    themesDescription: "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling",
+    publications: [
+      { title: "Rescuing public health data : A South-East Asia Regional Initiative to build a Dengue Database" },
+    ],
   },
   {
     id: "jean-jules-tewa", name: "Jean-Jules TEWA",
@@ -1132,6 +1136,18 @@ export const RESEARCHERS: Researcher[] = [
     axes: ["ia", "agents"],
     bio: "Doctorant au Centre Méditerranée. Travaux sur l'apprentissage automatique et la modélisation des systèmes dynamiques complexes.",
     avatarSeed: "ZB", photoUrl: "/photos/zakaria-belghali.png", publicationsCount: 1,
+  },
+  {
+    id: "diane-tchuani-tchakonte", name: "Diane TCHUANI TCHAKONTE",
+    title: "Responsable de thème — Centre Afrique centrale et de l'est", role: "responsable_theme", center: "afrique-centrale",
+    axes: ["ia", "capteurs"],
+    bio: "Responsable de thème au Centre Afrique centrale et de l'est. Experte en intelligence artificielle et capteurs pour les applications en Afrique.",
+    email: "diane.tchuani@gmail.com",
+    avatarSeed: "DT", photoUrl: "/photos/diane-tchuani-tchakonte.png", publicationsCount: 1,
+    themesDescription: "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    publications: [
+      { title: "Adaptive healing procedure for lifetime improvement in Wireless Sensor Networks" },
+    ],
   },
 ];
 
