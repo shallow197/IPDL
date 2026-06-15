@@ -88,8 +88,8 @@ export default function Home() {
 
         <div className="mx-auto max-w-5xl text-center relative z-10 flex flex-col items-center">
           {/* Photo de groupe — bannière de bienvenue */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.02 }} className="mb-6 w-full max-w-2xl rounded-xl overflow-hidden border border-slate-800 shadow-lg">
-            <img src="/photo_de_groupe/membres.png" alt="Équipe UMMISCO" className="w-full h-auto object-cover" />
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.02 }} className="mb-6 w-full max-w-lg rounded-lg overflow-hidden border border-slate-800 shadow-md">
+            <img src="/photo_de_groupe/membres.png" alt="Équipe UMMISCO" className="w-full h-auto object-cover max-h-48" />
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="inline-flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/60 px-3.5 py-1 text-sm text-slate-400">
