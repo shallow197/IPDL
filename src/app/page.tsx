@@ -199,7 +199,7 @@ export default function Home() {
                   { src: "/logos/logo_uca.png", alt: "UCA" },
                   { src: "/logos/logo_uy1.jpg", alt: "UY1" },
                 ].map(({ src, alt }) => (
-                  <div key={alt} className="h-9 w-16 bg-white rounded p-1 flex items-center justify-center shadow-sm">
+                  <div key={alt} className="h-9 w-16 rounded p-1 flex items-center justify-center shadow-sm" style={{ backgroundColor: "#ffffff" }}>
                     <img src={src} alt={alt} className="h-full w-full object-contain" />
                   </div>
                 ))}
