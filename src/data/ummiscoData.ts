@@ -203,6 +203,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Doctorant — Centre Méditerranée", role: "doctorant", center: "mediterranee",
     axes: ["agents", "ia"],
     bio: "Doctorant en modélisation hydrogéologique au Centre Méditerranée. Recherches sur la simulation multi-agents des systèmes aquifères.",
+    email: "achraf.chakri@ced.uca.ma",
     avatarSeed: "AC", photoUrl: "/photos/achraf-chakri.png", publicationsCount: 2,
   },
   {
