@@ -31,6 +31,18 @@ interface AvatarProps {
   seed: string;
   /** Diameter in pixels. */
   size?: number;
+  /**
+   * CSS object-position for the photo inside the circle.
+   * Default "center" centres the photo. For a photo where the head is cut off,
+   * try "center 20%", "top", or "center 30%" to reveal more of the top.
+   */
+  objectPosition?: string;
+  /**
+   * How the photo fills the circle.
+   * "cover" (default) fills the whole circle, cropping the overflow.
+   * "contain" shows the ENTIRE photo with no cropping (gradient may show in corners).
+   */
+  fit?: "cover" | "contain";
   className?: string;
 }
 
@@ -40,7 +52,15 @@ interface AvatarProps {
  * conditional img↔initials swap, so a slow or failed image can never leave a
  * blank/flickering avatar — the photo simply appears over the initials.
  */
-export default function Avatar({ name, src, seed, size = 56, className = "" }: AvatarProps) {
+export default function Avatar({
+  name,
+  src,
+  seed,
+  size = 56,
+  objectPosition = "center",
+  fit = "cover",
+  className = "",
+}: AvatarProps) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const gradient = GRADIENTS[hashIndex(name, GRADIENTS.length)];
@@ -50,7 +70,10 @@ export default function Avatar({ name, src, seed, size = 56, className = "" }: A
       style={{ height: size, width: size }}
       className={`relative flex-none rounded-full overflow-hidden flex items-center justify-center bg-gradient-to-br ${gradient} text-white font-extrabold ring-2 ring-white/10 ${className}`}
     >
-      <span style={{ fontSize: Math.round(size * 0.36) }} className="tracking-tight drop-shadow-sm select-none">
+      <span
+        style={{ fontSize: Math.round(size * 0.36) }}
+        className="tracking-tight drop-shadow-sm select-none"
+      >
         {seed}
       </span>
       {src && !failed && (
@@ -62,7 +85,10 @@ export default function Avatar({ name, src, seed, size = 56, className = "" }: A
           draggable={false}
           onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
-          className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+          style={{ objectPosition }}
+          className={`absolute inset-0 h-full w-full ${
+            fit === "contain" ? "object-contain" : "object-cover"
+          } transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
         />
       )}
     </span>

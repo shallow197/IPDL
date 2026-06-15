@@ -76,6 +76,11 @@ export interface Project {
   domain: string;
   description: string;
   url?: string;
+  image?: string;
+  chefProjet?: string;
+  duree?: string;
+  dateDebut?: string;
+  budget?: string;
 }
 
 export interface SoftwareTool {
@@ -1258,6 +1263,11 @@ export const PROJECTS: Project[] = [
     description:
       "Dialogue Science-Décideurs pour une gestion intégrée des environnements littoraux et marins. Approche participative multi-acteurs.",
     url: "https://ummisco.fr/fr/projet-ummisco/didem/",
+    image: "/projets/DIDEM.png",
+    chefProjet: "Nicolas Marilleau — UMMISCO",
+    duree: "36 mois",
+    dateDebut: "Juillet 2020",
+    budget: "952 K€",
   },
   {
     id: "habitable",
@@ -1268,6 +1278,11 @@ export const PROJECTS: Project[] = [
     description:
       "Modélisation de la mobilité des pêcheurs artisanaux au Sénégal. Simulateur Lolli implémenté sous GAMA pour explorer des scénarios climatiques et socio-économiques.",
     url: "https://ummisco.fr/fr/projet-ummisco/habitable/",
+    image: "/projets/HABITABLE.png",
+    chefProjet: "François Gemenne — Université de Liège / Hugo Observatory",
+    duree: "36 mois",
+    dateDebut: "Décembre 2020",
+    budget: "126 K€",
   },
   {
     id: "digepi",
@@ -1278,6 +1293,11 @@ export const PROJECTS: Project[] = [
     description:
       "Digital Epidemiology : nouvelle approche pour la surveillance en temps réel du COVID-19 via l'intégration de capteurs environnementaux et de modèles prédictifs.",
     url: "https://ummisco.fr/fr/projet-ummisco/digepi/",
+    image: "/projets/DigEpi.png",
+    chefProjet: "Benjamin Roche — MIVEGEC, IRD",
+    duree: "18 mois",
+    dateDebut: "Avril 2020",
+    budget: "100 K€",
   },
   {
     id: "waqatali",
@@ -1288,6 +1308,10 @@ export const PROJECTS: Project[] = [
     description:
       "Application de l'IA pour l'optimisation de l'irrigation dans les zones semi-arides. Combine apprentissage profond et données capteurs terrain.",
     url: "https://ummisco.fr/fr/projet-ummisco/waqatali/",
+    image: "/projets/Waqatali.png",
+    chefProjet: "Nicolas Marilleau (UMMISCO) & Thomas Bur (URBASENSE)",
+    duree: "54 mois",
+    budget: "360 K€",
   },
   {
     id: "comokit",
@@ -1298,6 +1322,8 @@ export const PROJECTS: Project[] = [
     description:
       "Modèle informatique permettant d'explorer in silico les stratégies d'intervention épidémique (COVID-19) avant leur mise en application.",
     url: "https://comokit.org/",
+    image: "/projets/COMOKIT.png",
+    chefProjet: "Alexis Drogoul, Patrick Taillandier, Benoit Gaudou — IRD / UMMISCO",
   },
   {
     id: "anr-magnum",
@@ -1308,6 +1334,8 @@ export const PROJECTS: Project[] = [
     description:
       "The Maasai, the Gnu and the Metropolis. Réseaux de capteurs pour le suivi des grandes migrations animales en Afrique de l'Est.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-magnum/",
+    image: "/projets/MaGnuM.png",
+    chefProjet: "François Mialhe — CNRS / Université de Lyon",
   },
   {
     id: "dom",
@@ -1318,6 +1346,11 @@ export const PROJECTS: Project[] = [
     description:
       "Distribution Model : séparation des préoccupations pour faciliter la distribution des modèles à base d'agents sur clusters HPC.",
     url: "https://ummisco.fr/fr/projet-ummisco/dom/",
+    image: "/projets/DOM.png",
+    chefProjet: "Ayesha Almazooqi — Khalifa University, Abu Dhabi",
+    duree: "36 mois",
+    dateDebut: "Décembre 2020",
+    budget: "750 K USD",
   },
   {
     id: "airqaly-4-asmafri",
@@ -1328,6 +1361,10 @@ export const PROJECTS: Project[] = [
     description:
       "Réseau de capteurs citoyens pour la surveillance de la qualité de l'air et son impact sur l'asthme en Afrique. Science participative et acquisition de données.",
     url: "https://ummisco.fr/fr/projet-ummisco/airqaly-4-asmafri/",
+    image: undefined,
+    chefProjet: "Nicolas Marilleau — UMMISCO",
+    duree: "48 mois",
+    budget: "890 K€",
   },
   {
     id: "aime",
@@ -1338,6 +1375,11 @@ export const PROJECTS: Project[] = [
     description:
       "Artificial Intelligence for Marine Ecosystems. Application de l'IA pour la modélisation et le suivi des écosystèmes marins méditerranéens.",
     url: "https://ummisco.fr/fr/projet-ummisco/aime/",
+    image: "/projets/AIME.png",
+    chefProjet: "Jihad Zahir — CAU / UMMISCO, Maroc",
+    duree: "48 mois",
+    dateDebut: "Janvier 2021",
+    budget: "649 K€",
   },
   {
     id: "rdt-smart-reader",
@@ -1348,6 +1390,228 @@ export const PROJECTS: Project[] = [
     description:
       "Lecteur intelligent de tests de diagnostic rapide (TDR). Application de vision par ordinateur pour automatiser la lecture des TDR en contexte de ressources limitées.",
     url: "https://ummisco.fr/fr/projet-ummisco/rdt-smart-reader/",
+    image: "/projets/RDT Smart Reader.png",
+    chefProjet: "Jules Brice Tchatchueng Mbougua — Centre Pasteur du Cameroun / UMMISCO",
+    duree: "24 mois",
+    dateDebut: "Février 2021",
+  },
+  // ── Projets ajoutés (données récupérées depuis ummisco.fr) ────────────────
+  {
+    id: "cscov19",
+    name: "CsCov19",
+    centers: ["asie"],
+    themes: ["capteurs", "participatif"],
+    domain: "Santé publique",
+    description:
+      "Crowd sensing pour la surveillance épidémiologique du COVID-19 au Vietnam. Collecte participative de données de mobilité et de santé en temps réel.",
+    url: "https://ummisco.fr/fr/projet-ummisco/cscov19/",
+    image: "/projets/CsCov19.png",
+    chefProjet: "Nguyen Ngoc Doanh — Thuyloi University / UMMISCO Vietnam",
+    duree: "24 mois",
+    dateDebut: "Avril 2022",
+    budget: "271 K€",
+  },
+  {
+    id: "deepecg4u",
+    name: "DeepECG4U",
+    centers: ["france"],
+    themes: ["ia"],
+    domain: "Santé humaine",
+    description:
+      "Application de l'apprentissage profond à l'analyse de l'électrocardiogramme pour la détection précoce de maladies cardiovasculaires.",
+    url: "https://ummisco.fr/fr/projet-ummisco/deepecg4u/",
+    image: "/projets/DeepECG4U.png",
+    chefProjet: "Edi Prifti — UMMISCO",
+    duree: "48 mois",
+    dateDebut: "Mars 2021",
+    budget: "570 K€",
+  },
+  {
+    id: "deepintegromics",
+    name: "DeepIntegrOmics",
+    centers: ["france"],
+    themes: ["ia", "agents"],
+    domain: "Santé humaine",
+    description:
+      "Intégration de données omiques multi-échelles par apprentissage profond pour l'étude des mécanismes moléculaires des maladies complexes.",
+    url: "https://ummisco.fr/fr/projet-ummisco/deepintegromics/",
+    image: "/projets/DeepIntergrOmics.png",
+    chefProjet: "Jean-Daniel Zucker — IRD / UMMISCO",
+    duree: "42 mois",
+    dateDebut: "Février 2022",
+    budget: "621 K€",
+  },
+  {
+    id: "e-col-plus",
+    name: "E-Col+",
+    centers: ["france"],
+    themes: ["participatif", "capteurs"],
+    domain: "Biodiversité",
+    description:
+      "Programme de science participative du Muséum National d'Histoire Naturelle pour le suivi collaboratif de la biodiversité urbaine et péri-urbaine.",
+    url: "https://ummisco.fr/fr/projet-ummisco/e-col/",
+    image: "/projets/E-Col+.png",
+    chefProjet: "Pierre-Yves Gagnier — MNHN, Paris",
+    duree: "96 mois",
+    dateDebut: "Juin 2021",
+    budget: "4 850 K€",
+  },
+  {
+    id: "epitag",
+    name: "EPITAG",
+    centers: ["afrique-centrale", "france"],
+    themes: ["agents"],
+    domain: "Santé publique",
+    description:
+      "Modélisation épidémiologique et contrôle optimal des maladies infectieuses en Afrique subsaharienne. Coopération UMMISCO Cameroun – INRIA.",
+    url: "https://ummisco.fr/fr/projet-ummisco/epitag/",
+    image: "/projets/EPITAG.png",
+    chefProjet: "Samuel Bowong (UMMISCO Cameroun) & Suzanne Touzeau (INRIA Biocore)",
+    duree: "36 mois",
+    dateDebut: "Janvier 2021",
+    budget: "30 K€",
+  },
+  {
+    id: "i-maroc",
+    name: "I-MAROC",
+    centers: ["mediterranee", "france"],
+    themes: ["agents", "ia"],
+    domain: "Environnement",
+    description:
+      "Initiative de modélisation mathématique et informatique appliquée aux systèmes complexes au Maroc. Coopération IRD–Université Cadi Ayyad.",
+    url: "https://ummisco.fr/fr/projet-ummisco/i-maroc/",
+    image: "/projets/I-MAROC.png",
+    chefProjet: "Hassan Hbid — Université Cadi Ayyad, Marrakech",
+    duree: "36 mois",
+    dateDebut: "Février 2022",
+    budget: "620 K€",
+  },
+  {
+    id: "premiss",
+    name: "PREMISS",
+    centers: ["asie", "france"],
+    themes: ["agents"],
+    domain: "Environnement",
+    description:
+      "Plateforme de recherche et de modélisation multi-agents pour la simulation de systèmes socio-écologiques complexes, avec partenaires internationaux.",
+    url: "https://ummisco.fr/fr/projet-ummisco/premiss/",
+    image: "/projets/PREMISS.png",
+    chefProjet: "Alexis Drogoul — UMMISCO",
+    duree: "24 mois",
+    dateDebut: "Mars 2021",
+    budget: "283 K€",
+  },
+  {
+    id: "simple",
+    name: "SIMPLE",
+    centers: ["asie", "france"],
+    themes: ["agents", "ia"],
+    domain: "Environnement",
+    description:
+      "Simulation et modélisation participative de systèmes complexes pour l'aide à la décision environnementale. Développé sur la plateforme GAMA avec des partenaires en Asie du Sud-Est.",
+    url: "https://ummisco.fr/fr/projet-ummisco/simple/",
+    image: "/projets/SIMPLE.jpg",
+    chefProjet: "Alexis Drogoul — UMMISCO",
+    duree: "48 mois",
+    dateDebut: "Mai 2023",
+    budget: "3 100 K€",
+  },
+  {
+    id: "u2worm",
+    name: "U2 WORM",
+    centers: ["france"],
+    themes: ["agents", "capteurs"],
+    domain: "Environnement",
+    description:
+      "Modélisation multi-agents de la dynamique des vers de terre dans les sols agricoles. Couplage de capteurs terrain et de simulation pour l'écologie des sols.",
+    url: "https://ummisco.fr/fr/projet-ummisco/u2worm/",
+    image: "/projets/U2 WORM.webp",
+    chefProjet: "Nicolas Marilleau — UMMISCO",
+    duree: "48 mois",
+    dateDebut: "2021",
+    budget: "596 K€",
+  },
+  // ── Projets sans page ummisco.fr trouvée — à compléter ───────────────────
+  {
+    id: "escape",
+    name: "ESCAPE",
+    centers: ["france"],
+    themes: ["agents"],
+    domain: "Environnement",
+    description: "Description à compléter.",
+    image: "/projets/ESCAPE.png",
+  },
+  {
+    id: "genstar",
+    name: "GENSTAR",
+    centers: ["france"],
+    themes: ["agents"],
+    domain: "Société",
+    description: "Générateur de populations synthétiques pour la simulation multi-agents de systèmes socio-démographiques.",
+    image: "/projets/GENSTAR.png",
+  },
+  {
+    id: "mepsom",
+    name: "MEPSOM",
+    centers: ["france", "afrique-ouest"],
+    themes: ["agents"],
+    domain: "Santé publique",
+    description: "Description à compléter.",
+    image: "/projets/MEPSOM.png",
+  },
+  {
+    id: "panic",
+    name: "PANIC",
+    centers: ["france"],
+    themes: ["agents"],
+    domain: "Société",
+    description: "Description à compléter.",
+    image: "/projets/PANIC.png",
+  },
+  {
+    id: "soilmu-3d",
+    name: "SoilMu-3D",
+    centers: ["france"],
+    themes: ["agents", "capteurs"],
+    domain: "Environnement",
+    description: "Modélisation 3D des microstructures du sol et de la dynamique microbienne par simulation multi-agents couplée à l'imagerie haute résolution.",
+    image: "/projets/Soilmu-3D.png",
+  },
+  {
+    id: "story",
+    name: "STORY",
+    centers: ["france"],
+    themes: ["agents", "participatif"],
+    domain: "Société",
+    description: "Description à compléter.",
+    image: "/projets/STORY.png",
+  },
+  {
+    id: "bonds",
+    name: "BONDS",
+    centers: ["france"],
+    themes: ["agents"],
+    domain: "Environnement",
+    description: "Description à compléter.",
+    image: "/projets/BONDS.png",
+  },
+  {
+    id: "simupor",
+    name: "SIMUPOR",
+    centers: ["france"],
+    themes: ["agents"],
+    domain: "Environnement",
+    description: "Description à compléter.",
+    image: "/projets/SIMUPOR.png",
+  },
+  {
+    id: "siemens",
+    name: "SIEMENS",
+    centers: ["france"],
+    themes: ["ia"],
+    domain: "Société",
+    description: "Description à compléter.",
+    image: "/projets/SIEMENS.webp",
   },
 ];
 
