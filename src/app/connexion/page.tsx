@@ -8,6 +8,7 @@ import { Lock, Mail, ShieldCheck, ArrowLeft, KeyRound, UserPlus, Shield, FlaskCo
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
+import { useNotification } from "@/context/NotificationContext";
 
 type Tab = "login" | "register";
 
@@ -97,6 +98,7 @@ export default function ConnexionPage() {
   const router = useRouter();
   const { login } = useAuth();
   const { t } = useLang();
+  const { notify } = useNotification();
 
   const [tab, setTab] = useState<Tab>("login");
   const [loading, setLoading] = useState(false);
@@ -126,12 +128,15 @@ export default function ConnexionPage() {
       const data = await res.json();
       if (!res.ok) {
         setError(data.error || t("login.error"));
+        notify(data.error || t("login.error"), "error");
       } else {
         login(data.token, data.user);
+        notify(`Bienvenue, ${data.user.nom.split(" ")[0]} !`, "success");
         router.push("/dashboard");
       }
     } catch {
       setError(t("common.error"));
+      notify(t("common.error"), "error");
     } finally {
       setLoading(false);
     }
@@ -149,12 +154,15 @@ export default function ConnexionPage() {
       const data = await res.json();
       if (!res.ok) {
         setError(data.error || t("login.error"));
+        notify(data.error || t("login.error"), "error");
       } else {
         login(data.token, data.user);
+        notify(`Bienvenue, ${data.user.nom.split(" ")[0]} !`, "success");
         router.push(acc.redirect);
       }
     } catch {
       setError(t("common.error"));
+      notify(t("common.error"), "error");
     } finally {
       setDemoLoading(null);
     }
@@ -173,12 +181,15 @@ export default function ConnexionPage() {
       const data = await res.json();
       if (!res.ok) {
         setError(data.error || t("common.error"));
+        notify(data.error || t("common.error"), "error");
       } else {
         login(data.token, data.user);
+        notify(`Compte créé — bienvenue, ${data.user.nom.split(" ")[0]} !`, "success");
         router.push("/dashboard");
       }
     } catch {
       setError(t("common.error"));
+      notify(t("common.error"), "error");
     } finally {
       setLoading(false);
     }

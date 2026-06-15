@@ -13,6 +13,7 @@ import {
 import { useTheme } from "@/context/ThemeContext";
 import { useLang } from "@/context/LangContext";
 import { useAuth } from "@/context/AuthContext";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function Sidebar() {
   const pathname  = usePathname();
@@ -20,6 +21,7 @@ export default function Sidebar() {
   const { theme, toggleTheme }  = useTheme();
   const { lang, setLang, t }    = useLang();
   const { isAuthenticated, user, logout } = useAuth();
+  const { notify } = useNotification();
 
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -45,7 +47,7 @@ export default function Sidebar() {
     { label: t("nav.actualites"),  href: "/actualites",   icon: Newspaper },
   ];
 
-  const handleLogout = () => { logout(); router.push("/"); };
+  const handleLogout = () => { notify("À bientôt !", "info"); logout(); router.push("/"); };
 
   /* ── Shared link renderer ── */
   const NavLink = ({ label, href, icon: Icon }: typeof navLinks[0]) => {
