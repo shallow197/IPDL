@@ -82,6 +82,17 @@ interface ChatMessage {
   content: string;
 }
 
+// Diagnostic : visiter GET /api/chat dans le navigateur indique si la clé est
+// bien reçue par CE déploiement (sans jamais exposer sa valeur).
+export async function GET() {
+  return Response.json({
+    configured: Boolean(process.env.GROQ_API_KEY),
+    model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+    groqEnvVarsDetected: Object.keys(process.env).filter((k) => /groq/i.test(k)),
+    hint: "Si configured=false : ajoutez GROQ_API_KEY à l'environnement Production de Vercel, puis redéployez.",
+  });
+}
+
 export async function POST(req: NextRequest) {
   const { messages } = await req.json();
 
