@@ -32,9 +32,12 @@
     "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection, Approches participatives et science citoyenne / Participatory approaches and citizen science",
     "projects": [],
     "publications": [
+      "On the sylvatic transmission of T. cruzi, the parasite causing Chagas disease: a view from an agent-based model",
       "Numerical treatment of a non local model for phytoplankton agregation",
       "A bottom-up participatory modelling process for a multi-level agreement on environmental uncertainty management in West Africa,",
+      "L'approche participative, incrémentale et itérative en modélisation : un changement profond de cadre méthodologique. Exemple d'une modélisation multiniveau pour l'élaboration de politiques foncières au Sahel.",
       "Un modèle à base d'agents sur la transmission et la diffusion de la fièvre de la vallée du rift à Barkédji (Ferlo, Sénégal)",
+      "Ongoing change in extensive livestock systems: comparative analysis of local dynamics at the small region level on three continents",
       "Vers un métamodèle pour analyser les systèmes d'élevage extensifs et leurs interactions avec les territoires. Etude originale",
       "Récolte de bois de feu au Niger et une généralisation de la formule de Faustmann",
       "An agent-based Implementation of the Torado Model",
@@ -49,14 +52,21 @@
       "Directeur du LMI ACROSS"
     ],
     "publications": [
+      "Complex environment representation in epidemiology ABM: application on H5N1 propagation",
       "Adaptation strategies in the Mekong delta",
+      "Designing social simulation to (seriously) support decision-making: COMOKIT, an agent-based modelling toolkit to analyse and compare the impacts of public health interventions against COVID-19",
+      "Gama : a simulation platform that integrates geographical information data, agent-based modeling and multi-scale control",
       "Simulation of Emergency Evacuation of Pedestrians along the Road Networks in Nhatrang City",
       "Spatial Estimator of Brown Plant Hopper Density from Light Traps Data",
       "Un modèle à base d'agents sur la transmission et la diffusion de la fièvre de la vallée du rift à Barkédji (Ferlo, Sénégal)",
+      "Multi-Level Agent-Based Modeling: a Generic Approach and an Implementation",
       "Optimizing an Environmental Surveillance Network with Gaussian Process Entropy.",
       "Using high-level 3D Graphics library in agent-based simulation platform",
+      "Gama 1.6 : Advancing the Art of Complex Agent-Based Modeling and Simulation",
       "Online analysis and visualization of agent based models",
       "Modeling and simulation of shrimp diseases propagation in river networks and inside pond",
+      "Multiscale MAS modelling to simulate the soil environment: Application to soil ecology",
+      "Simulating Urban Growth with Raster and Vector models : A case study for the city of Can Tho, Vietnam",
       "An implementation of framework of business intelligence for agent-based simulation",
       "Exploring Agent Architectures for Farmer Behavior in Land-Use Change. A Case Study in Coastal Area of the Vietnamese Mekong Delta",
       "Modeling a Surveillance Network Based on Unit Disk Graph Technique – Application for Monitoring the Invasion of Insects in Mekong Delta Region",
@@ -64,12 +74,22 @@
       "Toward an Agent-Based Multi-scale Recommendation System for Brown Plant Hopper Control",
       "Designing Multi-criteria Decision Making Agents in Agent-Based Model for Rice Pest Risk Management",
       "Upscaling and Assessing Information of Agriculture Indicators in Agent-Based Assessment Model from Field to Region Scale",
+      "COMOKIT v2: A multi-scale approach to modeling and simulating epidemic control policies",
       "Artificial intelligence for sustainability science",
       "A land-use change model to study climate change adaptation strategies in the Mekong Delta",
+      "LUCAS-GEMMES : Integrated dynamics of adaptation strategies in the Vietnamese Mekong Delta",
+      "Handling multiple levels in agent-based models of complex socio-environmental systems: A comprehensive review",
       "Un partenariat de recherche pour améliorer les méthodologies de la science de la durabilité",
+      "Large-scale Epidemiological Modelling: Exploring the Impact of the ASEAN Economic Corridors Policy on the Dengue Fever Epidemic",
       "Using Parallel Computing to Improve the Scalability of Models with BDI Agents",
+      "Synthèse des séances plénières : complexité et transition énergétique",
+      "Gen*: a generic toolkit to generate spatially explicit synthetic populations",
       "On the Unity and Diversity of Computer Simulation",
-      "An Agent-Based Modeling Approach for Understanding Land-use Adaptation in the Mekong Delta under the Context of Climate Change"
+      "COMOKIT BUILDING: simulating the impact of NPI against Covid-19 at building scale",
+      "An Agent-Based Modeling Approach for Understanding Land-use Adaptation in the Mekong Delta under the Context of Climate Change",
+      "COMOKIT advanced user interface: Dashboard",
+      "GAMA: 14 years and counting",
+      "Vulnérabilité face aux catastrophes naturelles : comportements de mise en protection et gestion de l’évacuation en cas de crue rapide"
     ]
   },
   {
@@ -78,7 +98,10 @@
     "projects": [
       "Recherche et supervision"
     ],
-    "publications": []
+    "publications": [
+      "Towards Interpretable and point-of-care disease prediction from metagenomics data: applications to Cardio-Metabolic Disease",
+      "AliBERT: A Pre-trained Language Model for French Biomedical Text"
+    ]
   },
   {
     "name": "Armel Jacques NZEKON NZEKO&rsquo;O",
@@ -101,13 +124,22 @@
     ],
     "publications": [
       "Using Agent-Based Modelling to Understand Advantageous Behaviours Against COVID-19 Transmission in the Built Environment",
+      "Experimenting the Impact of Pedestrianisation on Urban Pollution Using Tangible Agent-Based Simulations: Application to Hoan Kiem District, Hanoi, Vietnam",
+      "CityScope Hanoi: interactive simulation for water management in the Bac Hung Hai irrigation system",
+      "HoanKiemAir: simulating impacts of urban management practices on traffic and air pollution using a tangible agent-based model",
       "Building, composing and experimenting complex spatial models with the GAMA platform",
       "Participatory Modeling and Simulation with the GAMA Platform",
+      "Coupling equation based models and agent-based models: example of a multi-strains and switch SIR toy model",
+      "Marrakair: une simulation participative pour observer les émissions atmosphériques du trafic routier en milieu urbain",
       "Toward an Agent-Based and Equation-Based Coupling Framework",
       "Introduction to Netlogo",
       "Reproducing and exploring past events using agent-based geo-historical models",
+      "Des données géographiques à la simulation à base d’agents: application de la plate-forme GAMA",
+      "ARCHIVES: Reconstructing past catastrophes through simulation to better anticipate future ones",
       "Using high-level 3D Graphics library in agent-based simulation platform",
+      "Gama 1.6 : Advancing the Art of Complex Agent-Based Modeling and Simulation",
       "Online analysis and visualization of agent based models",
+      "Gama : multi-level and complex environment for agent-based models and simulations",
       "A model-view/controller approach to support visualization and online data analysis of Agent-based simulations"
     ]
   },
@@ -188,16 +220,23 @@
       "Participation aux activités LMI Across/Cosmos Lab/VNCEM"
     ],
     "publications": [
+      "CityScope Hanoi: interactive simulation for water management in the Bac Hung Hai irrigation system",
+      "Designing social simulation to (seriously) support decision-making: COMOKIT, an agent-based modelling toolkit to analyse and compare the impacts of public health interventions against COVID-19",
       "Effects of fast density dependent dispersal on pre-emptive competition dynamics",
       "A stage structured population model with mature individuals using hawk and dove tactics",
       "Effects of migration of three competing species on their distributions in multizone environment",
+      "Simulating biological dynamics using partial differential equations: application to decomposition of organic matter in 3D soil structure",
       "Modeling Microbial Decomposition in Real 3D Soil Structures Using Partial Differential Equations",
       "Can Fishing Pressure Invert the Outcome of Interspecific Competition? The Case of the Thiof and of the Octopus Along the Senegalese Coast",
       "Effects of Behavioural Strategy on the Exploitative Competition Dynamics",
       "A multi-scale model for spreading of infectious disease in an office building",
       "Spatial heterogeneity, fast migration and coexistence of intraguild predation dynamics",
       "Drug Repositioning by Integrating Known Disease-Gene and Drug-Target Associations in a Semi-supervised Learning Model",
+      "Proceedings of the First Vietnamese-French Joint Conference on Applications of Mathematics to Ecology, Bio-economics, Epidemiology and Health Care: Hanoi and Tuanchau, Vietnam, December 12–15, 2016",
       "Optimization of municipal solid waste transportation by integrating GIS analysis, equation-based, and agent-based model",
+      "An Agent-Based Co-modeling Approach to Simulate the Evacuation of a Population in the Context of a Realistic Flooding Event: A Case Study in Hanoi (Vietnam)",
+      "COMOKIT BUILDING: simulating the impact of NPI against Covid-19 at building scale",
+      "Handling multiple levels in agent-based models of complex socio-environmental systems: A comprehensive review",
       "An agent-based model for mixed traffic in Vietnam based on virtual local lanes"
     ]
   },
@@ -220,21 +259,33 @@
     "publications": [
       "Enhancing plant morphological trait identification in herbarium collections through deep learning–based segmentation",
       "Identification of Non-Plant Elements in Herbarium Images Using YOLO",
+      "SIM-Net: A Multimodal Fusion Network Using Inferred 3D Object Shape Point Clouds from RGB Images for 2D Classification",
       "Enhancing YOLOv7 for Plant Organs Detection Using Attention-Gate Mechanism",
+      "Deep learning methods in metagenomics: a review",
       "Towards a Deep Learning-Powered Herbarium Image Analysis Platform",
       "Herbarium Image Segmentation Dataset with Plant Masks for Enhanced Morphological Trait Analysis",
+      "Intelligence artificielle et rythmologie : apports et limites",
       "Extracting Masks from Herbarium Specimen Images Based on Object Detection and Image Segmentation Techniques",
       "Functional alterations and predictive capacity of gut microbiome in type 2 diabetes",
       "Microbiome and metabolome features of the cardiometabolic disease spectrum",
+      "Impairment of gut microbial biotin metabolism and host biotin status in severe obesity: effect of biotin and prebiotic supplementation on improved metabolism",
+      "Association of N-Acetyl Asparagine with QTc in Diabetes: A Metabolomics Study",
       "Echocardiography and renin-aldosterone interplay as predictors of death in COVID-19",
       "Combinatorial, additive and dose-dependent drug–microbiome associations",
+      "Protein supplementation during an energy-restricted diet induces visceral fat loss and gut microbiota amino acid metabolism activation: a randomized trial",
       "Deep learning analysis of electrocardiogram for risk prediction of drug-induced arrhythmias and diagnosis of long QT syndrome",
+      "Exploring Semi-Quantitative Metagenomic Studies Using Oxford Nanopore Sequencing: A Computational and Experimental Protocol",
+      "Gut microbiota changes after metabolic surgery in adult diabetic patients with mild obesity: a randomised controlled trial",
       "Altered subcutaneous adipose tissue parameters after switching ART-controlled HIV+ patients to raltegravir/maraviroc",
       "Intestinal alteration of a-gustducin and sweet taste signaling pathway in metabolic diseases is partly rescued after weight loss and diabetes remission",
       "Imidazole propionate is increased in diabetes and associated with dietary patterns and altered microbial ecology",
       "Statin therapy is associated with lower prevalence of gut microbiota dysbiosis",
+      "From correlation to causality: the case of Subdoligranulum",
       "Gut Microbiota Profile of Obese Diabetic Women Submitted to Roux-en-Y Gastric Bypass and Its Association with Food Intake and Postoperative Diabetes Remission",
-      "Interpretable and accurate prediction models for metagenomics data"
+      "Author Correction: Imidazole propionate is increased in diabetes and associated with dietary patterns and altered microbial ecology",
+      "Interpretable and accurate prediction models for metagenomics data",
+      "Effect of congenital adrenal hyperplasia treated by glucocorticoids on plasma metabolome: a machine-learning-based analysis",
+      "Deep Learning for Metagenomic Data: using 2D Embeddings and Convolutional Neural Networks"
     ]
   },
   {
@@ -327,7 +378,9 @@
     "name": "Directeur d'Unité Adjoint",
     "themesDescription": "Modélisation mathématique et informatique à base d'agents / Mathematical and Agent-Based Modelling, Intelligence Artificielle et apprentissage profond / AI and deep learning",
     "projects": [],
-    "publications": []
+    "publications": [
+      "Rescuing public health data : A South-East Asia Regional Initiative to build a Dengue Database from"
+    ]
   },
   {
     "name": "Jean-Jules TEWA",
@@ -339,9 +392,12 @@
       "Optimal Strategy in a Two Resources Two Consumers Grazing Model",
       "Multi-seasonal modelling of the African maize stalk borer with assessment of crop residue management",
       "Dynamics of human schistosomiasis model with hybrid miracidium and cercariae",
+      "Spatio-temporal modelling of tree-grass dynamics in humid savannas: Interplay between nonlocal competition and nonlocal facilitation",
       "Mathematical modelling of Banana Black Sigatoka Disease with delay and Seasonality",
       "Optimal intervention strategies of staged progression HIV infections through an age-structured model with probabilities of ART drop out",
+      "When and how to fallow: first steps towards banana crop yield improvement through optimal and sustainable control of a soilborne pest",
       "Optimal and sustainable management of a soilborne banana pest",
+      "Short-term forecasts of the COVID-19 pandemic: a study case of Cameroon",
       "Modelling and control of a banana soilborne pest in a multi-seasonal framework",
       "Optimal intervention strategies of a SI-HIV models with differential infectivity and time delays",
       "Hopf bifurcation analysis in a delayed Leslie–Gower predator–prey model incorporating additional food for predators, refuge and threshold harvesting of preys",
@@ -376,11 +432,20 @@
       "Participation aux projets AIME et EDGE"
     ],
     "publications": [
+      "AgriFuture: A New Theory of Change Approach to Building Climate-Resilient Agriculture",
       "Towards Distributed Learning in Internet of Things. Air Quality Monitoring Use Case",
       "Air Quality Monitoring Using Deterministic and Statistical Methods",
+      "Geographic Disaggregation of Textual Social Media Data: A Machine Learning-based Approach",
+      "IADD: An integrated Arabic dialect identification dataset",
+      "Arabic Sexist Comments Detection in Youtube: A Context-Aware Opinion Analysis Approach",
+      "Big Data and Reality Mining in Healthcare: Promise and Potential",
+      "Enabling distributed intelligence in Internet of Things: an air quality monitoring use case",
       "A Dataset to Support Sexist Content Detection in Arabic Text",
       "Towards Distributed Learning in Internet of Things. Air Quality Monitoring Use Case",
       "Author Gender Identification from Arabic Youtube Comments",
+      "Responsive cities and data gathering: challenges and opportunities",
+      "FUTURE-AI: International consensus guideline for trustworthy and deployable artificial intelligence in healthcare",
+      "Assessing Ocean’s Legal Protection Using AI: A New Dataset and a BERT-Based Classifier",
       "A Transformer-Based Nlp Pipeline for Enhanced Extraction of Botanical Information using Camembert on French Literature"
     ]
   },
@@ -409,9 +474,20 @@
       "Développement de GAMA"
     ],
     "publications": [
+      "COMOKIT v2: A multi-scale approach to modeling and simulating epidemic control policies",
       "Dealing with mixed and non-normative traffic. An agent-based simulation with the GAMA platform",
       "Exploring multi-modal evacuation strategies for a landlocked population using large-scale agent-based simulations",
-      "Using the COMOKIT model to study the impact of the morpho-functional organization of cities on the spread of COVID-19"
+      "Generation of Synthetic Populations in Social Simulations: A Review of Methods and Practices",
+      "An Agent-Based Co-modeling Approach to Simulate the Evacuation of a Population in the Context of a Realistic Flooding Event: A Case Study in Hanoi (Vietnam)",
+      "Experimenting the Impact of Pedestrianisation on Urban Pollution Using Tangible Agent-Based Simulations: Application to Hoan Kiem District, Hanoi, Vietnam",
+      "Using the COMOKIT model to study the impact of the morpho-functional organization of cities on the spread of COVID-19",
+      "COMOKIT : un environnement générique et modulaire pour analyser les impacts des politiques d'intervention contre l'épidémie de COVID-19",
+      "Vulnérabilité face aux catastrophes naturelles : comportements de mise en protection et gestion de l’évacuation en cas de crue rapide",
+      "HoanKiemAir: simulating impacts of urban management practices on traffic and air pollution using a tangible agent-based model",
+      "Designing social simulation to (seriously) support decision-making: COMOKIT, an agent-based modelling toolkit to analyse and compare the impacts of public health interventions against COVID-19",
+      "COMOKIT: A Modeling Kit to Understand, Analyze, and Compare the Impacts of Mitigation Policies Against the COVID-19 Epidemic at the Scale of a City",
+      "ESCAPE: Exploring by Simulation Cities Awareness on Population Evacuation",
+      "Gen*: a generic toolkit to generate spatially explicit synthetic populations"
     ]
   },
   {
@@ -531,9 +607,13 @@
     "projects": [],
     "publications": [
       "A Scalable Engineering Combination Therapies for Evolutionary Dynamic of Macrophages",
+      "A Mathematical Model of a Fishery with Variable Market Price: Sustainable Fishery/Over-exploitation",
+      "A Bioeconomic Model of a Multi-site Fishery with Nonlinear Demand Function: Number of Sites Optimizing the Total Catch",
+      "A Model of a Multi-Site Fishery with Variable Price: from Over-Exploitation to Sustainable Fisheries",
       "A Location Problem of Obstacles in Population Dynamics",
       "Visualization and machine learning for forecasting of COVID-19 in Senegal",
       "Theoretical assessment of the impact of environmental contamination on the dynamical transmission of polio",
+      "Contact Vaccination Study Using Edge Based Compartmental Model (EBCM) and Stochastic Simulation: An Application to Oral Poliovirus Vaccine (OPV)",
       "Coupling the shallow water equation with a long term dynamics of sand dunes"
     ]
   },
@@ -570,8 +650,11 @@
       "Enseignement en Master et à l'Ecole doctorale"
     ],
     "publications": [
+      "LittoSIM-GEN: A generic platform of coastal flooding management for participatory simulation",
       "Analysis of temporal consistency management protocols for resource-constrained multi-agent systems",
       "Analyser la réception sociale du recul stratégique face au risque de submersion marine en Camargue et en Normandie à travers une expérience simulée",
+      "PM10 Data Assimilation on Real-time Agent-based Simulation using Machine Learning Models: case of Dakar Urban Air Pollution Study",
+      "RAFALE-SP: a methodology to design and simulate geographical mobility",
       "Using GPU for Multi-agent Multi-scale Simulations",
       "Toward a Spatially-Centered Approach to Integrate Heterogeneous and Multi-scales Urban Component Models",
       "Exploring Complex Models in NetLogo",
@@ -631,8 +714,11 @@
     ],
     "publications": [
       "Un modèle mathématique de la prolifération du Typha",
+      "An Agent-Based Model for Studying the Impact of Herd Mobility on the Spread of Vector-Borne Diseases: The Case of Rift Valley Fever (Ferlo Senegal)",
       "An Agent Based Model to Study the Impact of Intra-annual Season’s Variability on the Dynamics of Aedes Vexans and Culex Poicilipes Mosquito Populations in North Senegal (Ferlo)",
       "Coupling an Agent-Based Model with a Mathematical Model of Rift Valley Fever for Studying the Impact of Animal Migrations on the Rift Valley Fever Transmission",
+      "Aedes Vertical Transmission Logistic Growth Mathematical Model for Assessing Arboviruses Maintenance in Environment: A Positive Semigroup Approach",
+      "A climate-based model for tick life cycle: positive semigroup theory on Cauchy problem approach",
       "Assessing Maintenance of Arboviruses in Nature via Aedes Mosquitoes by Positive semigroup",
       "An Extension of Two Species Lotka-Volterra Competition Model",
       "An Agent Based Model for Studying the Impact of Rainfall on Rift Valley Fever Transmission at Ferlo (Senegal)",
@@ -646,7 +732,8 @@
       "Participation à des rojets de recherche et à la conférence CRI"
     ],
     "publications": [
-      "Algorithmes de sortie du Piège de la Zone Ennuyeuse en apprentissage par renforcement"
+      "Algorithmes de sortie du Piège de la Zone Ennuyeuse en apprentissage par renforcement",
+      "YembaTones: A syllable-tone annotated dataset for speech recognition and prosodic analysis of the Yemba language"
     ]
   },
   {
@@ -725,6 +812,7 @@
       "Local Bifurcations and Optimal Theory in a Delayed Predator–Prey Model with Threshold Prey Harvesting",
       "Analysis of an Age-structured SIL model",
       "Optimal Synchronization of a Memristive Chaotic Circuit",
+      "Tree–grass interaction dynamics and pulsed fires: Mathematical and numerical studies",
       "Modeling and analysis of hiv and hepatitis c co-infections",
       "Practical time-delay synchronization of a periodically modulated self-excited oscillators with uncertainties",
       "Parameter estimation based synchronization for an epidemic model with application to tuberculosis in Cameroon",
@@ -761,7 +849,9 @@
     "name": "Responsable de thème",
     "themesDescription": "Intelligence Artificielle et apprentissage profond / AI and deep learning, Capteurs et collecte de données / Sensors and data collection",
     "projects": [],
-    "publications": []
+    "publications": [
+      "Climate change in Viet Nam, impacts and adaptation : a COP26 assessment report of the GEMMES Viet Nam"
+    ]
   },
   {
     "name": "Thomas MESSI NGUELE",
@@ -777,11 +867,21 @@
       "New tools for the spatial management of living marine resources",
       "Use of local knowledge in marine protected area management",
       "Effect of Small Versus Large Clusters of Fish School on the Yield of a Purse-Seine Small Pelagic Fishery Including a Marine Protected Area",
+      "Implementation of artificial habitats: Inside or outside the marine protected areas? Insights from a mathematical approach",
+      "Small pelagic fish reproductive strategies in upwelling systems: a natal homing evolutionary model to study environmental constraints",
+      "Competition or cooperation in transboundary fish stocks management: Insight from a dynamical model",
       "Can overexploited fisheries recover by self-organization? Reallocation of fishing effort as an emergent form of governance",
+      "Complex data labeling with deep learning methods: Lessons from fisheries acoustics",
       "El Niño as a predictor of round sardinella distribution along the northwest African coast",
       "Detection and Classification of Underwater Acoustic Events",
+      "Influence of combined temperature and food availability on Peruvian anchovy (Engraulis ringens) early life stages in the northern Humboldt Current system: A modelling approach",
+      "The Sound of Silence: An Immersive Approach to Spearfishermen's Ecological Knowledge Along the Dakar Coastline",
+      "Spatial and temporal variability of primary production in the north-west African upwelling : a modelling approach [résumé]",
+      "Contribution of mathematical modeling to the ecosystem approach to fisheries management and the marine environment (EAMME) : the AWA experience [résumé]",
       "Complex small pelagic fish population patterns arising from individual behavioural responses to their environment [résumé de poster]",
+      "the AWA project : ecosystem approach to the management of fisheries and the marine environment in West African waters",
       "Towards improved climate prediction for West Africa [résumé]",
+      "FisherMob : a bioeconomic model of fishers' migrations",
       "Successful artificial reefs depend on getting the context right due to complex socio-bio-economic interactions"
     ]
   },
@@ -793,13 +893,22 @@
       "Effects of refuges and density dependent dispersal on interspecific competition dynamics",
       "Effect of Small Versus Large Clusters of Fish School on the Yield of a Purse-Seine Small Pelagic Fishery Including a Marine Protected Area",
       "A Land-Use Change Model to Support Land-Use Planning in the Mekong Delta (MEKOLUC)",
+      "CityScope Hanoi: interactive simulation for water management in the Bac Hung Hai irrigation system",
+      "Modelling herbivore population dynamics in the Amboseli National Park Kenya: Application of spatial aggregation of variables to derive a master model",
+      "Approximate aggregation of linear discrete models with two time scales: re-scaling slow processes to the fast scale",
       "Linking local retention, self-recruitment, and persistence in marine metapopulations",
+      "Coupling equation based models and agent-based models: example of a multi-strains and switch SIR toy model",
+      "A Mathematical Model of a Fishery with Variable Market Price: Sustainable Fishery/Over-exploitation",
       "Modelling the dynamics of migrations for large herbivore populations in the Amboseli National Park, Kenya",
       "Assessing Public Transport Strategies in Marrakesh using ABMS",
       "Assessing Public Transport Strategies in Marrakesh using ABMS",
+      "On Incidence-Dependent Management Strategies against an SEIRS Epidemic: Extinction of the Epidemic Using Allee Effect",
       "Using Agent-Based Modelling to Understand Advantageous Behaviours Against COVID-19 Transmission in the Built Environment",
+      "HoanKiemAir: simulating impacts of urban management practices on traffic and air pollution using a tangible agent-based model",
       "Application of aggregation of variables methods to a class of two-time reaction-diffusion-chemotaxis models of spatially structured populations with constant diffusion",
       "Can overexploited fisheries recover by self-organization? Reallocation of fishing effort as an emergent form of governance",
+      "Proceedings of the First Vietnamese-French Joint Conference on Applications of Mathematics to Ecology, Bio-economics, Epidemiology and Health Care: Hanoi and Tuanchau, Vietnam, December 12–15, 2016",
+      "ODD+2D: An ODD Based Protocol for Mapping Data to Empirical ABMs",
       "Time Headway analysis on urban roads of the city of Marrakesh",
       "Uncertainty in empirical estimates of marine larval"
     ]
@@ -819,7 +928,8 @@
     "publications": [
       "Optimizing an Environmental Surveillance Network with Gaussian Process Entropy.",
       "Modeling a Surveillance Network Based on Unit Disk Graph Technique – Application for Monitoring the Invasion of Insects in Mekong Delta Region",
-      "Estimating the Density of Brown Plant Hoppers from a Light-Traps Network Based on Unit Disk Graph"
+      "Estimating the Density of Brown Plant Hoppers from a Light-Traps Network Based on Unit Disk Graph",
+      "Modeling the brown plant hoppers surveillance network using agent-based model: application for the Mekong Delta region"
     ]
   },
   {

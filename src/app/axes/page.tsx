@@ -182,9 +182,17 @@ export default function AxesPage() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {RESEARCHERS.map((r) => (
               <Link key={r.id} href={`/chercheurs/${r.id}`} className="rounded-xl border border-slate-900 bg-slate-950 p-5 hover:border-slate-800 transition-colors group">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600/10 text-blue-400 text-base font-bold border border-blue-900/30 mb-3 group-hover:scale-105 transition-transform">
-                  {r.avatarSeed}
-                </div>
+                {r.photoUrl ? (
+                  <img
+                    src={r.photoUrl}
+                    alt={r.name}
+                    className="h-14 w-14 rounded-full object-cover object-top mb-3 border border-slate-800 group-hover:scale-105 transition-transform"
+                  />
+                ) : (
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-600/10 text-blue-400 text-base font-bold border border-blue-900/30 mb-3 group-hover:scale-105 transition-transform">
+                    {r.avatarSeed}
+                  </div>
+                )}
                 <h3 className="text-xs font-bold text-white group-hover:text-blue-400 transition-colors">{r.name}</h3>
                 <p className="mt-1 text-[10px] text-slate-500">{r.title}</p>
                 <div className="mt-3 flex flex-wrap gap-1">

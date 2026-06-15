@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
+import Sidebar from "@/components/Sidebar";
 import Providers from "@/components/Providers";
 import ChatWidget from "@/components/ChatWidget";
+import NotificationContainer from "@/components/NotificationContainer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,11 +60,14 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full bg-slate-950 text-slate-100 font-sans selection:bg-blue-600 selection:text-white flex flex-col transition-colors duration-200">
+      <body className="min-h-full bg-[var(--background)] text-[var(--foreground)] font-sans selection:bg-blue-600 selection:text-white transition-colors duration-200">
         <Providers>
-          <Navigation />
-          {children}
-          <ChatWidget />
+          <Sidebar />
+          <div className="sidebar-offset min-h-screen flex flex-col">
+            {children}
+            <ChatWidget />
+          </div>
+          <NotificationContainer />
         </Providers>
       </body>
     </html>
