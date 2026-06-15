@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -18,10 +18,8 @@ import {
   Handshake,
   MessageSquare,
   Quote,
-  Sparkles,
   Globe2,
   Boxes,
-  Mic,
 } from "lucide-react";
 import {
   AXES,
@@ -29,7 +27,6 @@ import {
   PUBLICATION,
   DATASETS,
   CENTERS,
-  PROJECTS,
   Publication,
 } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
@@ -93,11 +90,7 @@ export default function Home() {
             {t("hero.title1")} <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-green-400 bg-clip-text text-transparent">{t("hero.titleHighlight")}</span> {t("hero.title2")}
           </motion.h1>
 
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mt-6 max-w-2xl text-slate-400 text-base leading-relaxed">
-            {t("hero.description")}
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-10 w-full max-w-2xl relative">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mt-10 w-full max-w-2xl relative">
             <div className="relative rounded-full border border-slate-800 bg-slate-900/50 backdrop-blur-sm shadow-xl focus-within:border-blue-500/50 transition-all duration-300">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
               <input type="text" placeholder={t("hero.searchPlaceholder")} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-12 pr-6 py-4 rounded-full bg-transparent text-base text-slate-200 placeholder-slate-500 focus:outline-none" />
@@ -139,25 +132,17 @@ export default function Home() {
       </section>
 
       {/* ── INTRO / PRÉSENTATION ──────────────────────────────────────────── */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900 relative overflow-hidden">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 relative overflow-hidden">
         <div className="absolute -left-20 top-1/2 -translate-y-1/2 -z-10 h-80 w-80 rounded-full bg-blue-600/5 blur-[120px]" />
         <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-center">
           <div>
-            <span className="inline-flex items-center gap-2 text-[13px] mono-text uppercase tracking-widest text-blue-400 font-bold mb-4">
-              <Sparkles className="h-4 w-4" /> Qu&apos;est-ce qu&apos;UMMISCO ?
-            </span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white leading-tight">
               Une unité mixte internationale au service de la{" "}
               <span className="text-green-400">science de la durabilité</span>
             </h2>
-            <div className="mt-6 space-y-4 text-slate-400 text-base leading-relaxed">
-              <p>
-                Fondée en <strong className="text-slate-200">2009</strong>, l&apos;<strong className="text-slate-200">UMI UMMISCO (UMI 209)</strong> est une unité mixte internationale à vocation méthodologique, spécialisée dans la <strong className="text-slate-200">modélisation mathématique et informatique des systèmes complexes</strong>.
-              </p>
-              <p>
-                Elle rassemble des chercheurs de disciplines variées pour développer des approches novatrices de <strong className="text-slate-200">simulation, d&apos;analyse et d&apos;aide à la décision</strong>, appliquées aux systèmes naturels, biologiques et sociaux — sous la tutelle de l&apos;<strong className="text-slate-200">IRD</strong> et de <strong className="text-slate-200">Sorbonne Université</strong>.
-              </p>
-            </div>
+            <p className="mt-6 text-slate-400 text-base leading-relaxed">
+              Fondée en <strong className="text-slate-200">2009</strong>, l&apos;UMI UMMISCO réunit des chercheurs de disciplines variées pour développer des approches de <strong className="text-slate-200">modélisation, simulation et aide à la décision</strong> appliquées aux systèmes complexes — sous la tutelle de l&apos;<strong className="text-slate-200">IRD</strong> et de <strong className="text-slate-200">Sorbonne Université</strong>.
+            </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/equipe" style={{ color: "#ffffff" }} className="inline-flex items-center gap-2 rounded-lg bg-ummisco-blue px-5 py-2.5 text-sm font-semibold text-white hover:bg-ummisco-blue/90 active:scale-95 transition-all">
                 <Users className="h-4 w-4" /> Découvrir l&apos;équipe
@@ -202,15 +187,12 @@ export default function Home() {
       </section>
 
       {/* ── GLOBE INTERACTIF DES CENTRES ──────────────────────────────────── */}
-      <section id="centres" className="py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10 relative overflow-hidden">
+      <section id="centres" className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10 relative overflow-hidden">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[28rem] w-[28rem] rounded-full bg-blue-600/5 blur-[120px]" />
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-2 items-center">
           <div>
             <span className="text-[13px] mono-text uppercase tracking-widest text-green-400 font-bold mb-3 flex items-center gap-2"><Globe2 className="h-4 w-4" /> Réseau international</span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white">Nos 5 centres dans le monde</h2>
-            <p className="mt-4 max-w-xl text-slate-400 text-base leading-relaxed">
-              UMMISCO est implantée sur trois continents. Faites tourner le globe : chaque point lumineux est un centre — cliquez-le pour découvrir ses recherches, ses tutelles et son équipe.
-            </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {CENTERS.map((c) => (
                 <Link key={c.id} href={`/centres/${c.id}`} className="inline-flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/40 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white hover:border-slate-700 transition-all">
@@ -227,12 +209,11 @@ export default function Home() {
       </section>
 
       {/* ── AXES / THÈMES ─────────────────────────────────────────────────── */}
-      <section id="axes" className="py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10">
+      <section id="axes" className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12">
+          <div className="mb-8">
             <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2">{t("axes.sectionTag")}</span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white">{t("axes.title")}</h2>
-            <p className="mt-4 max-w-2xl text-slate-400 text-base leading-relaxed">Quatre axes complémentaires alliant modélisation fondamentale et applications concrètes de terrain.</p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {AXES.map((axis) => (
@@ -268,9 +249,9 @@ export default function Home() {
       </section>
 
 {/* ── FEATURED PUBLICATION ─────────────────────────────────────────── */}
-      <section id="publications" className="py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900">
+      <section id="publications" className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 flex flex-wrap gap-4 justify-between items-end">
+          <div className="mb-8 flex flex-wrap gap-4 justify-between items-end">
             <div>
               <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2">{t("publications.sectionTag")}</span>
               <h2 className="text-3xl font-extrabold tracking-tight text-white">{t("publications.title")}</h2>
@@ -306,12 +287,11 @@ export default function Home() {
       </section>
 
       {/* ── EXPLORE THE PLATFORM ──────────────────────────────────────────── */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12">
+          <div className="mb-8">
             <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2">Explorer la plateforme</span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white">Tout l&apos;écosystème UMMISCO, en un endroit</h2>
-            <p className="mt-4 max-w-2xl text-slate-400 text-base leading-relaxed">Publications référencées, datasets contrôlés, simulations intégrées et vie scientifique du laboratoire.</p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {EXPLORE_LINKS.map((item) => {
@@ -332,11 +312,7 @@ export default function Home() {
       {/* ── AI ASSISTANT CALLOUT ──────────────────────────────────────────── */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-900">
         <div className="mx-auto max-w-5xl rounded-2xl border border-slate-900 bg-gradient-to-br from-blue-950/40 to-slate-900/20 p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-3"><MessageSquare className="h-5 w-5 text-blue-400" /><h3 className="text-lg font-bold text-white">Assistant IA UMMISCO</h3></div>
-            <p className="text-sm text-slate-400 leading-relaxed">Posez vos questions sur nos axes, publications, datasets, chercheurs et événements. L&apos;assistant scientifique répond en français ou en anglais, 24h/24.</p>
-          </div>
-          <div className="text-[13px] text-slate-500 flex items-center gap-2 whitespace-nowrap"><span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse inline-block" /> Cliquez sur l&apos;icône en bas à droite</div>
+          <div className="flex items-center gap-3"><MessageSquare className="h-5 w-5 text-blue-400" /><h3 className="text-lg font-bold text-white">Assistant IA UMMISCO</h3><span className="flex items-center gap-1.5 text-[13px] text-slate-500"><span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse inline-block" /> disponible 24h/24</span></div>
         </div>
       </section>
 
