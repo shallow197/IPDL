@@ -404,16 +404,12 @@ export default function ProjetsPage() {
                   <p className="text-[10px] text-slate-500 leading-relaxed line-clamp-2 mb-3">
                     {center.description}
                   </p>
-                  {center.website && (
-                    <a
-                      href={center.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[10px] text-blue-400 hover:text-blue-300 transition"
-                    >
-                      Voir le centre <ExternalLink className="h-2.5 w-2.5" />
-                    </a>
-                  )}
+                  <a
+                    href={`/centres/${center.id}`}
+                    className="inline-flex items-center gap-1 text-[10px] text-blue-400 hover:text-blue-300 transition"
+                  >
+                    Voir le centre <ExternalLink className="h-2.5 w-2.5" />
+                  </a>
                 </motion.div>
               );
             })}
