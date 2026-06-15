@@ -35,7 +35,7 @@ export default function Sidebar() {
   const navLinks = [
     { label: t("nav.home"),        href: "/",            icon: Home },
     { label: t("nav.axes"),        href: "/axes",         icon: Layers },
-    { label: t("nav.projets"),     href: "/projets",      icon: FolderKanban },
+    { label: "Projets",             href: "/projets",      icon: FolderKanban },
     { label: t("nav.publications"),href: "/publications", icon: BookOpen },
     { label: t("nav.datasets"),    href: "/datasets",     icon: Database },
     { label: t("nav.simulations"), href: "/simulations",  icon: Play },

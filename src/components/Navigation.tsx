@@ -20,7 +20,7 @@ export default function Navigation() {
   const navLinks = [
     { label: t("nav.home"), href: "/" },
     { label: t("nav.axes"), href: "/axes" },
-    { label: t("nav.projets"), href: "/projets" },
+    { label: "Projets", href: "/projets" },
     { label: t("nav.publications"), href: "/publications" },
     { label: t("nav.datasets"), href: "/datasets" },
     { label: t("nav.simulations"), href: "/simulations" },
