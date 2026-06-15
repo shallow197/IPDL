@@ -100,6 +100,7 @@ export interface SoftwareTool {
   tags: string[];
   website?: string;
   github?: string;
+  logoUrl?: string;
 }
 
 // ─── Axes officiels UMMISCO UMI 209 ──────────────────────────────────────────
@@ -2072,6 +2073,7 @@ export const SOFTWARE_TOOLS: SoftwareTool[] = [
     tags: ["Java", "Agent-based", "Simulation", "GIS"],
     website: "https://gama-platform.org/",
     github: "https://github.com/gama-platform/gama",
+    logoUrl: "/logos/logos-logiciels/gama-logo.png",
   },
   {
     id: "comokit-tool",
@@ -2081,6 +2083,7 @@ export const SOFTWARE_TOOLS: SoftwareTool[] = [
     tags: ["GAMA", "Épidémiologie", "COVID-19"],
     website: "https://comokit.org/",
     github: "https://github.com/COMOKIT",
+    logoUrl: "/logos/logos-logiciels/logo-comokit.png",
   },
   {
     id: "ichthyop",
@@ -2090,6 +2093,7 @@ export const SOFTWARE_TOOLS: SoftwareTool[] = [
     tags: ["Océanographie", "Ichtyologie", "Particules"],
     website: "https://ichthyop.org/",
     github: "https://github.com/ichthyop/ichthyop",
+    logoUrl: "/logos/logos-logiciels/cropped-logo_ichtyop.png",
   },
   {
     id: "kendrick",
@@ -2098,6 +2102,7 @@ export const SOFTWARE_TOOLS: SoftwareTool[] = [
       "Plateforme de simulation épidémiologique mathématique. Modèles déterministes compartimentaux, stochastiques et en réseaux. Basé sur Pharo, open source MIT.",
     tags: ["Pharo", "Épidémiologie", "DSL", "Open Source"],
     github: "https://github.com/KendrickOrg/kendrick",
+    logoUrl: "/logos/logos-logiciels/kendrick-logo.png",
   },
   {
     id: "epicam",
@@ -2106,6 +2111,7 @@ export const SOFTWARE_TOOLS: SoftwareTool[] = [
       "Système de surveillance de la tuberculose déployé sur 47 sites au Cameroun. Permet le suivi individualisé de 65 % des malades enregistrés, développé avec le Centre Pasteur.",
     tags: ["Tuberculose", "Cameroun", "Surveillance", "Santé publique"],
     github: "https://github.com/UMMISCO/EPICAM",
+    logoUrl: "/logos/logos-logiciels/New-epiCam-logo.webp",
   },
 ];
 

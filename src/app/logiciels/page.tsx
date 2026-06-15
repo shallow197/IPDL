@@ -1,54 +1,46 @@
 "use client";
 
 import React from "react";
-import { ExternalLink, Boxes, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import Image from "next/image";
+import { ExternalLink, Boxes } from "lucide-react";
 import { SOFTWARE_TOOLS } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
 import { useLang } from "@/context/LangContext";
-
-const SOFTWARE_ACCENT: Record<string, string> = {
-  gama: "text-blue-400 bg-blue-500/10",
-  "comokit-tool": "text-rose-400 bg-rose-500/10",
-  ichthyop: "text-cyan-400 bg-cyan-500/10",
-  kendrick: "text-violet-400 bg-violet-500/10",
-  epicam: "text-amber-400 bg-amber-500/10",
-};
 
 export default function LogicielsPage() {
   const { t } = useLang();
 
   return (
-    <div className="flex-1 flex flex-col bg-slate-950 text-slate-100 font-sans">
-      {/* ── HEADER ──────────────────────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-gradient-to-b from-slate-900 to-slate-950">
-        <div className="mx-auto max-w-7xl">
-          <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 mb-6 transition-colors">
-            <ArrowLeft className="h-4 w-4" />
-            Retour à l'accueil
-          </Link>
-          <div className="mb-6">
-            <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2 flex items-center gap-2">
-              <Boxes className="h-4 w-4 text-violet-400" /> Logiciels open source
-            </span>
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">Des outils utilisés dans le monde entier</h1>
-            <p className="mt-4 max-w-2xl text-slate-400 text-base leading-relaxed">UMMISCO conçoit et maintient des plateformes de modélisation reconnues internationalement.</p>
-          </div>
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <div className="border-b border-slate-900 pb-8 mb-12">
+          <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2 flex items-center gap-2">
+            <Boxes className="h-4 w-4 text-violet-400" /> Logiciels open source
+          </span>
+          <h1 className="text-3xl font-extrabold text-white sm:text-4xl">Des outils utilisés dans le monde entier</h1>
+          <p className="mt-3 text-slate-400 text-base leading-relaxed max-w-2xl">UMMISCO conçoit et maintient des plateformes de modélisation reconnues internationalement.</p>
         </div>
-      </section>
 
-      {/* ── LOGICIELS ────────────────────────────────────────────────────────── */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {SOFTWARE_TOOLS.map((tool) => {
-              const accent = SOFTWARE_ACCENT[tool.id] ?? "text-blue-400 bg-blue-500/10";
               return (
                 <div key={tool.id} className="rounded-xl border border-slate-800 bg-slate-950 p-6 flex flex-col hover:border-slate-700 transition-colors">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${accent} font-extrabold`}>
-                      {tool.name.slice(0, 2)}
-                    </span>
+                  <div className="flex items-center justify-between mb-4">
+                    {tool.logoUrl ? (
+                      <div className="h-12 w-12 relative flex items-center justify-center bg-slate-900/50 rounded-lg overflow-hidden">
+                        <Image
+                          src={tool.logoUrl}
+                          alt={tool.name}
+                          width={48}
+                          height={48}
+                          className="object-contain p-1"
+                        />
+                      </div>
+                    ) : (
+                      <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-slate-800 font-bold text-slate-500">
+                        {tool.name.slice(0, 2)}
+                      </div>
+                    )}
                     {tool.since && <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">depuis {tool.since}</span>}
                   </div>
                   <h3 className="text-base font-bold text-white">{tool.name}</h3>
@@ -75,9 +67,8 @@ export default function LogicielsPage() {
                 </div>
               );
             })}
-          </div>
         </div>
-      </section>
+      </main>
 
       <Footer />
     </div>
