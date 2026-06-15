@@ -101,6 +101,25 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--color-slate-800); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-slate-700); }
 
+/* ── Texte blanc fixe sur fonds colorés (boutons, badges) ───────────── */
+/* Sur un fond coloré (bleu/vert UMMISCO), text-white reste blanc
+   même en mode clair — sinon on a du noir sur bleu foncé.            */
+html:not(.dark) .bg-ummisco-blue,
+html:not(.dark) .bg-ummisco-green,
+html:not(.dark) [class*="bg-blue-6"],
+html:not(.dark) [class*="bg-blue-7"],
+html:not(.dark) [class*="bg-blue-8"],
+html:not(.dark) [class*="bg-blue-9"],
+html:not(.dark) [class*="bg-green-6"],
+html:not(.dark) [class*="bg-green-7"],
+html:not(.dark) [class*="bg-green-8"],
+html:not(.dark) [class*="bg-violet-6"],
+html:not(.dark) [class*="bg-amber-5"],
+html:not(.dark) [class*="bg-red-6"],
+html:not(.dark) [class*="bg-rose-6"] {
+  --color-white: #ffffff;
+}
+
 /* ── Light mode — sidebar fond + ombre cartes ───────────────────────── */
 html:not(.dark) aside {
   background: var(--sidebar-bg);
