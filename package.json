@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "import:ummisco-publications": "node ./scripts/importUmmiscoPublications.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.39.0",

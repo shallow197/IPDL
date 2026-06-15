@@ -1,3 +1,5 @@
+import { UMMISCO_EXTERNAL_PUBLICATIONS } from "./ummiscoExternalPublications";
+
 // ─── Interfaces ───────────────────────────────────────────────────────────────
 
 export interface Researcher {
@@ -29,6 +31,7 @@ export interface Publication {
   accessLevel: "public" | "protected" | "private";
   doi?: string;
   journal?: string;
+  url?: string;
 }
 
 export interface Dataset {
@@ -875,7 +878,7 @@ export const RESEARCHERS: Researcher[] = [
 
 // ─── Publications ─────────────────────────────────────────────────────────────
 
-export const PUBLICATIONS: Publication[] = [
+export const PUBLICATIONS_SEED: Publication[] = [
   {
     id: "pub-01",
     title: "Modélisation multi-agents de la propagation du paludisme dans la zone périurbaine de Dakar (2019-2024)",
@@ -1068,6 +1071,13 @@ export const PUBLICATIONS: Publication[] = [
 }`,
     accessLevel: "public",
   },
+];
+
+const existingPublicationIds = new Set(PUBLICATIONS_SEED.map((pub) => pub.id));
+
+export const PUBLICATIONS: Publication[] = [
+  ...PUBLICATIONS_SEED,
+  ...UMMISCO_EXTERNAL_PUBLICATIONS.filter((pub) => !existingPublicationIds.has(pub.id)),
 ];
 
 // ─── Datasets ─────────────────────────────────────────────────────────────────

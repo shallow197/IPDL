@@ -63,6 +63,9 @@ export default function Footer() {
                 <Link href="/presse" className="hover:text-slate-200 transition-colors">Espace Presse &amp; Médias</Link>
               </li>
               <li>
+                <Link href="/contacts" className="hover:text-slate-200 transition-colors">Contact</Link>
+              </li>
+              <li>
                 <Link href="/connexion" className="hover:text-slate-200 transition-colors">Espace Connecté</Link>
               </li>
             </ul>
