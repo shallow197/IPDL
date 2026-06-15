@@ -2123,17 +2123,6 @@ export const PROJECTS: Project[] = [
     budget: "350 K€",
     partenaires: "INRIA, INRAE, IRD (ANR 2023)",
   },
-  {
-    id: "obligations",
-    name: "OBLIGATIONS",
-    centers: ["france"],
-    themes: ["participatif"],
-    domain: "Biodiversité",
-    description: "Obligations de résultats pour la biodiversité : quantification et suivi à l'interface science-politiques.",
-    url: "https://ummisco.fr/fr/projet-ummisco/obligations/",
-    chefProjet: "Marie-Paule Bonnet, UMR Espace-Dev, IRD",
-    partenaires: "IRD Montpellier & Bondy ; Universidad Nacional de Colombia ; CIRAD ; MNHN/GBIF-France ; Université Friedrich-Schiller, Iéna ; Instituto Nacional de Pesquisas Spatiales, Brésil ; Université norvégienne des sciences de la vie ; Université de Californie Santa Barbara ; Université de Lausanne ; Virginia Polytechnic Institute ; Université de Brasilia ; Université d'East Anglia, Norwich",
-  },
 ];
 
 // ─── Logiciels UMMISCO ────────────────────────────────────────────────────────
