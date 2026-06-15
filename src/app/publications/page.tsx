@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -29,6 +29,8 @@ export default function PublicationsPage() {
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [copiedPubId, setCopiedPubId] = useState<string | null>(null);
   const [citationModalPub, setCitationModalPub] = useState<Publication | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 12;
 
   // Filter lists configuration
   const uniqueYears = Array.from(new Set(PUBLICATIONS.map((p) => p.year))).sort((a, b) => b - a);
@@ -45,6 +47,31 @@ export default function PublicationsPage() {
 
     return matchesSearch && matchesAxis && matchesResearcher && matchesYear;
   });
+
+  const totalPages = Math.max(1, Math.ceil(filteredPublications.length / ITEMS_PER_PAGE));
+  const paginatedPublications = filteredPublications.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedAxis, selectedResearcher, selectedYear]);
+
+  const paginationPages = (() => {
+    const pages = new Set<number>();
+    pages.add(1);
+    pages.add(totalPages);
+
+    for (let offset = -2; offset <= 2; offset += 1) {
+      const page = currentPage + offset;
+      if (page >= 1 && page <= totalPages) {
+        pages.add(page);
+      }
+    }
+
+    return Array.from(pages).sort((a, b) => a - b);
+  })();
 
   const handleCopyCitation = (text: string, pubId: string) => {
     navigator.clipboard.writeText(text);
@@ -180,12 +207,13 @@ export default function PublicationsPage() {
 
           {/* RIGHT CONTENT: PUBLICATIONS LIST */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="flex justify-between items-center text-xs text-slate-500">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-xs text-slate-500 gap-3">
               <span>{filteredPublications.length} publication(s) trouvée(s)</span>
+              <span>Affichage {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, filteredPublications.length)}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredPublications.length)} sur {filteredPublications.length}</span>
             </div>
 
             <div className="space-y-4">
-              {filteredPublications.map((pub) => {
+              {paginatedPublications.map((pub) => {
                 const isPublic = pub.accessLevel === "public";
                 const isProtected = pub.accessLevel === "protected";
                 const isPrivate = pub.accessLevel === "private";
@@ -273,6 +301,47 @@ export default function PublicationsPage() {
                 </div>
               )}
             </div>
+
+            {filteredPublications.length > ITEMS_PER_PAGE && (
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+                <button
+                  onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+                  disabled={currentPage === 1}
+                  className="rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-xs font-semibold text-slate-300 transition hover:border-slate-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Précédent
+                </button>
+
+                {paginationPages.map((page, index) => {
+                  const isGap = index > 0 && page - paginationPages[index - 1] > 1;
+                  return (
+                    <React.Fragment key={page}>
+                      {isGap && (
+                        <span className="px-2 text-xs text-slate-500">…</span>
+                      )}
+                      <button
+                        onClick={() => setCurrentPage(page)}
+                        className={`rounded-full px-3 py-2 text-xs font-semibold transition ${
+                          currentPage === page
+                            ? "bg-blue-500 text-white"
+                            : "border border-slate-800 bg-slate-900/70 text-slate-300 hover:border-slate-700 hover:text-white"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    </React.Fragment>
+                  );
+                })}
+
+                <button
+                  onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+                  disabled={currentPage === totalPages}
+                  className="rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-xs font-semibold text-slate-300 transition hover:border-slate-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Suivant
+                </button>
+              </div>
+            )}
           </div>
         </div>
 

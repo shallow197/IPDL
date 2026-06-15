@@ -1,9 +1,14 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import BrandLogo from "./BrandLogo";
 import { Mail, MapPin, Globe } from "lucide-react";
+import { useLang } from "@/context/LangContext";
 
 export default function Footer() {
+  const { t } = useLang();
+
   return (
     <footer className="relative border-t border-slate-900 bg-slate-950 text-slate-400 py-16 px-4 sm:px-6 lg:px-8">
       {/* Decorative blue→green brand accent line */}
@@ -15,28 +20,26 @@ export default function Footer() {
             <div className="flex items-center gap-2 text-white">
               <BrandLogo height={36} />
             </div>
-            <p className="text-sm leading-relaxed text-slate-500">
-              Unité Mixte Internationale UMI 209 (IRD &amp; Sorbonne Université) — modélisation mathématique et informatique des systèmes complexes au service de la science de la durabilité. 5 centres internationaux · 94 membres · 4 axes de recherche.
-            </p>
+            <p className="text-sm leading-relaxed text-slate-500">{t("footer.brandDesc")}</p>
           </div>
 
           {/* Research axes links */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-slate-200 mb-4 border-l-2 border-ummisco-blue pl-2">
-              Axes de Recherche
+              {t("footer.axesTitle")}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/axes" className="hover:text-slate-200 transition-colors">Agents & Modélisation</Link>
+                <Link href="/axes" className="hover:text-slate-200 transition-colors">{t("footer.axesLink1")}</Link>
               </li>
               <li>
-                <Link href="/axes" className="hover:text-slate-200 transition-colors">IA & Apprentissage Profond</Link>
+                <Link href="/axes" className="hover:text-slate-200 transition-colors">{t("footer.axesLink2")}</Link>
               </li>
               <li>
-                <Link href="/axes" className="hover:text-slate-200 transition-colors">Capteurs & Collecte de données</Link>
+                <Link href="/axes" className="hover:text-slate-200 transition-colors">{t("footer.axesLink3")}</Link>
               </li>
               <li>
-                <Link href="/axes" className="hover:text-slate-200 transition-colors">Approches participatives</Link>
+                <Link href="/axes" className="hover:text-slate-200 transition-colors">{t("footer.axesLink4")}</Link>
               </li>
             </ul>
           </div>
@@ -44,26 +47,29 @@ export default function Footer() {
           {/* Resources links */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-slate-200 mb-4 border-l-2 border-ummisco-blue pl-2">
-              Ressources
+              {t("footer.resourcesTitle")}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/publications" className="hover:text-slate-200 transition-colors">Publications Scientifiques</Link>
+                <Link href="/publications" className="hover:text-slate-200 transition-colors">{t("footer.resourcesPublications")}</Link>
               </li>
               <li>
-                <Link href="/datasets" className="hover:text-slate-200 transition-colors">Catalogues de Datasets</Link>
+                <Link href="/datasets" className="hover:text-slate-200 transition-colors">{t("footer.resourcesDatasets")}</Link>
               </li>
               <li>
-                <Link href="/equipe" className="hover:text-slate-200 transition-colors">Annuaire des Chercheurs</Link>
+                <Link href="/equipe" className="hover:text-slate-200 transition-colors">{t("footer.resourcesTeam")}</Link>
               </li>
               <li>
-                <Link href="/#centres" className="hover:text-slate-200 transition-colors">Nos Centres</Link>
+                <Link href="/#centres" className="hover:text-slate-200 transition-colors">{t("footer.resourcesCenters")}</Link>
               </li>
               <li>
-                <Link href="/presse" className="hover:text-slate-200 transition-colors">Espace Presse &amp; Médias</Link>
+                <Link href="/presse" className="hover:text-slate-200 transition-colors">{t("footer.resourcesPress")}</Link>
               </li>
               <li>
-                <Link href="/connexion" className="hover:text-slate-200 transition-colors">Espace Connecté</Link>
+                <Link href="/contacts" className="hover:text-slate-200 transition-colors">{t("footer.resourcesContact")}</Link>
+              </li>
+              <li>
+                <Link href="/connexion" className="hover:text-slate-200 transition-colors">{t("footer.resourcesLogin")}</Link>
               </li>
             </ul>
           </div>
@@ -71,19 +77,19 @@ export default function Footer() {
           {/* Contacts & Locations */}
           <div className="space-y-3 text-sm text-slate-500">
             <h4 className="text-sm font-bold uppercase tracking-widest text-slate-200 mb-4 border-l-2 border-ummisco-blue pl-2">
-              Contacts & Sites
+              {t("footer.contactsTitle")}
             </h4>
             <div className="flex items-start gap-2">
               <MapPin className="h-4 w-4 text-slate-600 flex-none mt-0.5" />
-              <span><strong className="text-slate-300 font-semibold">ESP UCAD</strong> : Route de Ouakam, BP 5085, Dakar-Fann, Sénégal.</span>
+              <span>{t("footer.contactsEsp")}</span>
             </div>
             <div className="flex items-start gap-2">
               <MapPin className="h-4 w-4 text-slate-600 flex-none mt-0.5" />
-              <span><strong className="text-slate-300 font-semibold">Site de Hann</strong> : Campus IRD de Hann, Route des Pères Maristes, Dakar.</span>
+              <span>{t("footer.contactsHann")}</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-slate-600 flex-none" />
-              <span>contact.ummisco@ucad.edu.sn</span>
+              <span>{t("footer.contactsEmail")}</span>
             </div>
           </div>
         </div>
@@ -91,13 +97,13 @@ export default function Footer() {
         {/* Footer bottom */}
         <div className="mt-12 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center text-[13px] text-slate-600 gap-4">
           <div className="flex items-center gap-3">
-            <span>© {new Date().getFullYear()} UMMISCO UMI 209 — Tous droits réservés.</span>
+            <span>© {new Date().getFullYear()} UMMISCO UMI 209 — {t("footer.copyRight")}</span>
             <span>·</span>
-            <span>IRD & Sorbonne Université</span>
+            <span>{t("footer.hostInfo")}</span>
           </div>
           <div className="flex items-center gap-2">
             <Globe className="h-3 w-3" />
-            <span>Portail Institutionnel International</span>
+            <span>{t("footer.hostInfo")}</span>
           </div>
         </div>
       </div>
