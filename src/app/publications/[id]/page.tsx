@@ -68,7 +68,7 @@ export default function PublicationPage({ params }: PageProps) {
         <div className="rounded-2xl border border-slate-900 bg-slate-900/10 p-8 mb-10">
 
           {/* Title */}
-          <h1 className="text-3xl font-extrabold text-white mb-4">{publication.title}</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-white mb-6 leading-relaxed">{publication.title}</h1>
 
           {/* Meta Info */}
           <div className="flex flex-wrap gap-6 mb-8 pb-8 border-b border-slate-900">

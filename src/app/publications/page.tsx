@@ -32,11 +32,37 @@ export default function PublicationsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 12;
 
+  // Build complete publications list including researcher individual publications
+  const allPublications: Publication[] = [
+    ...PUBLICATION,
+    ...RESEARCHERS.flatMap((researcher) =>
+      (researcher.publications || []).map((pub) => ({
+        id: `${researcher.id}-${pub.title.substring(0, 20).replace(/\s+/g, '-')}`,
+        title: pub.title,
+        authors: [],
+        researcherIds: [researcher.id],
+        year: pub.year || new Date().getFullYear(),
+        axis: researcher.axes[0] || "agents",
+        abstract: "",
+        citationApa: "",
+        citationBibtex: "",
+        accessLevel: "public" as const,
+        doi: undefined,
+        journal: undefined,
+      }))
+    ),
+  ];
+
+  // Remove duplicates by ID
+  const uniquePublications = Array.from(
+    new Map(allPublications.map((pub) => [pub.id, pub])).values()
+  );
+
   // Filter lists configuration
-  const uniqueYears = Array.from(new Set(PUBLICATION.map((p) => p.year))).sort((a, b) => b - a);
+  const uniqueYears = Array.from(new Set(uniquePublications.map((p) => p.year))).sort((a, b) => b - a);
 
   // Filter processing
-  const filteredPublications = PUBLICATION.filter((pub) => {
+  const filteredPublications = uniquePublications.filter((pub) => {
     const matchesSearch =
       pub.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       pub.abstract.toLowerCase().includes(searchTerm.toLowerCase());
