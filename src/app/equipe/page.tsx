@@ -65,7 +65,7 @@ export default function EquipePage() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((r) => {
-            const pubCount = r.publications?.length ?? PUBLICATION.filter((p) => p.researcherIds.includes(r.id)).length;
+            const pubCount = PUBLICATION.filter((p) => p.researcherIds.includes(r.id)).length;
             const dsCount = DATASETS.filter((d) => d.creatorId === r.id).length;
             return (
               <div key={r.id} className="rounded-xl border border-slate-900 bg-slate-950 p-6 flex flex-col hover:border-slate-800 transition-colors group">
