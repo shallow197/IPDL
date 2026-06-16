@@ -7,6 +7,7 @@ import { X, MapPin, ArrowRight, Hand } from "lucide-react";
 import { CENTERS } from "@/data/ummiscoData";
 import { CENTRE_VISUALS } from "@/components/CentreGlobe";
 import LeafletWorldMap from "@/components/LeafletWorldMap";
+import { CONTINENT_POLYGONS, CONTINENT_CENTROIDS } from "@/data/continentsGeo";
 
 // Approximate geographic position of each centre (degrees).
 const CENTRE_GEO: Record<string, { lat: number; lon: number }> = {
@@ -53,78 +54,19 @@ function segments(pts: { lon: number; lat: number }[], rotLon: number, rotPhi: n
   return out;
 }
 
-// Realistic continent outlines
-const CONTINENTS = {
-  africa: [
-    // North Africa
-    { lon: -10, lat: 35 }, { lon: 0, lat: 37 }, { lon: 10, lat: 36 }, { lon: 20, lat: 33 }, { lon: 30, lat: 32 }, { lon: 40, lat: 31 },
-    // Red Sea coast
-    { lon: 42, lat: 28 }, { lon: 43, lat: 25 }, { lon: 44, lat: 20 }, { lon: 44, lat: 15 }, { lon: 42, lat: 12 },
-    // East Africa
-    { lon: 41, lat: 8 }, { lon: 40, lat: 4 }, { lon: 39, lat: 0 }, { lon: 38, lat: -3 }, { lon: 37, lat: -8 }, { lon: 35, lat: -15 }, { lon: 32, lat: -20 },
-    // Southern Africa
-    { lon: 28, lat: -26 }, { lon: 25, lat: -30 }, { lon: 20, lat: -32 }, { lon: 15, lat: -32 }, { lon: 12, lat: -30 }, { lon: 10, lat: -28 },
-    // West Africa
-    { lon: 8, lat: -20 }, { lon: 5, lat: -10 }, { lon: 2, lat: 0 }, { lon: 0, lat: 5 }, { lon: -5, lat: 10 }, { lon: -8, lat: 15 }, { lon: -10, lat: 20 }, { lon: -12, lat: 27 }, { lon: -10, lat: 35 }
-  ],
-  asia: [
-    // Middle East
-    { lon: 35, lat: 37 }, { lon: 45, lat: 39 }, { lon: 55, lat: 35 }, { lon: 60, lat: 27 }, { lon: 65, lat: 25 },
-    // India
-    { lon: 68, lat: 35 }, { lon: 77, lat: 32 }, { lon: 88, lat: 28 }, { lon: 92, lat: 22 }, { lon: 88, lat: 8 }, { lon: 78, lat: 5 }, { lon: 68, lat: 8 },
-    // Southeast Asia
-    { lon: 95, lat: 20 }, { lon: 105, lat: 22 }, { lon: 115, lat: 18 }, { lon: 125, lat: 15 }, { lon: 130, lat: 8 },
-    // Indonesia-Philippines
-    { lon: 140, lat: 5 }, { lon: 140, lat: -5 }, { lon: 130, lat: -10 },
-    // East Asia
-    { lon: 125, lat: -8 }, { lon: 120, lat: 0 }, { lon: 115, lat: 8 }, { lon: 110, lat: 20 }, { lon: 105, lat: 25 }, { lon: 100, lat: 30 }, { lon: 95, lat: 32 }, { lon: 90, lat: 35 },
-    // China-Russia
-    { lon: 85, lat: 45 }, { lon: 100, lat: 48 }, { lon: 120, lat: 50 }, { lon: 135, lat: 48 }, { lon: 140, lat: 45 }, { lon: 145, lat: 42 },
-    // Japan
-    { lon: 140, lat: 45 }, { lon: 145, lat: 43 }, { lon: 145, lat: 30 }, { lon: 130, lat: 30 }
-  ],
-  europe: [
-    // Portugal-Spain
-    { lon: -10, lat: 43 }, { lon: -5, lat: 42 }, { lon: 0, lat: 40 },
-    // France-Italy
-    { lon: 5, lat: 43 }, { lon: 8, lat: 44 }, { lon: 10, lat: 45 }, { lon: 15, lat: 43 }, { lon: 15, lat: 37 },
-    // Balkans
-    { lon: 20, lat: 43 }, { lon: 25, lat: 45 }, { lon: 30, lat: 45 },
-    // Greece
-    { lon: 25, lat: 39 }, { lon: 28, lat: 37 }, { lon: 25, lat: 35 },
-    // Eastern Europe
-    { lon: 32, lat: 48 }, { lon: 35, lat: 52 }, { lon: 40, lat: 52 }, { lon: 35, lat: 58 }, { lon: 25, lat: 60 }, { lon: 15, lat: 60 },
-    // Scandinavia
-    { lon: 10, lat: 58 }, { lon: 15, lat: 62 }, { lon: 25, lat: 68 }, { lon: 30, lat: 70 }, { lon: 25, lat: 65 }, { lon: 12, lat: 62 }, { lon: 5, lat: 58 },
-    // Ireland-UK
-    { lon: -8, lat: 54 }, { lon: -3, lat: 56 }, { lon: 0, lat: 53 }, { lon: -2, lat: 50 }, { lon: -5, lat: 48 }, { lon: -10, lat: 52 }, { lon: -8, lat: 54 }
-  ],
-  americas: [
-    // North America
-    { lon: -130, lat: 60 }, { lon: -125, lat: 58 }, { lon: -120, lat: 50 }, { lon: -110, lat: 49 }, { lon: -95, lat: 48 }, { lon: -85, lat: 48 }, { lon: -80, lat: 47 }, { lon: -70, lat: 48 },
-    // Central America
-    { lon: -92, lat: 18 }, { lon: -84, lat: 17 }, { lon: -77, lat: 15 },
-    // Caribbean
-    { lon: -75, lat: 20 }, { lon: -70, lat: 20 }, { lon: -62, lat: 18 },
-    // South America (Colombia)
-    { lon: -75, lat: 12 }, { lon: -70, lat: 10 }, { lon: -68, lat: 5 }, { lon: -65, lat: 3 },
-    // Amazon
-    { lon: -60, lat: 5 }, { lon: -55, lat: 2 }, { lon: -50, lat: 0 }, { lon: -48, lat: -5 },
-    // Brazil
-    { lon: -45, lat: -10 }, { lon: -40, lat: -15 }, { lon: -38, lat: -20 }, { lon: -42, lat: -25 },
-    // Southern Cone
-    { lon: -70, lat: -25 }, { lon: -68, lat: -35 }, { lon: -65, lat: -40 }, { lon: -72, lat: -42 }, { lon: -75, lat: -35 }, { lon: -80, lat: -25 }, { lon: -75, lat: -15 },
-    // Western coast back up
-    { lon: -78, lat: -5 }, { lon: -82, lat: 5 }, { lon: -85, lat: 15 }, { lon: -95, lat: 25 }, { lon: -105, lat: 35 }, { lon: -115, lat: 42 }, { lon: -130, lat: 60 }
-  ]
-};
-
-function buildContinents(rotLon: number, rotPhi: number): { [key: string]: string[] } {
-  const out: { [key: string]: string[] } = {};
-  for (const [name, pts] of Object.entries(CONTINENTS)) {
-    out[name] = segments(pts, rotLon, rotPhi);
+function buildContinents(rotLon: number, rotPhi: number): { name: string; segs: string[] }[] {
+  const result: { name: string; segs: string[] }[] = [];
+  for (const [name, pts] of Object.entries(CONTINENT_POLYGONS)) {
+    // Skip continent if its centroid is well behind the globe (optimisation)
+    const c = CONTINENT_CENTROIDS[name];
+    if (c) {
+      const cp = project(c.lon, c.lat, rotLon, rotPhi);
+      if (cp.z < -0.15) continue;
+    }
+    const segs = segments(pts, rotLon, rotPhi);
+    if (segs.length > 0) result.push({ name, segs });
   }
-  return out;
+  return result;
 }
 
 function buildGraticule(rotLon: number, rotPhi: number): string[] {
@@ -255,15 +197,13 @@ export default function GlobeCentres() {
             ))}
           </g>
 
-          {/* Continents */}
-          <g fill="#1f472a" fillOpacity="0.6" stroke="#4ade80" strokeOpacity="0.4" strokeWidth="0.6">
-            {Object.entries(continents).map(([name, ptsList]) => (
-              <g key={name}>
-                {ptsList.map((pts, i) => (
-                  <polyline key={`${name}-${i}`} points={pts} />
-                ))}
-              </g>
-            ))}
+          {/* Continents — filled polygons clipped to visible hemisphere */}
+          <g fill="#1e4d2b" fillOpacity="0.82" stroke="#4ade80" strokeOpacity="0.7" strokeWidth="0.8" strokeLinejoin="round">
+            {continents.map(({ name, segs }) =>
+              segs.map((pts, i) => (
+                <polygon key={`${name}-${i}`} points={pts} />
+              ))
+            )}
           </g>
 
           {/* Centre markers */}
