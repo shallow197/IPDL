@@ -86,53 +86,57 @@ export default function ActualitesPage() {
             <h2 className="text-base font-extrabold text-white uppercase tracking-wide">{t("events.upcomingTitle")}</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {SEMINARS.map((sem) => {
-              const researcher = RESEARCHERS.find((r) =>
-                r.name.toLowerCase().split(" ").some((part) =>
-                  sem.speaker.toLowerCase().includes(part) && part.length > 3
-                )
-              );
-              const semDate = new Date(sem.date);
-              const typeColor: Record<string, string> = {
-                seminaire:  "bg-blue-500/10 text-blue-400 border-blue-900/30",
-                conference: "bg-purple-500/10 text-purple-400 border-purple-900/30",
-                atelier:    "bg-green-500/10 text-green-400 border-green-900/30",
-              };
-              return (
-                <div key={sem.id} className="rounded-xl border border-slate-800 bg-slate-900/20 overflow-hidden hover:border-slate-700 transition-colors flex flex-col">
-                  {/* Bande colorée + photo intervenant */}
-                  <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 flex items-center gap-3">
-                    <div className="h-14 w-14 rounded-full overflow-hidden border-2 border-slate-700 flex-none bg-slate-800">
-                      {researcher?.photoUrl ? (
-                        <img
-                          src={researcher.photoUrl}
-                          alt={researcher.name}
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <div className="h-full w-full flex items-center justify-center text-slate-400 text-lg font-bold">
-                          {sem.speaker.slice(0, 2).toUpperCase()}
-                        </div>
-                      )}
+            {SEMINARS.filter((sem) => new Date(sem.date).getTime() > now).length === 0 ? (
+              <p className="col-span-full text-sm text-slate-500 italic">Aucun séminaire à venir pour le moment.</p>
+            ) : (
+              SEMINARS.filter((sem) => new Date(sem.date).getTime() > now).map((sem) => {
+                const researcher = RESEARCHERS.find((r) =>
+                  r.name.toLowerCase().split(" ").some((part) =>
+                    sem.speaker.toLowerCase().includes(part) && part.length > 3
+                  )
+                );
+                const semDate = new Date(sem.date);
+                const typeColor: Record<string, string> = {
+                  seminaire:  "bg-blue-500/10 text-blue-400 border-blue-900/30",
+                  conference: "bg-purple-500/10 text-purple-400 border-purple-900/30",
+                  atelier:    "bg-green-500/10 text-green-400 border-green-900/30",
+                };
+                return (
+                  <div key={sem.id} className="rounded-xl border border-slate-800 bg-slate-900/20 overflow-hidden hover:border-slate-700 transition-colors flex flex-col">
+                    {/* Bande colorée + photo intervenant */}
+                    <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 flex items-center gap-3">
+                      <div className="h-14 w-14 rounded-full overflow-hidden border-2 border-slate-700 flex-none bg-slate-800">
+                        {researcher?.photoUrl ? (
+                          <img
+                            src={researcher.photoUrl}
+                            alt={researcher.name}
+                            className="h-full w-full object-cover"
+                          />
+                        ) : (
+                          <div className="h-full w-full flex items-center justify-center text-slate-400 text-lg font-bold">
+                            {sem.speaker.slice(0, 2).toUpperCase()}
+                          </div>
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[10px] font-bold text-white truncate">{sem.speaker}</p>
+                        <p className="text-[9px] text-slate-400">{researcher?.title?.split("—")[0].trim() ?? "UMMISCO"}</p>
+                      </div>
                     </div>
-                    <div className="min-w-0">
-                      <p className="text-[10px] font-bold text-white truncate">{sem.speaker}</p>
-                      <p className="text-[9px] text-slate-400">{researcher?.title?.split("—")[0].trim() ?? "UMMISCO"}</p>
+                    <div className="p-4 flex-1 flex flex-col">
+                      <span className={`inline-flex self-start text-[9px] font-bold px-2 py-0.5 rounded border uppercase tracking-wider mb-2 ${typeColor[sem.type ?? "seminaire"]}`}>
+                        {t(`events.type_${sem.type ?? "seminaire"}`)}
+                      </span>
+                      <h3 className="text-xs font-bold text-white leading-snug mb-2 line-clamp-3 flex-1">{sem.title}</h3>
+                      <div className="flex items-center gap-1.5 text-[9px] text-slate-500 mt-auto pt-2 border-t border-slate-800">
+                        <Calendar className="h-2.5 w-2.5" />
+                        {semDate.toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" })}
+                      </div>
                     </div>
                   </div>
-                  <div className="p-4 flex-1 flex flex-col">
-                    <span className={`inline-flex self-start text-[9px] font-bold px-2 py-0.5 rounded border uppercase tracking-wider mb-2 ${typeColor[sem.type ?? "seminaire"]}`}>
-                      {t(`events.type_${sem.type ?? "seminaire"}`)}
-                    </span>
-                    <h3 className="text-xs font-bold text-white leading-snug mb-2 line-clamp-3 flex-1">{sem.title}</h3>
-                    <div className="flex items-center gap-1.5 text-[9px] text-slate-500 mt-auto pt-2 border-t border-slate-800">
-                      <Calendar className="h-2.5 w-2.5" />
-                      {semDate.toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" })}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </section>
 
@@ -166,7 +170,7 @@ export default function ActualitesPage() {
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     {/* Date block */}
                     <div className="flex-none text-center bg-slate-900 rounded-xl p-4 w-20">
-                      <div className="text-2xl font-extrabold text-white">{dateStart.getDate()}</div>
+                      <div className="text-2xl font-extrabold text-stat-number">{dateStart.getDate()}</div>
                       <div className="text-[10px] text-slate-400 uppercase tracking-wider">{dateStart.toLocaleDateString("fr-FR", { month: "short" })}</div>
                       <div className="text-[10px] text-slate-500">{dateStart.getFullYear()}</div>
                     </div>

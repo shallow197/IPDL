@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import BrandLogo from "./BrandLogo";
-import { Menu, X, Lock, Sun, Moon, LogOut, LayoutDashboard, Shield, Boxes } from "lucide-react";
+import { Menu, X, Lock, Sun, Moon, LogOut, LayoutDashboard, Shield, Boxes, ShieldCheck } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLang } from "@/context/LangContext";
 import { useAuth } from "@/context/AuthContext";
@@ -113,6 +113,15 @@ export default function Navigation() {
                   <span>{t("nav.admin")}</span>
                 </Link>
               )}
+              {["chercheur", "responsable_axe", "directeur"].includes(user.role) && (
+                <Link
+                  href="/attestations"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-800 px-3 py-2 text-[13px] font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-200 hover:bg-slate-900/40 transition-all"
+                >
+                  <ShieldCheck className="h-3 w-3" />
+                  <span>Attestations</span>
+                </Link>
+              )}
               <Link
                 href="/dashboard"
                 className="inline-flex items-center gap-1.5 rounded-lg bg-ummisco-blue px-3 py-2 text-[13px] font-semibold uppercase tracking-wider text-white shadow-md hover:bg-ummisco-blue/90 transition-all"
@@ -194,6 +203,16 @@ export default function Navigation() {
                   <LayoutDashboard className="h-4 w-4" />
                   <span>{t("dashboard.title")}</span>
                 </Link>
+                {["chercheur", "responsable_axe", "directeur"].includes(user.role) && (
+                  <Link
+                    href="/attestations"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-800 py-2.5 text-base font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-200"
+                  >
+                    <ShieldCheck className="h-4 w-4" />
+                    <span>Attestations</span>
+                  </Link>
+                )}
                 <button
                   onClick={handleLogout}
                   className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-800 py-2.5 text-base font-semibold uppercase tracking-wider text-slate-400"

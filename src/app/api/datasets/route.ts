@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
     fichiers: [],
     metadonnees: {},
     creatorId: payload.sub,
+    creatorName: db.users.get(payload.sub)?.nom,
     size: "0 MB",
     downloads: 0,
     dateDepot: new Date().toISOString().split("T")[0],

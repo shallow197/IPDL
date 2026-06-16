@@ -2,21 +2,23 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, ExternalLink, BookOpen, Database } from "lucide-react";
+import { Mail, ExternalLink, Search } from "lucide-react";
 import Footer from "@/components/Footer";
 import Avatar from "@/components/Avatar";
-import { RESEARCHERS, PUBLICATION, DATASETS, AXES } from "@/data/ummiscoData";
+import { RESEARCHERS, AXES } from "@/data/ummiscoData";
 import { useLang } from "@/context/LangContext";
 
 export default function EquipePage() {
   const { t } = useLang();
   const [axeFilter, setAxeFilter] = useState("all");
+  const [search, setSearch] = useState("");
   const FILTER_AXES = [{ id: "all", name: t("researchers.allAxes") }, ...AXES];
 
-  const filtered =
-    axeFilter === "all"
-      ? RESEARCHERS
-      : RESEARCHERS.filter((r) => r.axes.includes(axeFilter));
+  const filtered = RESEARCHERS.filter((r) => {
+    const matchesAxe = axeFilter === "all" || r.axes.includes(axeFilter);
+    const matchesSearch = !search.trim() || r.name.toLowerCase().includes(search.trim().toLowerCase());
+    return matchesAxe && matchesSearch;
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
@@ -30,6 +32,18 @@ export default function EquipePage() {
             {filtered.length} {t("researchers.membersCount")}
           </p>
           <div aria-hidden className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 to-green-500" />
+        </div>
+
+        {/* Search */}
+        <div className="relative mb-6 max-w-sm">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+          <input
+            type="text"
+            placeholder="Rechercher un membre..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full rounded-lg border border-slate-800 bg-slate-900/50 text-sm text-slate-200 pl-9 pr-3 py-2 focus:outline-none focus:border-blue-500/50 placeholder:text-slate-600"
+          />
         </div>
 
         {/* Axis filter */}
@@ -51,8 +65,6 @@ export default function EquipePage() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((r) => {
-            const pubCount = r.publications?.length ?? PUBLICATION.filter((p) => p.researcherIds.includes(r.id)).length;
-            const dsCount = DATASETS.filter((d) => d.creatorId === r.id).length;
             return (
               <div key={r.id} className="rounded-xl border border-slate-900 bg-slate-950 p-6 flex flex-col hover:border-slate-800 transition-colors group">
                 {/* Header */}
@@ -82,16 +94,6 @@ export default function EquipePage() {
                       {AXES.find((ax) => ax.id === a)?.name.split(" ")[0]}
                     </span>
                   ))}
-                </div>
-
-                {/* Stats */}
-                <div className="flex gap-4 text-[13px] text-slate-500 border-t border-slate-900 pt-3 mb-4">
-                  <span className="flex items-center gap-1">
-                    <BookOpen className="h-3 w-3" /> {pubCount} {t("researchers.publications")}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Database className="h-3 w-3" /> {dsCount} {t("researchers.datasets")}
-                  </span>
                 </div>
 
                 {/* Actions */}

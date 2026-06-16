@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -12,6 +13,7 @@ import {
   Shield,
   Quote,
   ExternalLink,
+  ShieldCheck,
 } from "lucide-react";
 import {
   AXES,
@@ -23,44 +25,29 @@ import { useNotification } from "@/context/NotificationContext";
 import Footer from "@/components/Footer";
 import { scholarUrl, doiUrl, UMMISCO_SCHOLAR_SEARCH } from "@/lib/scholar";
 import { useLang } from "@/context/LangContext";
+import { useAuth } from "@/context/AuthContext";
+import SignatureModal from "@/components/signatures/SignatureModal";
+import SignatureBadge from "@/components/signatures/SignatureBadge";
+import type { SignPayload } from "@/hooks/useSignature";
 
-export default function PublicationsPage() {
+function PublicationsContent() {
   const { t } = useLang();
+  const { user, isAuthenticated } = useAuth();
+  const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedAxis, setSelectedAxis] = useState<string>("all");
+  const [selectedAxis, setSelectedAxis] = useState<string>(searchParams.get("axe") ?? "all");
   const [selectedResearcher, setSelectedResearcher] = useState<string>("all");
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [copiedPubId, setCopiedPubId] = useState<string | null>(null);
   const [citationModalPub, setCitationModalPub] = useState<Publication | null>(null);
   const { notify } = useNotification();
+  const [sigModal, setSigModal] = useState<SignPayload | null>(null);
+  const [freshSigs, setFreshSigs] = useState<Record<string, { id: string; signerName: string; timestamp: string }>>({});
+  const canSign = isAuthenticated && ["chercheur", "responsable_axe", "directeur"].includes(user?.role ?? "");
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 12;
 
-  // Build complete publications list including researcher individual publications
-  const allPublications: Publication[] = [
-    ...PUBLICATION,
-    ...RESEARCHERS.flatMap((researcher) =>
-      (researcher.publications || []).map((pub) => ({
-        id: `${researcher.id}-${pub.title.substring(0, 20).replace(/\s+/g, '-')}`,
-        title: pub.title,
-        authors: [],
-        researcherIds: [researcher.id],
-        year: pub.year || new Date().getFullYear(),
-        axis: researcher.axes[0] || "agents",
-        abstract: "",
-        citationApa: "",
-        citationBibtex: "",
-        accessLevel: "public" as const,
-        doi: undefined,
-        journal: undefined,
-      }))
-    ),
-  ];
-
-  // Remove duplicates by ID
-  const uniquePublications = Array.from(
-    new Map(allPublications.map((pub) => [pub.id, pub])).values()
-  );
+  const uniquePublications = PUBLICATION;
 
   // Filter lists configuration
   const uniqueYears = Array.from(new Set(uniquePublications.map((p) => p.year))).sort((a, b) => b - a);
@@ -71,8 +58,20 @@ export default function PublicationsPage() {
       pub.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       pub.abstract.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesAxis = selectedAxis === "all" || pub.axis === selectedAxis;
-    const matchesResearcher =
-      selectedResearcher === "all" || pub.researcherIds.includes(selectedResearcher);
+    const matchesResearcher = (() => {
+      if (selectedResearcher === "all") return true;
+      // keep working if publication has explicit researcherIds linking
+      if (Array.isArray(pub.researcherIds) && pub.researcherIds.includes(selectedResearcher)) return true;
+
+      // fallback: match by surname or given name parts in the displayed author strings
+      const researcher = RESEARCHERS.find((r) => r.id === selectedResearcher);
+      if (!researcher) return false;
+      const nameParts = researcher.name.toLowerCase().split(/\s+/).filter(Boolean);
+      return pub.authors.some((author) => {
+        const a = author.toLowerCase();
+        return nameParts.some((part) => part.length > 1 && a.includes(part));
+      });
+    })();
     const matchesYear = selectedYear === "all" || pub.year.toString() === selectedYear;
 
     return matchesSearch && matchesAxis && matchesResearcher && matchesYear;
@@ -320,6 +319,26 @@ export default function PublicationsPage() {
                           <Clipboard className="h-3 w-3" />
                           <span>{t("publications.cite")}</span>
                         </button>
+                        {canSign && (
+                          <button
+                            onClick={() => setSigModal({
+                              type: "publication",
+                              targetId: pub.id,
+                              targetLabel: pub.title,
+                              data: {
+                                title: pub.title,
+                                authors: pub.authors,
+                                year: pub.year,
+                                journal: pub.journal ?? null,
+                                doi: pub.doi ?? null,
+                              },
+                            })}
+                            className="inline-flex items-center gap-1.5 rounded bg-green-600/10 px-2.5 py-1.5 text-[10px] font-bold text-green-400 border border-green-900/30 hover:bg-green-600/20 active:scale-95 transition-all"
+                          >
+                            <ShieldCheck className="h-3 w-3" /> Certifier
+                          </button>
+                        )}
+                        <SignatureBadge targetId={pub.id} freshSignature={freshSigs[pub.id]} compact />
                       </div>
                     </div>
                   </div>
@@ -439,6 +458,28 @@ export default function PublicationsPage() {
       </AnimatePresence>
 
       <Footer />
+
+      {/* Modal de signature publication */}
+      {sigModal && (
+        <SignatureModal
+          payload={sigModal}
+          onClose={() => setSigModal(null)}
+          onSigned={(sigId, timestamp) => {
+            setFreshSigs((prev) => ({
+              ...prev,
+              [sigModal.targetId]: { id: sigId, signerName: user?.nom ?? "", timestamp },
+            }));
+          }}
+        />
+      )}
     </div>
+  );
+}
+
+export default function PublicationsPage() {
+  return (
+    <Suspense>
+      <PublicationsContent />
+    </Suspense>
   );
 }

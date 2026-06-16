@@ -32,6 +32,12 @@ export async function POST(req: NextRequest) {
   const valid = new Set(PERMISSIONS.map((p) => p.id));
   const cleaned = (permissions as string[]).filter((p) => valid.has(p));
 
+  const nameNorm = String(name).trim().toLowerCase();
+  const exists = Array.from(db.roles.values()).some(
+    (r) => r.name.trim().toLowerCase() === nameNorm
+  );
+  if (exists) return jsonError("Un rôle avec ce nom existe déjà.", 409);
+
   const id = `role-${Date.now()}`;
   const role: DBRole = {
     id,

@@ -1,33 +1,22 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  Search,
-  BookOpen,
   Database,
   Users,
   ArrowRight,
-  Clipboard,
-  Check,
-  ChevronRight,
-  ExternalLink,
   FlaskConical,
   Newspaper,
   Handshake,
   MessageSquare,
-  Quote,
   Globe2,
   Boxes,
+  BookOpen,
 } from "lucide-react";
 import {
   AXES,
-  RESEARCHERS,
-  PUBLICATION,
-  DATASETS,
   CENTERS,
-  Publication,
 } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
 import PartnersBanner from "@/components/PartnersBanner";
@@ -35,7 +24,6 @@ import StatsCounter from "@/components/StatsCounter";
 import { CENTRE_VISUALS } from "@/components/CentreGlobe";
 import GlobeCentres from "@/components/GlobeCentres";
 import { useLang } from "@/context/LangContext";
-import { scholarUrl, doiUrl, UMMISCO_SCHOLAR_SEARCH } from "@/lib/scholar";
 
 export default function Home() {
   const { t } = useLang();
@@ -50,21 +38,6 @@ export default function Home() {
     { href: "/actualites", titleKey: "nav.actualites", descKey: "home.exploreActualites", Icon: Newspaper, accent: "text-rose-400", bg: "bg-rose-500/10" },
     { href: "/partenaires", titleKey: "nav.partenaires", descKey: "home.explorePartenaires", Icon: Handshake, accent: "text-cyan-400", bg: "bg-cyan-500/10" },
   ];
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedAxis, setSelectedAxis] = useState<string | null>(null);
-  const [copiedPubId, setCopiedPubId] = useState<string | null>(null);
-  const [citationModalPub, setCitationModalPub] = useState<Publication | null>(null);
-
-  const q = searchQuery.trim().toLowerCase();
-  const filteredPubs = q ? PUBLICATION.filter((p) => p.title.toLowerCase().includes(q) || p.abstract.toLowerCase().includes(q) || p.authors.some((a) => a.toLowerCase().includes(q))).slice(0, 4) : [];
-  const filteredResearchers = q ? RESEARCHERS.filter((r) => r.name.toLowerCase().includes(q) || r.title.toLowerCase().includes(q)).slice(0, 4) : [];
-  const filteredDatasets = q ? DATASETS.filter((d) => d.title.toLowerCase().includes(q) || d.description.toLowerCase().includes(q)).slice(0, 4) : [];
-
-  const handleCopyCitation = (text: string, key: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedPubId(key);
-    setTimeout(() => setCopiedPubId(null), 2000);
-  };
 
   return (
     <div className="flex-1 flex flex-col bg-slate-950 text-slate-100 font-sans">
@@ -198,8 +171,11 @@ export default function Home() {
       {/* ── INTRO / PRÉSENTATION ──────────────────────────────────────────── */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 relative overflow-hidden">
         <div className="absolute -left-20 top-1/2 -translate-y-1/2 -z-10 h-80 w-80 rounded-full bg-blue-600/5 blur-[120px]" />
-        <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-center">
+        <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-start">
           <div>
+            <div className="mb-6 rounded-xl overflow-hidden border border-slate-800 shadow-lg">
+              <img src="/themes/allthemes.png" alt="Axes thématiques UMMISCO" className="w-full h-48 object-cover" />
+            </div>
             <h2 className="text-3xl font-extrabold tracking-tight text-white leading-tight">
               {t("home.aboutTitle")}
             </h2>
@@ -275,76 +251,43 @@ export default function Home() {
       <section id="axes" className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8">
-            <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2">{t("axes.sectionTag")}</span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white">{t("axes.title")}</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {AXES.map((axis) => (
-              <button type="button" key={axis.id} onClick={() => setSelectedAxis(selectedAxis === axis.id ? null : axis.id)} className={`text-left cursor-pointer rounded-xl border p-6 transition-all duration-300 flex flex-col justify-between min-h-52 ${selectedAxis === axis.id ? "border-blue-500 bg-slate-900/60 shadow-lg shadow-blue-500/5 -translate-y-1" : "border-slate-800 bg-slate-900/10 hover:border-slate-700 hover:-translate-y-1"}`}>
-                <div>
-                  <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${axis.color} flex items-center justify-center mb-4 shadow-lg`}>
-                    <span className="text-lg font-extrabold text-white">{AXES.indexOf(axis) + 1}</span>
+            {AXES.map((axis) => {
+              const axisImage: Record<string, string> = {
+                agents: "/themes/modelisation.png",
+                ia: "/themes/intelligence.png",
+                capteurs: "/themes/capteurs.png",
+                participatif: "/themes/science_citoyenne.png",
+              };
+              return (
+                <Link
+                  key={axis.id}
+                  href={`/publications?axe=${axis.id}`}
+                  className="group text-left rounded-xl border border-slate-800 bg-slate-900/10 hover:border-blue-500/50 hover:bg-slate-900/40 hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden"
+                >
+                  <div className="h-36 w-full overflow-hidden flex-none">
+                    <img
+                      src={axisImage[axis.id]}
+                      alt={axis.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <h3 className="text-base font-bold text-slate-100 leading-snug">{axis.name}</h3>
-                  <p className="mt-2 text-[13px] text-slate-500 leading-relaxed line-clamp-3">{axis.description}</p>
-                </div>
-                <div className="flex items-center justify-between text-[13px] text-slate-500 font-semibold uppercase tracking-wider mt-4">
-                  <span>{axis.shortName}</span>
-                  <ChevronRight className={`h-3 w-3 transition-transform ${selectedAxis === axis.id ? "rotate-90 text-blue-500" : ""}`} />
-                </div>
-              </button>
-            ))}
-          </div>
-          <AnimatePresence>
-            {selectedAxis && (
-              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="mt-8 rounded-xl border border-slate-900 bg-slate-900/30 p-6 overflow-hidden">
-                <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider flex items-center gap-1.5"><BookOpen className="h-4 w-4 text-blue-500" /> {t("axes.allPublications")}</h4>
-                <div className="space-y-4">
-                  {PUBLICATION.filter((p) => p.axis === selectedAxis).map((p) => (
-                    <div key={p.id} className="border-b border-slate-900/60 pb-3 last:border-b-0 last:pb-0"><div className="text-sm font-bold text-slate-200">{p.title}</div><div className="text-[13px] text-slate-400 mt-1">{p.authors.join(", ")} — {p.year}</div></div>
-                  ))}
-                  {PUBLICATION.filter((p) => p.axis === selectedAxis).length === 0 && (<div className="text-sm text-slate-500">{t("axes.noPublications2")}</div>)}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </section>
-
-{/* ── FEATURED PUBLICATION ─────────────────────────────────────────── */}
-      <section id="publications" className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 flex flex-wrap gap-4 justify-between items-end">
-            <div>
-              <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2">{t("publications.sectionTag")}</span>
-              <h2 className="text-3xl font-extrabold tracking-tight text-white">{t("publications.title")}</h2>
-            </div>
-            <div className="flex items-center gap-4">
-              <a href={UMMISCO_SCHOLAR_SEARCH} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-400 hover:text-slate-200"><Quote className="h-3.5 w-3.5" /> Google Scholar <ExternalLink className="h-3 w-3" /></a>
-              <Link href="/publications" className="inline-flex items-center gap-1 text-sm font-semibold text-blue-400 hover:text-blue-300"><span>{t("publications.viewAll")}</span><ArrowRight className="h-3 w-3" /></Link>
-            </div>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PUBLICATION.slice(0, 3).map((pub) => (
-              <div key={pub.id} className="rounded-xl border border-slate-900 bg-slate-950 p-6 flex flex-col justify-between shadow-md hover:border-slate-800/80 transition-all">
-                <div>
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="inline-flex items-center rounded-full bg-slate-900 px-2 py-0.5 text-[12px] font-semibold text-slate-400 border border-slate-800 uppercase tracking-wider">{AXES.find((a) => a.id === pub.axis)?.shortName}</span>
-                    <span className="text-[13px] text-slate-500">{pub.year}</span>
+                  <div className="p-5 flex flex-col flex-1 justify-between">
+                    <div>
+                      <h3 className="text-sm font-bold text-slate-100 leading-snug group-hover:text-white">{axis.name}</h3>
+                      <p className="mt-2 text-[12px] text-slate-500 leading-relaxed line-clamp-3">{axis.description}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[12px] text-slate-500 group-hover:text-blue-400 font-semibold uppercase tracking-wider mt-4 transition-colors">
+                      <BookOpen className="h-3 w-3" />
+                      <span>Voir les publications</span>
+                      <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
                   </div>
-                  <h3 className="text-base font-bold text-white leading-snug line-clamp-2">{pub.title}</h3>
-                  <p className="mt-3 text-sm text-slate-400 leading-relaxed line-clamp-3">{pub.abstract}</p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-900/60">
-                  <span className="text-[13px] text-slate-500 italic block truncate mb-3">{pub.authors.join(", ")}</span>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <a href={scholarUrl(pub)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded bg-slate-900 px-2.5 py-1.5 text-[12px] font-bold text-slate-300 border border-slate-800 hover:border-slate-700 hover:text-white transition-all"><Quote className="h-3 w-3" /> Scholar</a>
-                    {doiUrl(pub.doi) && (<a href={doiUrl(pub.doi)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded bg-slate-900 px-2.5 py-1.5 text-[12px] font-bold text-slate-300 border border-slate-800 hover:border-slate-700 hover:text-white transition-all"><ExternalLink className="h-3 w-3" /> DOI</a>)}
-                    <button onClick={() => setCitationModalPub(pub)} className="inline-flex items-center gap-1.5 rounded bg-blue-600/10 px-2.5 py-1.5 text-[12px] font-bold text-blue-400 border border-blue-900/30 hover:bg-blue-600/20 active:scale-95 transition-all"><Clipboard className="h-3 w-3" /> {t("publications.cite")}</button>
-                  </div>
-                </div>
-              </div>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -371,47 +314,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── AI ASSISTANT CALLOUT ──────────────────────────────────────────── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-900">
-        <div className="mx-auto max-w-5xl rounded-2xl border border-slate-900 bg-gradient-to-br from-blue-950/40 to-slate-900/20 p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
-          <div className="flex items-center gap-3"><MessageSquare className="h-5 w-5 text-blue-400" /><h3 className="text-lg font-bold text-white">{t("home.aiTitle")}</h3><span className="flex items-center gap-1.5 text-[13px] text-slate-500"><span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse inline-block" /> {t("home.aiAvail")}</span></div>
-        </div>
-      </section>
-
-      {/* ── CITATION MODAL ────────────────────────────────────────────────── */}
-      <AnimatePresence>
-        {citationModalPub && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => setCitationModalPub(null)}>
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl rounded-2xl border border-slate-800 bg-slate-900 p-6 md:p-8 shadow-2xl relative">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-6">
-                <h3 className="text-base font-bold text-white">{t("publications.citeTitle")}</h3>
-                <button onClick={() => setCitationModalPub(null)} className="text-sm text-slate-500 hover:text-slate-200">{t("common.close")}</button>
-              </div>
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-[13px] font-bold text-slate-500 uppercase tracking-wider">
-                    <span>{t("publications.citationApa")}</span>
-                    <button onClick={() => handleCopyCitation(citationModalPub.citationApa, "apa")} className="inline-flex items-center gap-1 hover:text-white">{copiedPubId === "apa" ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Clipboard className="h-3.5 w-3.5" />}<span>{t("publications.copyApa")}</span></button>
-                  </div>
-                  <div className="p-4 rounded-lg bg-slate-950 border border-slate-900 text-sm text-slate-300 leading-relaxed font-mono select-all">{citationModalPub.citationApa}</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-[13px] font-bold text-slate-500 uppercase tracking-wider">
-                    <span>{t("publications.citationBibtex")}</span>
-                    <button onClick={() => handleCopyCitation(citationModalPub.citationBibtex, "bibtex")} className="inline-flex items-center gap-1 hover:text-white">{copiedPubId === "bibtex" ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Clipboard className="h-3.5 w-3.5" />}<span>{t("publications.copyBibtex")}</span></button>
-                  </div>
-                  <pre className="p-4 rounded-lg bg-slate-950 border border-slate-900 text-[13px] text-slate-300 leading-relaxed font-mono overflow-x-auto select-all max-h-40">{citationModalPub.citationBibtex}</pre>
-                </div>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <a href={scholarUrl(citationModalPub)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-slate-950 px-4 py-2 text-[13px] font-bold text-slate-300 border border-slate-800 hover:text-white"><Quote className="h-3.5 w-3.5" /> {t("home.scholarLink")}</a>
-                  {doiUrl(citationModalPub.doi) && (<a href={doiUrl(citationModalPub.doi)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-slate-950 px-4 py-2 text-[13px] font-bold text-slate-300 border border-slate-800 hover:text-white"><ExternalLink className="h-3.5 w-3.5" /> {t("home.doiLink")}</a>)}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
       <PartnersBanner />
       <Footer />

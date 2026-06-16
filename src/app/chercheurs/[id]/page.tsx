@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use } from "react";
+import React, { use, useState, useEffect } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -12,9 +12,7 @@ import {
   Eye,
   Lock,
   ArrowLeft,
-  Calendar,
-  Clipboard,
-  Check
+  ShieldCheck,
 } from "lucide-react";
 import {
   RESEARCHERS,
@@ -27,6 +25,10 @@ import Footer from "@/components/Footer";
 import Avatar from "@/components/Avatar";
 import { scholarUrl } from "@/lib/scholar";
 import { useLang } from "@/context/LangContext";
+import { useAuth } from "@/context/AuthContext";
+import SignatureModal from "@/components/signatures/SignatureModal";
+import SignatureBadge from "@/components/signatures/SignatureBadge";
+import type { DBDataset } from "@/lib/db";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -35,6 +37,26 @@ interface PageProps {
 export default function ResearcherProfilePage({ params }: PageProps) {
   const { t } = useLang();
   const { id } = use(params);
+  const { user, isAuthenticated, token } = useAuth();
+
+  // Signature state
+  const [showSigModal, setShowSigModal] = useState(false);
+  const [freshSig, setFreshSig] = useState<{ id: string; signerName: string; timestamp: string } | null>(null);
+
+  // DB datasets: keep all for deduplication, filter by researcher for display
+  const [dbDatasets, setDbDatasets] = useState<DBDataset[]>([]);
+  const [allDbIds, setAllDbIds] = useState<Set<string>>(new Set());
+  useEffect(() => {
+    fetch("/api/datasets", {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    })
+      .then((r) => r.ok ? r.json() : [])
+      .then((all: DBDataset[]) => {
+        setAllDbIds(new Set(all.map((d) => d.id)));
+        setDbDatasets(all.filter((d) => d.creatorId === id));
+      })
+      .catch(() => {});
+  }, [id, token]);
 
   // Find researcher
   const researcher = RESEARCHERS.find((r) => r.id === id);
@@ -42,6 +64,27 @@ export default function ResearcherProfilePage({ params }: PageProps) {
   if (!researcher) {
     notFound();
   }
+
+  // Directeur peut signer tous les profils, chercheur peut signer le sien
+  const canSign = isAuthenticated && (
+    user?.role === "directeur" ||
+    (user?.role === "chercheur" && user?.id === researcher.id)
+  );
+
+  const sigPayload = {
+    type: "profile" as const,
+    targetId: researcher.id,
+    targetLabel: researcher.name,
+    data: {
+      name: researcher.name,
+      title: researcher.title,
+      bio: researcher.bio,
+      email: researcher.email ?? null,
+      orcid: researcher.orcid ?? null,
+      center: researcher.center,
+      axes: researcher.axes,
+    },
+  };
 
   // Use researcher's publications if available, otherwise filter from global PUBLICATION
   const researcherPubs = researcher.publications ?
@@ -63,8 +106,8 @@ export default function ResearcherProfilePage({ params }: PageProps) {
       p.researcherIds.includes(researcher.id)
     );
 
-  // Filter their datasets
-  const researcherDatasets = DATASETS.filter((d) => d.creatorId === researcher.id);
+  // Static datasets for this researcher (displayed before DB ones load)
+  const staticDatasets = DATASETS.filter((d) => d.creatorId === researcher.id);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
@@ -137,9 +180,6 @@ export default function ResearcherProfilePage({ params }: PageProps) {
                   </span>
                 ) : null;
               })}
-              <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 border border-blue-900/30 px-2.5 py-0.5 text-[11px] font-bold text-blue-400">
-                {researcher.publicationsCount} {t("researcher.publicationsCount")}
-              </span>
               <a
                 href={scholarUrl({ title: researcher.name })}
                 target="_blank"
@@ -163,8 +203,32 @@ export default function ResearcherProfilePage({ params }: PageProps) {
                 </a>
               </div>
             )}
+
+            {/* Signature */}
+            <div className="pt-2 flex items-center gap-3 flex-wrap">
+              {canSign && (
+                <button
+                  onClick={() => setShowSigModal(true)}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-blue-800/40 bg-blue-600/10 px-3 py-1.5 text-[11px] font-bold text-blue-400 hover:bg-blue-600/20 transition-all"
+                >
+                  <ShieldCheck className="h-3.5 w-3.5" />
+                  Signer ce profil
+                </button>
+              )}
+              <SignatureBadge
+                targetId={researcher.id}
+                freshSignature={freshSig ?? undefined}
+                compact
+              />
+            </div>
           </div>
         </div>
+
+        {/* Badge signature détaillé */}
+        <SignatureBadge
+          targetId={researcher.id}
+          freshSignature={freshSig ?? undefined}
+        />
 
         {/* Publications and Datasets lists split grid */}
         <div className="grid gap-10 md:grid-cols-2">
@@ -220,65 +284,106 @@ export default function ResearcherProfilePage({ params }: PageProps) {
           </div>
 
           {/* Datasets */}
-          <div className="space-y-6">
-            <h2 className="text-lg font-extrabold text-white flex items-center gap-2 border-b border-slate-900 pb-3">
-              <Database className="h-5 w-5 text-blue-500" />
-              {t("researcher.datasetsTitle")} ({researcherDatasets.length})
-            </h2>
+          {(() => {
+            // Exclude static datasets whose ID already exists anywhere in the DB
+            const mergedStatic = staticDatasets.filter((d) => !allDbIds.has(d.id)).map((d) => ({
+              id: d.id,
+              titre: d.title,
+              description: d.description,
+              acces: d.accessLevel as "public" | "protected" | "private",
+              creatorId: d.creatorId,
+              size: d.size,
+              downloads: d.downloads,
+            }));
+            const allDatasets = [
+              ...dbDatasets.map((d) => ({ ...d, size: undefined as undefined, downloads: undefined as undefined })),
+              ...mergedStatic,
+            ];
 
-            <div className="space-y-4">
-              {researcherDatasets.map((dataset) => {
-                const isPublic = dataset.accessLevel === "public";
-                const isProtected = dataset.accessLevel === "protected";
-                const isPrivate = dataset.accessLevel === "private";
+            // Access control per dataset
+            const canView = (acces: string) => {
+              if (acces === "public") return true;
+              if (!isAuthenticated) return false;
+              if (acces === "protected") return true;
+              // private: only creator, directeur, or responsable_axe
+              return user?.id === researcher.id || user?.role === "directeur" || user?.role === "responsable_axe";
+            };
 
-                return (
-                  <div key={dataset.id} className="rounded-xl border border-slate-900/60 bg-slate-950 p-5 space-y-3">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-sm font-bold text-slate-200 leading-snug">{dataset.title}</h3>
-                      
-                      {/* Access status badge */}
-                      <div className="flex-none">
-                        {isPublic && (
-                          <span className="inline-flex items-center gap-1 rounded bg-green-500/10 px-2 py-0.5 text-[11px] font-bold text-green-400 border border-green-900/30 uppercase tracking-wider">
-                            <Eye className="h-2 w-2" /> {t("common.public")}
-                          </span>
+            const accessBadge = (acces: string) => {
+              if (acces === "public")
+                return <span className="inline-flex items-center gap-1 rounded bg-green-500/10 px-2 py-0.5 text-[11px] font-bold text-green-400 border border-green-900/30 uppercase tracking-wider"><Eye className="h-2 w-2" /> {t("common.public")}</span>;
+              if (acces === "protected")
+                return <span className="inline-flex items-center gap-1 rounded bg-blue-500/10 px-2 py-0.5 text-[11px] font-bold text-blue-400 border border-blue-900/30 uppercase tracking-wider"><Lock className="h-2.5 w-2.5" /> {t("common.protected")}</span>;
+              return <span className="inline-flex items-center gap-1 rounded bg-red-500/10 px-2 py-0.5 text-[11px] font-bold text-red-400 border border-red-900/30 uppercase tracking-wider"><Shield className="h-2.5 w-2.5" /> {t("common.private")}</span>;
+            };
+
+            return (
+              <div className="space-y-6">
+                <h2 className="text-lg font-extrabold text-white flex items-center gap-2 border-b border-slate-900 pb-3">
+                  <Database className="h-5 w-5 text-blue-500" />
+                  {t("researcher.datasetsTitle")} ({allDatasets.length})
+                </h2>
+
+                <div className="space-y-4">
+                  {allDatasets.map((dataset) => {
+                    const viewable = canView(dataset.acces);
+                    return (
+                      <div key={dataset.id} className="rounded-xl border border-slate-900/60 bg-slate-950 p-5 space-y-3">
+                        <div className="flex justify-between items-start gap-2">
+                          <h3 className="text-sm font-bold text-slate-200 leading-snug">{dataset.titre}</h3>
+                          <div className="flex-none">{accessBadge(dataset.acces)}</div>
+                        </div>
+                        <p className="text-[14px] text-slate-500 leading-normal line-clamp-2">{dataset.description}</p>
+                        {"size" in dataset && dataset.size && (
+                          <div className="text-[13px] text-slate-500 flex justify-between pt-1">
+                            <span>{t("researcher.sizeLabel")} {dataset.size}</span>
+                            {"downloads" in dataset && <span>{t("researcher.downloadsLabel")} {dataset.downloads}</span>}
+                          </div>
                         )}
-                        {isProtected && (
-                          <span className="inline-flex items-center gap-1 rounded bg-blue-500/10 px-2 py-0.5 text-[11px] font-bold text-blue-400 border border-blue-900/30 uppercase tracking-wider">
-                            <Lock className="h-2.5 w-2.5" /> {t("common.protected")}
-                          </span>
-                        )}
-                        {isPrivate && (
-                          <span className="inline-flex items-center gap-1 rounded bg-red-500/10 px-2 py-0.5 text-[11px] font-bold text-red-400 border border-red-900/30 uppercase tracking-wider">
-                            <Shield className="h-2.5 w-2.5" /> {t("common.private")}
-                          </span>
-                        )}
+                        <div className="pt-2 border-t border-slate-900">
+                          {viewable ? (
+                            <Link
+                              href="/datasets"
+                              className="inline-flex items-center gap-1 text-[13px] text-blue-400 hover:text-blue-300 font-semibold"
+                            >
+                              <span>{t("researcher.consult")}</span>
+                              <ExternalLink className="h-3 w-3" />
+                            </Link>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 text-[12px] text-slate-600 italic">
+                              <Lock className="h-3 w-3" /> Accès restreint
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <p className="text-[14px] text-slate-500 leading-normal line-clamp-2">
-                      {dataset.description}
-                    </p>
-                    <div className="text-[13px] text-slate-500 flex justify-between pt-2">
-                      <span>{t("researcher.sizeLabel")} {dataset.size}</span>
-                      <span>{t("researcher.downloadsLabel")} {dataset.downloads}</span>
-                    </div>
-                  </div>
-                );
-              })}
+                    );
+                  })}
 
-              {researcherDatasets.length === 0 && (
-                <div className="text-sm text-slate-500 italic py-4">
-                  {t("researcher.noDatasets")}
+                  {allDatasets.length === 0 && (
+                    <div className="text-sm text-slate-500 italic py-4">
+                      {t("researcher.noDatasets")}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </div>
+              </div>
+            );
+          })()}
 
         </div>
 
       </main>
       <Footer />
+
+      {/* Modal de signature */}
+      {showSigModal && (
+        <SignatureModal
+          payload={sigPayload}
+          onClose={() => setShowSigModal(false)}
+          onSigned={(sigId, timestamp) => {
+            setFreshSig({ id: sigId, signerName: user?.nom ?? "", timestamp });
+          }}
+        />
+      )}
     </div>
   );
 }

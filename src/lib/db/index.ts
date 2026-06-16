@@ -134,6 +134,7 @@ export interface DBDataset {
   fichiers: string[];
   metadonnees: Record<string, string>;
   creatorId: string;
+  creatorName?: string;
   size: string;
   downloads: number;
   dateDepot: string;
@@ -181,6 +182,30 @@ export interface DBPartner {
   projets: string[];
 }
 
+// ─── Signatures cryptographiques (Ed25519 / TweetNaCl) ───────────────────────
+
+export type SignatureType = "profile" | "dataset" | "publication" | "attestation";
+
+export interface DBSignature {
+  id: string;
+  /** DB user ID du signataire (payload.sub du JWT). */
+  signerId: string;
+  signerName: string;
+  /** Type de cible signée. */
+  type: SignatureType;
+  /** ID de la cible (researcher.id, dataset.id, publication.id, ou attestation UUID). */
+  targetId: string;
+  /** Libellé humain de la cible (pour affichage sans re-fetch). */
+  targetLabel: string;
+  /** JSON canonique des données signées. */
+  signedData: string;
+  /** Signature Ed25519 encodée en hexadécimal (128 chars). */
+  signatureHex: string;
+  /** Clé publique Ed25519 du signataire (64 chars hex). */
+  publicKeyHex: string;
+  timestamp: string;
+}
+
 // ─── In-memory store (module singleton) ──────────────────────────────────────
 
 const db = {
@@ -193,6 +218,7 @@ const db = {
   partners: new Map<string, DBPartner>(),
   roles: new Map<string, DBRole>(),
   accessRequests: new Map<string, DBAccessRequest>(),
+  signatures: new Map<string, DBSignature>(),
 };
 
 // ─── Seed data ────────────────────────────────────────────────────────────────
@@ -246,7 +272,6 @@ function seed() {
       volume: "12",
       numero: "2",
       pages: "145-162",
-      doi: "10.1234/jmsc.2024.1234",
       annee: 2024,
       datePublication: "2024-03-15",
       motsClefs: ["paludisme", "modèle multi-agents", "Dakar", "épidémiologie", "NDVI", "Pikine"],
@@ -255,7 +280,7 @@ function seed() {
       statut: "validee",
       axe: "agents",
       accessLevel: "public",
-      citationApa: "Diop, F., & Diallo, C. (2024). Modélisation multi-agents de la propagation du paludisme dans la zone périurbaine de Dakar (2019-2024). Journal de Modélisation des Systèmes Complexes, 12(2), 145-162. https://doi.org/10.1234/jmsc.2024.1234",
+      citationApa: "Diop, F., & Diallo, C. (2024). Modélisation multi-agents de la propagation du paludisme dans la zone périurbaine de Dakar (2019-2024). Journal de Modélisation des Systèmes Complexes, 12(2), 145-162.",
       citationBibtex: `@article{diop2024modelisation,
   title={Modélisation multi-agents de la propagation du paludisme dans la zone périurbaine de Dakar (2019-2024)},
   author={Diop, Fatou and Diallo, Cheikh},
@@ -263,8 +288,7 @@ function seed() {
   volume={12},
   number={2},
   pages={145--162},
-  year={2024},
-  doi={10.1234/jmsc.2024.1234}
+  year={2024}
 }`,
     },
     {
@@ -277,7 +301,6 @@ function seed() {
       volume: "8",
       numero: "1",
       pages: "45-58",
-      doi: "10.5678/rails.2023.456",
       annee: 2023,
       datePublication: "2023-09-01",
       motsClefs: ["LoRaWAN", "IoT", "inondations", "Dakar", "alerte précoce", "LSTM"],
@@ -286,7 +309,7 @@ function seed() {
       statut: "validee",
       axe: "capteurs",
       accessLevel: "public",
-      citationApa: "Ndiaye, M., & Faye, A. (2023). Système d'alerte précoce basé sur l'IoT pour la surveillance des inondations dans la banlieue de Dakar. Revue Africaine de l'Ingénierie Logicielle et Systèmes, 8(1), 45-58. https://doi.org/10.5678/rails.2023.456",
+      citationApa: "Ndiaye, M., & Faye, A. (2023). Système d'alerte précoce basé sur l'IoT pour la surveillance des inondations dans la banlieue de Dakar. Revue Africaine de l'Ingénierie Logicielle et Systèmes, 8(1), 45-58.",
       citationBibtex: `@article{ndiaye2023systeme,
   title={Système d'alerte précoce basé sur l'IoT pour la surveillance des inondations dans la banlieue de Dakar},
   author={Ndiaye, Moussa and Faye, Amadou},
@@ -294,8 +317,7 @@ function seed() {
   volume={8},
   number={1},
   pages={45--58},
-  year={2023},
-  doi={10.5678/rails.2023.456}
+  year={2023}
 }`,
     },
     {
@@ -308,7 +330,6 @@ function seed() {
       volume: "15",
       numero: "4",
       pages: "312-329",
-      doi: "10.9012/eig.2024.789",
       annee: 2024,
       datePublication: "2024-06-01",
       motsClefs: ["PM2.5", "science citoyenne", "pollution atmosphérique", "krigeage", "LES", "Dakar"],
@@ -317,7 +338,7 @@ function seed() {
       statut: "en_attente",
       axe: "participatif",
       accessLevel: "protected",
-      citationApa: "Faye, A., & Diop, F. (2024). Sciences participatives pour le suivi de la qualité de l'air à Dakar. Écologie et Informatique Globale, 15(4), 312-329. https://doi.org/10.9012/eig.2024.789",
+      citationApa: "Faye, A., & Diop, F. (2024). Sciences participatives pour le suivi de la qualité de l'air à Dakar. Écologie et Informatique Globale, 15(4), 312-329.",
       citationBibtex: `@article{faye2024sciences,
   title={Sciences participatives pour le suivi de la qualité de l'air à Dakar},
   author={Faye, Amadou and Diop, Fatou},
@@ -325,8 +346,7 @@ function seed() {
   volume={15},
   number={4},
   pages={312--329},
-  year={2024},
-  doi={10.9012/eig.2024.789}
+  year={2024}
 }`,
     },
     {
@@ -339,7 +359,6 @@ function seed() {
       volume: "34",
       numero: "3",
       pages: "89-104",
-      doi: "10.3456/esi.2022.345",
       annee: 2022,
       datePublication: "2022-11-20",
       motsClefs: ["tuberculose", "SEIR", "SMA", "comparaison", "Sénégal", "milieu carcéral"],
@@ -348,7 +367,7 @@ function seed() {
       statut: "validee",
       axe: "agents",
       accessLevel: "public",
-      citationApa: "Diop, F., & Diallo, C. (2022). Simulation comparative : SEIR vs SMA pour la tuberculose au Sénégal. Epidémiologie et Santé Internationale, 34(3), 89-104. https://doi.org/10.3456/esi.2022.345",
+      citationApa: "Diop, F., & Diallo, C. (2022). Simulation comparative : SEIR vs SMA pour la tuberculose au Sénégal. Epidémiologie et Santé Internationale, 34(3), 89-104.",
       citationBibtex: `@article{diop2022simulation,
   title={Simulation comparative : Équations différentielles vs SMA pour la tuberculose au Sénégal},
   author={Diop, Fatou and Diallo, Cheikh},
@@ -356,8 +375,7 @@ function seed() {
   volume={34},
   number={3},
   pages={89--104},
-  year={2022},
-  doi={10.3456/esi.2022.345}
+  year={2022}
 }`,
     },
     {
@@ -370,7 +388,6 @@ function seed() {
       volume: "29",
       numero: "1",
       pages: "12-28",
-      doi: "10.7890/joao.2023.123",
       annee: 2023,
       datePublication: "2023-04-10",
       motsClefs: ["érosion côtière", "Langue de Barbarie", "Saint-Louis", "RCP", "automate cellulaire", "SWAN"],
@@ -379,7 +396,7 @@ function seed() {
       statut: "validee",
       axe: "agents",
       accessLevel: "public",
-      citationApa: "Diallo, C., & Faye, A. (2023). Modélisation multi-échelle de la dynamique sédimentaire sur la Langue de Barbarie. Journal Océanographique d'Afrique de l'Ouest, 29(1), 12-28. https://doi.org/10.7890/joao.2023.123",
+      citationApa: "Diallo, C., & Faye, A. (2023). Modélisation multi-échelle de la dynamique sédimentaire sur la Langue de Barbarie. Journal Océanographique d'Afrique de l'Ouest, 29(1), 12-28.",
       citationBibtex: `@article{diallo2023modelisation,
   title={Modélisation multi-échelle de la dynamique sédimentaire sur la Langue de Barbarie},
   author={Diallo, Cheikh and Faye, Amadou},
@@ -387,8 +404,7 @@ function seed() {
   volume={29},
   number={1},
   pages={12--28},
-  year={2023},
-  doi={10.7890/joao.2023.123}
+  year={2023}
 }`,
     },
     {
@@ -401,17 +417,15 @@ function seed() {
       volume: "6",
       numero: "1",
       pages: "101-115",
-      doi: "10.2345/tod.2024.567",
       annee: 2024,
       datePublication: "2024-02-28",
       motsClefs: ["pluviomètre", "open hardware", "ESP32", "LoRa", "impression 3D", "FabLab"],
       googleScholarUrl: "https://scholar.google.com/scholar?q=pluviom%C3%A8tre+open+source+FabLab+ESP",
-      fichierPdf: "https://example.org/publications/ndiaye2024_pluviometre.pdf",
       datasetsLies: ["data-04"],
       statut: "validee",
       axe: "capteurs",
       accessLevel: "public",
-      citationApa: "Ndiaye, M. (2024). Conception de stations pluviométriques ouvertes au FabLab de l'ESP. Technologies Ouvertes pour le Développement, 6(1), 101-115. https://doi.org/10.2345/tod.2024.567",
+      citationApa: "Ndiaye, M. (2024). Conception de stations pluviométriques ouvertes au FabLab de l'ESP. Technologies Ouvertes pour le Développement, 6(1), 101-115.",
       citationBibtex: `@article{ndiaye2024pluvio,
   title={Conception de stations pluviométriques ouvertes et reproductibles au FabLab de l'ESP},
   author={Ndiaye, Moussa},
@@ -419,75 +433,15 @@ function seed() {
   volume={6},
   number={1},
   pages={101--115},
-  year={2024},
-  doi={10.2345/tod.2024.567}
+  year={2024}
 }`,
     },
   ];
 
   publications.forEach((p) => db.publications.set(p.id, p));
 
-  // Datasets
-  const datasets: DBDataset[] = [
-    {
-      id: "data-01",
-      titre: "Données épidémiologiques paludisme — Région de Dakar (2019-2024)",
-      description: "Série temporelle géoréférencée des cas hebdomadaires de paludisme enregistrés dans les districts sanitaires de Pikine, Guédiawaye et Yeumbeul.",
-      type: "csv",
-      licence: "CC BY 4.0",
-      acces: "protected",
-      fichiers: ["malaria_dakar_2019_2024.csv"],
-      metadonnees: { format: "CSV", crs: "WGS84", frequency: "weekly" },
-      creatorId: "u-chercheur",
-      size: "148 MB",
-      downloads: 342,
-      dateDepot: "2024-01-10",
-    },
-    {
-      id: "data-02",
-      titre: "Qualité de l'air par capteurs IoT — Hann Bel-Air (2025)",
-      description: "Relevés horaires PM2.5, PM10, température et humidité par les micro-stations du réseau citoyen UMMISCO.",
-      type: "json",
-      licence: "Open Data Commons",
-      acces: "public",
-      fichiers: ["air_quality_hann_2025.json"],
-      metadonnees: { format: "JSON", sensors: "50", interval: "hourly" },
-      creatorId: "u-chercheur",
-      size: "34 MB",
-      downloads: 812,
-      dateDepot: "2025-02-15",
-    },
-    {
-      id: "data-03",
-      titre: "Registres de morbidité clinique — Hôpital de Fann (2023)",
-      description: "Dossiers cliniques anonymisés des admissions pour infections respiratoires aiguës à Dakar.",
-      type: "xlsx",
-      licence: "Accès restreint",
-      acces: "private",
-      fichiers: [],
-      metadonnees: { records: "4200", anonymized: "true" },
-      creatorId: "u-chercheur",
-      size: "1.2 GB",
-      downloads: 14,
-      dateDepot: "2023-11-05",
-    },
-    {
-      id: "data-04",
-      titre: "Capteurs pluviométriques Keur Massar (2024)",
-      description: "Enregistrements à haute fréquence (5 min) des niveaux d'eau des bassins de rétention lors de la saison des pluies 2024.",
-      type: "csv",
-      licence: "CC BY-SA 4.0",
-      acces: "public",
-      fichiers: ["hydro_keur_massar_2024.csv"],
-      metadonnees: { frequency: "5min", sensors: "12" },
-      creatorId: "u-respaxe",
-      size: "89 MB",
-      downloads: 504,
-      dateDepot: "2024-10-20",
-    },
-  ];
-
-  datasets.forEach((d) => db.datasets.set(d.id, d));
+  // No dataset seeds — static datasets are displayed from ummiscoData on the frontend.
+  // Real datasets are created by authenticated users via POST /api/datasets.
 
   // Events
   const events: DBEvent[] = [

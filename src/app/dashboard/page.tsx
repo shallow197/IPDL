@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
-import { User, BookOpen, Database, Activity, FileText, Plus, Edit3, Loader2, CheckCircle2, Clock, XCircle, LogOut, Camera } from "lucide-react";
+import Link from "next/link";
+import { User, BookOpen, Database, Activity, FileText, Plus, Edit3, Loader2, CheckCircle2, Clock, XCircle, LogOut, Camera, ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
@@ -233,6 +234,12 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        {/* Back link */}
+        <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 mb-8 font-semibold">
+          <ArrowLeft className="h-4 w-4" />
+          <span>Retour à l'accueil</span>
+        </Link>
+
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-900 pb-8 mb-8">
           <div>
@@ -543,7 +550,7 @@ export default function DashboardPage() {
                   ].map(({ label, value, icon: Icon }) => (
                     <div key={label} className="rounded-xl border border-slate-900 bg-slate-900/10 p-4 text-center">
                       <Icon className="h-5 w-5 text-blue-400 mx-auto mb-2" />
-                      <div className="text-2xl font-extrabold text-white">{value}</div>
+                      <div className="text-2xl font-extrabold text-stat-number">{value}</div>
                       <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5">{label}</div>
                     </div>
                   ))}
