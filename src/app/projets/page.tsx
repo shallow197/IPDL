@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ExternalLink,
@@ -43,24 +43,6 @@ function getDomainConfig(domain: string) {
   return defaultDomain;
 }
 
-// ─── Dégradé de repli par domaine (fixé, fonctionne en clair et sombre) ───────
-
-const DOMAIN_FALLBACK_GRADIENT: [string, string][] = [
-  ["Santé",         "from-rose-800 via-rose-900 to-slate-900"],
-  ["Environnement", "from-green-800 via-green-900 to-slate-900"],
-  ["Gestion",       "from-cyan-800 via-cyan-900 to-slate-900"],
-  ["Société",       "from-purple-800 via-purple-900 to-slate-900"],
-  ["Biodiversité",  "from-emerald-800 via-emerald-900 to-slate-900"],
-  ["Mobilité",      "from-amber-800 via-amber-900 to-slate-900"],
-];
-
-function getDomainGradient(domain: string): string {
-  for (const [key, val] of DOMAIN_FALLBACK_GRADIENT) {
-    if (domain.includes(key)) return val;
-  }
-  return "from-slate-700 via-slate-800 to-slate-900";
-}
-
 // ─── Couleurs centres ──────────────────────────────────────────────────────────
 
 const CENTER_COLORS: Record<string, string> = {
@@ -94,144 +76,14 @@ function getDistinctDomains(projects: Project[]): string[] {
   return Array.from(new Set(raw)).sort();
 }
 
-// ─── Modal de détail projet ────────────────────────────────────────────────────
-
-function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
-  const [imgFailed, setImgFailed] = useState(false);
-  const { t } = useLang();
-  const dc = getDomainConfig(project.domain);
-  const gradient = getDomainGradient(project.domain);
-
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = prev; };
-  }, []);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
-
-  const details = [
-    { label: t("projets.labelLead"),        value: project.chefProjet },
-    { label: t("projets.labelDuration"),    value: project.duree },
-    { label: t("projets.labelStart"),       value: project.dateDebut },
-    { label: t("projets.labelBudget"),      value: project.budget },
-    { label: t("projets.labelInstitution"), value: project.institutionPorteuse },
-    { label: t("projets.labelFunding"),     value: project.financement },
-    { label: t("projets.labelPartners"),    value: project.partenaires },
-  ].filter((d): d is { label: string; value: string } => !!d.value);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 backdrop-blur-sm"
-      style={{ backgroundColor: "rgba(0,0,0,0.72)" }}
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={project.name}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 12 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 12 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="relative w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl overflow-hidden flex flex-col"
-        style={{ maxHeight: "90vh" }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Zone logo / image — object-contain pour garder les proportions */}
-        <div
-          className={`relative w-full aspect-video flex-none bg-gradient-to-br ${gradient} flex items-center justify-center overflow-hidden`}
-        >
-          {project.image && !imgFailed ? (
-            <img
-              src={project.image}
-              alt={project.name}
-              onError={() => setImgFailed(true)}
-              className="absolute inset-0 w-full h-full object-contain p-8"
-            />
-          ) : (
-            <span className="text-2xl font-extrabold text-gray-100 text-center px-8 leading-snug drop-shadow">
-              {project.name}
-            </span>
-          )}
-          <button
-            onClick={onClose}
-            aria-label="Fermer"
-            className="absolute top-3 right-3 rounded-full bg-black/50 p-2 text-gray-200 hover:bg-black/80 transition"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        </div>
-
-        {/* Contenu défilable */}
-        <div className="overflow-y-auto flex flex-col gap-5 p-6">
-          {/* Titre + badge domaine */}
-          <div>
-            <h2 className="text-xl font-extrabold text-white leading-tight">{project.name}</h2>
-            <div className="mt-2 flex flex-wrap items-center gap-2">
-              <span
-                className={`inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full border ${dc.bg} ${dc.color} ${dc.border}`}
-              >
-                <span className={`h-1.5 w-1.5 rounded-full ${dc.dot}`} />
-                {project.domain.split(", ")[0]}
-              </span>
-            </div>
-          </div>
-
-          {/* Description */}
-          <p className="text-sm text-slate-400 leading-relaxed">{project.description}</p>
-
-          {/* Tableau de métadonnées */}
-          {details.length > 0 && (
-            <div className="rounded-xl border border-slate-800 bg-slate-900/30 overflow-hidden divide-y divide-slate-800">
-              {details.map(({ label, value }) => (
-                <div key={label} className="flex items-start justify-between gap-4 px-4 py-3">
-                  <span className="text-[11px] uppercase tracking-wider text-slate-500 font-bold flex-none w-32">
-                    {label}
-                  </span>
-                  <span className="text-sm font-medium text-right text-white flex-1 break-words">
-                    {value}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Bouton SAVOIR PLUS */}
-          {project.url && (
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-gray-100 hover:bg-blue-500 active:scale-[0.98] transition"
-            >
-              {t("projets.learnMore").toUpperCase()} <ExternalLink className="h-4 w-4" />
-            </a>
-          )}
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 // ─── Carte projet ──────────────────────────────────────────────────────────────
 
 function ProjectCard({
   project,
   index,
-  onOpen,
 }: {
   project: Project;
   index: number;
-  onOpen: () => void;
 }) {
   const [imgFailed, setImgFailed] = useState(false);
   const { t } = useLang();
@@ -276,18 +128,6 @@ function ProjectCard({
               </span>
             </div>
           </div>
-          {project.url && (
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-none p-2 rounded-lg border border-slate-800 text-slate-500 hover:text-blue-400 hover:border-blue-500/30 transition-all"
-              aria-label={`Voir ${project.name} sur le site officiel`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          )}
         </div>
 
         {/* Description */}
@@ -318,7 +158,7 @@ function ProjectCard({
         </div>
 
         {/* Centres */}
-        <div>
+        <div className="mb-4">
           <span className="text-[9px] uppercase tracking-widest text-slate-600 font-bold mb-1.5 block flex items-center gap-1">
             <MapPin className="h-2.5 w-2.5" /> Centres
           </span>
@@ -340,12 +180,12 @@ function ProjectCard({
         </div>
 
         {/* Bouton Voir détails */}
-        <button
-          onClick={onOpen}
+        <Link
+          href={`/projets/${project.id}`}
           className="mt-auto w-full rounded-lg border border-blue-500/20 bg-blue-600/10 hover:bg-blue-600/20 hover:border-blue-500/40 py-2 text-[11px] font-bold text-blue-400 transition flex items-center justify-center gap-1.5"
         >
           Voir détails <ChevronRight className="h-3 w-3" />
-        </button>
+        </Link>
       </div>
     </motion.article>
   );
@@ -359,9 +199,7 @@ export default function ProjetsPage() {
   const [activeTheme, setActiveTheme] = useState<string | null>(null);
   const [activeDomain, setActiveDomain] = useState<string | null>(null);
   const [activeCenter, setActiveCenter] = useState<string | null>(null);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const closeModal = useCallback(() => setSelectedProject(null), []);
+  const [displayedCount, setDisplayedCount] = useState(5);
 
   const allDomains = useMemo(() => getDistinctDomains(PROJECTS), []);
 
@@ -431,10 +269,10 @@ export default function ProjetsPage() {
           {/* Statistiques rapides */}
           <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { value: PROJECTS.length, label: "Projets actifs",    color: "text-blue-400" },
-              { value: allDomains.length, label: "Domaines couverts", color: "text-green-400" },
-              { value: CENTERS.length,  label: "Centres impliqués", color: "text-violet-400" },
-              { value: AXES.length,     label: "Axes thématiques",  color: "text-amber-400" },
+              { value: PROJECTS.length, label: "Projets actifs" },
+              { value: allDomains.length, label: "Domaines couverts" },
+              { value: CENTERS.length,  label: "Centres impliqués" },
+              { value: AXES.length,     label: "Axes thématiques" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -443,7 +281,7 @@ export default function ProjetsPage() {
                 transition={{ delay: i * 0.08 }}
                 className="rounded-xl border border-slate-800 bg-slate-900/30 p-4 text-center"
               >
-                <div className={`text-2xl font-extrabold ${stat.color}`}>{stat.value}</div>
+                <div className="text-2xl font-extrabold text-stat-number">{stat.value}</div>
                 <div className="text-[10px] text-slate-500 uppercase tracking-wide mt-1">{stat.label}</div>
               </motion.div>
             ))}
@@ -542,16 +380,33 @@ export default function ProjetsPage() {
         {/* ── Grille de projets ── */}
         <AnimatePresence mode="popLayout">
           {filtered.length > 0 ? (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((project, i) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={i}
-                  onOpen={() => setSelectedProject(project)}
-                />
-              ))}
-            </div>
+            <>
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {filtered.slice(0, displayedCount).map((project, i) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    index={i}
+                  />
+                ))}
+              </div>
+              
+              {/* Bouton "Voir plus" */}
+              {displayedCount < filtered.length && (
+                <div className="mt-12 flex justify-center">
+                  <motion.button
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    onClick={() => setDisplayedCount((prev) => Math.min(prev + 6, filtered.length))}
+                    className="px-8 py-3 rounded-lg border border-slate-700 bg-slate-900/40 hover:bg-slate-900/60 text-sm font-semibold text-slate-300 hover:text-white transition-all duration-300 flex items-center gap-2"
+                  >
+                    Voir plus de projets ({displayedCount}/{filtered.length})
+                    <ChevronRight className="h-4 w-4" />
+                  </motion.button>
+                </div>
+              )}
+            </>
           ) : (
             <motion.div
               key="empty"
@@ -658,16 +513,6 @@ export default function ProjetsPage() {
 
       <Footer />
 
-      {/* ── Modal de détail projet ── */}
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectModal
-            key="project-modal"
-            project={selectedProject}
-            onClose={closeModal}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 }

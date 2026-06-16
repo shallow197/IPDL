@@ -36,6 +36,9 @@
   --color-ummisco-blue-light: #2d6abf;
   --color-ummisco-green:      #007a23;
   --color-ummisco-green-light:#009e2e;
+
+  /* Couleur unique pour tous les chiffres/statistiques du site */
+  --color-stat: #000000;
 }
 
 /* ── Dark mode palette ──────────────────────────────────────────────── */
@@ -55,6 +58,8 @@
   --color-slate-300: #cbd5e1;
   --color-slate-200: #e2e8f0;
   --color-slate-100: #f8fafc;
+
+  --color-stat: #60a5fa;
 }
 
 /* ── Tailwind theme mapping ─────────────────────────────────────────── */
@@ -149,6 +154,10 @@ html:not(.dark) [class~="rounded-2xl"][class~="border"] {
 .mono-text {
   font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
+/* Couleur uniforme appliquée à tous les chiffres/statistiques du site */
+.text-stat-number {
+  color: var(--color-stat);
+}
 
 /* ── Partners scrolling banner ──────────────────────────────────────────────── */
 @keyframes partners-scroll {
@@ -156,7 +165,7 @@ html:not(.dark) [class~="rounded-2xl"][class~="border"] {
   100% { transform: translateX(-50%); }
 }
 .animate-partners-scroll {
-  animation: partners-scroll 35s linear infinite;
+  animation: partners-scroll 80s linear infinite;
 }
 
 /* ── Logo glow pulsation (mode sombre) ─────────────────────────────── */

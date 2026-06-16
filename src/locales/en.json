@@ -68,7 +68,7 @@
     "explorePartenaires": "Supervisory bodies, academic partners, funders and deliverables."
   },
   "axes": {
-    "sectionTag": "01 // Scientific Activities",
+    "sectionTag": "Scientific Activities",
     "title": "Research Themes",
     "description": "UMMISCO UMI 209 organises its work around four complementary themes for sustainability science.",
     "publications": "Publications",
@@ -85,7 +85,7 @@
     "researchersByAxis": "Researchers by Area"
   },
   "publications": {
-    "sectionTag": "02 // Scientific output",
+    "sectionTag": "Scientific output",
     "title": "Latest Publications",
     "viewAll": "All publications",
     "cite": "Cite",
@@ -132,7 +132,7 @@
     "status_rejected": "Rejected"
   },
   "datasets": {
-    "sectionTag": "03 // Open Research Data",
+    "sectionTag": "Open Research Data",
     "title": "Available Datasets",
     "description": "UMMISCO promotes open science while strictly respecting ethical confidentiality through 3 security levels.",
     "download": "Download",
@@ -156,7 +156,7 @@
     "submitRequest": "Submit request"
   },
   "researchers": {
-    "sectionTag": "04 // Scientific Directory",
+    "sectionTag": "Scientific Directory",
     "title": "Associated Researchers",
     "viewProfile": "View profile",
     "publications": "publications",
@@ -170,7 +170,7 @@
     "contact": "Contact"
   },
   "events": {
-    "sectionTag": "05 // Lab life",
+    "sectionTag": "Lab life",
     "title": "News & Seminars",
     "speaker": "Speaker:",
     "register": "Register",
@@ -578,7 +578,9 @@
     "placeholder": "Ask your question...",
     "send": "Send",
     "welcome": "Hello! I am the UMMISCO portal assistant. How can I help you?",
-    "thinking": "Thinking..."
+    "thinking": "Thinking...",
+    "newChat": "New conversation",
+    "close": "Close"
   },
   "partners": {
     "title": "Partners & Funders",

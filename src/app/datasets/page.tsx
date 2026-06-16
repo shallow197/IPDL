@@ -1,13 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Download, Lock, Eye, Shield, Filter, Database, Loader2, KeyRound, Send, X, Check } from "lucide-react";
+import React, { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { Download, Lock, Eye, Shield, Filter, Database, Loader2, KeyRound, Send, X, Check, ShieldCheck, Users, Calendar } from "lucide-react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
 import { useNotification } from "@/context/NotificationContext";
 import type { DBDataset } from "@/lib/db";
+import { DATASETS, RESEARCHERS } from "@/data/ummiscoData";
+import SignatureModal from "@/components/signatures/SignatureModal";
+import SignatureBadge from "@/components/signatures/SignatureBadge";
+import type { SignPayload } from "@/hooks/useSignature";
 
 const ACCESS_COLORS: Record<string, string> = {
   public:    "bg-green-500/10 text-green-400 border-green-900/30",
@@ -21,21 +26,116 @@ const ACCESS_ICONS: Record<string, React.ElementType> = {
   private:   Shield,
 };
 
-export default function DatasetsPage() {
-  const { isAuthenticated, token } = useAuth();
+// Unified display type for both static and DB datasets
+interface DisplayDataset {
+  id: string;
+  titre: string;
+  description: string;
+  type: string;
+  licence: string;
+  acces: "public" | "protected" | "private";
+  creatorId: string;
+  creatorName: string;
+  size: string;
+  downloads: number;
+  dateDepot: string;
+  isStatic: boolean;
+}
+
+function toDisplay(d: DBDataset): DisplayDataset {
+  return {
+    id: d.id,
+    titre: d.titre,
+    description: d.description,
+    type: d.type,
+    licence: d.licence,
+    acces: d.acces,
+    creatorId: d.creatorId,
+    creatorName: d.creatorName ?? d.creatorId,
+    size: d.size,
+    downloads: d.downloads,
+    dateDepot: d.dateDepot,
+    isStatic: false,
+  };
+}
+
+function staticToDisplay(d: typeof DATASETS[number]): DisplayDataset {
+  const researcher = RESEARCHERS.find((r) => r.id === d.creatorId);
+  return {
+    id: d.id,
+    titre: d.title,
+    description: d.description,
+    type: d.type ?? "CSV",
+    licence: d.licence ?? "CC BY 4.0",
+    acces: d.accessLevel,
+    creatorId: d.creatorId,
+    creatorName: researcher?.name ?? d.creatorId,
+    size: d.size,
+    downloads: d.downloads,
+    dateDepot: `${d.year}-01-01`,
+    isStatic: true,
+  };
+}
+
+function DatasetsContent() {
+  const searchParams = useSearchParams();
+  const { isAuthenticated, token, user } = useAuth();
   const { t } = useLang();
   const { notify } = useNotification();
 
-  const [datasets, setDatasets] = useState<DBDataset[]>([]);
-  const [filter, setFilter] = useState<string>("all");
+  const [dbDatasets, setDbDatasets] = useState<DBDataset[]>([]);
+  const [filter, setFilter] = useState<string>(searchParams.get("acces") ?? "all");
+  const [creatorFilter, setCreatorFilter] = useState<string>(searchParams.get("creator") ?? "all");
+  const [yearFilter, setYearFilter] = useState<string>(searchParams.get("year") ?? "all");
   const [loading, setLoading] = useState(true);
   const [downloading, setDownloading] = useState<string | null>(null);
 
   // ACL access request flow
-  const [requestModal, setRequestModal] = useState<DBDataset | null>(null);
+  const [requestModal, setRequestModal] = useState<DisplayDataset | null>(null);
   const [requestReason, setRequestReason] = useState("");
   const [requestSubmitting, setRequestSubmitting] = useState(false);
   const [requestedIds, setRequestedIds] = useState<string[]>([]);
+
+  // Signature flow
+  const [sigModal, setSigModal] = useState<SignPayload | null>(null);
+  const [freshSigs, setFreshSigs] = useState<Record<string, { id: string; signerName: string; timestamp: string }>>({});
+
+  useEffect(() => {
+    fetch("/api/datasets", {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    })
+      .then((r) => r.ok ? r.json() : [])
+      .then((d: DBDataset[]) => setDbDatasets(d))
+      .catch(() => setDbDatasets([]))
+      .finally(() => setLoading(false));
+  }, [token]);
+
+  // Merge: DB datasets take priority; static ones shown only if not already in DB
+  const dbIds = new Set(dbDatasets.map((d) => d.id));
+  const staticDisplay = DATASETS
+    .filter((d) => !dbIds.has(d.id))
+    .map(staticToDisplay);
+  const dbDisplay = dbDatasets.map(toDisplay);
+  const allDatasets: DisplayDataset[] = [...staticDisplay, ...dbDisplay];
+
+  // Creator and year options
+  const creators = Array.from(
+    allDatasets.reduce((map, d) => {
+      if (!map.has(d.creatorId)) map.set(d.creatorId, d.creatorName);
+      return map;
+    }, new Map<string, string>())
+  );
+
+  const years = [...new Set(allDatasets.map((d) => d.dateDepot.substring(0, 4)))].sort(
+    (a, b) => b.localeCompare(a)
+  );
+
+  const filtered = allDatasets.filter((d) => {
+    if (filter !== "all" && d.acces !== filter) return false;
+    if (creatorFilter !== "all" && d.creatorId !== creatorFilter) return false;
+    if (yearFilter !== "all" && d.dateDepot.substring(0, 4) !== yearFilter) return false;
+    return true;
+  });
 
   const submitAccessRequest = async () => {
     if (!requestModal || !token || !requestReason.trim()) return;
@@ -63,19 +163,7 @@ export default function DatasetsPage() {
     }
   };
 
-  useEffect(() => {
-    fetch("/api/datasets", {
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    })
-      .then((r) => r.json())
-      .then((d) => setDatasets(d))
-      .catch(() => setDatasets([]))
-      .finally(() => setLoading(false));
-  }, [token]);
-
-  const filtered = filter === "all" ? datasets : datasets.filter((d) => d.acces === filter);
-
-  const handleDownload = async (ds: DBDataset) => {
+  const handleDownload = async (ds: DisplayDataset) => {
     setDownloading(ds.id);
     try {
       const res = await fetch(`/api/datasets/${ds.id}/download`, {
@@ -88,7 +176,6 @@ export default function DatasetsPage() {
         return;
       }
 
-      // Extract filename from Content-Disposition header
       const disposition = res.headers.get("Content-Disposition") ?? "";
       const match = disposition.match(/filename="([^"]+)"/);
       const filename = match ? match[1] : `dataset_${ds.id}.csv`;
@@ -104,13 +191,13 @@ export default function DatasetsPage() {
       URL.revokeObjectURL(url);
 
       notify("Téléchargement démarré.", "success");
-      setDatasets((prev) =>
-        prev.map((d) => d.id === ds.id ? { ...d, downloads: d.downloads + 1 } : d)
-      );
     } finally {
       setDownloading(null);
     }
   };
+
+  const selectClass =
+    "rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-300 px-2 py-1.5 focus:outline-none focus:border-blue-500/50 cursor-pointer";
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
@@ -124,7 +211,39 @@ export default function DatasetsPage() {
           <div aria-hidden className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 to-green-500" />
         </div>
 
-        {/* Filter bar */}
+        {/* Member & year filters */}
+        <div className="flex items-center gap-3 mb-4 flex-wrap">
+          <div className="flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-wider">
+            <Users className="h-3 w-3" /> Auteur :
+          </div>
+          <select value={creatorFilter} onChange={(e) => setCreatorFilter(e.target.value)} className={selectClass}>
+            <option value="all">Tous</option>
+            {creators.map(([id, name]) => (
+              <option key={id} value={id}>{name}</option>
+            ))}
+          </select>
+
+          <div className="flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-wider ml-3">
+            <Calendar className="h-3 w-3" /> Année :
+          </div>
+          <select value={yearFilter} onChange={(e) => setYearFilter(e.target.value)} className={selectClass}>
+            <option value="all">Toutes</option>
+            {years.map((y) => (
+              <option key={y} value={y}>{y}</option>
+            ))}
+          </select>
+
+          {(creatorFilter !== "all" || yearFilter !== "all" || filter !== "all") && (
+            <button
+              onClick={() => { setCreatorFilter("all"); setYearFilter("all"); setFilter("all"); }}
+              className="ml-2 inline-flex items-center gap-1 text-[10px] text-slate-500 hover:text-red-400 transition-colors"
+            >
+              <X className="h-3 w-3" /> Réinitialiser
+            </button>
+          )}
+        </div>
+
+        {/* Access filter bar */}
         <div className="flex items-center gap-3 mb-8 flex-wrap">
           <div className="flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-wider">
             <Filter className="h-3 w-3" /> {t("datasets.filterAccess")} :
@@ -164,6 +283,7 @@ export default function DatasetsPage() {
                 ds.acces === "public" ||
                 (isAuthenticated && ds.acces === "protected");
               const isDownloading = downloading === ds.id;
+              const isOwner = !ds.isStatic && user?.id === ds.creatorId;
 
               return (
                 <div
@@ -175,7 +295,7 @@ export default function DatasetsPage() {
                       <div>
                         <h3 className="text-sm font-bold text-white leading-snug">{ds.titre}</h3>
                         <span className="text-[10px] text-slate-500 mt-0.5 block">
-                          {t("datasets.createdBy")} · {ds.dateDepot}
+                          {ds.creatorName} · {ds.dateDepot.substring(0, 4)}
                         </span>
                       </div>
                       <span
@@ -237,11 +357,42 @@ export default function DatasetsPage() {
                       </Link>
                     )}
                   </div>
+
+                  {/* Signature (créateur DB uniquement) */}
+                  {isOwner && (
+                    <div className="mt-3 pt-3 border-t border-slate-900/50 flex items-center gap-2 flex-wrap">
+                      <button
+                        onClick={() => setSigModal({
+                          type: "dataset",
+                          targetId: ds.id,
+                          targetLabel: ds.titre,
+                          data: {
+                            titre: ds.titre,
+                            description: ds.description,
+                            type: ds.type,
+                            licence: ds.licence,
+                            size: ds.size,
+                            dateDepot: ds.dateDepot,
+                          },
+                        })}
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-blue-800/40 bg-blue-600/10 px-2.5 py-1 text-[10px] font-bold text-blue-400 hover:bg-blue-600/20 transition-all"
+                      >
+                        <ShieldCheck className="h-3 w-3" /> Signer ce dataset
+                      </button>
+                      <SignatureBadge targetId={ds.id} freshSignature={freshSigs[ds.id]} compact />
+                    </div>
+                  )}
+
+                  {!isOwner && !ds.isStatic && (
+                    <div className="mt-3">
+                      <SignatureBadge targetId={ds.id} compact />
+                    </div>
+                  )}
                 </div>
               );
             })}
 
-            {filtered.length === 0 && !loading && (
+            {filtered.length === 0 && (
               <div className="col-span-2 rounded-xl border border-slate-900 border-dashed p-12 text-center text-slate-500 text-xs">
                 {t("common.noData")}
               </div>
@@ -309,6 +460,27 @@ export default function DatasetsPage() {
       )}
 
       <Footer />
+
+      {sigModal && (
+        <SignatureModal
+          payload={sigModal}
+          onClose={() => setSigModal(null)}
+          onSigned={(sigId, timestamp) => {
+            setFreshSigs((prev) => ({
+              ...prev,
+              [sigModal.targetId]: { id: sigId, signerName: user?.nom ?? "", timestamp },
+            }));
+          }}
+        />
+      )}
     </div>
+  );
+}
+
+export default function DatasetsPage() {
+  return (
+    <Suspense>
+      <DatasetsContent />
+    </Suspense>
   );
 }

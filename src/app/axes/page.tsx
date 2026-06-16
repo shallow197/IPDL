@@ -14,6 +14,7 @@ const AXES_DATA = [
     name: "Épidémiologie & Santé",
     icon: FlaskConical,
     color: "blue",
+    image: "/themes/modelisation.png",
     description: "Modélisation mathématique et informatique des maladies infectieuses (paludisme, dengue, tuberculose). Approches multi-agents et systèmes dynamiques couplés aux données épidémiologiques de terrain.",
     keywords: ["Paludisme", "Dengue", "Modèle SEIR", "Multi-agents", "Institut Pasteur"],
     lead: "Dr. Fatou Diop",
@@ -23,6 +24,7 @@ const AXES_DATA = [
     name: "IoT & Systèmes Embarqués",
     icon: Cpu,
     color: "green",
+    image: "/themes/capteurs.png",
     description: "Déploiement de réseaux de capteurs IoT à basse consommation (LoRaWAN, ESP32) pour la surveillance environnementale, hydrologique et la résilience urbaine. FabLab et prototypage ouvert.",
     keywords: ["LoRaWAN", "ESP32", "Smart sensors", "Inondations", "Qualité eau"],
     lead: "Dr. Moussa Ndiaye",
@@ -32,6 +34,7 @@ const AXES_DATA = [
     name: "Science Citoyenne",
     icon: Users,
     color: "purple",
+    image: "/themes/science_citoyenne.png",
     description: "Mobilisation de données participatives via des applications citoyennes. Couplage données crowdsourced – modèles scientifiques pour la cartographie de la pollution et des risques environnementaux.",
     keywords: ["Crowdsourcing", "PM2.5", "Pollution", "Participation", "Données ouvertes"],
     lead: "Dr. Amadou Faye",
@@ -41,6 +44,7 @@ const AXES_DATA = [
     name: "Environnement & Risques",
     icon: Globe,
     color: "amber",
+    image: "/themes/intelligence.png",
     description: "Modélisation hydro-sédimentaire, érosion côtière, dynamique des écosystèmes. Simulations sous scénarios de changement climatique pour la gestion des risques naturels au Sénégal.",
     keywords: ["Érosion côtière", "Inondations", "Changement climatique", "Langue de Barbarie"],
     lead: "Professeur Cheikh Diallo",
@@ -96,12 +100,18 @@ export default function AxesPage() {
               <div key={axis.id}>
                 <button
                   onClick={() => setSelected(isSelected ? null : axis.id)}
-                  className={`w-full text-left rounded-xl border p-6 transition-all duration-300 ${
+                  className={`w-full text-left rounded-xl border overflow-hidden transition-all duration-300 ${
                     isSelected
                       ? colorMap[axis.color]
                       : "border-slate-900 bg-slate-900/10 hover:border-slate-800 hover:bg-slate-900/20"
                   }`}
                 >
+                  {axis.image && (
+                    <div className="h-32 w-full overflow-hidden">
+                      <img src={axis.image} alt={axis.name} className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <Icon className={`h-6 w-6 ${isSelected ? iconColorMap[axis.color] : "text-slate-600"}`} />
                     <ChevronRight className={`h-4 w-4 text-slate-600 transition-transform ${isSelected ? "rotate-90" : ""}`} />
@@ -114,6 +124,7 @@ export default function AxesPage() {
                         {k}
                       </span>
                     ))}
+                  </div>
                   </div>
                 </button>
 

@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Shield, CheckCircle2, XCircle, Users, BookOpen,
   Activity, ChevronDown, X, Eye, Search,
   Mail, UserX, UserCheck, Info,
-  KeyRound, Plus, Trash2, Layers, ShieldCheck, Clock, Check,
+  KeyRound, Plus, Trash2, Layers, ShieldCheck, Clock, Check, ArrowLeft,
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
@@ -384,6 +385,8 @@ export default function AdminPage() {
         setRoles((prev) => [...prev, role]);
         setNewRoleName(""); setNewRoleDesc(""); setNewRolePerms([]);
         notify(`Rôle "${role.name}" créé.`, "success");
+      } else if (res.status === 409) {
+        notify(`Un rôle nommé "${newRoleName.trim()}" existe déjà.`, "error");
       } else {
         notify("Erreur lors de la création du rôle.", "error");
       }
@@ -446,6 +449,12 @@ export default function AdminPage() {
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-12 sm:px-6 lg:px-8">
 
+        {/* Back link */}
+        <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 mb-8 font-semibold">
+          <ArrowLeft className="h-4 w-4" />
+          <span>Retour à l'accueil</span>
+        </Link>
+
         {/* Header */}
         <div className="flex flex-wrap items-center gap-3 border-b border-slate-900 pb-8 mb-8">
           <div className="h-10 w-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-900/30 flex items-center justify-center flex-none">
@@ -472,7 +481,7 @@ export default function AdminPage() {
           ].map(({ label, value, icon: Icon, color }) => (
             <div key={label} className="rounded-xl border border-slate-900 bg-slate-900/10 p-4 text-center">
               <Icon className={`h-5 w-5 mx-auto mb-2 ${color}`} />
-              <div className="text-2xl font-extrabold text-white">{value}</div>
+              <div className="text-2xl font-extrabold text-stat-number">{value}</div>
               <div className="text-[9px] text-slate-500 uppercase tracking-wider mt-0.5">{label}</div>
             </div>
           ))}

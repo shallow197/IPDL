@@ -99,8 +99,8 @@ export default function PartenairesPage() {
           <span className="text-[10px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2">
             {t("partenaires.networkTitle")}
           </span>
-          <h1 className="text-3xl font-extrabold text-white sm:text-4xl">{t("partners.title")}</h1>
-          <p className="mt-2 text-slate-400 text-sm max-w-2xl">{t("partners.description")}</p>
+          <h1 className="text-3xl font-extrabold text-white sm:text-4xl">{t("partenaires.title")}</h1>
+          <p className="mt-2 text-slate-400 text-sm max-w-2xl">{t("partenaires.description")}</p>
           <div aria-hidden className="mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 to-green-500" />
 
           {/* Mosaïque de logos institutionnels */}
@@ -183,7 +183,7 @@ export default function PartenairesPage() {
         {/* Filter */}
         <div className="flex items-center gap-3 mb-8 flex-wrap">
           <div className="flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-wider">
-            <Filter className="h-3 w-3" /> {t("partners.filterType")} :
+            <Filter className="h-3 w-3" /> {t("partenaires.filterType")} :
           </div>
           {(["all", "academique", "institutionnel", "bailleur", "industriel"] as const).map((f) => (
             <button
@@ -195,7 +195,7 @@ export default function PartenairesPage() {
                   : "border-slate-800 text-slate-500 hover:text-slate-300"
               }`}
             >
-              {f === "all" ? t("partenaires.all") : {academique: t("partners.typeAcademic"), institutionnel: t("partners.typeInstitutional"), bailleur: t("partners.typeFunder"), industriel: t("partners.typeIndustrial")}[f]}
+              {f === "all" ? t("partenaires.all") : {academique: t("partenaires.typeAcademic"), institutionnel: t("partenaires.typeInstitutional"), bailleur: t("partenaires.typeFunder"), industriel: t("partenaires.typeIndustrial")}[f]}
             </button>
           ))}
         </div>
@@ -216,17 +216,17 @@ export default function PartenairesPage() {
                     })()}
                   </div>
                   <span className={`inline-flex items-center rounded px-2 py-0.5 text-[9px] font-bold border uppercase tracking-wider ${TYPE_COLORS[p.type]}`}>
-                    {{academique: t("partners.typeAcademic"), institutionnel: t("partners.typeInstitutional"), bailleur: t("partners.typeFunder"), industriel: t("partners.typeIndustrial")}[p.type] ?? p.type}
+                    {{academique: t("partenaires.typeAcademic"), institutionnel: t("partenaires.typeInstitutional"), bailleur: t("partenaires.typeFunder"), industriel: t("partenaires.typeIndustrial")}[p.type] ?? p.type}
                   </span>
                 </div>
 
                 <h3 className="text-sm font-bold text-white leading-snug mb-2">{p.nom}</h3>
-                <p className="text-[10px] text-slate-500 mb-1">{t("partners.country")} : <strong className="text-slate-400">{p.pays}</strong></p>
+                <p className="text-[10px] text-slate-500 mb-1">{t("partenaires.country")} : <strong className="text-slate-400">{p.pays}</strong></p>
                 <p className="text-xs text-slate-400 leading-relaxed flex-1 mb-4">{p.description}</p>
 
                 {p.projets.length > 0 && (
                   <div className="mb-4">
-                    <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">{t("partners.projects")}</p>
+                    <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">{t("partenaires.projects")}</p>
                     <div className="flex flex-wrap gap-1">
                       {p.projets.map((proj) => (
                         <span key={proj} className="text-[9px] bg-slate-900 border border-slate-800 text-slate-400 px-1.5 py-0.5 rounded">
@@ -243,7 +243,7 @@ export default function PartenairesPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-[10px] text-blue-400 hover:text-blue-300 font-semibold mt-auto"
                 >
-                  {t("partners.viewSite")}
+                  {t("partenaires.viewSite")}
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </div>

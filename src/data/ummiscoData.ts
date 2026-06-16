@@ -82,6 +82,7 @@ export interface Project {
   domain: string;
   description: string;
   url?: string;
+  projectWebsite?: string;
   image?: string;
   chefProjet?: string;
   duree?: string;
@@ -425,9 +426,14 @@ export const RESEARCHERS: Researcher[] = [
   {
     id: "diane-tchuani-tchakonte", name: "Diane TCHUANI TCHAKONTE",
     title: "Responsable de thème — Centre Afrique centrale et de l'est", role: "responsable_theme", center: "afrique-centrale",
-    axes: ["agents", "ia"],
-    bio: "Responsable de thème au Centre Cameroun. Spécialiste de la modélisation mathématique des épidémies et des maladies infectieuses tropicales.",
+    axes: ["agents", "ia", "capteurs"],
+    bio: "Responsable de thème au Centre Afrique centrale et de l'est. Spécialiste de la modélisation mathématique des épidémies et de l'intelligence artificielle appliquée aux capteurs.",
+    email: "diane.tchuani@gmail.com",
     avatarSeed: "DT", photoUrl: "/photos/diane-tchuani-tchakonte.png", publicationsCount: 16,
+    themesDescription: "Intelligence Artificielle et apprentissage profond / AI and deep learning",
+    publications: [
+      { title: "Adaptive healing procedure for lifetime improvement in Wireless Sensor Networks" },
+    ],
   },
   {
     id: "diaraf-seck", name: "Diaraf SECK",
@@ -1137,18 +1143,6 @@ export const RESEARCHERS: Researcher[] = [
     bio: "Doctorant au Centre Méditerranée. Travaux sur l'apprentissage automatique et la modélisation des systèmes dynamiques complexes.",
     avatarSeed: "ZB", photoUrl: "/photos/zakaria-belghali.png", publicationsCount: 1,
   },
-  {
-    id: "diane-tchuani-tchakonte", name: "Diane TCHUANI TCHAKONTE",
-    title: "Responsable de thème — Centre Afrique centrale et de l'est", role: "responsable_theme", center: "afrique-centrale",
-    axes: ["ia", "capteurs"],
-    bio: "Responsable de thème au Centre Afrique centrale et de l'est. Experte en intelligence artificielle et capteurs pour les applications en Afrique.",
-    email: "diane.tchuani@gmail.com",
-    avatarSeed: "DT", photoUrl: "/photos/diane-tchuani-tchakonte.png", publicationsCount: 1,
-    themesDescription: "Intelligence Artificielle et apprentissage profond / AI and deep learning",
-    publications: [
-      { title: "Adaptive healing procedure for lifetime improvement in Wireless Sensor Networks" },
-    ],
-  },
 ];
 
 // ─── Publications ─────────────────────────────────────────────────────────────
@@ -1276,6 +1270,12 @@ export const PROJECTS: Project[] = [
     description:
       "Dialogue Science-Décideurs pour une gestion intégrée des environnements littoraux et marins. Approche participative multi-acteurs.",
     url: "https://ummisco.fr/fr/projet-ummisco/didem/",
+    image: "/projets/DIDEM.png",
+    chefProjet: "Nicolas Marilleau (porteur côté UMMISCO)",
+    duree: "36 mois",
+    dateDebut: "Juillet 2020",
+    financement: "952 K€",
+    partenaires: "UMMISCO – CRDI – SEM (Société des Explorations de Monaco) – INTERREG La Réunion – Fondation de France (LittoGem) – PNUD – PNUE",
   },
   {
     id: "habitable",
@@ -1286,6 +1286,11 @@ export const PROJECTS: Project[] = [
     description:
       "Modélisation de la mobilité des pêcheurs artisanaux au Sénégal. Simulateur Lolli implémenté sous GAMA pour explorer des scénarios climatiques et socio-économiques.",
     url: "https://ummisco.fr/fr/projet-ummisco/habitable/",
+    image: "/projets/HABITABLE.png",
+    chefProjet: "François Gemene, University of Liège, Hugo Observatory, Belgique",
+    duree: "36 mois",
+    dateDebut: "Décembre 2020",
+    budget: "126 000 €",
   },
   {
     id: "digepi",
@@ -1296,6 +1301,11 @@ export const PROJECTS: Project[] = [
     description:
       "Digital Epidemiology : nouvelle approche pour la surveillance en temps réel du COVID-19 via l'intégration de capteurs environnementaux et de modèles prédictifs.",
     url: "https://ummisco.fr/fr/projet-ummisco/digepi/",
+    image: "/projets/DigEpi.png",
+    chefProjet: "Benjamin Roche, MIVEGEC, IRD",
+    duree: "18 mois",
+    dateDebut: "Avril 2020",
+    budget: "100 K€ (IRD)",
   },
   {
     id: "waqatali",
@@ -1304,8 +1314,15 @@ export const PROJECTS: Project[] = [
     themes: ["ia"],
     domain: "Gestion de l'eau et irrigation, Société",
     description:
-      "Application de l'IA pour l'optimisation de l'irrigation dans les zones semi-arides. Combine apprentissage profond et données capteurs terrain.",
+      "Laboratoire commun IRD–URBASENSE pour l'optimisation des infrastructures vertes en ville. Combine modélisation multi-agents et capteurs IoT pour améliorer la gestion de l'eau et de la végétation urbaine.",
     url: "https://ummisco.fr/fr/projet-ummisco/waqatali/",
+    projectWebsite: "https://www.ird.fr/waqatali-un-laboratoire-commun-pour-optimiser-les-infrastructures-vertes-en-ville",
+    image: "/projets/Waqatali.png",
+    chefProjet: "Nicolas Marilleau, UMMISCO & Thomas Bur, URBASENSE",
+    duree: "54 mois",
+    budget: "360 K€ (IRD)",
+    institutionPorteuse: "IRD",
+    financement: "ANR LAB-COM",
   },
   {
     id: "comokit",
@@ -1316,6 +1333,12 @@ export const PROJECTS: Project[] = [
     description:
       "Modèle informatique permettant d'explorer in silico les stratégies d'intervention épidémique (COVID-19) avant leur mise en application.",
     url: "https://comokit.org/",
+    projectWebsite: "https://comokit.org/",
+    image: "/projets/COMOKIT.png",
+    chefProjet: "Alexis Drogoul, UMI 209 UMMISCO, IRD / Sorbonne Université, Bondy, France",
+    duree: "18 mois",
+    dateDebut: "Juillet 2020",
+    budget: "172 000 € (IRD)",
   },
   {
     id: "anr-magnum",
@@ -1326,6 +1349,9 @@ export const PROJECTS: Project[] = [
     description:
       "The Maasai, the Gnu and the Metropolis. Réseaux de capteurs pour le suivi des grandes migrations animales en Afrique de l'Est.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-magnum/",
+    image: "/projets/MaGnuM.png",
+    chefProjet: "François Mialhe, École de l'environnement et de la société, CNRS 5600 EVS, Université de Lyon",
+    partenaires: "University of Lyon 2 Lumière, Lyon, France ; IRD - UMMISCO, Bondy, France ; University Claude Bernard Lyon I, France ; IRD – PALOC, Kenya ; University of Namur, Belgium ; INED, France ; University of Colorado, USA ; ACC, Kenya ; UMR LETG, Rennes, France",
   },
   {
     id: "dom",
@@ -1336,6 +1362,11 @@ export const PROJECTS: Project[] = [
     description:
       "Distribution Model : séparation des préoccupations pour faciliter la distribution des modèles à base d'agents sur clusters HPC.",
     url: "https://ummisco.fr/fr/projet-ummisco/dom/",
+    image: "/projets/DOM.png",
+    chefProjet: "Dr. Ayesha Almazooqi, Khalifa University, Abu Dhabi",
+    duree: "36 mois",
+    dateDebut: "Décembre 2020",
+    budget: "750 K$",
   },
   {
     id: "airqaly-4-asmafri",
@@ -1346,6 +1377,10 @@ export const PROJECTS: Project[] = [
     description:
       "Réseau de capteurs citoyens pour la surveillance de la qualité de l'air et son impact sur l'asthme en Afrique. Science participative et acquisition de données.",
     url: "https://ummisco.fr/fr/projet-ummisco/airqaly-4-asmafri/",
+    chefProjet: "Nicolas Marilleau (porteur côté UMMISCO)",
+    duree: "48 mois",
+    financement: "890 K€",
+    partenaires: "MERIT/IRD, UCEIV/ULCO, UMMISCO",
   },
   {
     id: "aime",
@@ -1356,6 +1391,11 @@ export const PROJECTS: Project[] = [
     description:
       "Artificial Intelligence for Marine Ecosystems. Application de l'IA pour la modélisation et le suivi des écosystèmes marins méditerranéens.",
     url: "https://ummisco.fr/fr/projet-ummisco/aime/",
+    image: "/projets/AIME.png",
+    chefProjet: "Jihad Zahir, CAU / UMMISCO, Morocco",
+    duree: "48 mois",
+    dateDebut: "Janvier 2021",
+    budget: "649 K€",
   },
   {
     id: "rdt-smart-reader",
@@ -1549,11 +1589,11 @@ export const PROJECTS: Project[] = [
     centers: ["france", "afrique-ouest"],
     themes: ["agents"],
     domain: "Santé publique",
-    description: "Description à compléter.",
+    description: "Modélisation multi-agents des processus du sol et de la matière organique. Couplage de simulations à base d'agents avec des données expérimentales pour étudier la dynamique du carbone dans les sols.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-mepsom/",
     image: "/projets/MEPSOM.png",
     chefProjet: "Claire Chenu, AgroParisTech, France",
-    partenaires: "BIOEMCO, UMR UPMC-CNRS-IRD-ENS-UPEC-AgroParisTech-INRA, Paris ; Environnement et Grandes Cultures, UMR INRA-AgroParisTech, Grignon ; Laboratoire d'Écologie Microbienne, Université de Lyon 1 ; UMMISCO, IRD, Yaoundé, Cameroun ; SIMBIOS, Université d'Abertay, Dundee, Écosse",
+    partenaires: "BIOEMCO, UMR UPMC-CNRS-IRD-ENS-UPEC-AgroParisTech-INRA, Paris, France ; Environnement et Grandes Cultures, UMR INRA-AgroParisTech, Grignon, France ; Laboratoire d'Écologie Microbienne, Université de Lyon 1, Villeurbanne, France ; UMMISCO, IRD, Yaoundé, Cameroun ; SIMBIOS, Université d'Abertay, Dundee, Écosse",
   },
   {
     id: "panic",
@@ -1561,12 +1601,12 @@ export const PROJECTS: Project[] = [
     centers: ["france"],
     themes: ["agents"],
     domain: "Société",
-    description: "Description à compléter.",
+    description: "Projet ANR centré sur la modélisation et la simulation de dynamiques épidémiques complexes. Exploration de mécanismes de transmission et d'intervention à l'aide de modèles à base d'agents.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-panique/",
     image: "/projets/PANIC.png",
     chefProjet: "Bernard Cazelles, UMMISCO, IRD, 32 av. Henri Varagnat, 93140 Bondy, France",
     duree: "48 mois",
-    dateDebut: "Avril 2015",
+    dateDebut: "Avril 2015 – Septembre 2019",
     budget: "492 K€",
   },
   {
@@ -1575,11 +1615,11 @@ export const PROJECTS: Project[] = [
     centers: ["france"],
     themes: ["agents", "capteurs"],
     domain: "Environnement",
-    description: "Modélisation 3D des microstructures du sol et de la dynamique microbienne par simulation multi-agents couplée à l'imagerie haute résolution.",
+    description: "Utiliser la modélisation comme outil pour le transfert d'échelle de l'habitat microbien au profil du sol. Simulation 3D des microstructures du sol et de la dynamique microbienne couplée à l'imagerie haute résolution.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-soilmu-3d/",
     image: "/projets/Soilmu-3D.png",
     chefProjet: "Patricia Garnier, INRA Grignon",
-    duree: "2016-2019",
+    duree: "2016 – 2019",
     dateDebut: "2016",
     budget: "5 061 K€",
   },
@@ -1589,8 +1629,11 @@ export const PROJECTS: Project[] = [
     centers: ["france"],
     themes: ["agents", "participatif"],
     domain: "Société",
-    description: "Description à compléter.",
+    description:
+      "Pathogenèse et interactions entre pathogènes – approche comparative pour comprendre les dynamiques d'émergence virale en milieu tropical. Modélisation multi-agents couplée à des données de terrain au Gabon.",
     image: "/projets/STORY.png",
+    chefProjet: "Benjamin Roche, UMMISCO, IRD, 32 avenue Henri Varagnat, 93140 Bondy, France",
+    partenaires: "IRD Bondy, France ; IRD Montpellier, France ; CIRMF Franceville, Gabon ; UPMC Paris, France",
   },
   {
     id: "bonds",
@@ -1598,8 +1641,11 @@ export const PROJECTS: Project[] = [
     centers: ["france"],
     themes: ["agents"],
     domain: "Environnement",
-    description: "Description à compléter.",
+    description:
+      "Opération de recherche sur les services écosystémiques et les obligations environnementales. Analyse des mécanismes de gouvernance et de compensation pour la biodiversité à l'échelle internationale.",
     image: "/projets/BONDS.png",
+    chefProjet: "Marie-Paule Bonnet, UMR Espace-Dev, IRD",
+    partenaires: "IRD France, CIRAD France, MNHN France, CNRS France, Université de Montpellier France, UFM Guadaloupe, Universidade de Brasilia Brésil, INPE Brésil, FONDAZIONE MACH Italie, Universidade de Évora Portugal, BIOCONSULT Danemark, UNIVERZA V LJUBLJANI Slovénie",
   },
   {
     id: "simupor",
@@ -1621,8 +1667,12 @@ export const PROJECTS: Project[] = [
     centers: ["france"],
     themes: ["ia"],
     domain: "Société",
-    description: "Description à compléter.",
+    description:
+      "Partenariat UMMISCO–Siemens pour le développement d'outils de simulation et d'optimisation intelligente appliqués aux systèmes industriels complexes.",
     image: "/projets/SIEMENS.webp",
+    chefProjet: "Moussa LO & Gaoussou CAMARA",
+    dateDebut: "2012",
+    budget: "75 000 EUR",
   },
   {
     id: "nocime",
@@ -1703,7 +1753,7 @@ export const SIMULATION_TOOLS = [
     description:
       "Simulez la dynamique d'une épidémie dans une population fermée. Paramétrez le taux de transmission (β), le taux de guérison (γ) et la taille de la population.",
     iframeUrl:
-      "https://netlogoweb.org/web?https://netlogoweb.org/assets/modelslib/Sample%20Models/Biology/Virus.nlogo",
+      "https://netlogoweb.org/web?https://netlogoweb.org/assets/modelslib/Sample%20Models/Biology/Virus.nlogox",
   },
   {
     id: "sim-hiv",
