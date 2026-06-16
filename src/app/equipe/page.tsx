@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, ExternalLink, BookOpen, Database, Search } from "lucide-react";
+import { Mail, ExternalLink, Search } from "lucide-react";
 import Footer from "@/components/Footer";
 import Avatar from "@/components/Avatar";
-import { RESEARCHERS, PUBLICATION, DATASETS, AXES } from "@/data/ummiscoData";
+import { RESEARCHERS, AXES } from "@/data/ummiscoData";
 import { useLang } from "@/context/LangContext";
 
 export default function EquipePage() {
@@ -65,8 +65,6 @@ export default function EquipePage() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((r) => {
-            const pubCount = PUBLICATION.filter((p) => p.researcherIds.includes(r.id)).length;
-            const dsCount = DATASETS.filter((d) => d.creatorId === r.id).length;
             return (
               <div key={r.id} className="rounded-xl border border-slate-900 bg-slate-950 p-6 flex flex-col hover:border-slate-800 transition-colors group">
                 {/* Header */}
@@ -96,16 +94,6 @@ export default function EquipePage() {
                       {AXES.find((ax) => ax.id === a)?.name.split(" ")[0]}
                     </span>
                   ))}
-                </div>
-
-                {/* Stats */}
-                <div className="flex gap-4 text-[13px] text-slate-500 border-t border-slate-900 pt-3 mb-4">
-                  <span className="flex items-center gap-1">
-                    <BookOpen className="h-3 w-3" /> {pubCount} {t("researchers.publications")}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Database className="h-3 w-3" /> {dsCount} {t("researchers.datasets")}
-                  </span>
                 </div>
 
                 {/* Actions */}
