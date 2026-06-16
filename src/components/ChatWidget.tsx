@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import { usePathname } from "next/navigation";
 import { MessageCircle, X, Send, Bot, User, Loader2, SquarePen, Menu, Trash2 } from "lucide-react";
 import { useLang } from "@/context/LangContext";
 
@@ -18,7 +19,6 @@ interface Conversation {
 
 const STORAGE_KEY = "ummisco_chat_conversations_v1";
 const LEGACY_STORAGE_KEY = "ummisco_chat_v1";
-const OPEN_STORAGE_KEY = "ummisco_chat_open_v1";
 
 function relativeTime(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -35,6 +35,7 @@ function relativeTime(iso: string): string {
 
 export default function ChatWidget() {
   const { t } = useLang();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [conversations, setConversations] = useState<Conversation[]>([]);
@@ -44,7 +45,6 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const isFirstOpenWrite = useRef(true);
 
   const makeConversation = (firstMessage?: Message): Conversation => ({
     id: `conv-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -97,21 +97,11 @@ export default function ChatWidget() {
     setReady(true);
   }, []);
 
-  // Mémorise si le panneau était ouvert, pour qu'il le reste si jamais le
-  // composant venait à être remonté (ex. navigation vers une autre page).
+  // Ferme le chat dès qu'on navigue vers une autre page du site (clic sur un
+  // lien de la sidebar) — la conversation reste sauvegardée, seul le panneau se ferme.
   useEffect(() => {
-    try {
-      if (sessionStorage.getItem(OPEN_STORAGE_KEY) === "1") setOpen(true);
-    } catch {}
-  }, []);
-
-  useEffect(() => {
-    if (isFirstOpenWrite.current) {
-      isFirstOpenWrite.current = false;
-      return;
-    }
-    try { sessionStorage.setItem(OPEN_STORAGE_KEY, open ? "1" : "0"); } catch {}
-  }, [open]);
+    setOpen(false);
+  }, [pathname]);
 
   // Sauvegarde à chaque changement, une fois le chargement initial terminé
   useEffect(() => {
