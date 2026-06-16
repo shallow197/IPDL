@@ -306,11 +306,9 @@ export default function ChatWidget() {
         </button>
       )}
 
-      {/* Chat panel — plein écran, façon Claude. On laisse la sidebar du site
-          visible/cliquable (left géré par .chat-fullscreen) pour que le chat ne
-          bloque pas complètement l'accès au reste du site. */}
+      {/* Chat panel — plein écran sous la navbar horizontale (top-16 = 64px). */}
       {open && (
-        <div className="chat-fullscreen fixed top-0 right-0 bottom-0 z-[100] flex bg-slate-950">
+        <div className="fixed top-16 left-0 right-0 bottom-0 z-[100] flex bg-slate-950">
           {/* Sidebar historique — desktop */}
           <div className="hidden md:flex md:w-[260px] flex-none flex-col border-r border-slate-800 bg-slate-900/40">
             <HistoryList />

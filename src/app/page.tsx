@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -13,10 +14,14 @@ import {
   Globe2,
   Boxes,
   BookOpen,
+  Search,
 } from "lucide-react";
 import {
   AXES,
   CENTERS,
+  RESEARCHERS,
+  PUBLICATION,
+  DATASETS,
 } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
 import PartnersBanner from "@/components/PartnersBanner";
@@ -27,6 +32,22 @@ import { useLang } from "@/context/LangContext";
 
 export default function Home() {
   const { t } = useLang();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const q = searchQuery.trim().toLowerCase();
+
+  const filteredResearchers = useMemo(
+    () => (q ? RESEARCHERS.filter((r) => r.name.toLowerCase().includes(q) || r.title.toLowerCase().includes(q)).slice(0, 4) : []),
+    [q]
+  );
+  const filteredPubs = useMemo(
+    () => (q ? PUBLICATION.filter((p) => p.title.toLowerCase().includes(q) || p.authors.some((a) => a.toLowerCase().includes(q))).slice(0, 4) : []),
+    [q]
+  );
+  const filteredDatasets = useMemo(
+    () => (q ? DATASETS.filter((d) => d.title.toLowerCase().includes(q)).slice(0, 3) : []),
+    [q]
+  );
 
   const EXPLORE_LINKS = [
     { href: "/publications", titleKey: "nav.publications", descKey: "home.explorePublications", Icon: BookOpen, accent: "text-blue-400", bg: "bg-blue-500/10" },

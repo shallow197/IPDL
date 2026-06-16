@@ -21,29 +21,10 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-const DOMAIN_COLORS: Record<string, { bg: string; text: string; border: string }> = {
-  "Santé":         { bg: "bg-rose-500/10",    text: "text-rose-400",    border: "border-rose-500/30" },
-  "Environnement": { bg: "bg-green-500/10",   text: "text-green-400",   border: "border-green-500/30" },
-  "Gestion":       { bg: "bg-cyan-500/10",    text: "text-cyan-400",    border: "border-cyan-500/30" },
-  "Société":       { bg: "bg-purple-500/10",  text: "text-purple-400",  border: "border-purple-500/30" },
-  "Biodiversité":  { bg: "bg-emerald-500/10", text: "text-emerald-400", border: "border-emerald-500/30" },
-  "Mobilité":      { bg: "bg-amber-500/10",   text: "text-amber-400",   border: "border-amber-500/30" },
-};
-
-function getDomainStyle(domain: string) {
-  for (const [key, val] of Object.entries(DOMAIN_COLORS)) {
-    if (domain.includes(key)) return val;
-  }
-  return { bg: "bg-slate-500/10", text: "text-slate-400", border: "border-slate-500/30" };
-}
-
-const CENTER_COLORS: Record<string, string> = {
-  france:             "bg-blue-500/20 text-blue-300 border-blue-500/30",
-  asie:               "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
-  "afrique-ouest":    "bg-orange-500/20 text-orange-300 border-orange-500/30",
-  "afrique-centrale": "bg-red-500/20 text-red-300 border-red-500/30",
-  mediterranee:       "bg-violet-500/20 text-violet-300 border-violet-500/30",
-};
+// Style uniforme des badges (catégorie / centre) — une seule couleur par type,
+// cohérente avec /projets, au lieu d'une couleur différente par valeur.
+const DOMAIN_BADGE = { bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/30" };
+const CENTER_BADGE = "bg-slate-800 text-slate-300 border-slate-700";
 
 export default function ProjetDetailPage({ params }: PageProps) {
   const { id } = use(params);
@@ -51,7 +32,7 @@ export default function ProjetDetailPage({ params }: PageProps) {
 
   if (!project) notFound();
 
-  const ds = getDomainStyle(project.domain);
+  const ds = DOMAIN_BADGE;
 
   const meta: { icon: React.ElementType; label: string; value: string }[] = [
     project.chefProjet   && { icon: Users,     label: "Chef de projet",         value: project.chefProjet },
@@ -115,7 +96,7 @@ export default function ProjetDetailPage({ params }: PageProps) {
               return (
                 <span
                   key={centerId}
-                  className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border ${CENTER_COLORS[centerId] ?? "bg-slate-800 text-slate-300 border-slate-700"}`}
+                  className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border ${CENTER_BADGE}`}
                 >
                   {center?.country ?? centerId}
                 </span>
