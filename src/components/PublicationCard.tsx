@@ -157,18 +157,24 @@ export default function PublicationCard({
                 .join(" · ")}
             </Row>
           )}
-          {pub.doi && (
-            <Row icon={<ExternalLink className="h-3.5 w-3.5 flex-none" />} label="DOI">
-              <a
-                href={`https://doi.org/${pub.doi}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 hover:underline font-mono break-all"
-              >
-                {pub.doi}
-              </a>
-            </Row>
-          )}
+          {pub.doi && (() => {
+            const cleanDoi = pub.doi
+              .trim()
+              .replace(/^(https?:\/\/)?(dx\.)?doi\.org\//i, "")
+              .replace(/^doi:/i, "");
+            return (
+              <Row icon={<ExternalLink className="h-3.5 w-3.5 flex-none" />} label="DOI">
+                <a
+                  href={`https://doi.org/${cleanDoi}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 hover:underline font-mono break-all"
+                >
+                  {cleanDoi}
+                </a>
+              </Row>
+            );
+          })()}
         </div>
       )}
 

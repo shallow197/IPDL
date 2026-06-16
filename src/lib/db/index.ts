@@ -271,7 +271,6 @@ function seed() {
       volume: "12",
       numero: "2",
       pages: "145-162",
-      doi: "10.1234/jmsc.2024.1234",
       annee: 2024,
       datePublication: "2024-03-15",
       motsClefs: ["paludisme", "modèle multi-agents", "Dakar", "épidémiologie", "NDVI", "Pikine"],
@@ -280,7 +279,7 @@ function seed() {
       statut: "validee",
       axe: "agents",
       accessLevel: "public",
-      citationApa: "Diop, F., & Diallo, C. (2024). Modélisation multi-agents de la propagation du paludisme dans la zone périurbaine de Dakar (2019-2024). Journal de Modélisation des Systèmes Complexes, 12(2), 145-162. https://doi.org/10.1234/jmsc.2024.1234",
+      citationApa: "Diop, F., & Diallo, C. (2024). Modélisation multi-agents de la propagation du paludisme dans la zone périurbaine de Dakar (2019-2024). Journal de Modélisation des Systèmes Complexes, 12(2), 145-162.",
       citationBibtex: `@article{diop2024modelisation,
   title={Modélisation multi-agents de la propagation du paludisme dans la zone périurbaine de Dakar (2019-2024)},
   author={Diop, Fatou and Diallo, Cheikh},
@@ -288,8 +287,7 @@ function seed() {
   volume={12},
   number={2},
   pages={145--162},
-  year={2024},
-  doi={10.1234/jmsc.2024.1234}
+  year={2024}
 }`,
     },
     {
@@ -302,7 +300,6 @@ function seed() {
       volume: "8",
       numero: "1",
       pages: "45-58",
-      doi: "10.5678/rails.2023.456",
       annee: 2023,
       datePublication: "2023-09-01",
       motsClefs: ["LoRaWAN", "IoT", "inondations", "Dakar", "alerte précoce", "LSTM"],
@@ -311,7 +308,7 @@ function seed() {
       statut: "validee",
       axe: "capteurs",
       accessLevel: "public",
-      citationApa: "Ndiaye, M., & Faye, A. (2023). Système d'alerte précoce basé sur l'IoT pour la surveillance des inondations dans la banlieue de Dakar. Revue Africaine de l'Ingénierie Logicielle et Systèmes, 8(1), 45-58. https://doi.org/10.5678/rails.2023.456",
+      citationApa: "Ndiaye, M., & Faye, A. (2023). Système d'alerte précoce basé sur l'IoT pour la surveillance des inondations dans la banlieue de Dakar. Revue Africaine de l'Ingénierie Logicielle et Systèmes, 8(1), 45-58.",
       citationBibtex: `@article{ndiaye2023systeme,
   title={Système d'alerte précoce basé sur l'IoT pour la surveillance des inondations dans la banlieue de Dakar},
   author={Ndiaye, Moussa and Faye, Amadou},
@@ -319,8 +316,7 @@ function seed() {
   volume={8},
   number={1},
   pages={45--58},
-  year={2023},
-  doi={10.5678/rails.2023.456}
+  year={2023}
 }`,
     },
     {
@@ -333,7 +329,6 @@ function seed() {
       volume: "15",
       numero: "4",
       pages: "312-329",
-      doi: "10.9012/eig.2024.789",
       annee: 2024,
       datePublication: "2024-06-01",
       motsClefs: ["PM2.5", "science citoyenne", "pollution atmosphérique", "krigeage", "LES", "Dakar"],
@@ -342,7 +337,7 @@ function seed() {
       statut: "en_attente",
       axe: "participatif",
       accessLevel: "protected",
-      citationApa: "Faye, A., & Diop, F. (2024). Sciences participatives pour le suivi de la qualité de l'air à Dakar. Écologie et Informatique Globale, 15(4), 312-329. https://doi.org/10.9012/eig.2024.789",
+      citationApa: "Faye, A., & Diop, F. (2024). Sciences participatives pour le suivi de la qualité de l'air à Dakar. Écologie et Informatique Globale, 15(4), 312-329.",
       citationBibtex: `@article{faye2024sciences,
   title={Sciences participatives pour le suivi de la qualité de l'air à Dakar},
   author={Faye, Amadou and Diop, Fatou},
@@ -350,8 +345,7 @@ function seed() {
   volume={15},
   number={4},
   pages={312--329},
-  year={2024},
-  doi={10.9012/eig.2024.789}
+  year={2024}
 }`,
     },
     {
@@ -364,7 +358,6 @@ function seed() {
       volume: "34",
       numero: "3",
       pages: "89-104",
-      doi: "10.3456/esi.2022.345",
       annee: 2022,
       datePublication: "2022-11-20",
       motsClefs: ["tuberculose", "SEIR", "SMA", "comparaison", "Sénégal", "milieu carcéral"],
@@ -373,7 +366,7 @@ function seed() {
       statut: "validee",
       axe: "agents",
       accessLevel: "public",
-      citationApa: "Diop, F., & Diallo, C. (2022). Simulation comparative : SEIR vs SMA pour la tuberculose au Sénégal. Epidémiologie et Santé Internationale, 34(3), 89-104. https://doi.org/10.3456/esi.2022.345",
+      citationApa: "Diop, F., & Diallo, C. (2022). Simulation comparative : SEIR vs SMA pour la tuberculose au Sénégal. Epidémiologie et Santé Internationale, 34(3), 89-104.",
       citationBibtex: `@article{diop2022simulation,
   title={Simulation comparative : Équations différentielles vs SMA pour la tuberculose au Sénégal},
   author={Diop, Fatou and Diallo, Cheikh},
@@ -381,8 +374,7 @@ function seed() {
   volume={34},
   number={3},
   pages={89--104},
-  year={2022},
-  doi={10.3456/esi.2022.345}
+  year={2022}
 }`,
     },
     {
@@ -395,7 +387,6 @@ function seed() {
       volume: "29",
       numero: "1",
       pages: "12-28",
-      doi: "10.7890/joao.2023.123",
       annee: 2023,
       datePublication: "2023-04-10",
       motsClefs: ["érosion côtière", "Langue de Barbarie", "Saint-Louis", "RCP", "automate cellulaire", "SWAN"],
@@ -404,7 +395,7 @@ function seed() {
       statut: "validee",
       axe: "agents",
       accessLevel: "public",
-      citationApa: "Diallo, C., & Faye, A. (2023). Modélisation multi-échelle de la dynamique sédimentaire sur la Langue de Barbarie. Journal Océanographique d'Afrique de l'Ouest, 29(1), 12-28. https://doi.org/10.7890/joao.2023.123",
+      citationApa: "Diallo, C., & Faye, A. (2023). Modélisation multi-échelle de la dynamique sédimentaire sur la Langue de Barbarie. Journal Océanographique d'Afrique de l'Ouest, 29(1), 12-28.",
       citationBibtex: `@article{diallo2023modelisation,
   title={Modélisation multi-échelle de la dynamique sédimentaire sur la Langue de Barbarie},
   author={Diallo, Cheikh and Faye, Amadou},
@@ -412,8 +403,7 @@ function seed() {
   volume={29},
   number={1},
   pages={12--28},
-  year={2023},
-  doi={10.7890/joao.2023.123}
+  year={2023}
 }`,
     },
     {
@@ -426,17 +416,15 @@ function seed() {
       volume: "6",
       numero: "1",
       pages: "101-115",
-      doi: "10.2345/tod.2024.567",
       annee: 2024,
       datePublication: "2024-02-28",
       motsClefs: ["pluviomètre", "open hardware", "ESP32", "LoRa", "impression 3D", "FabLab"],
       googleScholarUrl: "https://scholar.google.com/scholar?q=pluviom%C3%A8tre+open+source+FabLab+ESP",
-      fichierPdf: "https://example.org/publications/ndiaye2024_pluviometre.pdf",
       datasetsLies: ["data-04"],
       statut: "validee",
       axe: "capteurs",
       accessLevel: "public",
-      citationApa: "Ndiaye, M. (2024). Conception de stations pluviométriques ouvertes au FabLab de l'ESP. Technologies Ouvertes pour le Développement, 6(1), 101-115. https://doi.org/10.2345/tod.2024.567",
+      citationApa: "Ndiaye, M. (2024). Conception de stations pluviométriques ouvertes au FabLab de l'ESP. Technologies Ouvertes pour le Développement, 6(1), 101-115.",
       citationBibtex: `@article{ndiaye2024pluvio,
   title={Conception de stations pluviométriques ouvertes et reproductibles au FabLab de l'ESP},
   author={Ndiaye, Moussa},
@@ -444,8 +432,7 @@ function seed() {
   volume={6},
   number={1},
   pages={101--115},
-  year={2024},
-  doi={10.2345/tod.2024.567}
+  year={2024}
 }`,
     },
   ];
