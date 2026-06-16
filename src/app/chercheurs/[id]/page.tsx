@@ -153,23 +153,6 @@ export default function ResearcherProfilePage({ params }: PageProps) {
               ) : null;
             })()}
 
-            {/* ORCID ID Badge */}
-            {researcher.orcid && (
-              <div className="inline-flex items-center gap-2 rounded-lg bg-green-500/5 border border-green-950 px-3.5 py-1.5 text-sm">
-                <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-slate-400 font-bold uppercase tracking-wider text-[12px]">{t("researcher.orcid")}</span>
-                <a
-                  href={`https://orcid.org/${researcher.orcid}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-400 font-mono hover:underline inline-flex items-center gap-1"
-                >
-                  <span>{researcher.orcid}</span>
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              </div>
-            )}
-
             {/* Axes, publications count & Google Scholar */}
             <div className="flex flex-wrap items-center gap-2">
               {researcher.axes.map((a) => {
