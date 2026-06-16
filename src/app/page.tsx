@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Search,
   BookOpen,
   Database,
   Users,
@@ -23,9 +22,7 @@ import {
 } from "lucide-react";
 import {
   AXES,
-  RESEARCHERS,
   PUBLICATION,
-  DATASETS,
   CENTERS,
   Publication,
 } from "@/data/ummiscoData";
@@ -50,15 +47,9 @@ export default function Home() {
     { href: "/actualites", titleKey: "nav.actualites", descKey: "home.exploreActualites", Icon: Newspaper, accent: "text-rose-400", bg: "bg-rose-500/10" },
     { href: "/partenaires", titleKey: "nav.partenaires", descKey: "home.explorePartenaires", Icon: Handshake, accent: "text-cyan-400", bg: "bg-cyan-500/10" },
   ];
-  const [searchQuery, setSearchQuery] = useState("");
   const [selectedAxis, setSelectedAxis] = useState<string | null>(null);
   const [copiedPubId, setCopiedPubId] = useState<string | null>(null);
   const [citationModalPub, setCitationModalPub] = useState<Publication | null>(null);
-
-  const q = searchQuery.trim().toLowerCase();
-  const filteredPubs = q ? PUBLICATION.filter((p) => p.title.toLowerCase().includes(q) || p.abstract.toLowerCase().includes(q) || p.authors.some((a) => a.toLowerCase().includes(q))).slice(0, 4) : [];
-  const filteredResearchers = q ? RESEARCHERS.filter((r) => r.name.toLowerCase().includes(q) || r.title.toLowerCase().includes(q)).slice(0, 4) : [];
-  const filteredDatasets = q ? DATASETS.filter((d) => d.title.toLowerCase().includes(q) || d.description.toLowerCase().includes(q)).slice(0, 4) : [];
 
   const handleCopyCitation = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
@@ -90,44 +81,6 @@ export default function Home() {
             {t("hero.title1")} <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-green-400 bg-clip-text text-transparent">{t("hero.titleHighlight")}</span> {t("hero.title2")}
           </motion.h1>
 
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mt-10 w-full max-w-2xl relative">
-            <div className="relative rounded-full border border-slate-800 bg-slate-900/50 backdrop-blur-sm shadow-xl focus-within:border-blue-500/50 transition-all duration-300">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
-              <input type="text" placeholder={t("hero.searchPlaceholder")} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-12 pr-6 py-4 rounded-full bg-transparent text-base text-slate-200 placeholder-slate-500 focus:outline-none" />
-            </div>
-
-            {q && (
-              <div className="absolute top-full left-0 right-0 mt-3 rounded-2xl border border-slate-800 bg-slate-900/95 backdrop-blur-md shadow-2xl p-6 text-left z-30 max-h-96 overflow-y-auto">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
-                  <span className="text-[13px] mono-text uppercase tracking-wider text-slate-500 font-bold">{t("hero.searchRealtime")}</span>
-                  <button onClick={() => setSearchQuery("")} className="text-[13px] text-slate-400 hover:text-slate-200">{t("hero.searchClear")}</button>
-                </div>
-                <div className="space-y-6">
-                  {filteredResearchers.length > 0 && (
-                    <div>
-                      <h4 className="text-[13px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><Users className="h-3 w-3" /> {t("hero.searchResearchers")}</h4>
-                      <div className="space-y-2">{filteredResearchers.map((r) => (<Link key={r.id} href={`/chercheurs/${r.id}`} className="block p-2 rounded-lg hover:bg-slate-800/60 transition-colors"><div className="text-sm font-bold text-slate-200">{r.name}</div><div className="text-[13px] text-slate-500">{r.title}</div></Link>))}</div>
-                    </div>
-                  )}
-                  {filteredPubs.length > 0 && (
-                    <div>
-                      <h4 className="text-[13px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><BookOpen className="h-3 w-3" /> {t("hero.searchPublications")}</h4>
-                      <div className="space-y-2">{filteredPubs.map((p) => (<Link key={p.id} href="/publications" className="block p-2 rounded-lg hover:bg-slate-800/60 transition-colors"><div className="text-sm font-bold text-slate-200 line-clamp-1">{p.title}</div><div className="text-[13px] text-slate-500">{p.authors.join(", ")} ({p.year})</div></Link>))}</div>
-                    </div>
-                  )}
-                  {filteredDatasets.length > 0 && (
-                    <div>
-                      <h4 className="text-[13px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><Database className="h-3 w-3" /> {t("hero.searchDatasets")}</h4>
-                      <div className="space-y-2">{filteredDatasets.map((d) => (<Link key={d.id} href="/datasets" className="block p-2 rounded-lg hover:bg-slate-800/60 transition-colors"><div className="text-sm font-bold text-slate-200">{d.title}</div><div className="text-[13px] text-slate-500">{d.size} · {d.accessLevel}</div></Link>))}</div>
-                    </div>
-                  )}
-                  {filteredResearchers.length === 0 && filteredPubs.length === 0 && filteredDatasets.length === 0 && (
-                    <div className="text-sm text-slate-500 text-center py-4">{t("hero.searchNoResult")} «&nbsp;{searchQuery}&nbsp;».</div>
-                  )}
-                </div>
-              </div>
-            )}
-          </motion.div>
         </div>
       </section>
 
@@ -211,7 +164,7 @@ export default function Home() {
       <section id="axes" className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8">
-            <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2">{t("axes.sectionTag")}</span>
+           
             <h2 className="text-3xl font-extrabold tracking-tight text-white">{t("axes.title")}</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

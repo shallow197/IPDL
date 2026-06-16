@@ -1703,7 +1703,7 @@ export const SIMULATION_TOOLS = [
     description:
       "Simulez la dynamique d'une épidémie dans une population fermée. Paramétrez le taux de transmission (β), le taux de guérison (γ) et la taille de la population.",
     iframeUrl:
-      "https://netlogoweb.org/web?https://netlogoweb.org/assets/modelslib/Sample%20Models/Biology/Virus.nlogo",
+      "https://netlogoweb.org/web?https://netlogoweb.org/assets/modelslib/Sample%20Models/Biology/Virus.nlogox",
   },
   {
     id: "sim-hiv",
