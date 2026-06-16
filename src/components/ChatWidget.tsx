@@ -18,6 +18,7 @@ interface Conversation {
 
 const STORAGE_KEY = "ummisco_chat_conversations_v1";
 const LEGACY_STORAGE_KEY = "ummisco_chat_v1";
+const OPEN_STORAGE_KEY = "ummisco_chat_open_v1";
 
 function relativeTime(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -43,6 +44,7 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isFirstOpenWrite = useRef(true);
 
   const makeConversation = (firstMessage?: Message): Conversation => ({
     id: `conv-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -94,6 +96,22 @@ export default function ChatWidget() {
     setActiveId(first.id);
     setReady(true);
   }, []);
+
+  // Mémorise si le panneau était ouvert, pour qu'il le reste si jamais le
+  // composant venait à être remonté (ex. navigation vers une autre page).
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(OPEN_STORAGE_KEY) === "1") setOpen(true);
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    if (isFirstOpenWrite.current) {
+      isFirstOpenWrite.current = false;
+      return;
+    }
+    try { sessionStorage.setItem(OPEN_STORAGE_KEY, open ? "1" : "0"); } catch {}
+  }, [open]);
 
   // Sauvegarde à chaque changement, une fois le chargement initial terminé
   useEffect(() => {
