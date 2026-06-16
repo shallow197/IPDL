@@ -167,15 +167,29 @@ export default function ChatWidget() {
     setInput("");
     setLoading(true);
 
-    // Première question de la conversation → on en fait le titre affiché dans l'historique
+    // Première question de la conversation → titre provisoire immédiat, puis on
+    // demande à l'IA un titre court qui résume le sujet (façon Claude).
     const convId = activeId;
-    setConversations((prev) =>
-      prev.map((c) =>
-        c.id === convId && !c.messages.some((m) => m.role === "user")
-          ? { ...c, title: text.slice(0, 40) }
-          : c
-      )
-    );
+    const isFirstUserMessage = !messages.some((m) => m.role === "user");
+    if (isFirstUserMessage) {
+      setConversations((prev) =>
+        prev.map((c) => (c.id === convId ? { ...c, title: text.slice(0, 40) } : c))
+      );
+      fetch("/api/chat/title", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          if (data?.title) {
+            setConversations((prev) =>
+              prev.map((c) => (c.id === convId ? { ...c, title: data.title } : c))
+            );
+          }
+        })
+        .catch(() => {});
+    }
 
     const assistantIndex = newMessages.length;
 
