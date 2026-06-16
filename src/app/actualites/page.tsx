@@ -158,7 +158,7 @@ export default function ActualitesPage() {
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     {/* Date block */}
                     <div className="flex-none text-center bg-slate-900 rounded-xl p-4 w-20">
-                      <div className="text-2xl font-extrabold text-white">{dateStart.getDate()}</div>
+                      <div className="text-2xl font-extrabold text-stat-number">{dateStart.getDate()}</div>
                       <div className="text-[10px] text-slate-400 uppercase tracking-wider">{dateStart.toLocaleDateString("fr-FR", { month: "short" })}</div>
                       <div className="text-[10px] text-slate-500">{dateStart.getFullYear()}</div>
                     </div>

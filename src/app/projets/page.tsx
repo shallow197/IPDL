@@ -427,10 +427,10 @@ export default function ProjetsPage() {
           {/* Statistiques rapides */}
           <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { value: PROJECTS.length, label: "Projets actifs",    color: "text-blue-400" },
-              { value: allDomains.length, label: "Domaines couverts", color: "text-green-400" },
-              { value: CENTERS.length,  label: "Centres impliqués", color: "text-violet-400" },
-              { value: AXES.length,     label: "Axes thématiques",  color: "text-amber-400" },
+              { value: PROJECTS.length, label: "Projets actifs" },
+              { value: allDomains.length, label: "Domaines couverts" },
+              { value: CENTERS.length,  label: "Centres impliqués" },
+              { value: AXES.length,     label: "Axes thématiques" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -439,7 +439,7 @@ export default function ProjetsPage() {
                 transition={{ delay: i * 0.08 }}
                 className="rounded-xl border border-slate-800 bg-slate-900/30 p-4 text-center"
               >
-                <div className={`text-2xl font-extrabold ${stat.color}`}>{stat.value}</div>
+                <div className="text-2xl font-extrabold text-stat-number">{stat.value}</div>
                 <div className="text-[10px] text-slate-500 uppercase tracking-wide mt-1">{stat.label}</div>
               </motion.div>
             ))}
