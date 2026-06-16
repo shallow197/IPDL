@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -13,10 +14,14 @@ import {
   Globe2,
   Boxes,
   BookOpen,
+  Search,
 } from "lucide-react";
 import {
   AXES,
   CENTERS,
+  RESEARCHERS,
+  PUBLICATION,
+  DATASETS,
 } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
 import PartnersBanner from "@/components/PartnersBanner";
@@ -27,6 +32,22 @@ import { useLang } from "@/context/LangContext";
 
 export default function Home() {
   const { t } = useLang();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const q = searchQuery.trim().toLowerCase();
+
+  const filteredResearchers = useMemo(
+    () => (q ? RESEARCHERS.filter((r) => r.name.toLowerCase().includes(q) || r.title.toLowerCase().includes(q)).slice(0, 4) : []),
+    [q]
+  );
+  const filteredPubs = useMemo(
+    () => (q ? PUBLICATION.filter((p) => p.title.toLowerCase().includes(q) || p.authors.some((a) => a.toLowerCase().includes(q))).slice(0, 4) : []),
+    [q]
+  );
+  const filteredDatasets = useMemo(
+    () => (q ? DATASETS.filter((d) => d.title.toLowerCase().includes(q)).slice(0, 3) : []),
+    [q]
+  );
 
   const EXPLORE_LINKS = [
     { href: "/publications", titleKey: "nav.publications", descKey: "home.explorePublications", Icon: BookOpen, accent: "text-blue-400", bg: "bg-blue-500/10" },
@@ -42,25 +63,106 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col bg-slate-950 text-slate-100 font-sans">
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative flex flex-col justify-center min-h-[82vh] py-20 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-900">
+      <section className="relative overflow-hidden border-b border-slate-900">
         <div className="absolute top-0 left-1/4 -z-10 h-72 w-72 rounded-full bg-blue-600/15 blur-[110px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 -z-10 h-72 w-72 rounded-full bg-green-600/15 blur-[110px] pointer-events-none" />
         <div className="absolute top-1/3 right-1/3 -z-10 h-56 w-56 rounded-full bg-violet-600/10 blur-[100px] pointer-events-none" />
 
-        <div className="mx-auto max-w-5xl text-center relative z-10 flex flex-col items-center">
-          {/* Photo de groupe — bannière de bienvenue */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.02 }} className="mb-6 w-full max-w-lg rounded-lg overflow-hidden border border-slate-800 shadow-md">
-            <img src="/photo_de_groupe/membres.png" alt="Équipe UMMISCO" className="w-full h-auto object-cover max-h-48" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-start">
+
+          {/* LEFT — badge, title, CTAs, search */}
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 }} className="flex flex-col gap-6">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/60 px-3.5 py-1 text-sm text-slate-400 w-fit">
+              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+              {t("hero.badge")}
+            </div>
+
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-[3.25rem] leading-[1.05]">
+              {t("hero.title1")}{" "}
+              <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-green-400 bg-clip-text text-transparent">
+                {t("hero.titleHighlight")}
+              </span>{" "}
+              {t("hero.title2")}
+            </h1>
+
+            <div className="flex flex-wrap gap-3">
+              <Link href="/publications" style={{ color: "#ffffff" }} className="inline-flex items-center gap-2 rounded-lg bg-ummisco-blue px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 active:scale-95 transition-all">
+                <BookOpen className="h-4 w-4" /> {t("nav.publications")}
+              </Link>
+              <Link href="/equipe" className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-5 py-2.5 text-sm font-semibold text-slate-300 hover:text-white hover:border-slate-500 transition-all">
+                <Users className="h-4 w-4" /> {t("nav.equipe")} <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            {/* Search */}
+            <div className="relative">
+              <div className="relative rounded-full border border-slate-800 bg-slate-900/50 backdrop-blur-sm shadow-xl focus-within:border-blue-500/50 transition-all duration-300">
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
+                <input
+                  type="text"
+                  placeholder={t("hero.searchPlaceholder")}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-6 py-4 rounded-full bg-transparent text-base text-slate-200 placeholder-slate-500 focus:outline-none"
+                />
+              </div>
+
+              {q && (
+                <div className="absolute top-full left-0 right-0 mt-3 rounded-2xl border border-slate-800 bg-slate-900/95 backdrop-blur-md shadow-2xl p-6 text-left z-30 max-h-96 overflow-y-auto">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                    <span className="text-[13px] mono-text uppercase tracking-wider text-slate-500 font-bold">{t("hero.searchRealtime")}</span>
+                    <button onClick={() => setSearchQuery("")} className="text-[13px] text-slate-400 hover:text-slate-200">{t("hero.searchClear")}</button>
+                  </div>
+                  <div className="space-y-6">
+                    {filteredResearchers.length > 0 && (
+                      <div>
+                        <h4 className="text-[13px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><Users className="h-3 w-3" /> {t("hero.searchResearchers")}</h4>
+                        <div className="space-y-2">{filteredResearchers.map((r) => (<Link key={r.id} href={`/chercheurs/${r.id}`} className="block p-2 rounded-lg hover:bg-slate-800/60 transition-colors"><div className="text-sm font-bold text-slate-200">{r.name}</div><div className="text-[13px] text-slate-500">{r.title}</div></Link>))}</div>
+                      </div>
+                    )}
+                    {filteredPubs.length > 0 && (
+                      <div>
+                        <h4 className="text-[13px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><BookOpen className="h-3 w-3" /> {t("hero.searchPublications")}</h4>
+                        <div className="space-y-2">{filteredPubs.map((p) => (<Link key={p.id} href="/publications" className="block p-2 rounded-lg hover:bg-slate-800/60 transition-colors"><div className="text-sm font-bold text-slate-200 line-clamp-1">{p.title}</div><div className="text-[13px] text-slate-500">{p.authors.join(", ")} ({p.year})</div></Link>))}</div>
+                      </div>
+                    )}
+                    {filteredDatasets.length > 0 && (
+                      <div>
+                        <h4 className="text-[13px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><Database className="h-3 w-3" /> {t("hero.searchDatasets")}</h4>
+                        <div className="space-y-2">{filteredDatasets.map((d) => (<Link key={d.id} href="/datasets" className="block p-2 rounded-lg hover:bg-slate-800/60 transition-colors"><div className="text-sm font-bold text-slate-200">{d.title}</div><div className="text-[13px] text-slate-500">{d.size} · {d.accessLevel}</div></Link>))}</div>
+                      </div>
+                    )}
+                    {filteredResearchers.length === 0 && filteredPubs.length === 0 && filteredDatasets.length === 0 && (
+                      <div className="text-sm text-slate-500 text-center py-4">{t("hero.searchNoResult")} «&nbsp;{searchQuery}&nbsp;».</div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="inline-flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/60 px-3.5 py-1 text-sm text-slate-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-            {t("hero.badge")}
-          </motion.div>
+          {/* RIGHT — group photo with overlays */}
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }} className="relative hidden lg:block">
+            {/* Glow ring */}
+            <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-blue-500/25 via-green-500/10 to-violet-500/20 blur-lg" />
 
-          <motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl mt-6">
-            {t("hero.title1")} <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-green-400 bg-clip-text text-transparent">{t("hero.titleHighlight")}</span> {t("hero.title2")}
-          </motion.h1>
+            <div className="relative rounded-2xl overflow-hidden border border-slate-800/60 shadow-2xl">
+              <img
+                src="/photo_de_groupe/membres.png"
+                alt="Équipe UMMISCO"
+                className="w-full object-cover object-top"
+                style={{ maxHeight: "420px" }}
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/10 to-transparent" />
+              {/* Caption */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <p className="text-[11px] font-bold uppercase tracking-widest text-slate-300">Équipe UMMISCO · 2024</p>
+              </div>
+            </div>
+
+
+          </motion.div>
 
         </div>
       </section>

@@ -159,25 +159,6 @@ html:not(.dark) [class~="rounded-2xl"][class~="border"] {
   color: var(--color-stat);
 }
 
-/* ── Sidebar layout offset ──────────────────────────────────────────────────── */
-.sidebar-offset {
-  transition: margin-left 300ms ease;
-  margin-left: 0;
-}
-@media (min-width: 768px) {
-  .sidebar-offset { margin-left: 220px; }
-  [data-sidebar="collapsed"] .sidebar-offset { margin-left: 68px; }
-}
-
-/* ── Chat plein écran : laisse la sidebar du site visible/cliquable ─────────── */
-.chat-fullscreen {
-  left: 0;
-}
-@media (min-width: 768px) {
-  .chat-fullscreen { left: 220px; }
-  [data-sidebar="collapsed"] .chat-fullscreen { left: 68px; }
-}
-
 /* ── Partners scrolling banner ──────────────────────────────────────────────── */
 @keyframes partners-scroll {
   0%   { transform: translateX(0); }

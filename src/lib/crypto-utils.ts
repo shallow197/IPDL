@@ -2,7 +2,17 @@
  * Utilitaires cryptographiques isomorphes (Node.js + navigateur).
  * Signatures Ed25519 via TweetNaCl.
  */
-import nacl from "tweetnacl";
+// tweetnacl est vendorisé localement (nacl-fast.js copié depuis v1.0.3)
+// pour contourner un problème de résolution Turbopack avec node_modules.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const nacl = require("./nacl-fast") as {
+  sign: {
+    keyPair: () => { publicKey: Uint8Array; secretKey: Uint8Array };
+    detached: ((msg: Uint8Array, secretKey: Uint8Array) => Uint8Array) & {
+      verify: (msg: Uint8Array, sig: Uint8Array, publicKey: Uint8Array) => boolean;
+    };
+  };
+};
 
 // ─── Encodage hexadécimal ─────────────────────────────────────────────────────
 

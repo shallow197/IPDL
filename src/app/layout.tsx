@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import TopBar from "@/components/TopBar";
+import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
 import ChatWidget from "@/components/ChatWidget";
 import NotificationContainer from "@/components/NotificationContainer";
@@ -50,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} h-full antialiased`}
       style={{ scrollBehavior: "smooth" }}
       suppressHydrationWarning
     >
@@ -58,15 +57,14 @@ export default function RootLayout({
         {/* Apply saved theme before first paint to prevent flash */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';if(t==='dark'){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})()`,
+            __html: `(function(){try{var t=localStorage.getItem('theme')||'light';if(t==='dark'){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})()`,
           }}
         />
       </head>
       <body className="min-h-full bg-[var(--background)] text-[var(--foreground)] font-sans selection:bg-blue-600 selection:text-white transition-colors duration-200">
         <Providers>
-          <Sidebar />
-          <div className="sidebar-offset min-h-screen flex flex-col">
-            <TopBar />
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
             {children}
             <ChatWidget />
           </div>

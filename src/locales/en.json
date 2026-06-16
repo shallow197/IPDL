@@ -16,7 +16,8 @@
     "admin": "Administration",
     "logout": "Logout",
     "langSwitch": "Switch language",
-    "themeSwitch": "Toggle theme"
+    "themeSwitch": "Toggle theme",
+    "more": "More"
   },
   "hero": {
     "badge": "UMMISCO UMI 209 — International Unit in Modelling & Simulation",
