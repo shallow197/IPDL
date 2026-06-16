@@ -280,10 +280,8 @@ function DatasetsContent() {
             {filtered.map((ds) => {
               const Icon = ACCESS_ICONS[ds.acces];
               const canDownload =
-                !ds.isStatic && (
-                  ds.acces === "public" ||
-                  (isAuthenticated && ds.acces === "protected")
-                );
+                ds.acces === "public" ||
+                (isAuthenticated && ds.acces === "protected");
               const isDownloading = downloading === ds.id;
               const isOwner = !ds.isStatic && user?.id === ds.creatorId;
 
@@ -342,14 +340,14 @@ function DatasetsContent() {
                       <span className="text-[10px] text-green-400 font-semibold flex items-center gap-1">
                         <Check className="h-3 w-3" /> {t("datasets.accessRequested")}
                       </span>
-                    ) : isAuthenticated && !ds.isStatic ? (
+                    ) : isAuthenticated ? (
                       <button
                         onClick={() => { setRequestModal(ds); setRequestReason(""); }}
                         className="inline-flex items-center gap-1.5 rounded bg-amber-500/10 border border-amber-900/30 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-400 hover:bg-amber-500/20 transition-all"
                       >
                         <KeyRound className="h-3 w-3" /> Demander l&apos;accès
                       </button>
-                    ) : !isAuthenticated && !ds.isStatic ? (
+                    ) : (
                       <Link
                         href="/connexion"
                         className="inline-flex items-center gap-1.5 rounded bg-slate-900 border border-slate-800 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all"
@@ -357,7 +355,7 @@ function DatasetsContent() {
                         <Lock className="h-3 w-3" />
                         {t("datasets.authRequired")}
                       </Link>
-                    ) : null}
+                    )}
                   </div>
 
                   {/* Signature (créateur DB uniquement) */}
