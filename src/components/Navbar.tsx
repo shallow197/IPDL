@@ -83,14 +83,16 @@ export default function Navbar() {
       <nav
         className={`sticky top-0 z-50 w-full border-b transition-all duration-200 ${
           scrolled
-            ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-slate-300 dark:border-slate-800 shadow-md"
-            : "bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 shadow-sm"
+            ? "bg-white/97 dark:bg-slate-950/95 backdrop-blur-md border-slate-200 dark:border-slate-800 shadow-md"
+            : "bg-white dark:bg-slate-950 border-slate-100 dark:border-slate-800 shadow-sm"
         }`}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-4">
+        {/* Brand accent bar — visible en light mode uniquement */}
+        <div className="h-0.5 w-full bg-gradient-to-r from-ummisco-blue via-blue-400 to-green-400 dark:hidden" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-[4.25rem] flex items-center gap-4">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center gap-2.5" aria-label="UMMISCO — Accueil">
-            <BrandLogo height={34} withChip animated />
+            <BrandLogo height={44} withChip animated />
             <div className="hidden sm:block leading-tight">
               <div className="text-[13px] font-black text-slate-900 dark:text-white tracking-tight">UMMISCO</div>
               <div className="text-[9px] font-bold text-slate-500 dark:text-slate-400 tracking-widest uppercase">UMI 209 · IRD</div>

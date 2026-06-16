@@ -47,7 +47,7 @@ export default function Home() {
         <div className="absolute bottom-0 right-1/4 -z-10 h-72 w-72 rounded-full bg-green-600/15 blur-[110px] pointer-events-none" />
         <div className="absolute top-1/3 right-1/3 -z-10 h-56 w-56 rounded-full bg-violet-600/10 blur-[100px] pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-start">
 
           {/* LEFT — badge, title, CTAs, search */}
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 }} className="flex flex-col gap-6">
@@ -136,12 +136,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/10 to-transparent" />
               {/* Caption */}
               <div className="absolute bottom-0 left-0 right-0 p-5">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Équipe UMMISCO · 2024</p>
-                <div className="flex gap-2 mt-2 flex-wrap">
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-blue-500/20 border border-blue-500/30 text-blue-300 font-bold">Multi-agents</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-green-500/20 border border-green-500/30 text-green-300 font-bold">Environnement</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-violet-500/20 border border-violet-500/30 text-violet-300 font-bold">Santé</span>
-                </div>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-slate-300">Équipe UMMISCO · 2024</p>
               </div>
             </div>
 
