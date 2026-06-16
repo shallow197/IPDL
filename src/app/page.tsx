@@ -212,13 +212,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── AI ASSISTANT CALLOUT ──────────────────────────────────────────── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-900">
-        <div className="mx-auto max-w-5xl rounded-2xl border border-slate-900 bg-gradient-to-br from-blue-950/40 to-slate-900/20 p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
-          <div className="flex items-center gap-3"><MessageSquare className="h-5 w-5 text-blue-400" /><h3 className="text-lg font-bold text-white">{t("home.aiTitle")}</h3><span className="flex items-center gap-1.5 text-[13px] text-slate-500"><span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse inline-block" /> {t("home.aiAvail")}</span></div>
-        </div>
-      </section>
-
       <PartnersBanner />
       <Footer />
     </div>
