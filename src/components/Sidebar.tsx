@@ -8,7 +8,7 @@ import {
   Home, Layers, FolderKanban, BookOpen, Database,
   Play, Users, Handshake, Newspaper, Boxes,
   ChevronLeft, ChevronRight, Menu, X,
-  Lock, Sun, Moon, LogOut, LayoutDashboard, Shield,
+  Lock, Sun, Moon, LogOut, LayoutDashboard, Shield, ShieldCheck,
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLang } from "@/context/LangContext";
@@ -45,6 +45,7 @@ export default function Sidebar() {
     { label: t("nav.equipe"),      href: "/equipe",       icon: Users },
     { label: t("nav.partenaires"), href: "/partenaires",  icon: Handshake },
     { label: t("nav.actualites"),  href: "/actualites",   icon: Newspaper },
+    { label: "Attestations",        href: "/attestations",  icon: ShieldCheck },
   ];
 
   const handleLogout = () => { notify("À bientôt !", "info"); logout(); router.push("/"); };
