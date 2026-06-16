@@ -12,6 +12,7 @@ import {
   Shield,
   Quote,
   ExternalLink,
+  ShieldCheck,
 } from "lucide-react";
 import {
   AXES,
@@ -23,9 +24,14 @@ import { useNotification } from "@/context/NotificationContext";
 import Footer from "@/components/Footer";
 import { scholarUrl, doiUrl, UMMISCO_SCHOLAR_SEARCH } from "@/lib/scholar";
 import { useLang } from "@/context/LangContext";
+import { useAuth } from "@/context/AuthContext";
+import SignatureModal from "@/components/signatures/SignatureModal";
+import SignatureBadge from "@/components/signatures/SignatureBadge";
+import type { SignPayload } from "@/hooks/useSignature";
 
 export default function PublicationsPage() {
   const { t } = useLang();
+  const { user, isAuthenticated } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedAxis, setSelectedAxis] = useState<string>("all");
   const [selectedResearcher, setSelectedResearcher] = useState<string>("all");
@@ -33,6 +39,9 @@ export default function PublicationsPage() {
   const [copiedPubId, setCopiedPubId] = useState<string | null>(null);
   const [citationModalPub, setCitationModalPub] = useState<Publication | null>(null);
   const { notify } = useNotification();
+  const [sigModal, setSigModal] = useState<SignPayload | null>(null);
+  const [freshSigs, setFreshSigs] = useState<Record<string, { id: string; signerName: string; timestamp: string }>>({});
+  const canSign = isAuthenticated && ["chercheur", "responsable_axe", "directeur"].includes(user?.role ?? "");
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 12;
 
@@ -320,6 +329,26 @@ export default function PublicationsPage() {
                           <Clipboard className="h-3 w-3" />
                           <span>{t("publications.cite")}</span>
                         </button>
+                        {canSign && (
+                          <button
+                            onClick={() => setSigModal({
+                              type: "publication",
+                              targetId: pub.id,
+                              targetLabel: pub.title,
+                              data: {
+                                title: pub.title,
+                                authors: pub.authors,
+                                year: pub.year,
+                                journal: pub.journal ?? null,
+                                doi: pub.doi ?? null,
+                              },
+                            })}
+                            className="inline-flex items-center gap-1.5 rounded bg-green-600/10 px-2.5 py-1.5 text-[10px] font-bold text-green-400 border border-green-900/30 hover:bg-green-600/20 active:scale-95 transition-all"
+                          >
+                            <ShieldCheck className="h-3 w-3" /> Certifier
+                          </button>
+                        )}
+                        <SignatureBadge targetId={pub.id} freshSignature={freshSigs[pub.id]} compact />
                       </div>
                     </div>
                   </div>
@@ -439,6 +468,20 @@ export default function PublicationsPage() {
       </AnimatePresence>
 
       <Footer />
+
+      {/* Modal de signature publication */}
+      {sigModal && (
+        <SignatureModal
+          payload={sigModal}
+          onClose={() => setSigModal(null)}
+          onSigned={(sigId, timestamp) => {
+            setFreshSigs((prev) => ({
+              ...prev,
+              [sigModal.targetId]: { id: sigId, signerName: user?.nom ?? "", timestamp },
+            }));
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Download, Lock, Eye, Shield, Filter, Database, Loader2, KeyRound, Send, X, Check } from "lucide-react";
+import { Download, Lock, Eye, Shield, Filter, Database, Loader2, KeyRound, Send, X, Check, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
 import { useNotification } from "@/context/NotificationContext";
 import type { DBDataset } from "@/lib/db";
+import SignatureModal from "@/components/signatures/SignatureModal";
+import SignatureBadge from "@/components/signatures/SignatureBadge";
+import type { SignPayload } from "@/hooks/useSignature";
 
 const ACCESS_COLORS: Record<string, string> = {
   public:    "bg-green-500/10 text-green-400 border-green-900/30",
@@ -22,7 +25,7 @@ const ACCESS_ICONS: Record<string, React.ElementType> = {
 };
 
 export default function DatasetsPage() {
-  const { isAuthenticated, token } = useAuth();
+  const { isAuthenticated, token, user } = useAuth();
   const { t } = useLang();
   const { notify } = useNotification();
 
@@ -36,6 +39,10 @@ export default function DatasetsPage() {
   const [requestReason, setRequestReason] = useState("");
   const [requestSubmitting, setRequestSubmitting] = useState(false);
   const [requestedIds, setRequestedIds] = useState<string[]>([]);
+
+  // Signature flow
+  const [sigModal, setSigModal] = useState<SignPayload | null>(null);
+  const [freshSigs, setFreshSigs] = useState<Record<string, { id: string; signerName: string; timestamp: string }>>({});
 
   const submitAccessRequest = async () => {
     if (!requestModal || !token || !requestReason.trim()) return;
@@ -237,6 +244,42 @@ export default function DatasetsPage() {
                       </Link>
                     )}
                   </div>
+
+                  {/* Signature (créateur uniquement) */}
+                  {user?.id === ds.creatorId && (
+                    <div className="mt-3 pt-3 border-t border-slate-900/50 flex items-center gap-2 flex-wrap">
+                      <button
+                        onClick={() => setSigModal({
+                          type: "dataset",
+                          targetId: ds.id,
+                          targetLabel: ds.titre,
+                          data: {
+                            titre: ds.titre,
+                            description: ds.description,
+                            type: ds.type,
+                            licence: ds.licence,
+                            size: ds.size,
+                            dateDepot: ds.dateDepot,
+                          },
+                        })}
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-blue-800/40 bg-blue-600/10 px-2.5 py-1 text-[10px] font-bold text-blue-400 hover:bg-blue-600/20 transition-all"
+                      >
+                        <ShieldCheck className="h-3 w-3" /> Signer ce dataset
+                      </button>
+                      <SignatureBadge
+                        targetId={ds.id}
+                        freshSignature={freshSigs[ds.id]}
+                        compact
+                      />
+                    </div>
+                  )}
+
+                  {/* Badge de signature (public) */}
+                  {user?.id !== ds.creatorId && (
+                    <div className="mt-3">
+                      <SignatureBadge targetId={ds.id} compact />
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -309,6 +352,20 @@ export default function DatasetsPage() {
       )}
 
       <Footer />
+
+      {/* Modal de signature dataset */}
+      {sigModal && (
+        <SignatureModal
+          payload={sigModal}
+          onClose={() => setSigModal(null)}
+          onSigned={(sigId, timestamp) => {
+            setFreshSigs((prev) => ({
+              ...prev,
+              [sigModal.targetId]: { id: sigId, signerName: user?.nom ?? "", timestamp },
+            }));
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -12,9 +12,9 @@ import {
   Eye,
   Lock,
   ArrowLeft,
-  Calendar,
   Clipboard,
-  Check
+  Check,
+  ShieldCheck,
 } from "lucide-react";
 import {
   RESEARCHERS,
@@ -27,6 +27,9 @@ import Footer from "@/components/Footer";
 import Avatar from "@/components/Avatar";
 import { scholarUrl } from "@/lib/scholar";
 import { useLang } from "@/context/LangContext";
+import { useAuth } from "@/context/AuthContext";
+import SignatureModal from "@/components/signatures/SignatureModal";
+import SignatureBadge from "@/components/signatures/SignatureBadge";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -35,6 +38,11 @@ interface PageProps {
 export default function ResearcherProfilePage({ params }: PageProps) {
   const { t } = useLang();
   const { id } = use(params);
+  const { user, isAuthenticated } = useAuth();
+
+  // Signature state
+  const [showSigModal, setShowSigModal] = useState(false);
+  const [freshSig, setFreshSig] = useState<{ id: string; signerName: string; timestamp: string } | null>(null);
 
   // Find researcher
   const researcher = RESEARCHERS.find((r) => r.id === id);
@@ -42,6 +50,23 @@ export default function ResearcherProfilePage({ params }: PageProps) {
   if (!researcher) {
     notFound();
   }
+
+  const canSign = isAuthenticated && ["chercheur", "responsable_axe", "directeur"].includes(user?.role ?? "");
+
+  const sigPayload = {
+    type: "profile" as const,
+    targetId: researcher.id,
+    targetLabel: researcher.name,
+    data: {
+      name: researcher.name,
+      title: researcher.title,
+      bio: researcher.bio,
+      email: researcher.email ?? null,
+      orcid: researcher.orcid ?? null,
+      center: researcher.center,
+      axes: researcher.axes,
+    },
+  };
 
   // Use researcher's publications if available, otherwise filter from global PUBLICATION
   const researcherPubs = researcher.publications ?
@@ -163,8 +188,32 @@ export default function ResearcherProfilePage({ params }: PageProps) {
                 </a>
               </div>
             )}
+
+            {/* Signature */}
+            <div className="pt-2 flex items-center gap-3 flex-wrap">
+              {canSign && (
+                <button
+                  onClick={() => setShowSigModal(true)}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-blue-800/40 bg-blue-600/10 px-3 py-1.5 text-[11px] font-bold text-blue-400 hover:bg-blue-600/20 transition-all"
+                >
+                  <ShieldCheck className="h-3.5 w-3.5" />
+                  Signer ce profil
+                </button>
+              )}
+              <SignatureBadge
+                targetId={researcher.id}
+                freshSignature={freshSig ?? undefined}
+                compact
+              />
+            </div>
           </div>
         </div>
+
+        {/* Badge signature détaillé */}
+        <SignatureBadge
+          targetId={researcher.id}
+          freshSignature={freshSig ?? undefined}
+        />
 
         {/* Publications and Datasets lists split grid */}
         <div className="grid gap-10 md:grid-cols-2">
@@ -279,6 +328,17 @@ export default function ResearcherProfilePage({ params }: PageProps) {
 
       </main>
       <Footer />
+
+      {/* Modal de signature */}
+      {showSigModal && (
+        <SignatureModal
+          payload={sigPayload}
+          onClose={() => setShowSigModal(false)}
+          onSigned={(sigId, timestamp) => {
+            setFreshSig({ id: sigId, signerName: user?.nom ?? "", timestamp });
+          }}
+        />
+      )}
     </div>
   );
 }

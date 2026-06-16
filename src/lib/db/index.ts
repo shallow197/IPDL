@@ -181,6 +181,30 @@ export interface DBPartner {
   projets: string[];
 }
 
+// ─── Signatures cryptographiques (Ed25519 / TweetNaCl) ───────────────────────
+
+export type SignatureType = "profile" | "dataset" | "publication" | "attestation";
+
+export interface DBSignature {
+  id: string;
+  /** DB user ID du signataire (payload.sub du JWT). */
+  signerId: string;
+  signerName: string;
+  /** Type de cible signée. */
+  type: SignatureType;
+  /** ID de la cible (researcher.id, dataset.id, publication.id, ou attestation UUID). */
+  targetId: string;
+  /** Libellé humain de la cible (pour affichage sans re-fetch). */
+  targetLabel: string;
+  /** JSON canonique des données signées. */
+  signedData: string;
+  /** Signature Ed25519 encodée en hexadécimal (128 chars). */
+  signatureHex: string;
+  /** Clé publique Ed25519 du signataire (64 chars hex). */
+  publicKeyHex: string;
+  timestamp: string;
+}
+
 // ─── In-memory store (module singleton) ──────────────────────────────────────
 
 const db = {
@@ -193,6 +217,7 @@ const db = {
   partners: new Map<string, DBPartner>(),
   roles: new Map<string, DBRole>(),
   accessRequests: new Map<string, DBAccessRequest>(),
+  signatures: new Map<string, DBSignature>(),
 };
 
 // ─── Seed data ────────────────────────────────────────────────────────────────
