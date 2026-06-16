@@ -70,6 +70,9 @@ export default function Home() {
         <div className="absolute -left-20 top-1/2 -translate-y-1/2 -z-10 h-80 w-80 rounded-full bg-blue-600/5 blur-[120px]" />
         <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-center">
           <div>
+            <div className="mb-6 rounded-xl overflow-hidden border border-slate-800 shadow-lg">
+              <img src="/themes/allthemes.webp" alt="Axes thématiques UMMISCO" className="w-full h-48 object-cover" />
+            </div>
             <h2 className="text-3xl font-extrabold tracking-tight text-white leading-tight">
               {t("home.aboutTitle")}
             </h2>
@@ -148,26 +151,40 @@ export default function Home() {
             <h2 className="text-3xl font-extrabold tracking-tight text-white">{t("axes.title")}</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {AXES.map((axis, i) => (
-              <Link
-                key={axis.id}
-                href={`/publications?axe=${axis.id}`}
-                className="group text-left rounded-xl border border-slate-800 bg-slate-900/10 p-6 hover:border-blue-500/50 hover:bg-slate-900/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-52"
-              >
-                <div>
-                  <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${axis.color} flex items-center justify-center mb-4 shadow-lg`}>
-                    <span className="text-lg font-extrabold text-white">{i + 1}</span>
+            {AXES.map((axis) => {
+              const axisImage: Record<string, string> = {
+                agents: "/themes/modelisation.jpg",
+                ia: "/themes/intelligence.jpg",
+                capteurs: "/themes/capteurs.jpg",
+                participatif: "/themes/science_citoyenne.jpg",
+              };
+              return (
+                <Link
+                  key={axis.id}
+                  href={`/publications?axe=${axis.id}`}
+                  className="group text-left rounded-xl border border-slate-800 bg-slate-900/10 hover:border-blue-500/50 hover:bg-slate-900/40 hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden"
+                >
+                  <div className="h-36 w-full overflow-hidden flex-none">
+                    <img
+                      src={axisImage[axis.id]}
+                      alt={axis.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <h3 className="text-base font-bold text-slate-100 leading-snug group-hover:text-white">{axis.name}</h3>
-                  <p className="mt-2 text-[13px] text-slate-500 leading-relaxed line-clamp-3">{axis.description}</p>
-                </div>
-                <div className="flex items-center gap-1.5 text-[13px] text-slate-500 group-hover:text-blue-400 font-semibold uppercase tracking-wider mt-4 transition-colors">
-                  <BookOpen className="h-3 w-3" />
-                  <span>Voir les publications</span>
-                  <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
-                </div>
-              </Link>
-            ))}
+                  <div className="p-5 flex flex-col flex-1 justify-between">
+                    <div>
+                      <h3 className="text-sm font-bold text-slate-100 leading-snug group-hover:text-white">{axis.name}</h3>
+                      <p className="mt-2 text-[12px] text-slate-500 leading-relaxed line-clamp-3">{axis.description}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[12px] text-slate-500 group-hover:text-blue-400 font-semibold uppercase tracking-wider mt-4 transition-colors">
+                      <BookOpen className="h-3 w-3" />
+                      <span>Voir les publications</span>
+                      <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
