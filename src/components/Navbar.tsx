@@ -54,11 +54,11 @@ export default function Navbar() {
   };
 
   const primary = [
-    { href: "/",            icon: Home,        key: "nav.home" },
-    { href: "/publications", icon: BookOpen,    key: "nav.publications" },
-    { href: "/projets",     icon: FolderKanban, key: "nav.projets" },
-    { href: "/equipe",      icon: Users,        key: "nav.equipe" },
-    { href: "/actualites",  icon: Newspaper,    key: "nav.actualites" },
+    { href: "/",             icon: Home,         key: "nav.home" },
+    { href: "/publications", icon: BookOpen,     key: "nav.publications" },
+    { href: "/projets",      icon: FolderKanban, key: "nav.projets" },
+    { href: "/equipe",       icon: Users,        key: "nav.equipe" },
+    { href: "/actualites",   icon: Newspaper,    key: "nav.actualites" },
   ];
 
   const secondary = [
@@ -71,191 +71,188 @@ export default function Navbar() {
 
   const isSecondaryActive = secondary.some((l) => pathname === l.href);
 
-  const linkClass = (active: boolean) =>
+  const linkCls = (active: boolean) =>
     `relative flex items-center gap-1.5 px-3 py-2 rounded-lg text-[13px] font-semibold transition-all ${
       active
-        ? "text-ummisco-blue bg-blue-50 dark:bg-blue-950/30"
-        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/50"
+        ? "text-ummisco-blue bg-blue-50"
+        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
     }`;
 
   return (
-    <>
-      <nav
-        className={`sticky top-0 z-50 w-full border-b transition-all duration-200 ${
-          scrolled
-            ? "bg-white/97 dark:bg-slate-950/95 backdrop-blur-md border-slate-200 dark:border-slate-800 shadow-md"
-            : "bg-white dark:bg-slate-950 border-slate-100 dark:border-slate-800 shadow-sm"
-        }`}
-      >
-        {/* Brand accent bar — visible en light mode uniquement */}
-        <div className="h-0.5 w-full bg-gradient-to-r from-ummisco-blue via-blue-400 to-green-400 dark:hidden" />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-[4.25rem] flex items-center gap-4">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center gap-2.5" aria-label="UMMISCO — Accueil">
-            <BrandLogo height={44} withChip animated />
-            <div className="hidden sm:block leading-tight">
-              <div className="text-[13px] font-black text-slate-900 dark:text-white tracking-tight">UMMISCO</div>
-              <div className="text-[9px] font-bold text-slate-500 dark:text-slate-400 tracking-widest uppercase">UMI 209 · IRD</div>
-            </div>
-          </Link>
+    <nav
+      className={`sticky top-0 z-50 w-full bg-[#ffffff] transition-all duration-200 ${
+        scrolled
+          ? "shadow-md border-b border-slate-200"
+          : "shadow-sm border-b border-slate-100"
+      }`}
+    >
+      {/* Barre de couleur en haut */}
+      <div className="h-0.5 w-full bg-gradient-to-r from-ummisco-blue via-blue-400 to-green-400" />
 
-          <div className="hidden md:block h-6 w-px bg-slate-200 dark:bg-slate-700 flex-shrink-0" />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-[4.25rem] flex items-center gap-4">
 
-          {/* Primary nav */}
-          <div className="hidden md:flex items-center gap-0.5 flex-1">
-            {primary.map(({ href, icon: Icon, key }) => {
-              const active = pathname === href;
-              return (
-                <Link key={href} href={href} className={linkClass(active)}>
-                  <Icon className="h-3.5 w-3.5 flex-shrink-0" />
-                  {t(key)}
-                  {active && (
-                    <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-ummisco-blue rounded-full" />
-                  )}
-                </Link>
-              );
-            })}
+        {/* Logo */}
+        <Link href="/" className="flex-shrink-0 flex items-center gap-2.5" aria-label="UMMISCO — Accueil">
+          <BrandLogo height={44} withChip animated />
+          <div className="hidden sm:block leading-tight">
+            <div className="text-[13px] font-black text-slate-900 tracking-tight">UMMISCO</div>
+            <div className="text-[9px] font-bold text-slate-400 tracking-widest uppercase">UMI 209 · IRD</div>
+          </div>
+        </Link>
 
-            {/* More dropdown */}
-            <div className="relative" ref={moreRef}>
-              <button
-                onClick={() => setMoreOpen((o) => !o)}
-                className={linkClass(isSecondaryActive)}
-              >
-                <Boxes className="h-3.5 w-3.5 flex-shrink-0" />
-                {t("nav.more")}
-                <ChevronDown className={`h-3 w-3 transition-transform ${moreOpen ? "rotate-180" : ""}`} />
-                {isSecondaryActive && (
+        <div className="hidden md:block h-6 w-px bg-slate-200 flex-shrink-0" />
+
+        {/* Liens primaires */}
+        <div className="hidden md:flex items-center gap-0.5 flex-1">
+          {primary.map(({ href, icon: Icon, key }) => {
+            const active = pathname === href;
+            return (
+              <Link key={href} href={href} className={linkCls(active)}>
+                <Icon className="h-3.5 w-3.5 flex-shrink-0" />
+                {t(key)}
+                {active && (
                   <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-ummisco-blue rounded-full" />
                 )}
-              </button>
-
-              {moreOpen && (
-                <div className="absolute top-full left-0 mt-2 w-52 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl py-1.5 z-50">
-                  {secondary.map(({ href, icon: Icon, key }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className={`flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-semibold transition-colors ${
-                        pathname === href
-                          ? "text-ummisco-blue bg-blue-50 dark:bg-blue-950/30"
-                          : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800"
-                      }`}
-                    >
-                      <Icon className="h-4 w-4 flex-shrink-0" />
-                      {t(key)}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Right controls */}
-          <div className="flex items-center gap-1.5 ml-auto">
-            <NotificationBell />
-
-            <button
-              onClick={() => setLang(lang === "fr" ? "en" : "fr")}
-              className="hidden sm:flex px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 uppercase tracking-widest transition-all"
-              title={t("nav.langSwitch")}
-            >
-              {lang === "fr" ? "EN" : "FR"}
-            </button>
-
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/40 transition-all"
-              aria-label={t("nav.themeSwitch")}
-            >
-              {theme === "dark"
-                ? <Sun className="h-4 w-4 text-amber-500" />
-                : <Moon className="h-4 w-4 text-blue-500" />}
-            </button>
-
-            {isAuthenticated && user ? (
-              <div className="flex items-center gap-1">
-                {user.role === "directeur" && (
-                  <Link
-                    href="/admin"
-                    className="hidden sm:flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 px-2.5 py-1.5 text-[11px] font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/40 transition-all"
-                  >
-                    <Shield className="h-3.5 w-3.5" />
-                    {t("nav.admin")}
-                  </Link>
-                )}
-                <Link
-                  href="/dashboard"
-                  className="flex items-center gap-1.5 rounded-lg bg-ummisco-blue px-3 py-1.5 text-[11px] font-semibold text-white hover:opacity-90 active:scale-95 transition-all"
-                >
-                  <LayoutDashboard className="h-3.5 w-3.5" />
-                  <span className="hidden sm:inline">{t("dashboard.profile")}</span>
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-all"
-                  title={t("nav.logout")}
-                >
-                  <LogOut className="h-3.5 w-3.5" />
-                </button>
-              </div>
-            ) : (
-              <Link
-                href="/connexion"
-                className="flex items-center gap-1.5 rounded-lg bg-ummisco-blue px-3 py-1.5 text-[11px] font-semibold text-white hover:opacity-90 active:scale-95 transition-all"
-              >
-                <Lock className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">{t("nav.login")}</span>
               </Link>
-            )}
+            );
+          })}
 
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setMobileOpen((o) => !o)}
-              className="md:hidden p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/40 transition-all"
-              aria-label="Menu"
-            >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {/* Dropdown Plus */}
+          <div className="relative" ref={moreRef}>
+            <button onClick={() => setMoreOpen((o) => !o)} className={linkCls(isSecondaryActive)}>
+              <Boxes className="h-3.5 w-3.5 flex-shrink-0" />
+              {t("nav.more")}
+              <ChevronDown className={`h-3 w-3 transition-transform ${moreOpen ? "rotate-180" : ""}`} />
+              {isSecondaryActive && (
+                <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-ummisco-blue rounded-full" />
+              )}
             </button>
+
+            {moreOpen && (
+              <div className="absolute top-full left-0 mt-2 w-52 rounded-xl border border-slate-200 bg-[#ffffff] shadow-xl py-1.5 z-50">
+                {secondary.map(({ href, icon: Icon, key }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-semibold transition-colors ${
+                      pathname === href
+                        ? "text-ummisco-blue bg-blue-50"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4 flex-shrink-0" />
+                    {t(key)}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Mobile drawer */}
-        {mobileOpen && (
-          <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 space-y-0.5">
-            {[...primary, ...secondary].map(({ href, icon: Icon, key }) => (
+        {/* Contrôles droite */}
+        <div className="flex items-center gap-1.5 ml-auto">
+          <NotificationBell />
+
+          <button
+            onClick={() => setLang(lang === "fr" ? "en" : "fr")}
+            className="hidden sm:flex px-2.5 py-1 rounded-md border border-slate-200 text-[11px] font-bold text-slate-500 hover:text-slate-900 hover:border-slate-300 uppercase tracking-widest transition-all"
+            title={t("nav.langSwitch")}
+          >
+            {lang === "fr" ? "EN" : "FR"}
+          </button>
+
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg border border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+            aria-label={t("nav.themeSwitch")}
+          >
+            {theme === "dark"
+              ? <Sun className="h-4 w-4 text-amber-500" />
+              : <Moon className="h-4 w-4 text-slate-500" />}
+          </button>
+
+          {isAuthenticated && user ? (
+            <div className="flex items-center gap-1">
+              {user.role === "directeur" && (
+                <Link
+                  href="/admin"
+                  className="hidden sm:flex items-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+                >
+                  <Shield className="h-3.5 w-3.5" />
+                  {t("nav.admin")}
+                </Link>
+              )}
               <Link
-                key={href}
-                href={href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
-                  pathname === href
-                    ? "text-ummisco-blue bg-blue-50 dark:bg-blue-950/30"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                href="/dashboard"
+                className="flex items-center gap-1.5 rounded-lg bg-ummisco-blue px-3 py-1.5 text-[11px] font-semibold text-white hover:opacity-90 active:scale-95 transition-all"
               >
-                <Icon className="h-4 w-4 flex-shrink-0" />
-                {t(key)}
+                <LayoutDashboard className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">{t("dashboard.profile")}</span>
               </Link>
-            ))}
-            <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex gap-2 mt-2">
               <button
-                onClick={() => setLang(lang === "fr" ? "en" : "fr")}
-                className="flex-1 py-2 rounded-md border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest"
+                onClick={handleLogout}
+                className="p-2 rounded-lg border border-slate-200 text-slate-500 hover:text-red-500 hover:bg-red-50 transition-all"
+                title={t("nav.logout")}
               >
-                {lang === "fr" ? "EN" : "FR"}
-              </button>
-              <button
-                onClick={toggleTheme}
-                className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400"
-              >
-                {theme === "dark"
-                  ? <Sun className="h-5 w-5 text-amber-500" />
-                  : <Moon className="h-5 w-5 text-blue-500" />}
+                <LogOut className="h-3.5 w-3.5" />
               </button>
             </div>
+          ) : (
+            <Link
+              href="/connexion"
+              className="flex items-center gap-1.5 rounded-lg bg-ummisco-blue px-3 py-1.5 text-[11px] font-semibold text-white hover:opacity-90 active:scale-95 transition-all"
+            >
+              <Lock className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">{t("nav.login")}</span>
+            </Link>
+          )}
+
+          {/* Hamburger mobile */}
+          <button
+            onClick={() => setMobileOpen((o) => !o)}
+            className="md:hidden p-2 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-100 transition-all"
+            aria-label="Menu"
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Drawer mobile */}
+      {mobileOpen && (
+        <div className="md:hidden border-t border-slate-100 bg-[#ffffff] px-4 py-3 space-y-0.5">
+          {[...primary, ...secondary].map(({ href, icon: Icon, key }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+                pathname === href
+                  ? "text-ummisco-blue bg-blue-50"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              }`}
+            >
+              <Icon className="h-4 w-4 flex-shrink-0" />
+              {t(key)}
+            </Link>
+          ))}
+          <div className="pt-3 border-t border-slate-100 flex gap-2 mt-2">
+            <button
+              onClick={() => setLang(lang === "fr" ? "en" : "fr")}
+              className="flex-1 py-2 rounded-md border border-slate-200 text-sm font-bold text-slate-500 uppercase tracking-widest"
+            >
+              {lang === "fr" ? "EN" : "FR"}
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-lg border border-slate-200 text-slate-500"
+            >
+              {theme === "dark"
+                ? <Sun className="h-5 w-5 text-amber-500" />
+                : <Moon className="h-5 w-5 text-slate-500" />}
+            </button>
           </div>
-        )}
-      </nav>
-    </>
+        </div>
+      )}
+    </nav>
   );
 }
