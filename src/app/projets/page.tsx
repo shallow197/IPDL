@@ -22,45 +22,15 @@ import Footer from "@/components/Footer";
 import { PROJECTS, CENTERS, AXES, Project } from "@/data/ummiscoData";
 import { useLang } from "@/context/LangContext";
 
-// ─── Couleurs domaine ──────────────────────────────────────────────────────────
+// ─── Style uniforme des badges (catégorie / axe / centre) ──────────────────────
+// Un seul style par type de badge, appliqué à toutes les valeurs, pour un rendu
+// cohérent et professionnel (au lieu d'une couleur différente par élément).
 
-const DOMAIN_CONFIG: Record<string, { color: string; bg: string; border: string; dot: string }> = {
-  "Santé humaine":             { color: "text-rose-400",    bg: "bg-rose-500/10",    border: "border-rose-500/30",    dot: "bg-rose-400" },
-  "Santé publique":            { color: "text-rose-400",    bg: "bg-rose-500/10",    border: "border-rose-500/30",    dot: "bg-rose-400" },
-  "Environnement":             { color: "text-green-400",   bg: "bg-green-500/10",   border: "border-green-500/30",   dot: "bg-green-400" },
-  "Gestion de l'eau et irrigation": { color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/30",   dot: "bg-cyan-400" },
-  "Société":                   { color: "text-purple-400",  bg: "bg-purple-500/10",  border: "border-purple-500/30",  dot: "bg-purple-400" },
-  "Biodiversité":              { color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/30", dot: "bg-emerald-400" },
-  "Mobilité urbaine":          { color: "text-amber-400",   bg: "bg-amber-500/10",   border: "border-amber-500/30",   dot: "bg-amber-400" },
-};
-
-const defaultDomain = { color: "text-slate-400", bg: "bg-slate-500/10", border: "border-slate-500/30", dot: "bg-slate-400" };
-
-function getDomainConfig(domain: string) {
-  for (const [key, val] of Object.entries(DOMAIN_CONFIG)) {
-    if (domain.includes(key)) return val;
-  }
-  return defaultDomain;
-}
-
-// ─── Couleurs centres ──────────────────────────────────────────────────────────
-
-const CENTER_COLORS: Record<string, string> = {
-  france:             "bg-blue-500/20 text-blue-300 border-blue-500/30",
-  asie:               "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
-  "afrique-ouest":    "bg-orange-500/20 text-orange-300 border-orange-500/30",
-  "afrique-centrale": "bg-red-500/20 text-red-300 border-red-500/30",
-  mediterranee:       "bg-violet-500/20 text-violet-300 border-violet-500/30",
-};
-
-// ─── Couleurs thèmes ───────────────────────────────────────────────────────────
-
-const THEME_COLORS: Record<string, string> = {
-  agents:       "bg-blue-500/15 text-blue-400 border-blue-500/25",
-  ia:           "bg-violet-500/15 text-violet-400 border-violet-500/25",
-  capteurs:     "bg-green-500/15 text-green-400 border-green-500/25",
-  participatif: "bg-amber-500/15 text-amber-400 border-amber-500/25",
-};
+const DOMAIN_BADGE = { bg: "bg-blue-500/10", color: "text-blue-400", border: "border-blue-500/30", dot: "bg-blue-400" };
+const AXIS_BADGE = "bg-slate-800 text-slate-400 border-slate-700";
+const AXIS_BADGE_ACTIVE = "bg-blue-500/15 text-blue-400 border-blue-500/30";
+const CENTER_BADGE = "bg-slate-800 text-slate-300 border-slate-700";
+const CENTER_BADGE_ACTIVE = "bg-blue-500/15 text-blue-400 border-blue-500/30";
 
 const THEME_ICON: Record<string, React.ElementType> = {
   agents:       Brain,
@@ -87,7 +57,7 @@ function ProjectCard({
 }) {
   const [imgFailed, setImgFailed] = useState(false);
   const { t } = useLang();
-  const dc = getDomainConfig(project.domain);
+  const dc = DOMAIN_BADGE;
 
   return (
     <motion.article
@@ -145,9 +115,7 @@ function ProjectCard({
               return (
                 <span
                   key={themeId}
-                  className={`inline-flex items-center gap-1 text-[9px] font-semibold px-1.5 py-0.5 rounded border ${
-                    THEME_COLORS[themeId] ?? "bg-slate-800 text-slate-400 border-slate-700"
-                  }`}
+                  className={`inline-flex items-center gap-1 text-[9px] font-semibold px-1.5 py-0.5 rounded border ${AXIS_BADGE}`}
                 >
                   <ThemeIcon className="h-2.5 w-2.5" />
                   {axis?.shortName ?? themeId}
@@ -168,9 +136,7 @@ function ProjectCard({
               return (
                 <span
                   key={centerId}
-                  className={`text-[9px] font-semibold px-1.5 py-0.5 rounded border ${
-                    CENTER_COLORS[centerId] ?? "bg-slate-800 text-slate-300 border-slate-700"
-                  }`}
+                  className={`text-[9px] font-semibold px-1.5 py-0.5 rounded border ${CENTER_BADGE}`}
                 >
                   {center?.country ?? centerId}
                 </span>
@@ -324,7 +290,7 @@ export default function ProjetsPage() {
                     onClick={() => setActiveTheme(isActive ? null : axis.id)}
                     className={`text-[11px] font-semibold px-3 py-1.5 rounded-lg border transition-all ${
                       isActive
-                        ? `${THEME_COLORS[axis.id]} border-opacity-60`
+                        ? AXIS_BADGE_ACTIVE
                         : "border-slate-800 text-slate-500 hover:border-slate-700 hover:text-slate-300"
                     }`}
                   >
@@ -349,7 +315,7 @@ export default function ProjetsPage() {
                     onClick={() => setActiveCenter(isActive ? null : center.id)}
                     className={`text-[11px] font-semibold px-3 py-1.5 rounded-lg border transition-all ${
                       isActive
-                        ? `${CENTER_COLORS[center.id]} border-opacity-60`
+                        ? CENTER_BADGE_ACTIVE
                         : "border-slate-800 text-slate-500 hover:border-slate-700 hover:text-slate-300"
                     }`}
                   >
@@ -441,11 +407,7 @@ export default function ProjetsPage() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.07 }}
-                  className={`rounded-xl border p-5 ${
-                    CENTER_COLORS[center.id]
-                      ?.replace("text-", "border-")
-                      .replace(/bg-\S+/, "bg-slate-900/30") ?? "border-slate-800 bg-slate-900/30"
-                  }`}
+                  className="rounded-xl border border-slate-800 bg-slate-900/30 p-5"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div>
@@ -456,9 +418,7 @@ export default function ProjetsPage() {
                       </p>
                     </div>
                     <span
-                      className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${
-                        CENTER_COLORS[center.id] ?? "text-slate-400 border-slate-700"
-                      }`}
+                      className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${CENTER_BADGE}`}
                     >
                       {centerProjects.length} projet{centerProjects.length !== 1 ? "s" : ""}
                     </span>
