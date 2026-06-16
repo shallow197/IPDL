@@ -108,8 +108,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Garde un long historique (mémoire façon Claude) — le modèle dispose d'une
+  // fenêtre de contexte large, donc on ne tronque que pour éviter un payload démesuré.
   const history = (messages as ChatMessage[])
-    .slice(-10)
+    .slice(-60)
     .map((m) => ({ role: m.role, content: m.content }));
 
   let groqRes: Response;

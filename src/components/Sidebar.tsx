@@ -87,7 +87,7 @@ export default function Sidebar() {
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-0.5">
+        <nav className="flex-1 overflow-y-auto overscroll-contain py-3 px-2 space-y-0.5">
           {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
         </nav>
 
@@ -120,7 +120,7 @@ export default function Sidebar() {
 
       {/* ── Mobile drawer ────────────────────────────────────────────── */}
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-slate-950/98 pt-16 px-4 py-4 overflow-y-auto space-y-1">
+        <div className="md:hidden fixed inset-0 z-40 bg-slate-950/98 pt-16 px-4 py-4 overflow-y-auto overscroll-contain space-y-1">
           {navLinks.map(({ label, href, icon: Icon }) => (
             <Link key={href} href={href}
               className={`flex items-center gap-3 px-3 py-3 rounded-lg text-base font-semibold transition-colors ${

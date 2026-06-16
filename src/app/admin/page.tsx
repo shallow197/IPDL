@@ -481,7 +481,7 @@ export default function AdminPage() {
           ].map(({ label, value, icon: Icon, color }) => (
             <div key={label} className="rounded-xl border border-slate-900 bg-slate-900/10 p-4 text-center">
               <Icon className={`h-5 w-5 mx-auto mb-2 ${color}`} />
-              <div className="text-2xl font-extrabold text-white">{value}</div>
+              <div className="text-2xl font-extrabold text-stat-number">{value}</div>
               <div className="text-[9px] text-slate-500 uppercase tracking-wider mt-0.5">{label}</div>
             </div>
           ))}
