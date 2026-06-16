@@ -1276,6 +1276,11 @@ export const PROJECTS: Project[] = [
     description:
       "Dialogue Science-Décideurs pour une gestion intégrée des environnements littoraux et marins. Approche participative multi-acteurs.",
     url: "https://ummisco.fr/fr/projet-ummisco/didem/",
+    chefProjet: "Nicolas Marilleau (porteur côté UMMISCO)",
+    duree: "36 mois",
+    dateDebut: "Juillet 2020",
+    financement: "952 K€",
+    partenaires: "UMMISCO – CRDI – SEM (Société des Explorations de Monaco) – INTERREG La Réunion – Fondation de France (LittoGem) – PNUD – PNUE",
   },
   {
     id: "habitable",
@@ -1296,6 +1301,10 @@ export const PROJECTS: Project[] = [
     description:
       "Digital Epidemiology : nouvelle approche pour la surveillance en temps réel du COVID-19 via l'intégration de capteurs environnementaux et de modèles prédictifs.",
     url: "https://ummisco.fr/fr/projet-ummisco/digepi/",
+    chefProjet: "Benjamin Roche, MIVEGEC, IRD",
+    duree: "18 mois",
+    dateDebut: "Avril 2020",
+    budget: "100 K€ (IRD)",
   },
   {
     id: "waqatali",
@@ -1316,6 +1325,10 @@ export const PROJECTS: Project[] = [
     description:
       "Modèle informatique permettant d'explorer in silico les stratégies d'intervention épidémique (COVID-19) avant leur mise en application.",
     url: "https://comokit.org/",
+    chefProjet: "Alexis Drogoul, UMI 209 UMMISCO, IRD / Sorbonne Université, Bondy, France",
+    duree: "18 mois",
+    dateDebut: "Juillet 2020",
+    budget: "172 000 € (IRD)",
   },
   {
     id: "anr-magnum",
@@ -1571,12 +1584,12 @@ export const PROJECTS: Project[] = [
     centers: ["france"],
     themes: ["agents"],
     domain: "Société",
-    description: "Description à compléter.",
+    description: "Projet ANR centré sur la modélisation et la simulation de dynamiques épidémiques complexes. Exploration de mécanismes de transmission et d'intervention à l'aide de modèles à base d'agents.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-panique/",
     image: "/projets/PANIC.png",
     chefProjet: "Bernard Cazelles, UMMISCO, IRD, 32 av. Henri Varagnat, 93140 Bondy, France",
     duree: "48 mois",
-    dateDebut: "Avril 2015",
+    dateDebut: "Avril 2015 – Septembre 2019",
     budget: "492 K€",
   },
   {
@@ -1585,11 +1598,11 @@ export const PROJECTS: Project[] = [
     centers: ["france"],
     themes: ["agents", "capteurs"],
     domain: "Environnement",
-    description: "Modélisation 3D des microstructures du sol et de la dynamique microbienne par simulation multi-agents couplée à l'imagerie haute résolution.",
+    description: "Utiliser la modélisation comme outil pour le transfert d'échelle de l'habitat microbien au profil du sol. Simulation 3D des microstructures du sol et de la dynamique microbienne couplée à l'imagerie haute résolution.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-soilmu-3d/",
     image: "/projets/Soilmu-3D.png",
     chefProjet: "Patricia Garnier, INRA Grignon",
-    duree: "2016-2019",
+    duree: "2016 – 2019",
     dateDebut: "2016",
     budget: "5 061 K€",
   },
