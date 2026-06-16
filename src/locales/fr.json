@@ -125,10 +125,7 @@
     "backToList": "Retour aux publications",
     "viewOnDoi": "Voir sur DOI",
     "abstractLabel": "Résumé",
-    "authorsLabel": "Auteurs",
-    "status_pending": "En attente",
-    "status_validated": "Validée",
-    "status_rejected": "Rejetée"
+    "authorsLabel": "Auteurs"
   },
   "datasets": {
     "sectionTag": "Données de Recherche Ouvertes",

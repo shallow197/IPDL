@@ -58,8 +58,20 @@ function PublicationsContent() {
       pub.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       pub.abstract.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesAxis = selectedAxis === "all" || pub.axis === selectedAxis;
-    const matchesResearcher =
-      selectedResearcher === "all" || pub.researcherIds.includes(selectedResearcher);
+    const matchesResearcher = (() => {
+      if (selectedResearcher === "all") return true;
+      // keep working if publication has explicit researcherIds linking
+      if (Array.isArray(pub.researcherIds) && pub.researcherIds.includes(selectedResearcher)) return true;
+
+      // fallback: match by surname or given name parts in the displayed author strings
+      const researcher = RESEARCHERS.find((r) => r.id === selectedResearcher);
+      if (!researcher) return false;
+      const nameParts = researcher.name.toLowerCase().split(/\s+/).filter(Boolean);
+      return pub.authors.some((author) => {
+        const a = author.toLowerCase();
+        return nameParts.some((part) => part.length > 1 && a.includes(part));
+      });
+    })();
     const matchesYear = selectedYear === "all" || pub.year.toString() === selectedYear;
 
     return matchesSearch && matchesAxis && matchesResearcher && matchesYear;
