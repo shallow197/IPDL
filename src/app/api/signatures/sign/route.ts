@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     return jsonError("Signature cryptographique invalide.", 422);
   }
 
-  // Pour les profils : vérifier que c'est le propre profil de l'utilisateur
+  // Pour les profils : vérifier que c'est autorisé (propre profil ou directeur)
   if (type === "profile") {
     if (targetId !== payload.sub && payload.role !== "directeur") {
       return jsonError("Vous ne pouvez signer que votre propre profil.", 403);
