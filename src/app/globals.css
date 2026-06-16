@@ -160,6 +160,15 @@ html:not(.dark) [class~="rounded-2xl"][class~="border"] {
   [data-sidebar="collapsed"] .sidebar-offset { margin-left: 68px; }
 }
 
+/* ── Smooth theme switching ──────────────────────────────────────────── */
+html.theme-switching,
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, fill 200ms ease !important;
+  transition-delay: 0s !important;
+}
+
 /* ── Partners scrolling banner ──────────────────────────────────────────────── */
 @keyframes partners-scroll {
   0%   { transform: translateX(0); }
