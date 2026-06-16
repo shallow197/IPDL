@@ -1277,6 +1277,7 @@ export const PROJECTS: Project[] = [
     description:
       "Dialogue Science-Décideurs pour une gestion intégrée des environnements littoraux et marins. Approche participative multi-acteurs.",
     url: "https://ummisco.fr/fr/projet-ummisco/didem/",
+    image: "/projets/DIDEM.png",
     chefProjet: "Nicolas Marilleau (porteur côté UMMISCO)",
     duree: "36 mois",
     dateDebut: "Juillet 2020",
@@ -1292,6 +1293,7 @@ export const PROJECTS: Project[] = [
     description:
       "Modélisation de la mobilité des pêcheurs artisanaux au Sénégal. Simulateur Lolli implémenté sous GAMA pour explorer des scénarios climatiques et socio-économiques.",
     url: "https://ummisco.fr/fr/projet-ummisco/habitable/",
+    image: "/projets/HABITABLE.png",
     chefProjet: "François Gemene, University of Liège, Hugo Observatory, Belgique",
     duree: "36 mois",
     dateDebut: "Décembre 2020",
@@ -1306,6 +1308,7 @@ export const PROJECTS: Project[] = [
     description:
       "Digital Epidemiology : nouvelle approche pour la surveillance en temps réel du COVID-19 via l'intégration de capteurs environnementaux et de modèles prédictifs.",
     url: "https://ummisco.fr/fr/projet-ummisco/digepi/",
+    image: "/projets/DigEpi.png",
     chefProjet: "Benjamin Roche, MIVEGEC, IRD",
     duree: "18 mois",
     dateDebut: "Avril 2020",
@@ -1321,6 +1324,7 @@ export const PROJECTS: Project[] = [
       "Laboratoire commun IRD–URBASENSE pour l'optimisation des infrastructures vertes en ville. Combine modélisation multi-agents et capteurs IoT pour améliorer la gestion de l'eau et de la végétation urbaine.",
     url: "https://ummisco.fr/fr/projet-ummisco/waqatali/",
     projectWebsite: "https://www.ird.fr/waqatali-un-laboratoire-commun-pour-optimiser-les-infrastructures-vertes-en-ville",
+    image: "/projets/Waqatali.png",
     chefProjet: "Nicolas Marilleau, UMMISCO & Thomas Bur, URBASENSE",
     duree: "54 mois",
     budget: "360 K€ (IRD)",
@@ -1337,6 +1341,7 @@ export const PROJECTS: Project[] = [
       "Modèle informatique permettant d'explorer in silico les stratégies d'intervention épidémique (COVID-19) avant leur mise en application.",
     url: "https://comokit.org/",
     projectWebsite: "https://comokit.org/",
+    image: "/projets/COMOKIT.png",
     chefProjet: "Alexis Drogoul, UMI 209 UMMISCO, IRD / Sorbonne Université, Bondy, France",
     duree: "18 mois",
     dateDebut: "Juillet 2020",
@@ -1351,6 +1356,7 @@ export const PROJECTS: Project[] = [
     description:
       "The Maasai, the Gnu and the Metropolis. Réseaux de capteurs pour le suivi des grandes migrations animales en Afrique de l'Est.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-magnum/",
+    image: "/projets/MaGnuM.png",
     chefProjet: "François Mialhe, École de l'environnement et de la société, CNRS 5600 EVS, Université de Lyon",
     partenaires: "University of Lyon 2 Lumière, Lyon, France ; IRD - UMMISCO, Bondy, France ; University Claude Bernard Lyon I, France ; IRD – PALOC, Kenya ; University of Namur, Belgium ; INED, France ; University of Colorado, USA ; ACC, Kenya ; UMR LETG, Rennes, France",
   },
@@ -1363,6 +1369,7 @@ export const PROJECTS: Project[] = [
     description:
       "Distribution Model : séparation des préoccupations pour faciliter la distribution des modèles à base d'agents sur clusters HPC.",
     url: "https://ummisco.fr/fr/projet-ummisco/dom/",
+    image: "/projets/DOM.png",
     chefProjet: "Dr. Ayesha Almazooqi, Khalifa University, Abu Dhabi",
     duree: "36 mois",
     dateDebut: "Décembre 2020",
@@ -1391,6 +1398,7 @@ export const PROJECTS: Project[] = [
     description:
       "Artificial Intelligence for Marine Ecosystems. Application de l'IA pour la modélisation et le suivi des écosystèmes marins méditerranéens.",
     url: "https://ummisco.fr/fr/projet-ummisco/aime/",
+    image: "/projets/AIME.png",
     chefProjet: "Jihad Zahir, CAU / UMMISCO, Morocco",
     duree: "48 mois",
     dateDebut: "Janvier 2021",

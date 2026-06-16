@@ -158,7 +158,7 @@ function ProjectCard({
         </div>
 
         {/* Centres */}
-        <div>
+        <div className="mb-4">
           <span className="text-[9px] uppercase tracking-widest text-slate-600 font-bold mb-1.5 block flex items-center gap-1">
             <MapPin className="h-2.5 w-2.5" /> Centres
           </span>
