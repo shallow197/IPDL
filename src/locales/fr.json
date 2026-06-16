@@ -574,7 +574,9 @@
     "placeholder": "Posez votre question...",
     "send": "Envoyer",
     "welcome": "Bonjour ! Je suis l'assistant du portail UMMISCO. Comment puis-je vous aider ?",
-    "thinking": "En cours de réflexion..."
+    "thinking": "En cours de réflexion...",
+    "newChat": "Nouvelle conversation",
+    "close": "Fermer"
   },
   "partners": {
     "title": "Partenaires & Bailleurs",

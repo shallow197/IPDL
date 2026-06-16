@@ -577,7 +577,9 @@
     "placeholder": "Ask your question...",
     "send": "Send",
     "welcome": "Hello! I am the UMMISCO portal assistant. How can I help you?",
-    "thinking": "Thinking..."
+    "thinking": "Thinking...",
+    "newChat": "New conversation",
+    "close": "Close"
   },
   "partners": {
     "title": "Partners & Funders",

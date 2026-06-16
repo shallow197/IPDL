@@ -40,9 +40,9 @@ export default function StatsCounter({ value, label, suffix = "+", duration = 30
 
   return (
     <div ref={ref} className="text-center">
-      <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+      <div className="text-3xl sm:text-4xl font-extrabold text-stat-number tracking-tight">
         {count.toLocaleString("fr-FR")}
-        <span className="text-ummisco-blue-light">{suffix}</span>
+        <span>{suffix}</span>
       </div>
       <div className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold mt-1">{label}</div>
     </div>
