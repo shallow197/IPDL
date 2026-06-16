@@ -68,7 +68,7 @@ export default function Home() {
       {/* ── INTRO / PRÉSENTATION ──────────────────────────────────────────── */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 relative overflow-hidden">
         <div className="absolute -left-20 top-1/2 -translate-y-1/2 -z-10 h-80 w-80 rounded-full bg-blue-600/5 blur-[120px]" />
-        <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-center">
+        <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-start">
           <div>
             <div className="mb-6 rounded-xl overflow-hidden border border-slate-800 shadow-lg">
               <img src="/themes/allthemes.png" alt="Axes thématiques UMMISCO" className="w-full h-48 object-cover" />

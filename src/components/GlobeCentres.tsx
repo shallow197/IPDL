@@ -53,6 +53,41 @@ function segments(pts: { lon: number; lat: number }[], rotLon: number, rotPhi: n
   return out;
 }
 
+// Simplified continent outlines (major landmasses)
+const CONTINENTS = {
+  africa: [
+    { lon: 20, lat: 37 }, { lon: 35, lat: 32 }, { lon: 40, lat: 25 }, { lon: 42, lat: 12 },
+    { lon: 40, lat: 0 }, { lon: 38, lat: -10 }, { lon: 30, lat: -20 }, { lon: 25, lat: -25 },
+    { lon: 18, lat: -30 }, { lon: 12, lat: -28 }, { lon: 8, lat: -15 }, { lon: 5, lat: 0 },
+    { lon: 3, lat: 10 }, { lon: -5, lat: 20 }, { lon: 0, lat: 30 }, { lon: 20, lat: 37 }
+  ],
+  asia: [
+    { lon: 50, lat: 45 }, { lon: 70, lat: 48 }, { lon: 85, lat: 40 }, { lon: 100, lat: 35 },
+    { lon: 110, lat: 30 }, { lon: 120, lat: 25 }, { lon: 130, lat: 20 }, { lon: 140, lat: 15 },
+    { lon: 140, lat: 5 }, { lon: 130, lat: 0 }, { lon: 110, lat: -5 }, { lon: 95, lat: 0 },
+    { lon: 75, lat: 10 }, { lon: 60, lat: 20 }, { lon: 50, lat: 30 }, { lon: 50, lat: 45 }
+  ],
+  europe: [
+    { lon: 0, lat: 40 }, { lon: 10, lat: 43 }, { lon: 20, lat: 45 }, { lon: 30, lat: 50 },
+    { lon: 25, lat: 55 }, { lon: 15, lat: 57 }, { lon: 10, lat: 60 }, { lon: 5, lat: 62 },
+    { lon: -5, lat: 55 }, { lon: -10, lat: 50 }, { lon: -5, lat: 45 }, { lon: 0, lat: 40 }
+  ],
+  americas: [
+    { lon: -80, lat: 50 }, { lon: -70, lat: 45 }, { lon: -60, lat: 40 }, { lon: -60, lat: 25 },
+    { lon: -75, lat: 15 }, { lon: -80, lat: 0 }, { lon: -75, lat: -10 }, { lon: -70, lat: -20 },
+    { lon: -65, lat: -30 }, { lon: -75, lat: -35 }, { lon: -85, lat: -25 }, { lon: -90, lat: -10 },
+    { lon: -85, lat: 5 }, { lon: -80, lat: 20 }, { lon: -80, lat: 35 }, { lon: -80, lat: 50 }
+  ]
+};
+
+function buildContinents(rotLon: number, rotPhi: number): { [key: string]: string[] } {
+  const out: { [key: string]: string[] } = {};
+  for (const [name, pts] of Object.entries(CONTINENTS)) {
+    out[name] = segments(pts, rotLon, rotPhi);
+  }
+  return out;
+}
+
 function buildGraticule(rotLon: number, rotPhi: number): string[] {
   const lines: string[] = [];
   // Meridians
@@ -139,6 +174,7 @@ export default function GlobeCentres() {
   }, [router]);
 
   const graticule = buildGraticule(rotLon, rotPhi);
+  const continents = buildContinents(rotLon, rotPhi);
 
   return (
     <div className="flex flex-col items-center">
@@ -177,6 +213,17 @@ export default function GlobeCentres() {
           <g stroke="#38bdf8" strokeOpacity="0.18" strokeWidth="0.8" fill="none">
             {graticule.map((pts, i) => (
               <polyline key={i} points={pts} />
+            ))}
+          </g>
+
+          {/* Continents */}
+          <g fill="#1f472a" fillOpacity="0.6" stroke="#4ade80" strokeOpacity="0.4" strokeWidth="0.6">
+            {Object.entries(continents).map(([name, ptsList]) => (
+              <g key={name}>
+                {ptsList.map((pts, i) => (
+                  <polyline key={`${name}-${i}`} points={pts} />
+                ))}
+              </g>
             ))}
           </g>
 
