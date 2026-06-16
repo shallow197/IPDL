@@ -128,18 +128,6 @@ function ProjectCard({
               </span>
             </div>
           </div>
-          {project.url && (
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-none p-2 rounded-lg border border-slate-800 text-slate-500 hover:text-blue-400 hover:border-blue-500/30 transition-all"
-              aria-label={`Voir ${project.name} sur le site officiel`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          )}
         </div>
 
         {/* Description */}
