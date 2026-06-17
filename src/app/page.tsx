@@ -227,8 +227,8 @@ export default function Home() {
       {/* ── GLOBE INTERACTIF DES CENTRES ──────────────────────────────────── */}
       <section id="centres" className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 bg-slate-900/10 relative overflow-hidden">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[28rem] w-[28rem] rounded-full bg-blue-600/5 blur-[120px]" />
-        <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-2 items-center">
-          <div>
+        <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-2 items-stretch">
+          <div className="flex flex-col justify-center">
             <span className="text-[13px] mono-text uppercase tracking-widest text-green-400 font-bold mb-3 flex items-center gap-2"><Globe2 className="h-4 w-4" /> {t("home.networkTitle")}</span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white">{t("home.centersTitle")}</h2>
             <div className="mt-6 flex flex-wrap gap-2">
