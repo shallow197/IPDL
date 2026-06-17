@@ -25,6 +25,7 @@ import {
 } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
 import PartnersBanner from "@/components/PartnersBanner";
+import CredentialsBar from "@/components/CredentialsBar";
 import StatsCounter from "@/components/StatsCounter";
 import { CENTRE_VISUALS } from "@/components/CentreGlobe";
 import GlobeCentres from "@/components/GlobeCentres";
@@ -166,6 +167,9 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* ── BANDEAU CRÉDIBILITÉ (label UMI 209, tutelles, licences) ────────── */}
+      <CredentialsBar />
 
       {/* ── INTRO / PRÉSENTATION ──────────────────────────────────────────── */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-900 relative overflow-hidden">
