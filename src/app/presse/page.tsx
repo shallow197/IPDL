@@ -3,10 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import {
-  Newspaper, Mail, Phone, Download, Quote, ExternalLink, Mic, Calendar, ArrowRight, ArrowLeft,
+  Newspaper, Phone, Download, Quote, ExternalLink, Mic, Calendar, ArrowRight, ArrowLeft,
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import Avatar from "@/components/Avatar";
+import ContactButton from "@/components/ContactButton";
 import { RESEARCHERS, PUBLICATION, SEMINARS, AXES } from "@/data/ummiscoData";
 import { useLang } from "@/context/LangContext";
 import { scholarUrl, UMMISCO_SCHOLAR_SEARCH } from "@/lib/scholar";
@@ -64,12 +65,13 @@ export default function PressePage() {
               {t("presse.contactDesc")}
             </p>
             <div className="flex flex-wrap gap-3">
-              <a
-                href={`mailto:${PRESS_CONTACT_EMAIL}?subject=Demande d'information - Presse UMMISCO&body=Bonjour,%0A%0AJ'aimerais obtenir des informations pour une publication ou demande de presse concernant UMMISCO.%0A%0ACordialement`}
+              <ContactButton
+                email={PRESS_CONTACT_EMAIL}
+                subject="Demande d'information - Presse UMMISCO"
+                body={"Bonjour,\n\nJ'aimerais obtenir des informations pour une publication ou demande de presse concernant UMMISCO.\n\nCordialement"}
+                label={PRESS_CONTACT_EMAIL}
                 className="inline-flex items-center gap-2 rounded-lg bg-ummisco-blue px-4 py-2.5 text-sm font-semibold text-white hover:bg-ummisco-blue/90 active:scale-95 transition-all"
-              >
-                <Mail className="h-4 w-4" /> {PRESS_CONTACT_EMAIL}
-              </a>
+              />
               <span className="inline-flex items-center gap-2 rounded-lg border border-slate-800 px-4 py-2.5 text-sm font-semibold text-slate-300">
                 <Phone className="h-4 w-4 text-slate-500" /> +221 33 824 00 00
               </span>
@@ -111,12 +113,14 @@ export default function PressePage() {
                 </div>
                 <div className="mt-auto flex items-center gap-3 pt-3 border-t border-slate-900/60">
                   {e.email && (
-                    <a
-                      href={`mailto:${e.email}?subject=Entretien ou interview - UMMISCO&body=Bonjour ${e.name},%0A%0AJ'aimerais vous contacter pour un entretien ou une interview concernant votre travail de recherche.%0A%0ACordialement`}
+                    <ContactButton
+                      email={e.email}
+                      name={e.name}
+                      subject="Entretien ou interview - UMMISCO"
+                      body={`Bonjour ${e.name},\n\nJ'aimerais vous contacter pour un entretien ou une interview concernant votre travail de recherche.\n\nCordialement`}
+                      label={t("presse.contact")}
                       className="inline-flex items-center gap-1 text-[12px] text-slate-400 hover:text-slate-200 transition-colors"
-                    >
-                      <Mail className="h-3 w-3" /> {t("presse.contact")}
-                    </a>
+                    />
                   )}
                   <a href={scholarUrl({ title: e.name })} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[12px] text-slate-400 hover:text-slate-200 transition-colors">
                     <Quote className="h-3 w-3" /> {t("presse.works")}

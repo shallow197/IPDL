@@ -2,9 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, ExternalLink, Search, ArrowLeft } from "lucide-react";
+import { ExternalLink, Search, ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 import Avatar from "@/components/Avatar";
+import ContactButton from "@/components/ContactButton";
 import { RESEARCHERS, AXES } from "@/data/ummiscoData";
 import { useLang } from "@/context/LangContext";
 
@@ -105,12 +106,18 @@ export default function EquipePage() {
 
                 {/* Actions */}
                 <div className="flex items-center justify-between">
-                  <a
-                    href={`mailto:${r.email}?subject=Contact UMMISCO&body=Bonjour ${r.name},%0A%0AJ'aimerais vous contacter concernant UMMISCO.%0A%0ACordialement`}
-                    className="inline-flex items-center gap-1 text-[13px] text-slate-500 hover:text-slate-200 transition-colors"
-                  >
-                    <Mail className="h-3 w-3" /> {t("researchers.contact")}
-                  </a>
+                  {r.email ? (
+                    <ContactButton
+                      email={r.email}
+                      name={r.name}
+                      subject="Contact UMMISCO"
+                      body={`Bonjour ${r.name},\n\nJ'aimerais vous contacter concernant UMMISCO.\n\nCordialement`}
+                      label={t("researchers.contact")}
+                      className="inline-flex items-center gap-1 text-[13px] text-slate-500 hover:text-slate-200 transition-colors"
+                    />
+                  ) : (
+                    <span />
+                  )}
                   <Link href={`/chercheurs/${r.id}`} className="inline-flex items-center gap-1 text-[13px] text-blue-400 hover:text-blue-300 font-semibold">
                     {t("researchers.viewProfile")}
                     <ExternalLink className="h-3 w-3" />

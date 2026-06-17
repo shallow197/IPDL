@@ -4,7 +4,6 @@ import React, { use, useState, useEffect } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  Mail,
   BookOpen,
   Database,
   ExternalLink,
@@ -23,6 +22,7 @@ import {
 } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
 import Avatar from "@/components/Avatar";
+import ContactButton from "@/components/ContactButton";
 import { scholarUrl } from "@/lib/scholar";
 import { useLang } from "@/context/LangContext";
 import { useAuth } from "@/context/AuthContext";
@@ -179,14 +179,15 @@ export default function ResearcherProfilePage({ params }: PageProps) {
 
             {/* Email contact */}
             {researcher.email && (
-              <div className="flex items-center gap-2 text-sm text-slate-400 pt-2">
-                <Mail className="h-4 w-4 text-slate-500" />
-                <a
-                  href={`mailto:${researcher.email}?subject=Contact concernant UMMISCO&body=Bonjour ${researcher.name},%0A%0AJ'aimerais vous contacter concernant votre travail de recherche à UMMISCO.%0A%0ACordialement`}
-                  className="hover:text-slate-200 underline"
-                >
-                  {researcher.email}
-                </a>
+              <div className="pt-2">
+                <ContactButton
+                  email={researcher.email}
+                  name={researcher.name}
+                  subject="Contact concernant UMMISCO"
+                  body={`Bonjour ${researcher.name},\n\nJ'aimerais vous contacter concernant votre travail de recherche à UMMISCO.\n\nCordialement`}
+                  label={researcher.email}
+                  className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 transition-colors"
+                />
               </div>
             )}
 
