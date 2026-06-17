@@ -404,6 +404,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "participatif"],
     bio: "Chercheur au Centre Asie. Modélisation des dynamiques sociales et environnementales en Asie du Sud-Est avec GAMA.",
+    email: "chainarong.kes@gmail.com",
     avatarSeed: "CK", photoUrl: "/photos/chainarong-kesamoon.png", publicationsCount: 8,
   },
   {
@@ -595,6 +596,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique de l'Ouest", role: "chercheur", center: "afrique-ouest",
     axes: ["agents", "capteurs"],
     bio: "Chercheur au Centre Afrique de l'Ouest. Travaux sur la modélisation des systèmes pastoraux sahéliens et le changement climatique.",
+    email: "hamidou.dathe@yahoo.fr",
     avatarSeed: "HD", photoUrl: "/photos/hamidou-dathe.png", publicationsCount: 10,
   },
   {
@@ -740,7 +742,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents", "ia"],
     bio: "Chercheur au Centre Cameroun. Spécialisé en modélisation mathématique des systèmes épidémiques et en applications de l'IA à la santé publique.",
-    email: "joseph.mbang@facsciences-uy1.cm",
+    email: "mbangjoseph74@gmail.com",
     avatarSeed: "JM", photoUrl: "/photos/joseph-mbang.png", publicationsCount: 12,
   },
   {
@@ -1109,6 +1111,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "ia"],
     bio: "Chercheuse associée au Centre Asie. Spécialisée en modélisation des systèmes environnementaux marins et côtiers en Malaisie.",
+    email: "syakilaahmad@usm.my",
     avatarSeed: "SA", photoUrl: "/photos/syakila-ahmad.png", publicationsCount: 9,
   },
   {
