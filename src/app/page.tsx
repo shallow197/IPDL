@@ -34,32 +34,46 @@ import { useLang } from "@/context/LangContext";
 export default function Home() {
   const { t } = useLang();
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [focused, setFocused] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
+  const [listMaxHeight, setListMaxHeight] = useState<number>();
 
   const q = searchQuery.trim().toLowerCase();
-  const showDropdown = Boolean(q) && searchOpen;
+  const showDropdown = focused && q.length >= 2;
 
-  // Ferme le menu de résultats au clic extérieur, à la touche Échap, ou au scroll
-  // (sinon il reste ouvert en mémoire même après avoir quitté la zone de recherche).
+  // Borne la hauteur de la liste à l'espace réellement visible sous l'input,
+  // pour que le dropdown ne dépasse jamais le bas du viewport (et le footer).
+  useEffect(() => {
+    if (!showDropdown) return;
+    const updateMaxHeight = () => {
+      const el = searchRef.current;
+      if (!el) return;
+      const bottom = el.getBoundingClientRect().bottom;
+      const available = window.innerHeight - bottom - 24;
+      setListMaxHeight(Math.max(0, Math.min(available, window.innerHeight * 0.6)));
+    };
+    updateMaxHeight();
+    window.addEventListener("resize", updateMaxHeight);
+    return () => window.removeEventListener("resize", updateMaxHeight);
+  }, [showDropdown]);
+
+  // Ferme le menu uniquement au clic extérieur ou à la touche Échap — jamais au
+  // survol/scroll, pour ne pas couper la lecture des résultats.
   useEffect(() => {
     if (!showDropdown) return;
     const closeOnOutsideClick = (e: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
-        setSearchOpen(false);
+        setFocused(false);
       }
     };
     const closeOnEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSearchOpen(false);
+      if (e.key === "Escape") setFocused(false);
     };
-    const closeOnScroll = () => setSearchOpen(false);
     document.addEventListener("mousedown", closeOnOutsideClick);
     document.addEventListener("keydown", closeOnEscape);
-    window.addEventListener("scroll", closeOnScroll, { passive: true });
     return () => {
       document.removeEventListener("mousedown", closeOnOutsideClick);
       document.removeEventListener("keydown", closeOnEscape);
-      window.removeEventListener("scroll", closeOnScroll);
     };
   }, [showDropdown]);
 
@@ -129,19 +143,23 @@ export default function Home() {
                   type="text"
                   placeholder={t("hero.searchPlaceholder")}
                   value={searchQuery}
-                  onChange={(e) => { setSearchQuery(e.target.value); setSearchOpen(true); }}
-                  onFocus={() => setSearchOpen(true)}
+                  onChange={(e) => { setSearchQuery(e.target.value); setFocused(true); }}
+                  onFocus={() => setFocused(true)}
                   className="w-full pl-12 pr-6 py-4 rounded-full bg-transparent text-base text-slate-200 placeholder-slate-500 focus:outline-none"
                 />
               </div>
 
               {showDropdown && (
-                <div className="absolute top-full left-0 right-0 mt-3 rounded-2xl border border-slate-800 bg-slate-900/95 backdrop-blur-md shadow-2xl p-6 text-left z-50 max-h-96 overflow-y-auto">
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                <div className="absolute top-full left-0 right-0 mt-3 flex flex-col rounded-2xl border border-slate-800 bg-slate-900/95 backdrop-blur-md shadow-2xl p-6 text-left z-50 max-h-[60vh]">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4 flex-none">
                     <span className="text-[13px] mono-text uppercase tracking-wider text-slate-500 font-bold">{t("hero.searchRealtime")}</span>
                     <button onClick={() => setSearchQuery("")} className="text-[13px] text-slate-400 hover:text-slate-200">{t("hero.searchClear")}</button>
                   </div>
-                  <div className="space-y-6">
+                  <div
+                    onClick={() => setFocused(false)}
+                    style={{ maxHeight: listMaxHeight }}
+                    className="space-y-6 overflow-y-auto overscroll-y-contain pr-1"
+                  >
                     {filteredResearchers.length > 0 && (
                       <div>
                         <h4 className="text-[13px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><Users className="h-3 w-3" /> {t("hero.searchResearchers")}</h4>
