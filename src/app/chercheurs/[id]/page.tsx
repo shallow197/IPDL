@@ -181,7 +181,10 @@ export default function ResearcherProfilePage({ params }: PageProps) {
             {researcher.email && (
               <div className="flex items-center gap-2 text-sm text-slate-400 pt-2">
                 <Mail className="h-4 w-4 text-slate-500" />
-                <a href={`mailto:${researcher.email}`} className="hover:text-slate-200 underline">
+                <a
+                  href={`mailto:${researcher.email}?subject=Contact concernant UMMISCO&body=Bonjour ${researcher.name},%0A%0AJ'aimerais vous contacter concernant votre travail de recherche à UMMISCO.%0A%0ACordialement`}
+                  className="hover:text-slate-200 underline"
+                >
                   {researcher.email}
                 </a>
               </div>

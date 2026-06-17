@@ -105,7 +105,10 @@ export default function EquipePage() {
 
                 {/* Actions */}
                 <div className="flex items-center justify-between">
-                  <a href={`mailto:${r.email}`} className="inline-flex items-center gap-1 text-[13px] text-slate-500 hover:text-slate-200 transition-colors">
+                  <a
+                    href={`mailto:${r.email}?subject=Contact UMMISCO&body=Bonjour ${r.name},%0A%0AJ'aimerais vous contacter concernant UMMISCO.%0A%0ACordialement`}
+                    className="inline-flex items-center gap-1 text-[13px] text-slate-500 hover:text-slate-200 transition-colors"
+                  >
                     <Mail className="h-3 w-3" /> {t("researchers.contact")}
                   </a>
                   <Link href={`/chercheurs/${r.id}`} className="inline-flex items-center gap-1 text-[13px] text-blue-400 hover:text-blue-300 font-semibold">
