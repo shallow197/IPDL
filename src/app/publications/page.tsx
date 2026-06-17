@@ -14,7 +14,9 @@ import {
   Quote,
   ExternalLink,
   ShieldCheck,
+  ArrowLeft,
 } from "lucide-react";
+import Link from "next/link";
 import {
   AXES,
   RESEARCHERS,
@@ -119,7 +121,14 @@ function PublicationsContent() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 mb-8 font-semibold"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <span>Retour à l'accueil</span>
+        </Link>
+
         {/* Page Header */}
         <div className="border-b border-slate-900 pb-8 mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>

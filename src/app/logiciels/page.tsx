@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { ExternalLink, Boxes } from "lucide-react";
+import Link from "next/link";
+import { ExternalLink, Boxes, ArrowLeft } from "lucide-react";
 import { SOFTWARE_TOOLS } from "@/data/ummiscoData";
 import Footer from "@/components/Footer";
 import { useLang } from "@/context/LangContext";
@@ -13,6 +14,13 @@ export default function LogicielsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 mb-8 font-semibold"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <span>Retour à l'accueil</span>
+        </Link>
         <div className="border-b border-slate-900 pb-8 mb-12">
           <span className="text-[13px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2 flex items-center gap-2">
             <Boxes className="h-4 w-4 text-violet-400" /> {t("logiciels.tag")}

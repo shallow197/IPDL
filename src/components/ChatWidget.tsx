@@ -43,6 +43,8 @@ export default function ChatWidget() {
   const [ready, setReady] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [renaming, setRenaming] = useState(false);
+  const [newTitle, setNewTitle] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -162,6 +164,23 @@ export default function ChatWidget() {
       if (id === activeId) setActiveId(remaining[0].id);
       return remaining;
     });
+  };
+
+  const startRenaming = () => {
+    if (activeConv) {
+      setNewTitle(activeConv.title);
+      setRenaming(true);
+    }
+  };
+
+  const saveNewTitle = () => {
+    if (newTitle.trim() && activeConv) {
+      setConversations((prev) =>
+        prev.map((c) => (c.id === activeId ? { ...c, title: newTitle.trim() } : c))
+      );
+      setRenaming(false);
+      setNewTitle("");
+    }
   };
 
   const sendMessage = async (e?: React.FormEvent) => {
@@ -346,12 +365,20 @@ export default function ChatWidget() {
                 </div>
               </div>
               <button
+                onClick={startRenaming}
+                className="p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-all flex-none"
+                title="Renommer cette conversation"
+                aria-label="Renommer cette conversation"
+              >
+                <SquarePen className="h-4.5 w-4.5" />
+              </button>
+              <button
                 onClick={newConversation}
                 className="p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-all flex-none"
                 title={t("chatbot.newChat")}
                 aria-label={t("chatbot.newChat")}
               >
-                <SquarePen className="h-4.5 w-4.5" />
+                <SquarePen className="h-4.5 w-4.5 opacity-60" />
               </button>
               <button
                 onClick={() => setOpen(false)}
@@ -415,6 +442,42 @@ export default function ChatWidget() {
               </form>
             </div>
           </div>
+
+          {/* Rename Modal */}
+          {renaming && (
+            <div className="absolute inset-0 z-[150] bg-black/40 flex items-center justify-center p-4">
+              <div className="bg-slate-900 rounded-xl border border-slate-800 p-6 max-w-sm w-full space-y-4">
+                <h3 className="text-lg font-bold text-white">Renommer la conversation</h3>
+                <input
+                  type="text"
+                  value={newTitle}
+                  onChange={(e) => setNewTitle(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") saveNewTitle();
+                    if (e.key === "Escape") setRenaming(false);
+                  }}
+                  autoFocus
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:border-blue-500/50 text-sm"
+                  placeholder="Nouveau titre..."
+                />
+                <div className="flex gap-2 justify-end">
+                  <button
+                    onClick={() => setRenaming(false)}
+                    className="px-4 py-2 rounded-lg text-slate-400 hover:bg-slate-800 transition-all"
+                  >
+                    Annuler
+                  </button>
+                  <button
+                    onClick={saveNewTitle}
+                    disabled={!newTitle.trim()}
+                    className="px-4 py-2 rounded-lg bg-ummisco-blue text-white hover:bg-ummisco-blue/90 disabled:opacity-50 transition-all font-semibold"
+                  >
+                    Renommer
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </>

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Globe, ExternalLink, Filter, FileText, Package, Database, Lock, Eye, Coins } from "lucide-react";
+import Link from "next/link";
+import { Globe, ExternalLink, Filter, FileText, Package, Database, Lock, Eye, Coins, ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 import { useLang } from "@/context/LangContext";
 import type { DBPartner } from "@/lib/db";
@@ -95,6 +96,13 @@ export default function PartenairesPage() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 mb-8 font-semibold"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <span>Retour à l'accueil</span>
+        </Link>
         <div className="border-b border-slate-900 pb-8 mb-10">
           <span className="text-[10px] mono-text uppercase tracking-widest text-slate-500 font-bold block mb-2">
             {t("partenaires.networkTitle")}
