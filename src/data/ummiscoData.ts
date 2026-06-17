@@ -1270,6 +1270,7 @@ export const PROJECTS: Project[] = [
     description:
       "Dialogue Science-Décideurs pour une gestion intégrée des environnements littoraux et marins. Approche participative multi-acteurs.",
     url: "https://ummisco.fr/fr/projet-ummisco/didem/",
+    projectWebsite: "https://www.didem-project.org/",
     image: "/projets/DIDEM.png",
     chefProjet: "Nicolas Marilleau (porteur côté UMMISCO)",
     duree: "36 mois",
@@ -1286,6 +1287,7 @@ export const PROJECTS: Project[] = [
     description:
       "Modélisation de la mobilité des pêcheurs artisanaux au Sénégal. Simulateur Lolli implémenté sous GAMA pour explorer des scénarios climatiques et socio-économiques.",
     url: "https://ummisco.fr/fr/projet-ummisco/habitable/",
+    projectWebsite: "https://habitableproject.org/",
     image: "/projets/HABITABLE.png",
     chefProjet: "François Gemene, University of Liège, Hugo Observatory, Belgique",
     duree: "36 mois",
@@ -1301,6 +1303,7 @@ export const PROJECTS: Project[] = [
     description:
       "Digital Epidemiology : nouvelle approche pour la surveillance en temps réel du COVID-19 via l'intégration de capteurs environnementaux et de modèles prédictifs.",
     url: "https://ummisco.fr/fr/projet-ummisco/digepi/",
+    projectWebsite: "https://bioinfo-shiny.ird.fr/NLPtrain/",
     image: "/projets/DigEpi.png",
     chefProjet: "Benjamin Roche, MIVEGEC, IRD",
     duree: "18 mois",
@@ -1349,6 +1352,7 @@ export const PROJECTS: Project[] = [
     description:
       "The Maasai, the Gnu and the Metropolis. Réseaux de capteurs pour le suivi des grandes migrations animales en Afrique de l'Est.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-magnum/",
+    projectWebsite: "https://anr.fr/Projet-ANR-16-CE03-0004",
     image: "/projets/MaGnuM.png",
     chefProjet: "François Mialhe, École de l'environnement et de la société, CNRS 5600 EVS, Université de Lyon",
     partenaires: "University of Lyon 2 Lumière, Lyon, France ; IRD - UMMISCO, Bondy, France ; University Claude Bernard Lyon I, France ; IRD – PALOC, Kenya ; University of Namur, Belgium ; INED, France ; University of Colorado, USA ; ACC, Kenya ; UMR LETG, Rennes, France",
@@ -1362,6 +1366,7 @@ export const PROJECTS: Project[] = [
     description:
       "Distribution Model : séparation des préoccupations pour faciliter la distribution des modèles à base d'agents sur clusters HPC.",
     url: "https://ummisco.fr/fr/projet-ummisco/dom/",
+    projectWebsite: "https://www.ecologie.gouv.fr/sites/default/files/documents/Plan_Eau_DOM_plaquette.pdf",
     image: "/projets/DOM.png",
     chefProjet: "Dr. Ayesha Almazooqi, Khalifa University, Abu Dhabi",
     duree: "36 mois",
@@ -1377,6 +1382,7 @@ export const PROJECTS: Project[] = [
     description:
       "Réseau de capteurs citoyens pour la surveillance de la qualité de l'air et son impact sur l'asthme en Afrique. Science participative et acquisition de données.",
     url: "https://ummisco.fr/fr/projet-ummisco/airqaly-4-asmafri/",
+    projectWebsite: "https://anr.fr/Projet-ANR-20-CE36-0012",
     chefProjet: "Nicolas Marilleau (porteur côté UMMISCO)",
     duree: "48 mois",
     financement: "890 K€",
@@ -1391,6 +1397,7 @@ export const PROJECTS: Project[] = [
     description:
       "Artificial Intelligence for Marine Ecosystems. Application de l'IA pour la modélisation et le suivi des écosystèmes marins méditerranéens.",
     url: "https://ummisco.fr/fr/projet-ummisco/aime/",
+    projectWebsite: "https://initiative-nawras.org/projets/aime/",
     image: "/projets/AIME.png",
     chefProjet: "Jihad Zahir, CAU / UMMISCO, Morocco",
     duree: "48 mois",
@@ -1406,6 +1413,7 @@ export const PROJECTS: Project[] = [
     description:
       "Lecteur intelligent de tests de diagnostic rapide (TDR). Application de vision par ordinateur pour automatiser la lecture des TDR en contexte de ressources limitées.",
     url: "https://ummisco.fr/fr/projet-ummisco/rdt-smart-reader/",
+    projectWebsite: "https://www.researchgate.net/publication/262329368_Smart_rapid_diagnostics_test_reader_running_on_a_cell-phone_for_real-time_mapping_of_epidemics",
     image: "/projets/RDT Smart Reader.png",
     chefProjet: "Jules Brice Tchatchueng Mbougua, Centre Pasteur du Cameroun / UMMISCO, Cameroun",
     duree: "24 mois",
@@ -1436,6 +1444,7 @@ export const PROJECTS: Project[] = [
     description:
       "Application de l'apprentissage profond à l'analyse de l'électrocardiogramme pour la détection précoce de maladies cardiovasculaires.",
     url: "https://ummisco.fr/fr/projet-ummisco/deepecg4u/",
+    projectWebsite: "https://www.ird.fr/deepecg4u-lintelligence-artificielle-au-service-de-la-sante-cardiaque",
     image: "/projets/DeepECG4U.png",
     chefProjet: "Edi Prifti (porteur côté UMMISCO)",
     duree: "48 mois",
@@ -1452,6 +1461,7 @@ export const PROJECTS: Project[] = [
     description:
       "Intégration de données omiques multi-échelles par apprentissage profond pour l'étude des mécanismes moléculaires des maladies complexes.",
     url: "https://ummisco.fr/fr/projet-ummisco/deepintegromics/",
+    projectWebsite: "https://www.ibisc.univ-evry.fr/portfolio/projet-anr-prc-deepintegromics-apprentissage-profond-de-bout-en-bout-pour-la-medecine-de-precision-base-sur-la-metagenomique-et-lintegration-de-donnees-2021-2025/",
     image: "/projets/DeepIntergrOmics.png",
     chefProjet: "Jean-Daniel Zucker (porteur côté UMMISCO)",
     duree: "42 mois",
@@ -1468,6 +1478,7 @@ export const PROJECTS: Project[] = [
     description:
       "Programme de science participative du Muséum National d'Histoire Naturelle pour le suivi collaboratif de la biodiversité urbaine et péri-urbaine.",
     url: "https://ummisco.fr/fr/projet-ummisco/e-col/",
+    projectWebsite: "https://ecolplus.fr/le-projet/",
     image: "/projets/E-Col+.png",
     chefProjet: "Pierre-Yves Gagnier, MNHN, Paris",
     duree: "8 ans",
@@ -1483,6 +1494,7 @@ export const PROJECTS: Project[] = [
     description:
       "Modélisation épidémiologique et contrôle optimal des maladies infectieuses en Afrique subsaharienne. Coopération UMMISCO Cameroun – INRIA.",
     url: "https://ummisco.fr/fr/projet-ummisco/epitag/",
+    projectWebsite: "https://team.inria.fr/epitag/presentation/",
     image: "/projets/EPITAG.png",
     chefProjet: "Samuel Bowong (UMMISCO, Cameroon) et Suzanne Touzeau (INRIA Biocore)",
     duree: "36 mois",
@@ -1498,6 +1510,7 @@ export const PROJECTS: Project[] = [
     description:
       "Initiative de modélisation mathématique et informatique appliquée aux systèmes complexes au Maroc. Coopération IRD–Université Cadi Ayyad.",
     url: "https://ummisco.fr/fr/projet-ummisco/i-maroc/",
+    projectWebsite: "https://www.herve.io/i-maroc",
     image: "/projets/I-MAROC.png",
     chefProjet: "Hassan Hbid, Université Cadi Ayyad, Marrakech (UCA), UMMISCO, IRD",
     duree: "36 mois",
@@ -1513,6 +1526,7 @@ export const PROJECTS: Project[] = [
     description:
       "Plateforme de recherche et de modélisation multi-agents pour la simulation de systèmes socio-écologiques complexes, avec partenaires internationaux.",
     url: "https://ummisco.fr/fr/projet-ummisco/premiss/",
+    projectWebsite: "https://www.ird.fr/projet-premiss-partenariat-de-recherche-pour-loptimisation-des-methodologies-en-science-de-la",
     image: "/projets/PREMISS.png",
     chefProjet: "Alexis Drogoul (porteur côté UMMISCO)",
     duree: "24 mois",
@@ -1529,6 +1543,7 @@ export const PROJECTS: Project[] = [
     description:
       "Simulation et modélisation participative de systèmes complexes pour l'aide à la décision environnementale. Développé sur la plateforme GAMA avec des partenaires en Asie du Sud-Est.",
     url: "https://ummisco.fr/fr/projet-ummisco/simple/",
+    projectWebsite: "https://www.ird.fr/le-projet-simple-selectionne-par-lue",
     image: "/projets/SIMPLE.jpg",
     chefProjet: "Alexis Drogoul",
     duree: "48 mois",
@@ -1545,6 +1560,7 @@ export const PROJECTS: Project[] = [
     description:
       "Modélisation multi-agents de la dynamique des vers de terre dans les sols agricoles. Couplage de capteurs terrain et de simulation pour l'écologie des sols.",
     url: "https://ummisco.fr/fr/projet-ummisco/u2worm/",
+    projectWebsite: "https://psg-research.fr/project-u2-worm/",
     image: "/projets/U2 WORM.webp",
     chefProjet: "Nicolas Marilleau (porteur côté UMMISCO)",
     duree: "48 mois",
@@ -1561,6 +1577,7 @@ export const PROJECTS: Project[] = [
     domain: "Environnement",
     description: "Description à compléter.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-escape/",
+    projectWebsite: "https://eosc-france.fr/projet-escape-et-cds",
     image: "/projets/ESCAPE.png",
     chefProjet: "Alexis Drogoul, UMMISCO, IRD, 32 av. Henri Varagnat, 93140 Bondy, France",
     duree: "48 mois",
@@ -1576,6 +1593,7 @@ export const PROJECTS: Project[] = [
     domain: "Société",
     description: "Générateur de populations synthétiques pour la simulation multi-agents de systèmes socio-démographiques.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-genstar/",
+    projectWebsite: "https://www.irit.fr/smac/fr/genstar.html",
     image: "/projets/GENSTAR.png",
     chefProjet: "Alexis Drogoul, UMMISCO, IRD, 32 av. Henri Varagnat, 93140 Bondy, France",
     duree: "42 mois",
@@ -1591,6 +1609,7 @@ export const PROJECTS: Project[] = [
     domain: "Santé publique",
     description: "Modélisation multi-agents des processus du sol et de la matière organique. Couplage de simulations à base d'agents avec des données expérimentales pour étudier la dynamique du carbone dans les sols.",
     url: "https://ummisco.fr/fr/projet-ummisco/anr-mepsom/",
+    projectWebsite: "https://anr.fr/Projet-ANR-15-CE01-0006",
     image: "/projets/MEPSOM.png",
     chefProjet: "Claire Chenu, AgroParisTech, France",
     partenaires: "BIOEMCO, UMR UPMC-CNRS-IRD-ENS-UPEC-AgroParisTech-INRA, Paris, France ; Environnement et Grandes Cultures, UMR INRA-AgroParisTech, Grignon, France ; Laboratoire d'Écologie Microbienne, Université de Lyon 1, Villeurbanne, France ; UMMISCO, IRD, Yaoundé, Cameroun ; SIMBIOS, Université d'Abertay, Dundee, Écosse",
@@ -1631,6 +1650,7 @@ export const PROJECTS: Project[] = [
     domain: "Société",
     description:
       "Pathogenèse et interactions entre pathogènes – approche comparative pour comprendre les dynamiques d'émergence virale en milieu tropical. Modélisation multi-agents couplée à des données de terrain au Gabon.",
+    projectWebsite: "https://anr.fr/Projet-ANR-24-SARP-0031",
     image: "/projets/STORY.png",
     chefProjet: "Benjamin Roche, UMMISCO, IRD, 32 avenue Henri Varagnat, 93140 Bondy, France",
     partenaires: "IRD Bondy, France ; IRD Montpellier, France ; CIRMF Franceville, Gabon ; UPMC Paris, France",
@@ -1643,6 +1663,7 @@ export const PROJECTS: Project[] = [
     domain: "Environnement",
     description:
       "Opération de recherche sur les services écosystémiques et les obligations environnementales. Analyse des mécanismes de gouvernance et de compensation pour la biodiversité à l'échelle internationale.",
+    projectWebsite: "https://www.ird.fr/projets-bonds-et-saberes-session-thematique-au-congres-sbsr-2023",
     image: "/projets/BONDS.png",
     chefProjet: "Marie-Paule Bonnet, UMR Espace-Dev, IRD",
     partenaires: "IRD France, CIRAD France, MNHN France, CNRS France, Université de Montpellier France, UFM Guadaloupe, Universidade de Brasilia Brésil, INPE Brésil, FONDAZIONE MACH Italie, Universidade de Évora Portugal, BIOCONSULT Danemark, UNIVERZA V LJUBLJANI Slovénie",
@@ -1655,6 +1676,7 @@ export const PROJECTS: Project[] = [
     domain: "Environnement",
     description: "Description à compléter.",
     url: "https://ummisco.fr/fr/projet-ummisco/qnrf-simupor/",
+    projectWebsite: "https://lib.ube.fr/all-events/simupor-simulation-of-microscale-biogeochemical-processes-in-porous-media-using-advanced-computer-vision-methodologies/",
     image: "/projets/SIMUPOR.png",
     chefProjet: "Serkan Kiranyaz, Université du Qatar",
     duree: "36 mois",
@@ -1669,6 +1691,7 @@ export const PROJECTS: Project[] = [
     domain: "Société",
     description:
       "Partenariat UMMISCO–Siemens pour le développement d'outils de simulation et d'optimisation intelligente appliqués aux systèmes industriels complexes.",
+    projectWebsite: "https://news.siemens.com/fr-fr/siemens-institut-mines-telecom/",
     image: "/projets/SIEMENS.webp",
     chefProjet: "Moussa LO & Gaoussou CAMARA",
     dateDebut: "2012",
