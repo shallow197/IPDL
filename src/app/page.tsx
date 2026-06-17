@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -34,8 +34,34 @@ import { useLang } from "@/context/LangContext";
 export default function Home() {
   const { t } = useLang();
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
 
   const q = searchQuery.trim().toLowerCase();
+  const showDropdown = Boolean(q) && searchOpen;
+
+  // Ferme le menu de résultats au clic extérieur, à la touche Échap, ou au scroll
+  // (sinon il reste ouvert en mémoire même après avoir quitté la zone de recherche).
+  useEffect(() => {
+    if (!showDropdown) return;
+    const closeOnOutsideClick = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setSearchOpen(false);
+      }
+    };
+    const closeOnEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSearchOpen(false);
+    };
+    const closeOnScroll = () => setSearchOpen(false);
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("scroll", closeOnScroll, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("scroll", closeOnScroll);
+    };
+  }, [showDropdown]);
 
   const filteredResearchers = useMemo(
     () => (q ? RESEARCHERS.filter((r) => r.name.toLowerCase().includes(q) || r.title.toLowerCase().includes(q)).slice(0, 4) : []),
@@ -64,7 +90,7 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col bg-slate-950 text-slate-100 font-sans">
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-x-hidden border-b border-slate-900">
+      <section className="relative z-20 overflow-x-hidden border-b border-slate-900">
         <div className="absolute top-0 left-1/4 -z-10 h-72 w-72 rounded-full bg-blue-600/15 blur-[110px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 -z-10 h-72 w-72 rounded-full bg-green-600/15 blur-[110px] pointer-events-none" />
         <div className="absolute top-1/3 right-1/3 -z-10 h-56 w-56 rounded-full bg-violet-600/10 blur-[100px] pointer-events-none" />
@@ -96,19 +122,20 @@ export default function Home() {
             </div>
 
             {/* Search */}
-            <div className="relative">
+            <div className="relative" ref={searchRef}>
               <div className="relative rounded-full border border-slate-800 bg-slate-900/50 backdrop-blur-sm shadow-xl focus-within:border-blue-500/50 transition-all duration-300">
                 <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
                 <input
                   type="text"
                   placeholder={t("hero.searchPlaceholder")}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => { setSearchQuery(e.target.value); setSearchOpen(true); }}
+                  onFocus={() => setSearchOpen(true)}
                   className="w-full pl-12 pr-6 py-4 rounded-full bg-transparent text-base text-slate-200 placeholder-slate-500 focus:outline-none"
                 />
               </div>
 
-              {q && (
+              {showDropdown && (
                 <div className="absolute top-full left-0 right-0 mt-3 rounded-2xl border border-slate-800 bg-slate-900/95 backdrop-blur-md shadow-2xl p-6 text-left z-50 max-h-96 overflow-y-auto">
                   <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
                     <span className="text-[13px] mono-text uppercase tracking-wider text-slate-500 font-bold">{t("hero.searchRealtime")}</span>
