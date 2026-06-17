@@ -219,6 +219,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Doctorant — Centre Méditerranée", role: "doctorant", center: "mediterranee",
     axes: ["agents", "ia"],
     bio: "Doctorant en modélisation hydrogéologique au Centre Méditerranée. Recherches sur la simulation multi-agents des systèmes aquifères.",
+    email: "achraf.chakri@ced.uca.ma",
     avatarSeed: "AC", photoUrl: "/photos/achraf-chakri.png", publicationsCount: 2,
   },
   {
@@ -226,6 +227,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre France", role: "chercheur", center: "france",
     axes: ["ia", "agents"],
     bio: "Chercheur au Centre France. Travaux en apprentissage automatique appliqué aux données environnementales et à la dynamique des écosystèmes.",
+    email: "ahmad.fall@ird.fr",
     avatarSeed: "AF", photoUrl: "/photos/ahmad-fall.png", publicationsCount: 14,
   },
   {
@@ -233,6 +235,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheuse — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["ia", "capteurs"],
     bio: "Chercheuse au Centre Méditerranée. Expert en intelligence artificielle pour la santé et en analyse de biosignaux (projet AIME).",
+    email: "aichabalhag@gmail.com",
     avatarSeed: "AB", photoUrl: "/photos/aicha-balhag.png", publicationsCount: 9,
   },
   {
@@ -240,6 +243,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Doctorante — Centre Méditerranée", role: "doctorant", center: "mediterranee",
     axes: ["agents", "capteurs"],
     bio: "Doctorante au Centre Méditerranée. Recherches sur la modélisation des systèmes hydrologiques et la gestion des ressources en eau au Maroc.",
+    email: "aichasabiq1@gmail.com",
     avatarSeed: "AS", photoUrl: "/photos/aicha-sabiq.png", publicationsCount: 2,
   },
   {
@@ -384,7 +388,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Responsable de thème — Centre Afrique de l'Ouest", role: "responsable_theme", center: "afrique-ouest",
     axes: ["agents", "participatif"],
     bio: "Responsable de thème. Spécialiste de la modélisation participative des systèmes socio-environnementaux sahéliens et de la science citoyenne.",
-    email: "awa.diattara@ucad.edu.sn", orcid: "0000-0003-1295-4820",
+    email: "awa.diattara@ugb.edu.sn", orcid: "0000-0003-1295-4820",
     avatarSeed: "AW", photoUrl: "/photos/awa-diattara.png", publicationsCount: 17,
   },
   {
@@ -392,7 +396,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents", "ia"],
     bio: "Spécialiste de la modélisation mathématique des épidémies (dengue, paludisme, VIH) et de l'approche One Health pour la surveillance sanitaire.",
-    email: "berge.tsanou@uy1.uninet.cm", orcid: "0000-0003-2019-4812",
+    email: "bergetsanou@gmail.com", orcid: "0000-0003-2019-4812",
     avatarSeed: "BT", photoUrl: "/photos/berge-tsanou.png", publicationsCount: 21,
   },
   {
@@ -407,6 +411,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "capteurs"],
     bio: "Chercheur spécialisé en modélisation des systèmes hydrologiques et en gestion des risques naturels au Vietnam.",
+    email: "Pchientvct_tv@tlu.edu.vn",
     avatarSeed: "CP", photoUrl: "/photos/chien-pham-van.png", publicationsCount: 12,
   },
   {
@@ -414,6 +419,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur Émérite — Centre France", role: "emerite", center: "france",
     axes: ["agents"],
     bio: "Chercheur émérite au Centre France. Expert en modélisation des systèmes complexes et en intelligence artificielle distribuée.",
+    email: "Christophe.Cambier@ird.fr",
     avatarSeed: "CC", photoUrl: "/photos/christophe-cambier.png", publicationsCount: 47,
   },
   {
@@ -421,6 +427,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre France", role: "chercheur", center: "france",
     axes: ["agents", "ia"],
     bio: "Chercheur au Centre France. Spécialisé en modélisation computationnelle des processus biologiques et des dynamiques de populations.",
+    email: "christophe.denis@sorbonne-universite.fr",
     avatarSeed: "CD", photoUrl: "/photos/christophe-denis.png", publicationsCount: 18,
   },
   {
@@ -440,6 +447,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique de l'Ouest", role: "chercheur", center: "afrique-ouest",
     axes: ["agents", "ia"],
     bio: "Chercheur au Centre Afrique de l'Ouest. Expert en modélisation mathématique et en applications de l'IA aux problèmes de développement en Afrique.",
+    email: "diaraf.seck@ucad.edu.sn",
     avatarSeed: "DS", photoUrl: "/photos/diaraf-seck.png", publicationsCount: 15,
   },
   {
@@ -447,6 +455,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Personnel administratif — Centre Asie du Sud-Est", role: "ingenieur", center: "asie",
     axes: ["agents"],
     bio: "Personnel administratif et de coordination au Centre Asie du Sud-Est (VinUniversity).",
+    email: "diepanh.phung@ird.fr",
     avatarSeed: "DP", photoUrl: "/photos/diep-anh-phung.png", publicationsCount: 2,
   },
   {
@@ -484,6 +493,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["ia", "participatif"],
     bio: "Chercheur au Centre Méditerranée. Spécialisé en intelligence artificielle pour les systèmes marins et en sciences participatives.",
+    email: "dramanesamidrisk@gmail.com",
     avatarSeed: "DK", photoUrl: "/photos/dramane-kante.png", publicationsCount: 7,
   },
   {
@@ -491,7 +501,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "ia"],
     bio: "Expert en modélisation épidémiologique (tuberculose, COVID-19) et développement d'outils de visualisation géospatiale comme GeoTuberculosis.",
-    email: "duy-dung.le@vinuni.edu.vn", orcid: "0000-0002-8120-4938",
+    email: "dung.ld@vinuni.edu.vn", orcid: "0000-0002-8120-4938",
     avatarSeed: "DL", photoUrl: "/photos/duy-dung-le.png", publicationsCount: 15,
   },
   {
@@ -561,6 +571,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents"],
     bio: "Chercheur au Centre Cameroun. Expert en modélisation de l'épidémiologie et de la gestion des maladies des cultures tropicales en relation avec le changement climatique.",
+    email: "kolayegg@gmail.com",
     avatarSeed: "GK", photoUrl: "/photos/gabriel-guilsou-kolaye.png", publicationsCount: 11,
   },
   {
@@ -568,6 +579,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Personnel administratif — Centre Asie du Sud-Est", role: "ingenieur", center: "asie",
     axes: ["agents"],
     bio: "Personnel administratif au Centre Asie du Sud-Est. Coordination logistique et support aux projets de recherche.",
+    email: "hai_au.pham@ird.fr",
     avatarSeed: "HP", photoUrl: "/photos/hai-au-pham.png", publicationsCount: 1,
   },
   {
@@ -575,6 +587,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["ia", "capteurs"],
     bio: "Chercheur au Centre Méditerranée. Expert en intelligence artificielle appliquée aux systèmes de surveillance environnementale.",
+    email: "hamidoua.diallo.1@gmail.com",
     avatarSeed: "HD", photoUrl: "/photos/hamidou-a-diallo.png", publicationsCount: 8,
   },
   {
@@ -589,6 +602,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents", "ia"],
     bio: "Chercheur au Centre Cameroun. Spécialisé en modélisation des systèmes épidémiologiques et en décisions des modèles d'apprentissage profond.",
+    email: "admhamza@gmail.com",
     avatarSeed: "HA", photoUrl: "/photos/hamza-adamou.png", publicationsCount: 9,
   },
   {
@@ -604,6 +618,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["ia", "capteurs"],
     bio: "Chercheur au Centre Cameroun. Expert en traitement automatique du langage naturel et de la parole pour les langues africaines.",
+    email: "hippolyte.tapamo@facsciences-uy1.cm",
     avatarSeed: "HK", photoUrl: "/photos/hippolyte-tapamo-kenfack.png", publicationsCount: 14,
   },
   {
@@ -611,6 +626,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "capteurs"],
     bio: "Chercheur au Centre Asie. Spécialisé en modélisation de la dynamique côtière et des systèmes d'alerte précoce aux inondations.",
+    email: "dung.hanhuy@hust.edu.vn",
     avatarSeed: "HN", photoUrl: "/photos/huy-dung-han.png", publicationsCount: 10,
   },
   {
@@ -618,6 +634,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents"],
     bio: "Chercheur au Centre Cameroun. Expert en modélisation mathématique des dynamiques forêt-savane et des processus de changement d'état en écologie.",
+    email: "yatat.valaire@gmail.com",
     avatarSeed: "IY", photoUrl: "/photos/ivric-valaire-yatat-djeumen.png", publicationsCount: 10,
   },
   {
@@ -625,7 +642,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Maître de Conférence — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["agents", "capteurs"],
     bio: "Maître de Conférence à l'Université Cadi Ayyad. Expert en dynamique des populations et gestion durable des ressources en eau au Maroc.",
-    email: "jalila.elghordaf@uca.ma", orcid: "0000-0003-4829-1029",
+    email: "elg_jalila@yahoo.fr", orcid: "0000-0003-4829-1029",
     avatarSeed: "JG", photoUrl: "/photos/jalila-el-ghordaf.png", publicationsCount: 18,
   },
   {
@@ -676,6 +693,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique de l'Ouest", role: "chercheur", center: "afrique-ouest",
     axes: ["agents"],
     bio: "Chercheur au Centre Afrique de l'Ouest. Expert en modélisation des socio-écosystèmes sahéliens et des dynamiques de la végétation.",
+    email: "jean-marie.dembele@ugb.edu.sn",
     avatarSeed: "JD", photoUrl: "/photos/jean-marie-dembele.png", publicationsCount: 12,
   },
   {
@@ -722,6 +740,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents", "ia"],
     bio: "Chercheur au Centre Cameroun. Spécialisé en modélisation mathématique des systèmes épidémiques et en applications de l'IA à la santé publique.",
+    email: "joseph.mbang@facsciences-uy1.cm",
     avatarSeed: "JM", photoUrl: "/photos/joseph-mbang.png", publicationsCount: 12,
   },
   {
@@ -729,6 +748,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents", "capteurs"],
     bio: "Chercheur au Centre Cameroun. Expert en modélisation des cultures tropicales et en détection des maladies agricoles par capteurs.",
+    email: "tchatchueng@pasteur-yaounde.org",
     avatarSeed: "JB", photoUrl: "/photos/jules-brice-tchatchieng-mbougua.png", publicationsCount: 8,
   },
   {
@@ -736,6 +756,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["ia", "capteurs"],
     bio: "Chercheur au Centre Cameroun. Spécialisé en apprentissage multi-modal et en développement d'algorithmes d'apprentissage profond pour la santé.",
+    email: "moskojustin@gmail.com",
     avatarSeed: "JN", photoUrl: "/photos/justin-moskolai-ngossaha.png", publicationsCount: 9,
   },
   {
@@ -781,6 +802,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "participatif"],
     bio: "Chercheuse au Centre Asie. Expert en modélisation participative des systèmes agro-forestiers et des pratiques d'utilisation des terres en Thaïlande.",
+    email: "kittimalee@hotmail.com",
     avatarSeed: "KL", photoUrl: "/photos/kittima-leeruttanawisut.png", publicationsCount: 9,
   },
   {
@@ -788,6 +810,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["agents"],
     bio: "Chercheur au Centre Méditerranée. Expert en contrôle optimal et en contrôlabilité des équations aux dérivées partielles stochastiques.",
+    email: "66LHACHIMI@gmail.com",
     avatarSeed: "LL", photoUrl: "/photos/lahcen-lhachimi.png", publicationsCount: 12,
   },
   {
@@ -795,6 +818,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["agents"],
     bio: "Chercheur au Centre Méditerranée. Expert en analyse fonctionnelle et en systèmes d'évolution abstraits avec applications à la dynamique des populations.",
+    email: "lahcenmaniar@gmail.com",
     avatarSeed: "LM", photoUrl: "/photos/lahcen-maniar.png", publicationsCount: 38,
   },
   {
@@ -802,6 +826,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["agents"],
     bio: "Chercheur au Centre Méditerranée. Spécialisé en équations différentielles stochastiques et en contrôlabilité des systèmes dégénérés.",
+    email: "m.baroun@uca.ac.ma",
     avatarSeed: "MB", photoUrl: "/photos/mahmoud-baroun.png", publicationsCount: 9,
   },
   {
@@ -809,6 +834,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "ia"],
     bio: "Chercheuse au Centre Asie. Expert en modélisation des dynamiques de propagation des épidémies et en santé publique computationnelle.",
+    email: "mai-chi.nguyen@ird.fr",
     avatarSeed: "MC", photoUrl: "/photos/mai-chi-nguyen.png", publicationsCount: 11,
   },
   {
@@ -816,6 +842,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique de l'Ouest", role: "chercheur", center: "afrique-ouest",
     axes: ["ia", "agents"],
     bio: "Chercheuse au Centre Afrique de l'Ouest. Spécialisée en intelligence artificielle appliquée aux systèmes agro-environnementaux du Sahel.",
+    email: "maissa.mbaye@ugb.edu.sn",
     avatarSeed: "MM", photoUrl: "/photos/maissa-mbaye.png", publicationsCount: 8,
   },
   {
@@ -866,6 +893,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "ia"],
     bio: "Chercheur associé au Centre Asie. Expert en méthodes mathématiques pour la modélisation des systèmes complexes biologiques.",
+    email: "yushalify@usm.my",
     avatarSeed: "YM", photoUrl: "/photos/md-yushalify-misro.png", publicationsCount: 14,
   },
   {
@@ -873,6 +901,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["ia", "agents"],
     bio: "Chercheur au Centre Méditerranée. Expert en intelligence artificielle et en modélisation des systèmes complexes socio-économiques.",
+    email: "m.halloumi@uca.ac.ma",
     avatarSeed: "MH", photoUrl: "/photos/mohamed-halloumi.png", publicationsCount: 10,
   },
   {
@@ -880,6 +909,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["agents"],
     bio: "Chercheur au Centre Méditerranée. Expert en dynamique des populations, contrôle optimal et modélisation des systèmes biologiques.",
+    email: "Khaladi@uca.ac.ma",
     avatarSeed: "MK", photoUrl: "/photos/mohamed-khaladi.png", publicationsCount: 24,
   },
   {
@@ -887,6 +917,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents"],
     bio: "Chercheur associé au Centre Asie. Spécialisé en modélisation mathématique des populations et des dynamiques écologiques.",
+    email: "mohdhafizmohd@usm.my",
     avatarSeed: "MH", photoUrl: "/photos/mohd-hafiz-bin-mohd.png", publicationsCount: 7,
   },
   {
@@ -894,6 +925,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique de l'Ouest", role: "chercheur", center: "afrique-ouest",
     axes: ["agents"],
     bio: "Chercheur au Centre Afrique de l'Ouest. Travaux sur la modélisation multi-agents des dynamiques pastorales et de la mobilité des éleveurs.",
+    email: "moussa.balde.math@ucad.edu.sn",
     avatarSeed: "MB", photoUrl: "/photos/moussa-balde.png", publicationsCount: 7,
   },
   {
@@ -901,6 +933,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique de l'Ouest", role: "chercheur", center: "afrique-ouest",
     axes: ["agents"],
     bio: "Expert en modélisation à base d'agents pour la pêche artisanale et les dynamiques bioéconomiques des ressources halieutiques sénégalaises.",
+    email: "moussa.lo@ugb.edu.sn",
     avatarSeed: "ML", photoUrl: "/photos/moussa-lo.png", publicationsCount: 9,
   },
   {
@@ -908,6 +941,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Directeur de centre adjoint — Centre Afrique centrale et de l'est", role: "directeur_unite", center: "afrique-centrale",
     axes: ["agents", "ia"],
     bio: "Directrice de centre adjointe. Expert en modélisation mathématique des maladies vectorielles et des stratégies de contrôle épidémique.",
+    email: "myriamtapi@yahoo.fr",
     avatarSeed: "MD", photoUrl: "/photos/myriam-sonia-djoukwe-tapi.png", publicationsCount: 12,
   },
   {
@@ -915,6 +949,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "capteurs"],
     bio: "Chercheur au Centre Asie. Expert en modélisation de l'intrusion saline et de la gestion de l'eau dans les deltas côtiers.",
+    email: "quangnd2006@gmail.com",
     avatarSeed: "NQ", photoUrl: "/photos/nhat-quang-dinh.png", publicationsCount: 8,
   },
   {
@@ -922,6 +957,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur Émérite — Centre France", role: "emerite", center: "france",
     axes: ["capteurs", "agents"],
     bio: "Chercheur émérite pionnier en géophysique appliquée et en méthodes instrumentales innovantes pour l'étude des sols.",
+    email: "nicolas.florsch@gmail.com",
     avatarSeed: "NF", photoUrl: "/photos/nicolas-florsch.png", publicationsCount: 52,
   },
   {
@@ -937,6 +973,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre France", role: "chercheur", center: "france",
     axes: ["ia", "agents"],
     bio: "Chercheur au Centre France. Recherches sur la fouille de textes, le traitement automatique du langage naturel et la veille scientifique.",
+    email: "nicolas.turenne@ird.fr",
     avatarSeed: "NT", photoUrl: "/photos/nicolas-turenne.png", publicationsCount: 22,
   },
   {
@@ -944,6 +981,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Responsable de centre — Centre Méditerranée", role: "responsable_theme", center: "mediterranee",
     axes: ["agents", "ia"],
     bio: "Responsable au Centre Méditerranée. Expert en théorie des essaims et en modélisation multi-agents inspirée de la physique statistique.",
+    email: "nisrine.outada@uca.ac.ma",
     avatarSeed: "NO", photoUrl: "/photos/nisrine-outada.png", publicationsCount: 15,
   },
   {
@@ -951,6 +989,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["ia", "capteurs"],
     bio: "Chercheuse au Centre Méditerranée. Spécialisée en intelligence artificielle pour la surveillance environnementale et la mobilité urbaine.",
+    email: "alaouinohayla0607@gmail.com",
     avatarSeed: "NA", photoUrl: "/photos/nohayla-alaoui.png", publicationsCount: 6,
   },
   {
@@ -958,6 +997,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["ia", "capteurs"],
     bio: "Chercheur au Centre Cameroun. Expert en traitement automatique du langage naturel pour les langues africaines et en apprentissage profond.",
+    email: "tsopze.norbert@gmail.com",
     avatarSeed: "NT", photoUrl: "/photos/norbert-tsopze.png", publicationsCount: 16,
   },
   {
@@ -965,6 +1005,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents", "ia"],
     bio: "Chercheuse au Centre Cameroun. Spécialisée en modélisation des dynamiques biologiques et en IA appliquée à la surveillance épidémiologique.",
+    email: "olgakengni@gmail.com",
     avatarSeed: "OK", photoUrl: "/photos/olga-kengni-ngangmo.png", publicationsCount: 7,
   },
   {
@@ -972,6 +1013,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre France", role: "chercheur", center: "france",
     axes: ["agents", "capteurs"],
     bio: "Chercheur au Centre France. Expert en modélisation 3D des microstructures des sols et en simulation des processus biogéochimiques (ANR SOILμ-3D).",
+    email: "olivier.monga@ird.fr",
     avatarSeed: "OM", photoUrl: "/photos/olivier-monga.png", publicationsCount: 38,
   },
   {
@@ -979,7 +1021,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique de l'Ouest", role: "chercheur", center: "afrique-ouest",
     axes: ["agents", "ia"],
     bio: "Expert en modélisation multi-agents des dynamiques urbaines et en IA appliquée aux systèmes complexes africains.",
-    email: "ousmane.thiare@ucad.edu.sn", orcid: "0000-0002-9012-3847",
+    email: "ousmane.thiare@ugb.edu.sn", orcid: "0000-0002-9012-3847",
     avatarSeed: "OT", photoUrl: "/photos/ousmane-thiare.png", publicationsCount: 11,
   },
   {
@@ -987,6 +1029,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Directeur d'Unité Adjoint — Centre Afrique de l'Ouest", role: "directeur_unite", center: "afrique-ouest",
     axes: ["agents", "ia"],
     bio: "Directeur d'Unité Adjoint. Spécialisé en modélisation informatique des systèmes complexes et en intelligence artificielle appliquée aux défis de l'Afrique.",
+    email: "papaibra.ndiaye@uadb.edu.sn",
     avatarSeed: "PN", photoUrl: "/photos/papa-ibrahima-ndiaye.png", publicationsCount: 20,
   },
   {
@@ -994,6 +1037,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Directeur de centre adjoint — Centre Afrique centrale et de l'est", role: "directeur_unite", center: "afrique-centrale",
     axes: ["agents", "ia"],
     bio: "Directeur de centre adjoint. Expert en apprentissage automatique et en traitement automatique du langage pour les langues africaines.",
+    email: "paulinyonta@gmail.com",
     avatarSeed: "PM", photoUrl: "/photos/paulin-melatagia-yonta.png", publicationsCount: 19,
   },
   {
@@ -1001,6 +1045,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur Émérite — Centre France", role: "emerite", center: "france",
     axes: ["agents"],
     bio: "Chercheur émérite spécialiste des systèmes dynamiques et de la modélisation mathématique des populations biologiques.",
+    email: "pierre.auger@ird.fr",
     avatarSeed: "PA", photoUrl: "/photos/pierre-auger.png", publicationsCount: 68,
   },
   {
@@ -1008,6 +1053,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents"],
     bio: "Chercheur au Centre Cameroun. Expert en modélisation mathématique des systèmes biologiques et en méthodes d'analyse de la dynamique des populations.",
+    email: "sylvain.iloga@gmail.com",
     avatarSeed: "PS", photoUrl: "/photos/pierre-iloga-biyik.png", publicationsCount: 6,
   },
   {
@@ -1015,6 +1061,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "participatif"],
     bio: "Chercheur au Centre Asie. Modélisation des dynamiques sociales et participatives dans les communautés rurales d'Asie du Sud-Est.",
+    email: "pachalow.g@gmail.com",
     avatarSeed: "PB", photoUrl: "/photos/prachya-rachya-boonprasurt.png", publicationsCount: 6,
   },
   {
@@ -1022,6 +1069,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents"],
     bio: "Chercheur au Centre Asie. Expert en simulation distribuée à large échelle et optimisation des architectures GAMA pour le HPC.",
+    email: "hqnghi@ctu.edu.vn",
     avatarSeed: "QH", photoUrl: "/photos/quang-nghi-huynh.png", publicationsCount: 5,
   },
   {
@@ -1029,6 +1077,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique de l'Ouest", role: "chercheur", center: "afrique-ouest",
     axes: ["agents", "participatif"],
     bio: "Chercheur au Centre Afrique de l'Ouest. Expert en modélisation bio-économique des pêcheries et en simulation des ressources écologiques marines.",
+    email: "raphael.duboz@cirad.fr",
     avatarSeed: "RD", photoUrl: "/photos/raphael-duboz.png", publicationsCount: 18,
   },
   {
@@ -1036,6 +1085,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["ia", "capteurs"],
     bio: "Chercheur au Centre Cameroun. Expert en traitement automatique des langues africaines et en développement de ressources linguistiques numériques.",
+    email: "ndoundam@yahoo.com",
     avatarSeed: "RN", photoUrl: "/photos/rene-ndoundam.png", publicationsCount: 11,
   },
   {
@@ -1043,6 +1093,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["agents"],
     bio: "Chercheur au Centre Méditerranée. Expert en semi-groupes d'opérateurs et en théorie qualitative des équations différentielles abstraites.",
+    email: "s.boulite@uca.ma",
     avatarSeed: "SB", photoUrl: "/photos/said-boulite.png", publicationsCount: 14,
   },
   {
@@ -1050,6 +1101,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Directeur de centre adjoint — Centre Afrique centrale et de l'est", role: "directeur_unite", center: "afrique-centrale",
     axes: ["agents"],
     bio: "Expert en modélisation mathématique des systèmes épidémiologiques complexes et en contrôle optimal des maladies infectieuses.",
+    email: "sbowong@gmail.com",
     avatarSeed: "SB", photoUrl: "/photos/samuel-bowong.png", publicationsCount: 45,
   },
   {
@@ -1064,6 +1116,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Directeur de centre adjoint — Centre Asie du Sud-Est", role: "directeur_unite", center: "asie",
     axes: ["agents", "participatif"],
     bio: "Directrice de centre adjointe au Centre Asie du Sud-Est. Spécialiste de la modélisation des systèmes agro-environnementaux dans le delta du Mékong.",
+    email: "dinhthihaivan@vnua.edu.vn",
     avatarSeed: "TD", photoUrl: "/photos/thi-hai-van-dinh.png", publicationsCount: 22,
   },
   {
@@ -1071,6 +1124,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["participatif", "agents"],
     bio: "Chercheuse au Centre Asie. Travaux sur la modélisation participative de la gestion de l'eau et de l'agriculture dans le delta du Mékong.",
+    email: "25phuong.tth@vinuni.edu.vn",
     avatarSeed: "TH", photoUrl: "/photos/thi-hoai-phuong-tran.png", publicationsCount: 7,
   },
   {
@@ -1078,6 +1132,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents", "capteurs"],
     bio: "Chercheuse au Centre Asie. Expert en collecte de données de terrain et en intégration de capteurs dans les modèles environnementaux.",
+    email: "linh.huynh-thi-phuong@ird.fr",
     avatarSeed: "PL", photoUrl: "/photos/thi-phuong-linh-huynh.png", publicationsCount: 6,
   },
   {
@@ -1085,6 +1140,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Responsable de thème — Centre Asie du Sud-Est", role: "responsable_theme", center: "asie",
     axes: ["participatif", "agents"],
     bio: "Responsable de thème au Centre Asie. Expert en sciences participatives et modélisation collaborative des systèmes socio-environnementaux.",
+    email: "thuy.nguyen43@rmit.edu.vn",
     avatarSeed: "TN", photoUrl: "/photos/thi-thuy-nguyen.png", publicationsCount: 16,
   },
   {
@@ -1092,6 +1148,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Afrique centrale et de l'est", role: "chercheur", center: "afrique-centrale",
     axes: ["agents", "ia"],
     bio: "Chercheur au Centre Cameroun. Spécialisé en modélisation des réseaux complexes et en simulation des dynamiques de propagation.",
+    email: "thomas.messi@facsciences-uy1.cm",
     avatarSeed: "TJ", photoUrl: "/photos/thomas-messi-nguele.png", publicationsCount: 8,
   },
   {
@@ -1099,6 +1156,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Responsable de thème — Centre France", role: "responsable_theme", center: "france",
     axes: ["agents", "capteurs"],
     bio: "Responsable de thème au Centre France. Expert en modélisation des écosystèmes marins et en ichtyologie computationnelle.",
+    email: "timothee.brochier@ird.fr",
     avatarSeed: "TB", photoUrl: "/photos/timothee-brochier.png", publicationsCount: 24,
   },
   {
@@ -1106,6 +1164,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Responsable de thème — Centre France", role: "responsable_theme", center: "france",
     axes: ["agents", "ia"],
     bio: "Responsable de thème au Centre France. Recherches sur les modèles hybrides couplant équations différentielles et systèmes multi-agents en épidémiologie.",
+    email: "tri.nguyen-huu@ird.fr",
     avatarSeed: "TN", photoUrl: "/photos/tri-nguyen-huu.png", publicationsCount: 19,
   },
   {
@@ -1113,6 +1172,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Asie du Sud-Est", role: "chercheur", center: "asie",
     axes: ["agents"],
     bio: "Chercheur au Centre Asie. Modélisation de la dynamique des pêches et de la bio-économie des ressources halieutiques au Vietnam.",
+    email: "ho.tuong.vinh@gmail.com",
     avatarSeed: "TV", photoUrl: "/photos/tuong-vinh-ho.png", publicationsCount: 8,
   },
   {
@@ -1120,6 +1180,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Directeur d'Unité Adjoint — Centre Asie du Sud-Est", role: "directeur_unite", center: "asie",
     axes: ["agents"],
     bio: "Expert en simulation à base d'agents pour les systèmes urbains et la gestion des ressources naturelles au Vietnam.",
+    email: "txviet@ctu.edu.vn",
     avatarSeed: "VT", photoUrl: "/photos/viet-truong-xuan.png", publicationsCount: 28,
   },
   {
@@ -1127,6 +1188,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre France", role: "chercheur", center: "france",
     axes: ["ia", "agents"],
     bio: "Chercheur au Centre France. Expert en systèmes multi-agents, formation de coalitions et intelligence artificielle distribuée.",
+    email: "youcef.sklab@ird.fr",
     avatarSeed: "YS", photoUrl: "/photos/youcef-sklab.png", publicationsCount: 15,
   },
   {
@@ -1134,6 +1196,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Chercheur — Centre Méditerranée", role: "chercheur", center: "mediterranee",
     axes: ["ia", "agents"],
     bio: "Chercheur au Centre Méditerranée. Expert en apprentissage automatique et en modélisation des systèmes dynamiques complexes.",
+    email: "y.elfoutayeni@uca.ac.ma",
     avatarSeed: "YA", photoUrl: "/photos/youssef-el-foutayeni.png", publicationsCount: 7,
   },
   {
@@ -1141,6 +1204,7 @@ export const RESEARCHERS: Researcher[] = [
     title: "Doctorant — Centre Méditerranée", role: "doctorant", center: "mediterranee",
     axes: ["ia", "agents"],
     bio: "Doctorant au Centre Méditerranée. Travaux sur l'apprentissage automatique et la modélisation des systèmes dynamiques complexes.",
+    email: "belzakariaghali@gmail.com",
     avatarSeed: "ZB", photoUrl: "/photos/zakaria-belghali.png", publicationsCount: 1,
   },
 ];
