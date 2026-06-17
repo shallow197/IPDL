@@ -93,7 +93,7 @@ export default function CentrePage({ params }: PageProps) {
               {center.themes.map((th) => {
                 const ax = AXES.find((a) => a.id === th);
                 return ax ? (
-                  <span key={th} className={`inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold text-white bg-gradient-to-r ${ax.color}`}>
+                  <span key={th} className="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-300 uppercase tracking-wide">
                     {ax.shortName}
                   </span>
                 ) : null;

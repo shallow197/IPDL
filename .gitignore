@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # Pages de référence téléchargées (non utilisées par l'app)
-centres/
+/centres/
