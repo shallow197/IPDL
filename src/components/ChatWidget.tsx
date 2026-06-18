@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { MessageCircle, X, Send, Bot, User, Loader2, SquarePen, Menu, Trash2 } from "lucide-react";
 import { useLang } from "@/context/LangContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface Message {
   role: "user" | "assistant";
@@ -35,6 +36,7 @@ function relativeTime(iso: string): string {
 
 export default function ChatWidget() {
   const { t } = useLang();
+  const { user, authLoading } = useAuth();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -48,6 +50,11 @@ export default function ChatWidget() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Clé de stockage propre à chaque utilisateur (et "guest" hors connexion) :
+  // les conversations ne doivent jamais passer d'un compte à l'autre.
+  const storageKey = user ? `${STORAGE_KEY}::${user.id}` : `${STORAGE_KEY}::guest`;
+  const loadedKeyRef = useRef<string | null>(null);
+
   const makeConversation = (firstMessage?: Message): Conversation => ({
     id: `conv-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
     title: t("chatbot.newChat"),
@@ -55,49 +62,60 @@ export default function ChatWidget() {
     updatedAt: new Date().toISOString(),
   });
 
-  // Charge les conversations sauvegardées au montage (mémoire persistante, comme Claude),
-  // avec migration depuis l'ancien format mono-conversation si présent.
+  // Charge les conversations de l'utilisateur courant. Se recharge à chaque
+  // changement d'identité (connexion / déconnexion) pour ne jamais afficher les
+  // conversations d'un autre compte.
   useEffect(() => {
+    if (authLoading) return; // on attend de connaître l'identité avant de charger
+    setReady(false);
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(storageKey);
       if (raw) {
         const saved = JSON.parse(raw) as { conversations: Conversation[]; activeId: string };
         if (Array.isArray(saved.conversations) && saved.conversations.length > 0) {
-          const activeId = saved.activeId || saved.conversations[0].id;
+          const aId = saved.activeId || saved.conversations[0].id;
           // Nettoyage des conversations jamais utilisées (créées par erreur via plusieurs clics
           // sur "nouvelle conversation"), pour ne pas polluer l'historique avec des doublons vides.
           const cleaned = saved.conversations.filter(
-            (c) => c.id === activeId || c.messages.some((m) => m.role === "user")
+            (c) => c.id === aId || c.messages.some((m) => m.role === "user")
           );
           setConversations(cleaned.length > 0 ? cleaned : saved.conversations);
-          setActiveId(activeId);
+          setActiveId(aId);
+          loadedKeyRef.current = storageKey;
           setReady(true);
           return;
         }
       }
-      const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
-      if (legacyRaw) {
-        const legacyMessages = JSON.parse(legacyRaw) as Message[];
-        if (Array.isArray(legacyMessages) && legacyMessages.length > 0) {
-          const migrated: Conversation = {
-            id: `conv-${Date.now()}`,
-            title: legacyMessages.find((m) => m.role === "user")?.content.slice(0, 40) || t("chatbot.newChat"),
-            messages: legacyMessages,
-            updatedAt: new Date().toISOString(),
-          };
-          setConversations([migrated]);
-          setActiveId(migrated.id);
-          localStorage.removeItem(LEGACY_STORAGE_KEY);
-          setReady(true);
-          return;
+      // Migration de l'ancien format mono-conversation — uniquement hors connexion,
+      // pour ne pas dupliquer cet historique dans plusieurs comptes.
+      if (!user) {
+        const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
+        if (legacyRaw) {
+          const legacyMessages = JSON.parse(legacyRaw) as Message[];
+          if (Array.isArray(legacyMessages) && legacyMessages.length > 0) {
+            const migrated: Conversation = {
+              id: `conv-${Date.now()}`,
+              title: legacyMessages.find((m) => m.role === "user")?.content.slice(0, 40) || t("chatbot.newChat"),
+              messages: legacyMessages,
+              updatedAt: new Date().toISOString(),
+            };
+            setConversations([migrated]);
+            setActiveId(migrated.id);
+            localStorage.removeItem(LEGACY_STORAGE_KEY);
+            loadedKeyRef.current = storageKey;
+            setReady(true);
+            return;
+          }
         }
       }
     } catch {}
     const first = makeConversation();
     setConversations([first]);
     setActiveId(first.id);
+    loadedKeyRef.current = storageKey;
     setReady(true);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storageKey, authLoading]);
 
   // Ferme le chat dès qu'on navigue vers une autre page du site (clic sur un
   // lien de la sidebar) — la conversation reste sauvegardée, seul le panneau se ferme.
@@ -105,11 +123,14 @@ export default function ChatWidget() {
     setOpen(false);
   }, [pathname]);
 
-  // Sauvegarde à chaque changement, une fois le chargement initial terminé
+  // Sauvegarde à chaque changement, dans la clé de l'utilisateur courant.
+  // Le garde-fou loadedKeyRef empêche d'écrire les données d'un compte dans la
+  // clé d'un autre pendant la transition connexion / déconnexion.
   useEffect(() => {
     if (!ready) return;
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ conversations, activeId })); } catch {}
-  }, [conversations, activeId, ready]);
+    if (loadedKeyRef.current !== storageKey) return;
+    try { localStorage.setItem(storageKey, JSON.stringify({ conversations, activeId })); } catch {}
+  }, [conversations, activeId, ready, storageKey]);
 
   const activeConv = useMemo(
     () => conversations.find((c) => c.id === activeId) ?? conversations[0],
