@@ -1,4 +1,4 @@
-import { UMMISCO_EXTERNAL_PUBLICATIONS } from "./ummiscoExternalPublications";
+import { UMMISCO_EXTERNAL_PUBLICATIONS } from "@/data/ummiscoExternalPublications";
 
 // ─── Interfaces ───────────────────────────────────────────────────────────────
 

@@ -1,6 +1,6 @@
 /* eslint-disable */
 /* Generated from https://ummisco.fr/wp-content/plugins/mes-publications/publications.json on 2026-06-15T01:19:48.711Z */
-import type { Publication } from "./publicationTypes";
+import type { Publication } from "@/data/publicationTypes";
 
 export const UMMISCO_EXTERNAL_PUBLICATIONS: Publication[] = [
   {
